@@ -10,7 +10,7 @@ import Dashboard from './components/Dashboard'
 import CreateList from './components/CreateList'
 import AddEntry from './components/AddEntry'
 // import EditEntry from './components/EditEntry'
-// import ListDisplay from './components/ListDisplay'
+import ListDisplay from './components/ListDisplay'
 
 
 
@@ -29,7 +29,7 @@ class App extends React.Component {
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/failedlogin" component={FailedLogin} />
-        {/* <Route exact path="/listdisplay" component={ListDisplay}/> */}
+        <Route exact path="/listdisplay" component={ListDisplay}/>
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/createlist" component={CreateList} />
         <PrivateRoute exact path="/addentry" component={AddEntry} />

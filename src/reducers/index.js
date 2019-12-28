@@ -17,7 +17,10 @@ import {
     UPDATE_ENTRY_FAILED,
     DELETE_ENTRY_START,
     DELETE_ENTRY_SUCCESS,
-    DELETE_ENTRY_FAILED
+    DELETE_ENTRY_FAILED,
+    GET_LIST_ID_START,
+    GET_LIST_ID_SUCCESS,
+    GET_LIST_ID_FAILED
 } from '../actions/'
 
 //Initial State Object
@@ -131,6 +134,23 @@ export const reducer = (state=initialState, action) => {
                 ...state,
                 isLoading:false,
                 error: action.payload,
+            }
+        case GET_LIST_ID_START:
+            return {
+                ...state,
+                isLoading:true,
+            }
+        case GET_LIST_ID_SUCCESS:
+            return {
+                ...state,
+                isLoading:false,
+                payload: action.payload
+            }
+        case GET_LIST_ID_FAILED:
+            return {
+                ...state,
+                isLoading:false,
+                error: action.payload
             }
         default:
             return state

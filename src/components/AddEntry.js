@@ -32,12 +32,12 @@ class AddEntry extends React.Component {
         const { userId, listId, referencingURL, description, linkTitle } = this.state
         return (
             <div>
-                <h1 className="newpickupheader">Schedule New Pickup</h1>
+                <h1 className="newpickupheader">Add a Link to Your List</h1>
                 <form onSubmit={this.handleSubmit}>
                     <input type="text" name="userId" value={userId} placeholder="Your User Id" onChange={this.handleChange} required /><br />
                     <input type="text" name="listId" value={listId} placeholder="Your List Id" onChange={this.handleChange} required /><br />
                     <input type="text" name="referencingURL" value={referencingURL} placeholder="URL to Link" onChange={this.handleChange} required /><br />
-                    <input type="text" name="description" value={description} placeholder="Food item description" onChange={this.handleChange} required /><br />
+                    <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChange} required /><br />
                     <input type="text" name="linkTitle" value={linkTitle} placeholder="Add A Title for Your Link" onChange={this.handleChange} required /><br />
                     <button type="submit" className="abutton2">Add Link to List</button>
                 </form>

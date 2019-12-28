@@ -25,7 +25,7 @@ class Register extends React.Component {
         const { email, password, firstName, lastName } = this.state
         this.props.register(email, password, firstName, lastName)
         this.setState({ email: '', password: '', firstName: '', lastName: '', })
-        this.props.history.push('./Dashboard')
+        this.props.history.push("./dashboard")
     }
 
     render() {

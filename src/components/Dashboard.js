@@ -2,7 +2,9 @@ import React from 'react'
 import { connect} from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import CreateList from './CreateList'
-// import MyRequestsBusiness from './MyRequestsBusiness'
+import AddEntry from './AddEntry'
+import GetListId from './GetListId'
+
 
 const Dashboard = (props) => {
     
@@ -13,6 +15,7 @@ const Dashboard = (props) => {
             <h1>Dashboard</h1>
             <p>Welcome {localStorage.getItem('firstName')}!</p>
             <p>Your User Id is {localStorage.getItem('userId')}</p>
+            <p>Your List Id is {localStorage.getItem('listId')}</p>
             <p>To get started, create a list, then add your entries!</p>
             <p>Your LinkList will be hosted at: <a alt="Your LinkList" href="https://link-in.bio/">https://link-in.bio/{localStorage.getItem('userId')}</a></p>
             <a href="#neworder" className="abutton" role="button">Create a New List</a>
@@ -23,7 +26,24 @@ const Dashboard = (props) => {
                     <a href="#" className="abutton2" role="button">Close</a>
                 </div>
             </div>
-            <br />
+            <br /><br />
+            {/* <a href="#neworder2" className="abutton" role="button">Get List Id</a>
+            <div className="modal" id="neworder2">
+                <div className="modal-container">
+                    <GetListId />
+                    {/* eslint-disable-next-line */}
+                    {/* <a href="#" className="abutton2" role="button">Close</a>
+                </div>
+            </div>
+            <br /><br /> */} 
+            <a href="#neworder3" className="abutton" role="button">Create a New Entry</a>
+            <div className="modal" id="neworder3">
+                <div className="modal-container">
+                    <AddEntry />
+                    {/* eslint-disable-next-line */}
+                    <a href="#" className="abutton2" role="button">Close</a>
+                </div>
+            </div>
             {/* <Link to='/UpdateFoodItem'><span className="abutton">Update/Delete a Food Item</span></Link> */}
             <br /><br />
             {/* <button type="button" className="abutton">Log Out</button> */}

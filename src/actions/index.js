@@ -25,6 +25,10 @@ export const DELETE_ENTRY_START = 'DELETE_ENTRY_START'
 export const DELETE_ENTRY_SUCCESS = 'DELETE_ENTRY_SUCCESS'
 export const DELETE_ENTRY_FAILED = 'DELETE_ENTRY_FAILED'
 
+export const GET_LIST_ID_START = 'GET_LIST_ID_START'
+export const GET_LIST_ID_SUCCESS = 'GET_LIST_ID_SUCCESS'
+export const GET_LIST_ID_FAILED = 'GET_LIST_ID_FAILED'
+
 //Action Creators
 export function register(email, password, firstName, lastName){
     return (dispatch) => {
@@ -70,6 +74,7 @@ export function createList(userId, backColor, txtColor, fontSelection){
         dispatch({type: CREATE_LIST_START})
         return axios.post('https://link-in-bio.herokuapp.com/l/new', { userId, backColor, txtColor, fontSelection })
         .then((res) => {
+            localStorage.setItem('listId', res.data.listId)
             dispatch({type: CREATE_LIST_SUCCESS, payload: res.data})
         })
         .catch((err) => {
@@ -88,6 +93,19 @@ export function addEntry(userId, listId, referencingURL, description, linkTitle)
         })
         .catch((err) => {
             dispatch({type: ADD_ENTRY_FAILED, payload:err})
+        })
+    }
+}
+
+export function getListId(userId){
+    return (dispatch) => {
+        dispatch({type: GET_LIST_ID_START})
+        return axios.get(`https://link-in-bio.herokuapp.com/l/${userId}`)
+        .then((res) => {
+            dispatch({type:GET_LIST_ID_SUCCESS, payload: res.data})
+        })
+        .catch((err) => {
+            dispatch({type:GET_LIST_ID_FAILED, payload:err})
         })
     }
 }
