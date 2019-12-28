@@ -19,6 +19,7 @@ const Dashboard = (props) => {
             <div className="modal" id="neworder">
                 <div className="modal-container">
                     <CreateList />
+                    {/* eslint-disable-next-line */}
                     <a href="#" className="abutton2" role="button">Close</a>
                 </div>
             </div>
