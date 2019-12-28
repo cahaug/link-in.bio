@@ -1,0 +1,122 @@
+.App {
+    text-align: center;
+  }
+  
+  .signupcards {
+    display: flex;
+    justify-content: space-around;
+    width: 800px;
+    margin: 0 auto;
+  }
+  
+  .signup {
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 50px;
+    width: 250px;
+  }
+  
+  .signup img {
+    max-width: 150px;
+    height: auto;
+  }
+  
+  .signup h3 {
+    text-decoration: none;
+  }
+  
+  .loginbutton {
+    background-color: lightseagreen;
+    color: white;
+    width: 70px;
+    margin: 10px auto;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+  }
+  
+  .fooditem {
+    background-color: lightseagreen;
+    color: white;
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 20%;
+    margin: 10px;
+  }
+  
+  .fooditemwrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .modal-container {
+    position: fixed;
+    background-color: lightseagreen;
+    border: 1px solid black;
+    left: 50%;
+    transform: translate(-50%, -200%);
+    -webkit-transform: translate(-50%, -200%);
+    -ms-transform: translate(-50%, -200%);
+    padding: 30px;
+    border-radius: 10px;
+    width:70%;
+    max-width: 400px;
+    -webkit-transition: -webkit-transform 200ms ease-out;
+    transition: transform 200ms ease-out;
+  }
+  
+  .modal:before {
+    content: "";
+    position: fixed;
+    display: none;
+    background-color: rgba(0,0,0,.8);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .modal:target:before {
+    display: block;
+  }
+  
+  .modal:target .modal-container {
+    top: 20%;
+    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0);
+  }
+  
+  .abutton {
+    background-color: lightseagreen;
+    text-decoration: none;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .abutton:hover {
+    background-color: rgb(63, 212, 205)
+  }
+  
+  .abutton2 {
+    background-color: white;
+    text-decoration: none;
+    color: lightseagreen;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .newpickupheader {
+    color: white;
+  }

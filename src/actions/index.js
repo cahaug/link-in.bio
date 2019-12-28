@@ -1,0 +1,93 @@
+import axios from 'axios'
+
+//Action Types
+export const REGISTER_USER_START = 'REGISTER_USER_START'
+export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS'
+export const REGISTER_USER_FAILED = 'REGISTER_USER_FAILED'
+
+export const LOGIN_USER_START = 'LOGIN_USER_START'
+export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS'
+export const LOGIN_USER_FAILED = 'LOGIN_USER_FAILED'
+
+export const CREATE_LIST_START = 'CREATE_LIST_START'
+export const CREATE_LIST_SUCCESS = 'CREATE_LIST_SUCCESS'
+export const CREATE_LIST_FAILED = 'CREATE_LIST_FAILED'
+
+export const ADD_ENTRY_START = 'ADD_ENTRY_START'
+export const ADD_ENTRY_SUCCESS = 'ADD_ENTRY_SUCCESS'
+export const ADD_ENTRY_FAILED = 'ADD_ENTRY_FAILED'
+
+export const UPDATE_ENTRY_START = 'UPDATE_ENTRY_START'
+export const UPDATE_ENTRY_SUCCESS = 'UPDATE_ENTRY_SUCCESS'
+export const UPDATE_ENTRY_FAILED = 'UPDATE_ENTRY_FAILED'
+
+export const DELETE_ENTRY_START = 'DELETE_ENTRY_START'
+export const DELETE_ENTRY_SUCCESS = 'DELETE_ENTRY_SUCCESS'
+export const DELETE_ENTRY_FAILED = 'DELETE_ENTRY_FAILED'
+
+//Action Creators
+export function register(email, password, firstName, lastName){
+    return (dispatch) => {
+        dispatch({type: REGISTER_USER_START})
+        return axios.post('https://link-in-bio.herokuapp.com/auth/register', { email, password, firstName, lastName } )
+        .then((res) => {
+            const payload = res.data
+            localStorage.setItem('token', res.data.token)
+            localStorage.setItem('userId', res.data.userId)
+            localStorage.setItem('email', res.data.email)
+            localStorage.setItem('firstName', res.data.firstName)
+            dispatch({type:REGISTER_USER_SUCCESS, payload})
+        })
+        .catch((err) => {
+            dispatch({type:REGISTER_USER_FAILED, payload:err})
+        })
+    }
+}
+
+export function login(email, password){
+    return (dispatch) => {
+        dispatch({type: LOGIN_USER_START})
+        return axios.post('https://link-in-bio.herokuapp.com/auth/login', { email, password })
+        .then((res) => {
+            const payload = res.data
+            localStorage.setItem('token', res.data.token)
+            localStorage.setItem('userId', res.data.userId)
+            localStorage.setItem('email', res.data.email)
+            localStorage.setItem('firstName', res.data.firstName)
+            // console.log(res.data.token,'LOG IS HERE <---')
+            dispatch({type: LOGIN_USER_SUCCESS, payload})
+        })
+        .catch((res) => {
+            const payload = res.response ? res.response.data : res
+            dispatch({type: LOGIN_USER_FAILED, payload})
+            console.log(res,'LOG IS HERE <---')
+        })
+    }
+}
+
+export function createList(userId, backColor, txtColor, fontSelection){
+    return (dispatch) => {
+        dispatch({type: CREATE_LIST_START})
+        return axios.post('https://link-in-bio.herokuapp.com/l/new', { userId, backColor, txtColor, fontSelection })
+        .then((res) => {
+            dispatch({type: CREATE_LIST_SUCCESS, payload: res.data})
+        })
+        .catch((err) => {
+            dispatch({type: CREATE_LIST_FAILED, payload:err})
+        })
+    }
+}
+
+export function addEntry(userId, listId, referencingURL, description, linkTitle){
+    return (dispatch) => {
+        dispatch({type: ADD_ENTRY_START})
+        return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle })
+        .then((res) => {
+            console.log('addEntry res.data.message', res.data.message);
+            dispatch({type: ADD_ENTRY_SUCCESS, payload:res.data})
+        })
+        .catch((err) => {
+            dispatch({type: ADD_ENTRY_FAILED, payload:err})
+        })
+    }
+}
