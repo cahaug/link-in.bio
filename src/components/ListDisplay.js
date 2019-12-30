@@ -14,7 +14,7 @@ class ListDisplay extends React.Component {
     componentDidMount(props) {
         return axios.get(`https:/link-in-bio.herokuapp.com${this.props.match.url}`)
             .then(response => {
-                console.log(response)
+                console.log('response', response)
                 return response.data;
             }).then(data => {
                 console.log(data)
