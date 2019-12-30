@@ -1,4 +1,4 @@
 [[redirects]]
-  from = "/*"
-  to = "../src/components/ListDisplay.js"
+  from = "/:id"
+  to = "/:id"
   status = 200
