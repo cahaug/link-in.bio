@@ -26,7 +26,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Route exact path="/" component={LandingPage} />
-        <Route  path="/:id" render={props => <ListDisplay {...props}/>} />
+        <Route exact path="/:id" render={props => <ListDisplay {...props}/>} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/failedlogin" component={FailedLogin} />
