@@ -17,7 +17,7 @@ class ListDisplay extends React.Component {
                 console.log('response', response)
                 return response.data;
             }).then(data => {
-                console.log(data)
+                console.log('data', data)
                 console.log(this.state)
                 this.setState({isLoading: false});
                 console.log(this.state)
@@ -31,6 +31,8 @@ class ListDisplay extends React.Component {
 
                     )
                 })
+                console.log('state', this.state)
+                console.log('links', links)
                 this.setState({links: links})
             })
     }
