@@ -1,4 +1,4 @@
 [[redirects]]
   from = "/:id"
-  to = "/:id"
-  status = 200
+  to = "https:/link-in-bio.herokuapp.com/:id"
+  status = 301
