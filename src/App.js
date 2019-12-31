@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import PrivateRoute from './components/PrivateRoute'
 import LandingPage from './components/LandingPage'
 import Register from './components/Register'
@@ -25,8 +25,8 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
+        <Switch>
         <Route exact path="/" component={LandingPage} />
-        <Route exact path="/:id" render={props => <ListDisplay {...props}/>} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/failedlogin" component={FailedLogin} />
@@ -34,7 +34,9 @@ class App extends React.Component {
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/createlist" component={CreateList} />
         <PrivateRoute exact path="/addentry" component={AddEntry} />
+        <Route path="/:id" render={props => <ListDisplay {...props}/>} />
         {/* <PrivateRoute exact path="/editentry" component={EditEntry} /> */}
+        </Switch>
       </div>
     )
   }

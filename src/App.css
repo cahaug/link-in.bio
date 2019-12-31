@@ -5,8 +5,9 @@
   .signupcards {
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
     width: 800px;
-    margin: 0 auto;
+    margin: 25 auto;
   }
   
   .signup {
