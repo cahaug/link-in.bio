@@ -18,7 +18,7 @@ class ListDisplay extends React.Component {
         return axios.get(useThisURL)
             .then(response => {
                 console.log('response', response)
-                return response.json();
+                return response;
             }).then(data => {
                 console.log('data', data)
                 console.log(this.state)
