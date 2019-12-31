@@ -24,7 +24,7 @@ class ListDisplay extends React.Component {
                 console.log(this.state)
                 this.setState({isLoading: false});
                 console.log(this.state)
-                const links = data.map((link) => {
+                const links = {data.map((link) => {
                     return (
 
                             <div className='signup' key={link.linkTitle}>
@@ -33,7 +33,7 @@ class ListDisplay extends React.Component {
                             </div>
 
                     )
-                })
+                })}
                 console.log('state', this.state)
                 console.log('links', links)
                 this.setState({links: links})
