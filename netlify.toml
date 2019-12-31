@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "https://link-in-bio.netlify.com/*"
+  param1=value1
+  to = "https://link-in-bio.herokuapp.com/:value1/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
