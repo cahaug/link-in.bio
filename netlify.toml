@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "https://link-in-bio.netlify.com/link-in-bio.herokuapp.com/:id"
+  to = "https://link-in-bio.herokuapp.com/:id"
+  status = 200
+  force = true
