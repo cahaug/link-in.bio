@@ -13,7 +13,7 @@ class ListDisplay extends React.Component {
 
     componentDidMount(props) {
         console.log('url', this.props.match.url)
-        fetch(`http:/link-in-bio.herokuapp.com${this.props.match.url}`)
+        fetch(`https:/link-in-bio.herokuapp.com${this.props.match.url}`)
             .then(response => {
                 console.log('response', response)
                 return response.data;
