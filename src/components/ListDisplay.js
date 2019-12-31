@@ -18,7 +18,7 @@ class ListDisplay extends React.Component {
         fetch(useThisURL)
             .then(response => {
                 console.log('response', response)
-                return response.data;
+                return response;
             }).then(data => {
                 console.log('data', data)
                 console.log(this.state)
