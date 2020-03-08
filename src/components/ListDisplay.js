@@ -1,5 +1,7 @@
 import React from 'react'
 import axios from 'axios'
+// import ellipsisGif from '../files/ellipsis.gif'
+import loadingGif from '../files/loading.gif'
 
 class ListDisplay extends React.Component {
     constructor(props) {
@@ -45,7 +47,8 @@ class ListDisplay extends React.Component {
     render() {
         const isLoading = this.state.isLoading;
             {if(isLoading===true){
-                return <h1>Loading...</h1>
+                // return <h1>Loading <img src={ellipsisGif} style={{width:"30px", paddingTop:"20px"}}/></h1>
+                return <img src={loadingGif} style={{width:"200px"}}/>
             }else{
                 return (
                     <div>
