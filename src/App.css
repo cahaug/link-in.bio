@@ -13,8 +13,9 @@
   .signup {
     border: 1px solid gray;
     border-radius: 10px;
+    margin: 10px auto;
     padding: 50px;
-    width: 250px;
+    width: 40%;
   }
   
   .signup img {
