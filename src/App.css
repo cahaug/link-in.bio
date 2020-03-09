@@ -124,6 +124,11 @@
   }
 
   @media only screen and (max-width: 280px) {
+    
+    .signupcards {
+      width: 100%;
+    }
+    
     .signup {
       width: 90%;
     }
