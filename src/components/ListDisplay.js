@@ -51,7 +51,7 @@ class ListDisplay extends React.Component {
                 return <img src={loadingGif} style={{width:"200px"}}/>
             }else{
                 return (
-                    <div>
+                    <div className="linkList">
                         <div>
                             {this.state.links}
                         </div>

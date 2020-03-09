@@ -6,16 +6,17 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
-    width: 800px;
-    margin: 25 auto;
+    width: 100%;
+    margin: 10% auto;
   }
   
   .signup {
     border: 1px solid gray;
-    border-radius: 10px;
-    margin: 10px auto;
-    padding: 50px;
-    width: 40%;
+    border-radius: 10%;
+    margin: 2.5% auto;
+    padding: 7.5% 10%;
+    width: 50%;
+    overflow: auto;
   }
   
   .signup img {
@@ -123,13 +124,22 @@
     color: white;
   }
 
-  @media only screen and (max-width: 400px) {
+  @media only screen and (max-width: 415px) {
     
+    .linkList {
+      width: 100%;
+      margin: 0 auto;
+
+    }
+
     .signupcards {
       width: 100%;
     }
     
     .signup {
       width: 90%;
+      margin: 0 auto;
+      padding: 3%;
+      overflow: auto;
     }
   }
