@@ -122,3 +122,9 @@
   .newpickupheader {
     color: white;
   }
+
+  @media only screen and (max-width: 280px) {
+    .signup {
+      width: 90%;
+    }
+  }
