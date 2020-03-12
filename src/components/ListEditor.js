@@ -15,7 +15,7 @@ class ListDisplay extends React.Component {
 
     componentWillMount(props) {
         // console.log('url', this.props.match.url)
-        const useThisURL = `https://link-in-bio.herokuapp.com${this.props.match.url}`
+        const useThisURL = `https://link-in-bio.herokuapp.com/${localStorage.getItem('userId')}`
         // console.log('useThisURL', useThisURL)
         return axios.get(useThisURL)
             .then(response => {

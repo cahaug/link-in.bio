@@ -4,10 +4,11 @@ import { withRouter, Link } from 'react-router-dom'
 import CreateList from './CreateList'
 import AddEntry from './AddEntry'
 import GetListId from './GetListId'
+import ListEditor from './ListEditor'
 
 
 const Dashboard = (props) => {
-    
+
     // const {loggedUser} = props
     // console.log(loggedUser)
     return (
@@ -44,7 +45,9 @@ const Dashboard = (props) => {
                     <a href="#" className="abutton2" role="button">Close</a>
                 </div>
             </div>
-            {/* <Link to='/UpdateFoodItem'><span className="abutton">Update/Delete a Food Item</span></Link> */}
+            <div>
+                <ListEditor />
+            </div>
             <br /><br />
             {/* <button type="button" className="abutton">Log Out</button> */}
             <Link to='/'><span className="abutton">Log Out</span></Link>            
