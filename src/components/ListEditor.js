@@ -28,7 +28,7 @@ class ListDisplay extends React.Component {
                 // console.log(this.state)
                 const links = (data.data.map((link) => {
                     const entryId = link.entryId
-                    const viewCount = axios.post('https://link-in-bio.herokuapp.com/s/statForItem', entryId)
+                    const viewCount = axios.post('https://link-in-bio.herokuapp.com/s/statForItem', {entryId})
                     console.log(viewCount)
                     return (
 
