@@ -15,7 +15,7 @@ class ListDisplay extends React.Component {
 
     componentWillMount(props) {
         // console.log('url', this.props.match.url)
-        const useThisURL = `https://link-in-bio.herokuapp.com/${localStorage.getItem('userId')}`
+        const useThisURL = `https://link-in-bio.herokuapp.com/s/u/${localStorage.getItem('userId')}`
         // console.log('useThisURL', useThisURL)
         return axios.get(useThisURL)
             .then(response => {
@@ -27,15 +27,12 @@ class ListDisplay extends React.Component {
                 this.setState({isLoading: false});
                 // console.log(this.state)
                 const links = (data.data.map((link) => {
-                    const entryId = link.entryId
-                    const viewCount = axios.post('https://link-in-bio.herokuapp.com/s/statForItem', {entryId})
-                    console.log(viewCount)
                     return (
 
                             <div className='signup' key={link.linkTitle}>
                                 <a href={`${link.referencingURL}`}>{link.linkTitle}</a>
                                 <p>{link.description}</p>
-                                <p>View Count: {viewCount}</p>
+                                <p>View Count: {link.viewCount}</p>
                             </div>
 
                     )
