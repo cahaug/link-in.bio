@@ -32,6 +32,7 @@ class ListDisplay extends React.Component {
                             <div className='signup' key={link.linkTitle}>
                                 <a href={`${link.referencingURL}`}>{link.linkTitle}</a>
                                 <p>{link.description}</p>
+                                <p>{link.entryId}</p>
                                 <p>View Count: {link.count == null ? <span>---</span> : link.count}</p>
                             </div>
 
