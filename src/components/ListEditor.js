@@ -27,12 +27,15 @@ class ListDisplay extends React.Component {
                 this.setState({isLoading: false});
                 // console.log(this.state)
                 const links = (data.data.map((link) => {
+                    const entryId = link.entryId
+                    const viewCount = await axios.post('https://link-in-bio.herokuapp.com/s/statForItem', entryId)
+
                     return (
 
                             <div className='signup' key={link.linkTitle}>
                                 <a href={`${link.referencingURL}`}>{link.linkTitle}</a>
                                 <p>{link.description}</p>
-                                <p>View Count: ---</p>
+                                <p>View Count: {viewCount}</p>
                             </div>
 
                     )
