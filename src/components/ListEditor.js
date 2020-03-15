@@ -10,17 +10,19 @@ class ListDisplay extends React.Component {
             links: [],
             isLoading:true,
             goodId:null,
+            counts: [],
         }
     }
 
     getCounts(){
+        console.log('getCounts running')
         const useThisURL = `https://link-in-bio.herokuapp.com/s/u/${localStorage.getItem('userId')}`
         return axios.get(useThisURL)
         .then(res => {
             console.log(res)
             const linksCounts = res.data
             console.log(linksCounts)
-            const newArray = this.state.links.forEach((link) =>{
+            const newArray = this.state.links.forEach((link) => {
                 console.log(link)
 
             })
@@ -81,7 +83,24 @@ class ListDisplay extends React.Component {
     }
 
     
-    
+    componentDidMount(props){
+        const useThisURL = `https://link-in-bio.herokuapp.com/s/u/${localStorage.getItem('userId')}`
+        return axios.get(useThisURL)
+        .then(res => {
+            console.log(res)
+            const counts = res.data.map((countVal) => {
+                return (
+                    <div className="signup" key={countVal.entryId}>
+                        <p>{countVal.entryId}</p>
+                        <p>{countVal.count}</p>
+
+                    </div>
+                )
+            })
+            this.setState({counts: counts})
+        })
+        .catch(err => console.log(err))
+    }
 
 
 
@@ -96,7 +115,10 @@ class ListDisplay extends React.Component {
                         <div>
                             {this.state.links}
                         </div>
-                        <button onClick={() => {this.getCounts()}}>Get Counts</button>
+                        <div>
+                            {this.state.counts}
+                        </div>
+                        <button onClick={() => {console.log('clicked'); this.getCounts()}}>Get Counts</button>
                     </div>
 
                 )
