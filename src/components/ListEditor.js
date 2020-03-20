@@ -27,13 +27,13 @@ class ListDisplay extends React.Component {
 
             })
             console.log('newArray', newArray)
-            let merged = {}
+            let mergedLinks = []
             for(let i=0; i<=res.data.length;i++){
                 let value = {...this.state.links[i], ...res.data[i]}
                 console.log('value', value)
-                merged.push(value)
+                mergedLinks.push(value)
             }
-            console.log('merged', merged)
+            console.log('merged', mergedLinks)
             // for i in range(this.state.links.length) {
             //     this.state.links.forEach(link => {
             //         if(linksCounts[i].entryId == link[i].entryId){
