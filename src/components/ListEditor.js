@@ -19,22 +19,21 @@ class ListDisplay extends React.Component {
         const useThisURL = `https://link-in-bio.herokuapp.com/s/u/${localStorage.getItem('userId')}`
         return axios.get(useThisURL)
         .then(res => {
-            console.log(res)
+            console.log('getCounts res', res)
             const linksCounts = res.data
-            console.log(linksCounts)
+            console.log('linksCounts', linksCounts)
             const newArray = this.state.links.forEach((link) => {
-                console.log(link)
+                console.log('foreach link', link)
 
             })
-            console.log(newArray)
-            console.log(res)
+            console.log('newArray', newArray)
             let merged = {}
             for(let i=0; i<=res.data.length;i++){
                 let value = {...this.state.links[i], ...res.data[i]}
-                console.log(value)
+                console.log('value', value)
                 merged.push(value)
             }
-            console.log(merged)
+            console.log('merged', merged)
             // for i in range(this.state.links.length) {
             //     this.state.links.forEach(link => {
             //         if(linksCounts[i].entryId == link[i].entryId){
