@@ -16,7 +16,8 @@ const Dashboard = (props) => {
             <h1>Dashboard</h1>
             <p>Welcome {localStorage.getItem('firstName')}!</p>
             <p>Your User Id is {localStorage.getItem('userId')}</p>
-            <p>Your List Id is {localStorage.getItem('listId')}</p>
+            {/* <p>Your List Id is {localStorage.getItem('listId')}</p> */}
+            <p>Your List Id is **axios.get list id where userid**</p>
             <p>To get started, create a list, then add your entries!</p>
             <p>Your LinkList will be hosted at: <a alt="Your LinkList" href={`http://link-in.bio/${localStorage.getItem('userId')}`}>http://link-in.bio/{localStorage.getItem('userId')}</a></p>
             <a href="#neworder" className="abutton" role="button">Create a New List</a>
