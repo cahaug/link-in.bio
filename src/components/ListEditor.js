@@ -51,7 +51,8 @@ class ListDisplay extends React.Component {
 
     UNSAFE_componentWillMount(props) {
         // console.log('url', this.props.match.url)
-        const useThisURL = `https://link-in-bio.herokuapp.com/${localStorage.getItem('userId')}`
+        // const useThisURL = `https://link-in-bio.herokuapp.com/${localStorage.getItem('userId')}`
+        const useThisURL = `https://link-in-bio.herokuapp.com/s/aio/${localStorage.getItem('userId')}`
         // console.log('useThisURL', useThisURL)
         return axios.get(useThisURL)
             .then(response => {
@@ -69,7 +70,8 @@ class ListDisplay extends React.Component {
                                 <a href={`${link.referencingURL}`}>{link.linkTitle}</a>
                                 <p>{link.description}</p>
                                 <p>{link.entryId}</p>
-                                <p>View Count: {link.count == null ? <span>{link.count ? link.count : <span>--{link.count}--</span> }</span> : link.count}</p>
+                                {/* <p>View Count: {link.count == null ? <span>{link.count ? link.count : <span>--{link.count}--</span> }</span> : link.count}</p> */}
+                                <p>View Count: {link.clickCount == null ? <span>{link.clickCount ? link.clickCount : <span>--{link.clickCount}--</span> }</span> : link.clickCount}</p>
                             </div>
 
                     )
