@@ -32,7 +32,7 @@ class ListDisplay extends React.Component {
             for(let i=0; i<=res.data.length;i++){
                 let value = {...this.state.links[i], ...res.data[i]}
                 console.log(value)
-                merged.append(value)
+                merged.push(value)
             }
             console.log(merged)
             // for i in range(this.state.links.length) {
