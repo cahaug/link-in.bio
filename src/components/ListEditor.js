@@ -16,7 +16,7 @@ class ListDisplay extends React.Component {
 
     getCounts(){
         console.log('getCounts running')
-        const useThisURL = `https://link-in-bio.herokuapp.com/s/u/${localStorage.getItem('userId')}`
+        const useThisURL = `https://link-in-bio.herokuapp.com/st/u/${localStorage.getItem('userId')}`
         return axios.get(useThisURL)
         .then(res => {
             console.log('getCounts res', res)
@@ -65,7 +65,7 @@ class ListDisplay extends React.Component {
                 const links = (data.data.map((link) => {
                     return (
 
-                            <div className='signup' key={link.linkTitle}>
+                            <div className='signup' key={link.entryId}>
                                 <a href={`${link.referencingURL}`}>{link.linkTitle}</a>
                                 <p>{link.description}</p>
                                 <p>{link.entryId}</p>
