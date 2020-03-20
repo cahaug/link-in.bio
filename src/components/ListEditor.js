@@ -16,7 +16,7 @@ class ListDisplay extends React.Component {
 
     getCounts(){
         console.log('getCounts running')
-        const useThisURL = `https://link-in-bio.herokuapp.com/st/u/${localStorage.getItem('userId')}`
+        const useThisURL = `https://link-in-bio.herokuapp.com/st/${localStorage.getItem('userId')}`
         return axios.get(useThisURL)
         .then(res => {
             console.log('getCounts res', res)
