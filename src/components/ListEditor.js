@@ -59,7 +59,7 @@ class ListDisplay extends React.Component {
                 // console.log('response', response)
                 return response;
             }).then(data => {
-                // console.log('data', data)
+                console.log('data', data)
                 // console.log(this.state)
                 this.setState({isLoading: false});
                 // console.log(this.state)
@@ -71,7 +71,7 @@ class ListDisplay extends React.Component {
                                 <p>{link.description}</p>
                                 <p>{link.entryId}</p>
                                 {/* <p>View Count: {link.count == null ? <span>{link.count ? link.count : <span>--{link.count}--</span> }</span> : link.count}</p> */}
-                                <p>View Count: {link.clickCount == null ? <span>{link.clickCount ? link.clickCount : <span>--{link.clickCount}--</span> }</span> : link.clickCount}</p>
+                                <p>View Count: {link.clickCount}</p>
                             </div>
 
                     )
