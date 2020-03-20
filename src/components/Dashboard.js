@@ -23,6 +23,7 @@ class Dashboard extends React.Component {
         return axios.get(useThisURL)
             .then(response => {
                 // console.log('dashboard cdm', response.data)
+                this.setState({isLoadingListId: false})
                 this.setState({listId: response.data[0].listId})
             })
     }
