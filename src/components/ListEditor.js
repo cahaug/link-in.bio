@@ -116,9 +116,9 @@ class ListDisplay extends React.Component {
                         <div>
                             {this.state.links}
                         </div>
-                        <div>
+                        {/* <div>
                             {this.state.counts}
-                        </div>
+                        </div> */}
                         <button onClick={() => {console.log('clicked'); this.getCounts()}}>Get Counts</button>
                     </div>
 
