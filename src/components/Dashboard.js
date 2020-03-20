@@ -22,7 +22,7 @@ class Dashboard extends React.Component {
         const useThisURL = `https://link-in-bio.herokuapp.com/l/list4user/${localStorage.getItem('userId')}`
         return axios.get(useThisURL)
             .then(response => {
-                console.log('dashboard cdm', response.data)
+                // console.log('dashboard cdm', response.data)
                 this.setState({listId: response.data[0].listId})
             })
     }
