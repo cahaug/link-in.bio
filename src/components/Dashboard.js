@@ -72,6 +72,7 @@ class Dashboard extends React.Component {
                 <br /><br />
                 {/* <button type="button" className="abutton">Log Out</button> */}
                 <Link to='/'><span className="abutton">Log Out</span></Link>            
+                <h4>©2020 Link-In.bio/</h4>
                 {/* <MyRequestsBusiness /> */}
             </div>
         )

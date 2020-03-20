@@ -55,6 +55,7 @@ class ListDisplay extends React.Component {
                         <div>
                             {this.state.links}
                         </div>
+                        <h4>©2020 Link-In.bio/</h4>
                     </div>
 
                 )
