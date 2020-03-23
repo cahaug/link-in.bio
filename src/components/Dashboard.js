@@ -38,7 +38,7 @@ class Dashboard extends React.Component {
                 .then(response => {
                     console.log('successfully viewing listViews')
                     console.log('response', response)
-                    this.setState({ listViews: response.listViews})
+                    this.setState({ listViews: response[0].listViews})
                     console.log('listViews updated')
                     console.log('this.state', this.state)
                 })
