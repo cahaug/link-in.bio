@@ -40,6 +40,7 @@ class Dashboard extends React.Component {
                     console.log('response', response)
                     this.setState({ listViews: response.listViews})
                     console.log('listViews updated')
+                    console.log('this.state', this.state)
                 })
                 .catch(error => console.log(error))
 
