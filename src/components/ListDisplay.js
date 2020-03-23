@@ -8,8 +8,10 @@ class ListDisplay extends React.Component {
         super(props)
         this.state = {
             links: [],
+            rawLinks:null,
             isLoading:true,
             goodId:null,
+            listId:null,
         }
     }
 
@@ -22,11 +24,16 @@ class ListDisplay extends React.Component {
                 // console.log('response', response)
                 return response;
             }).then(data => {
-                // console.log('data', data)
+                console.log('data', data)
                 // console.log(this.state)
                 this.setState({isLoading: false});
+                console.log('data.data.listid', data.data[0].listId)
+                const listId = data.data[0].listId
+                this.setState({listId:listId})
+                console.log('this.state', this.state)
                 // console.log(this.state)
                 const links = (data.data.map((link) => {
+                    // localStorage.setItem('listId', link.listId)
                     return (
 
                             <div className='signup' key={link.linkTitle}>
@@ -39,10 +46,19 @@ class ListDisplay extends React.Component {
                 // console.log('state', this.state)
                 // console.log('links', links)
                 this.setState({links: links})
+                const useThisURL = `https://link-in-bio.herokuapp.com/s/ili/${this.state.listId}`
+                return axios.get(useThisURL)
+                .then(response => {
+                    console.log('response', response)
+                    console.log('list visit successfully logged')
+                })
+                .catch(error => console.log(error))
             })
     }
 
+    // componentDidMount(props) {
 
+    // }
 
     render() {
         const isLoading = this.state.isLoading;

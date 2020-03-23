@@ -15,6 +15,8 @@ class Dashboard extends React.Component {
         this.state = {
             listId: null,
             isLoadingListId: true,
+            isLoadingListViews: true,
+            listViews:null
         }
     }
 
@@ -27,6 +29,18 @@ class Dashboard extends React.Component {
                 this.setState({isLoadingListId: false})
                 this.setState({listId: response.data[0].listId})
             })
+            .then(stuff => {
+                console.log('stuff', stuff)
+                const listId = localStorage.getItem('listId')
+                const useThisURL = `https://link-in-bio.herokuapp.com/s/ili/${listId}`
+                return axios.get(useThisURL)
+                .then(response => {
+                    console.log('successfully incemented listViews')
+                    console.log('response', response)
+                })
+                .catch(error => console.log(error))
+
+            })
     }
     // const {loggedUser} = props
     // console.log(loggedUser)
@@ -38,6 +52,7 @@ class Dashboard extends React.Component {
                 <p>Your User Id is {localStorage.getItem('userId')}</p>
                 {/* <p>Your List Id is {localStorage.getItem('listId')}</p> */}
                 <p>Your List Id is {this.state.isLoadingListId ? <span> Loading...</span> : this.state.listId}</p>
+                <p>Your List Views is {this.state.isLoadingListViews ? <span> Loading...</span> : this.state.listViews}</p>
                 <p>To get started, create a list, then add your entries!</p>
                 <p>Your LinkList will be hosted at: <a alt="Your LinkList" href={`http://link-in.bio/${localStorage.getItem('userId')}`}>http://link-in.bio/{localStorage.getItem('userId')}</a></p>
                 <a href="#neworder" className="abutton" role="button">Create a New List</a>
