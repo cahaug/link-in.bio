@@ -32,10 +32,11 @@ class Dashboard extends React.Component {
             .then(stuff => {
                 console.log('stuff', stuff)
                 const listId = localStorage.getItem('listId')
+                console.log('listid', listId)
                 const useThisURL = `https://link-in-bio.herokuapp.com/s/listViews/${listId}`
                 return axios.get(useThisURL)
                 .then(response => {
-                    console.log('successfully incremented listViews')
+                    console.log('successfully viewing listViews')
                     console.log('response', response)
                 })
                 .catch(error => console.log(error))
