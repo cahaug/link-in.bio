@@ -30,16 +30,16 @@ class Dashboard extends React.Component {
                 this.setState({listId: response.data[0].listId})
             })
             .then(stuff => {
-                console.log('stuff', stuff)
+                // console.log('stuff', stuff)
                 const listId = localStorage.getItem('listId')
-                console.log('listid', listId)
+                // console.log('listid', listId)
                 const useThisURL = `https://link-in-bio.herokuapp.com/s/listViews/${listId}`
                 return axios.get(useThisURL)
                 .then(response => {
                     console.log('successfully viewing listViews')
                     console.log('response', response)
                     this.setState({ isLoadingListViews: false })
-                    this.setState({ listViews: response.listViews })
+                    this.setState({ listViews: response.data[0].listViews })
                     console.log('listViews updated')
                     console.log('this.state', this.state)
                 })
