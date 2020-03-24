@@ -7,7 +7,7 @@ class AddEntry extends React.Component {
         super()
         this.state = {
             userId: localStorage.getItem('userId'),
-            listId: '',
+            listId: localStorage.getItem('listId')? localStorage.getItem('userId') : '' ,
             referencingURL: '',
             description: '',
             linkTitle: '',
