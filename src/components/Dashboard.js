@@ -37,9 +37,9 @@ class Dashboard extends React.Component {
                 return axios.get(useThisURL)
                 .then(response => {
                     console.log('successfully viewing listViews')
-                    console.log('response', response)
-                    this.setState({ isLoadingListViews: false })
+                    console.log('response.data', response.data)
                     this.setState({ listViews: response.data[0].listViews })
+                    this.setState({ isLoadingListViews: false })
                     console.log('listViews updated')
                     console.log('this.state', this.state)
                 })
