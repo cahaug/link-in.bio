@@ -65,7 +65,7 @@ class ListDisplay extends React.Component {
                 this.setState({isLoading: false});
                 // console.log(this.state)
                 const dataNoEmpties = data.data.filter(links => links.hasOwnProperty('linkTitle'))
-                // console.log('dataNoEmpties', dataNoEmpties)
+                console.log('dataNoEmpties', dataNoEmpties)
                 const links = (dataNoEmpties.map((link) => {
                     return (
 
@@ -75,7 +75,10 @@ class ListDisplay extends React.Component {
                                 {/* <p>{link.entryId}</p> */}
                                 <br />
                                 {/* <p>View Count: {link.count == null ? <span>{link.count ? link.count : <span>--{link.count}--</span> }</span> : link.count}</p> */}
-                                <p>View Count: {link.count}</p>
+                                <p>View Count: {link.count}</p> 
+                                <br />
+                                <button >Edit Entry</button>
+                                <button >Delete Entry</button>
                             </div>
 
                     )
