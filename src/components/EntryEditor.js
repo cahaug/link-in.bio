@@ -56,7 +56,7 @@ class EntryEditor extends React.Component {
                 <h1 className="newpickupheader">Edit an Entry</h1>
                 <form onSubmit={this.handleSubmit}>
                     {/* <input type="text" name="userId" value={userId} placeholder="Your User Id" onChange={this.handleChange} required /><br /> */}
-                    <input type="text" name="entryId" value={entryId} placeholder="Your Entry Id" onChange={this.handleChange} required /><br />
+                    {/* <input type="text" name="entryId" value={entryId} placeholder="Your Entry Id" onChange={this.handleChange} required /><br /> */}
                     <input type="text" name="referencingURL" value={referencingURL} placeholder="URL to Link" onChange={this.handleChange} required /><br />
                     <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChange} required /><br />
                     <input type="text" name="linkTitle" value={linkTitle} placeholder="Add A Title for Your Link" onChange={this.handleChange} required /><br />
