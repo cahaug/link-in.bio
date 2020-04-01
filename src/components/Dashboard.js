@@ -20,6 +20,15 @@ class Dashboard extends React.Component {
         }
     }
 
+    logout(){
+        localStorage.removeItem('listId');
+        localStorage.removeItem('email');
+        localStorage.removeItem('firstName');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('token');
+        return
+    }
+
     componentDidMount(props) {
         const useThisURL = `https://link-in-bio.herokuapp.com/l/list4user/${localStorage.getItem('userId')}`
         return axios.get(useThisURL)
@@ -91,7 +100,7 @@ class Dashboard extends React.Component {
                 </div>
                 <br /><br />
                 {/* <button type="button" className="abutton">Log Out</button> */}
-                <Link to='/'><span className="abutton">Log Out</span></Link>            
+                <Link onClick={this.logout} to='/'><span className="abutton">Log Out</span></Link>            
                 <h4>©2020 Link-In.bio/</h4>
                 {/* <MyRequestsBusiness /> */}
             </div>
