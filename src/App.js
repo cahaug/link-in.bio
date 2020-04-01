@@ -9,7 +9,7 @@ import FailedLogin from './components/FailedLogin'
 import Dashboard from './components/Dashboard'
 import CreateList from './components/CreateList'
 import AddEntry from './components/AddEntry'
-// import EditEntry from './components/EditEntry'
+import EntryEditor from './components/EntryEditor'
 import ListDisplay from './components/ListDisplay'
 
 
@@ -34,6 +34,7 @@ class App extends React.Component {
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/createlist" component={CreateList} />
         <PrivateRoute exact path="/addentry" component={AddEntry} />
+        <Route path={`/editEntry/:entryId`} render={props => <EntryEditor {...props} />} />
         <Route path="/:id" render={props => <ListDisplay {...props}/>} />
         {/* <PrivateRoute exact path="/editentry" component={EditEntry} /> */}
         </Switch>

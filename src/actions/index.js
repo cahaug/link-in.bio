@@ -17,6 +17,10 @@ export const ADD_ENTRY_START = 'ADD_ENTRY_START'
 export const ADD_ENTRY_SUCCESS = 'ADD_ENTRY_SUCCESS'
 export const ADD_ENTRY_FAILED = 'ADD_ENTRY_FAILED'
 
+export const EDIT_ENTRY_START = 'EDIT_ENTRY_START'
+export const EDIT_ENTRY_SUCCESS = 'EDIT_ENTRY_SUCCESS'
+export const EDIT_ENTRY_FAILED = 'EDIT_ENTRY_FAILED'
+
 export const UPDATE_ENTRY_START = 'UPDATE_ENTRY_START'
 export const UPDATE_ENTRY_SUCCESS = 'UPDATE_ENTRY_SUCCESS'
 export const UPDATE_ENTRY_FAILED = 'UPDATE_ENTRY_FAILED'
@@ -93,6 +97,20 @@ export function addEntry(userId, listId, referencingURL, description, linkTitle)
         })
         .catch((err) => {
             dispatch({type: ADD_ENTRY_FAILED, payload:err})
+        })
+    }
+}
+
+export function editEntry(entryId, referencingURL, description, linkTitle){
+    return (dispatch) => {
+        dispatch({type: EDIT_ENTRY_START})
+        return axios.put('https://link-in-bio.herokuapp.com/e/replaceEntry', {entryId, referencingURL, description, linkTitle})
+        .then((res) => {
+            console.log('editEntry res.data', res.data)
+            dispatch({type: EDIT_ENTRY_SUCCESS, payload:res.data})
+        })
+        .catch((err) => {
+            dispatch({type: EDIT_ENTRY_FAILED, payload:err})
         })
     }
 }
