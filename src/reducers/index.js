@@ -115,6 +115,7 @@ export const reducer = (state=initialState, action) => {
                 ...state,
                 isLoading:false,
                 errorMessage:null,
+                successMessage:action.payload,
             }
         case EDIT_ENTRY_FAILED:
             return {
@@ -132,6 +133,7 @@ export const reducer = (state=initialState, action) => {
                 ...state,
                 isLoading:false,
                 errorMessage:null,
+                successMessage:action.payload,
             }
         case UPDATE_ENTRY_FAILED:
             return {

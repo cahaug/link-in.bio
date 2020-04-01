@@ -9,11 +9,12 @@ class EntryEditor extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            userId: '', 
+            isLoading: false,
             entryId: '',
             referencingURL: '',
             description: '',
             linkTitle: '',
+            successMessage: this.props.successMessage,
         }
     }
 
@@ -26,7 +27,9 @@ class EntryEditor extends React.Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault()
+
         const { entryId, referencingURL, description, linkTitle } = this.state
+        console.log(linkTitle, description, referencingURL, entryId)
         this.props.editEntry( entryId, referencingURL, description, linkTitle)
         this.setState({ referencingURL:'', description: '', linkTitle: '', })
     }
@@ -37,27 +40,28 @@ class EntryEditor extends React.Component {
         .then(response => {
             console.log('response', response)
             this.setState({userId:response.data[0].userId})
-            this.setState({listId:response.data[0].listId})
+            this.setState({entryId:response.data[0].entryId})
             this.setState({referencingURL:response.data[0].referencingURL})
             this.setState({description:response.data[0].description})
             this.setState({linkTitle:response.data[0].linkTitle})
         })
     }
 
-    render() {
-        const { userId, listId, referencingURL, description, linkTitle } = this.state
+    render(props) {
+        const { entryId, referencingURL, description, linkTitle } = this.state
         return (
             <div>
                 <h1 className="newpickupheader">Edit an Entry</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="userId" value={userId} placeholder="Your User Id" onChange={this.handleChange} required /><br />
-                    <input type="text" name="listId" value={listId} placeholder="Your List Id" onChange={this.handleChange} required /><br />
+                    {/* <input type="text" name="userId" value={userId} placeholder="Your User Id" onChange={this.handleChange} required /><br /> */}
+                    <input type="text" name="entryId" value={entryId} placeholder="Your Entry Id" onChange={this.handleChange} required /><br />
                     <input type="text" name="referencingURL" value={referencingURL} placeholder="URL to Link" onChange={this.handleChange} required /><br />
                     <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChange} required /><br />
                     <input type="text" name="linkTitle" value={linkTitle} placeholder="Add A Title for Your Link" onChange={this.handleChange} required /><br />
                     <button type="submit" className="abutton2">Submit Changes to Link</button>
                 </form>
-                <Link to='/dashboard'><span className="abutton">Cancel</span></Link>
+                {/* {props.successMessage ? <h4>Entry Updated Successfully</h4> : <span></span>} */}
+                <Link to='/dashboard'><span className="abutton">Back</span></Link>
             </div>
         )
     }
