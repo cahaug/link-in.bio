@@ -79,10 +79,11 @@ class ListDisplay extends React.Component {
                             {this.state.links}
                         </div>
                         <div>
-                            <h4>
+                            <h3>
                                 {this.state.profilePicture !== null ? <img src={this.state.profilePicture} alt={this.state.userFirstLastName} /> : <span></span> }
                                 {this.state.userFirstLastName}
-                            </h4>
+                            </h3>
+                            <p>~List Creator~</p>
                         </div>
                         <h4>©2020 <a href="http://link-in.bio/">Link-In.bio/</a></h4>
                     </div>
