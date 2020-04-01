@@ -3,7 +3,7 @@ import axios from 'axios'
 // import ellipsisGif from '../files/ellipsis.gif'
 import loadingGif from '../files/loading.gif'
 import EditEntry from './EntryEditor'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter, Redirect, Link } from 'react-router-dom'
 
 
 class ListDisplay extends React.Component {
@@ -53,8 +53,15 @@ class ListDisplay extends React.Component {
     //     .catch(err => console.log(err))
     // }
 
-    deleteEntry(entryValues){
-        console.log('entryValues',entryValues)
+    deleteEntry(entryId){
+        console.log('entryId',entryId)
+        const useThisURL = `https://link-in-bio.herokuapp.com/e/deleteEntry/`
+        return axios.post(useThisURL, {entryId: entryId})
+        .then(response => {
+            console.log(response)
+            alert('Entry successfully deleted')
+            window.location.reload(false)
+        })
 
     }
 
@@ -97,7 +104,7 @@ class ListDisplay extends React.Component {
                                 {/* </div> */}
                                 {/* <button onClick={(entryValues) => {this.editEntry(entryValues)}}>Edit Entry</button> */}
                                 <Link to={`/editEntry/${link.entryId}`}><span className="abutton">Edit Entry</span></Link>
-                                <button onClick={(entryValues) => {this.deleteEntry(entryValues)}}>Delete Entry</button>
+                                <button className="abutton" onClick={() => {this.deleteEntry(link.entryId)}}>Delete Entry</button>
                             </div>
 
                     )

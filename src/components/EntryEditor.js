@@ -14,7 +14,7 @@ class EntryEditor extends React.Component {
             referencingURL: '',
             description: '',
             linkTitle: '',
-            successMessage: this.props.successMessage,
+            // successMessage: null,
         }
     }
 
@@ -47,6 +47,8 @@ class EntryEditor extends React.Component {
         })
     }
 
+    
+
     render(props) {
         const { entryId, referencingURL, description, linkTitle } = this.state
         return (
@@ -60,7 +62,7 @@ class EntryEditor extends React.Component {
                     <input type="text" name="linkTitle" value={linkTitle} placeholder="Add A Title for Your Link" onChange={this.handleChange} required /><br />
                     <button type="submit" className="abutton2">Submit Changes to Link</button>
                 </form>
-                {/* {props.successMessage ? <h4>Entry Updated Successfully</h4> : <span></span>} */}
+                {/* {this.state.successMessage ? <h4>Entry Updated Successfully</h4> : <span></span>} */}
                 <Link to='/dashboard'><span className="abutton">Back</span></Link>
             </div>
         )

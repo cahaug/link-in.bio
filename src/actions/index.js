@@ -93,6 +93,7 @@ export function addEntry(userId, listId, referencingURL, description, linkTitle)
         return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle })
         .then((res) => {
             console.log('addEntry res.data.message', res.data.message);
+            alert('Entry added successfully')
             dispatch({type: ADD_ENTRY_SUCCESS, payload:res.data})
         })
         .catch((err) => {
