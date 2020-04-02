@@ -2,6 +2,12 @@ import React from 'react'
 import axios from 'axios'
 // import ellipsisGif from '../files/ellipsis.gif'
 import loadingGif from '../files/loading.gif'
+import EditEntry from './EntryEditor'
+// import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import { withRouter, Redirect, Link } from 'react-router-dom'
+
 
 class ListDisplay extends React.Component {
     constructor(props) {
@@ -50,6 +56,18 @@ class ListDisplay extends React.Component {
     //     .catch(err => console.log(err))
     // }
 
+    deleteEntry(entryId){
+        console.log('entryId',entryId)
+        const useThisURL = `https://link-in-bio.herokuapp.com/e/deleteEntry/`
+        return axios.post(useThisURL, {entryId: entryId})
+        .then(response => {
+            console.log(response)
+            alert('Entry successfully deleted')
+            window.location.reload(false)
+        })
+
+    }
+
     UNSAFE_componentWillMount(props) {
         // console.log('url', this.props.match.url)
         // const useThisURL = `https://link-in-bio.herokuapp.com/${localStorage.getItem('userId')}`
@@ -65,8 +83,10 @@ class ListDisplay extends React.Component {
                 this.setState({isLoading: false});
                 // console.log(this.state)
                 const dataNoEmpties = data.data.filter(links => links.hasOwnProperty('linkTitle'))
-                // console.log('dataNoEmpties', dataNoEmpties)
+                console.log('dataNoEmpties', dataNoEmpties)
                 const links = (dataNoEmpties.map((link) => {
+                    // const entryValues = {entryId:link.entryId, listId:link.listId, referencingURL:link.referencingURL, description:link.description, linkTitle:link.linkTitle}
+                    // console.log('entryValues', entryValues)
                     return (
 
                             <div className='signup' key={link.referencingURL}>
@@ -75,7 +95,19 @@ class ListDisplay extends React.Component {
                                 {/* <p>{link.entryId}</p> */}
                                 <br />
                                 {/* <p>View Count: {link.count == null ? <span>{link.count ? link.count : <span>--{link.count}--</span> }</span> : link.count}</p> */}
-                                <p>View Count: {link.count}</p>
+                                <p>View Count: {link.count}</p> 
+                                <br />
+                                {/* <a href="#neworder3" className="abutton" role="button">Create a New Entry</a> */}
+                                {/* <div className="modal" id="neworder3"> */}
+                                {/* <div className="modal-container"> */}
+                                        {/* <EditEntry entryId={link.entryId} listId={link.listId} referencingURL={link.referencingURL} description={link.description} linkTitle={link.linkTitle}/> */}
+                                        {/* eslint-disable-next-line */}
+                                        {/* <a href="#" className="abutton2" role="button">Close</a> */}
+                                    {/* </div> */}
+                                {/* </div> */}
+                                {/* <button onClick={(entryValues) => {this.editEntry(entryValues)}}>Edit Entry</button> */}
+                                <Link to={`/editEntry/${link.entryId}`}><span className="abutton">Edit Entry</span></Link>
+                                <button className="abutton" onClick={() => {this.deleteEntry(link.entryId)}}>Delete Entry</button>
                             </div>
 
                     )

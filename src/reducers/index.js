@@ -12,6 +12,9 @@ import {
     ADD_ENTRY_START,
     ADD_ENTRY_SUCCESS,
     ADD_ENTRY_FAILED,
+    EDIT_ENTRY_START,
+    EDIT_ENTRY_SUCCESS,
+    EDIT_ENTRY_FAILED,
     UPDATE_ENTRY_START,
     UPDATE_ENTRY_SUCCESS,
     UPDATE_ENTRY_FAILED,
@@ -41,6 +44,7 @@ export const reducer = (state=initialState, action) => {
                 ...state,
                 isLoading:false,
                 payload: action.payload,
+                // payload2:action.payload2,
                 errorMessage: null,
             }
         case REGISTER_USER_FAILED:
@@ -102,6 +106,24 @@ export const reducer = (state=initialState, action) => {
                 isLoading:false,
                 errorMessage: action.payload,
             }
+        case EDIT_ENTRY_START:
+            return {
+                ...state,
+                isLoading:true,
+            }
+        case EDIT_ENTRY_SUCCESS:
+            return {
+                ...state,
+                isLoading:false,
+                errorMessage:null,
+                successMessage:action.payload,
+            }
+        case EDIT_ENTRY_FAILED:
+            return {
+                ...state,
+                isLoading:false,
+                errorMessage:action.payload,
+            }
         case UPDATE_ENTRY_START:
             return {
                 ...state,
@@ -112,6 +134,7 @@ export const reducer = (state=initialState, action) => {
                 ...state,
                 isLoading:false,
                 errorMessage:null,
+                successMessage:action.payload,
             }
         case UPDATE_ENTRY_FAILED:
             return {

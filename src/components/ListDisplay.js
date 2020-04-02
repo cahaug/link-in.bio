@@ -12,10 +12,13 @@ class ListDisplay extends React.Component {
             isLoading:true,
             goodId:null,
             listId:null,
+            profilePicture:null,
+            displayingUserInfo:null,
+            userFirstLastName:null
         }
     }
 
-    componentWillMount(props) {
+    UNSAFE_componentWillMount(props) {
         // console.log('url', this.props.match.url)
         const useThisURL = `https://link-in-bio.herokuapp.com${this.props.match.url}`
         // console.log('useThisURL', useThisURL)
@@ -29,7 +32,11 @@ class ListDisplay extends React.Component {
                 this.setState({isLoading: false});
                 console.log('data.data.listid', data.data[0].listId)
                 const listId = data.data[0].listId
+                const userFirstLastName = `${data.data[0].firstName} ${data.data[0].lastName[0].slice(0,1)}.`
+                // const profilePicture = `${data.data[0].profilePicture}`
                 this.setState({listId:listId})
+                // this.setState({profilePicture:profilePicture})
+                this.setState({userFirstLastName:userFirstLastName})
                 console.log('this.state', this.state)
                 // console.log(this.state)
                 const links = (data.data.map((link) => {
@@ -71,7 +78,14 @@ class ListDisplay extends React.Component {
                         <div>
                             {this.state.links}
                         </div>
-                        <h4>©2020 Link-In.bio/</h4>
+                        <div>
+                            <h3>
+                                {this.state.profilePicture !== null ? <img src={this.state.profilePicture} alt={this.state.userFirstLastName} /> : <span></span> }
+                                {this.state.userFirstLastName}
+                            </h3>
+                            <p>~List Creator~</p>
+                        </div>
+                        <h4>©2020 <a href="http://link-in.bio/">Link-In.bio/</a></h4>
                     </div>
 
                 )

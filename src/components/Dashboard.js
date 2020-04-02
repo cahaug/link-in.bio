@@ -20,17 +20,27 @@ class Dashboard extends React.Component {
         }
     }
 
+    logout(){
+        localStorage.removeItem('listId');
+        localStorage.removeItem('email');
+        localStorage.removeItem('firstName');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('token');
+        return
+    }
+
     componentDidMount(props) {
         const useThisURL = `https://link-in-bio.herokuapp.com/l/list4user/${localStorage.getItem('userId')}`
         return axios.get(useThisURL)
             .then(response => {
-                // console.log('dashboard cdm', response.data)
-                localStorage.setItem('listId', response.data[0].listId)
+                console.log('dashboard cdm', response.data)
+                // localStorage.setItem('listId', response.data[0].listId)
                 this.setState({isLoadingListId: false})
+                localStorage.setItem('listId', response.data[0].listId)
                 this.setState({listId: response.data[0].listId})
             })
             .then(stuff => {
-                // console.log('stuff', stuff)
+                console.log('stuff', stuff)
                 const listId = localStorage.getItem('listId')
                 // console.log('listid', listId)
                 const useThisURL = `https://link-in-bio.herokuapp.com/s/listViews/${listId}`
@@ -56,19 +66,20 @@ class Dashboard extends React.Component {
                 <p>Welcome {localStorage.getItem('firstName')}!</p>
                 <p>Your User Id is {localStorage.getItem('userId')}</p>
                 {/* <p>Your List Id is {localStorage.getItem('listId')}</p> */}
-                <p>Your List Id is {this.state.isLoadingListId ? <span> Loading...</span> : this.state.listId}</p>
+                <p>Your List Id is {localStorage.getItem('listId')}</p>
                 <p>Your List Views is {this.state.isLoadingListViews ? <span> Loading...</span> : this.state.listViews}</p>
                 <p>To get started, create a list, then add your entries!</p>
                 <p>Your LinkList will be hosted at: <a alt="Your LinkList" href={`http://link-in.bio/${localStorage.getItem('userId')}`}>http://link-in.bio/{localStorage.getItem('userId')}</a></p>
-                <a href="#neworder" className="abutton" role="button">Create a New List</a>
+                {/* <a href="#neworder" className="abutton" role="button">Create a New List</a>
                 <div className="modal" id="neworder">
                     <div className="modal-container">
                         <CreateList />
-                        {/* eslint-disable-next-line */}
+                        eslint-disable-next-line
                         <a href="#" className="abutton2" role="button">Close</a>
                     </div>
                 </div>
-                <br /><br />
+                <br /> */}
+                <br />
                 {/* <a href="#neworder2" className="abutton" role="button">Get List Id</a>
                 <div className="modal" id="neworder2">
                     <div className="modal-container">
@@ -78,7 +89,7 @@ class Dashboard extends React.Component {
                     </div>
                 </div>
                 <br /><br /> */} 
-                <a href="#neworder3" className="abutton" role="button">Create a New Entry</a>
+                <a href="#neworder3" className="abutton" role="button" id="createNewEntry">Create a New Entry</a>
                 <div className="modal" id="neworder3">
                     <div className="modal-container">
                         <AddEntry />
@@ -91,7 +102,7 @@ class Dashboard extends React.Component {
                 </div>
                 <br /><br />
                 {/* <button type="button" className="abutton">Log Out</button> */}
-                <Link to='/'><span className="abutton">Log Out</span></Link>            
+                <Link onClick={this.logout} to='/'><span className="abutton">Log Out</span></Link>            
                 <h4>©2020 Link-In.bio/</h4>
                 {/* <MyRequestsBusiness /> */}
             </div>

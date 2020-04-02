@@ -7,7 +7,7 @@ class AddEntry extends React.Component {
         super()
         this.state = {
             userId: localStorage.getItem('userId'),
-            listId: localStorage.getItem('listId')? localStorage.getItem('userId') : '' ,
+            listId: localStorage.getItem('listId'),
             referencingURL: '',
             description: '',
             linkTitle: '',
@@ -34,8 +34,8 @@ class AddEntry extends React.Component {
             <div>
                 <h1 className="newpickupheader">Add a Link to Your List</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="userId" value={userId} placeholder="Your User Id" onChange={this.handleChange} required /><br />
-                    <input type="text" name="listId" value={listId} placeholder="Your List Id" onChange={this.handleChange} required /><br />
+                    {/* <input type="text" name="userId" value={userId} placeholder="Your User Id" onChange={this.handleChange} required /><br /> */}
+                    {/* <input type="text" name="listId" value={listId} placeholder="Your List Id" onChange={this.handleChange} required /><br /> */}
                     <input type="text" name="referencingURL" value={referencingURL} placeholder="URL to Link" onChange={this.handleChange} required /><br />
                     <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChange} required /><br />
                     <input type="text" name="linkTitle" value={linkTitle} placeholder="Add A Title for Your Link" onChange={this.handleChange} required /><br />

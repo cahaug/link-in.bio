@@ -17,6 +17,10 @@ export const ADD_ENTRY_START = 'ADD_ENTRY_START'
 export const ADD_ENTRY_SUCCESS = 'ADD_ENTRY_SUCCESS'
 export const ADD_ENTRY_FAILED = 'ADD_ENTRY_FAILED'
 
+export const EDIT_ENTRY_START = 'EDIT_ENTRY_START'
+export const EDIT_ENTRY_SUCCESS = 'EDIT_ENTRY_SUCCESS'
+export const EDIT_ENTRY_FAILED = 'EDIT_ENTRY_FAILED'
+
 export const UPDATE_ENTRY_START = 'UPDATE_ENTRY_START'
 export const UPDATE_ENTRY_SUCCESS = 'UPDATE_ENTRY_SUCCESS'
 export const UPDATE_ENTRY_FAILED = 'UPDATE_ENTRY_FAILED'
@@ -36,12 +40,29 @@ export function register(email, password, firstName, lastName){
         return axios.post('https://link-in-bio.herokuapp.com/auth/register', { email, password, firstName, lastName } )
         .then((res) => {
             const payload = res.data
+            console.log('registration payload', payload)
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('userId', res.data.userId)
             localStorage.setItem('email', res.data.email)
             localStorage.setItem('firstName', res.data.firstName)
-            dispatch({type:REGISTER_USER_SUCCESS, payload})
-        })
+            return axios.post('https://link-in-bio.herokuapp.com/l/new', {'userId':res.data.userId, 'backColor':'#ffffff','txtColor':'#000000', 'fontSelection':'Roboto',})
+            .then((res) => {
+                console.log('res after create list after register', res)
+                localStorage.setItem('listId', res.data.listId)
+                console.log('getting saved item?', localStorage.getItem('listId'))
+                console.log('listId', res.data.listId)
+                console.log('typeof listId', typeof res.data['listId'])
+                // const payload2 = {...payload, listId: res.data.listId}
+                alert('User Registration Complete, Try Logging in now!')
+                dispatch({type:REGISTER_USER_SUCCESS, payload})
+                // const newURL = 'https://link-in.bio/dashboard'
+                // window.location.href(newURL)
+                console.log('end of code')
+            })
+            .catch((err) => {
+                dispatch({type:REGISTER_USER_FAILED, payload:err})
+            })
+        })    
         .catch((err) => {
             dispatch({type:REGISTER_USER_FAILED, payload:err})
         })
@@ -89,10 +110,26 @@ export function addEntry(userId, listId, referencingURL, description, linkTitle)
         return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle })
         .then((res) => {
             console.log('addEntry res.data.message', res.data.message);
+            alert('Entry added successfully')
             dispatch({type: ADD_ENTRY_SUCCESS, payload:res.data})
         })
         .catch((err) => {
             dispatch({type: ADD_ENTRY_FAILED, payload:err})
+        })
+    }
+}
+
+export function editEntry(entryId, referencingURL, description, linkTitle){
+    return (dispatch) => {
+        dispatch({type: EDIT_ENTRY_START})
+        return axios.put('https://link-in-bio.herokuapp.com/e/replaceEntry', {entryId, referencingURL, description, linkTitle})
+        .then((res) => {
+            console.log('editEntry res.data', res.data)
+            alert('Entry Edited Successfully')
+            dispatch({type: EDIT_ENTRY_SUCCESS, payload:res.data})
+        })
+        .catch((err) => {
+            dispatch({type: EDIT_ENTRY_FAILED, payload:err})
         })
     }
 }

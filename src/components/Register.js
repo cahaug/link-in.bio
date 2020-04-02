@@ -1,10 +1,11 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { register } from '../actions'
 
 class Register extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             email: '',
             password: '',
@@ -20,12 +21,26 @@ class Register extends React.Component {
         })
     }
 
-    handleSubmit = (evt) => {
+    // handleSubmit = (evt) => {
+    //     evt.preventDefault()
+    //     const { email, password, firstName, lastName } = this.state
+    //     this.props.register(email, password, firstName, lastName)
+    //     this.setState({ email: '', password: '', firstName: '', lastName: '', })
+    //     if(typeof localStorage.getItem('listId') == 'number'){
+    //         this.props.history.push('./dashboard')
+    //     }
+    // }
+
+    handleSubmit = async (evt) => {
         evt.preventDefault()
         const { email, password, firstName, lastName } = this.state
-        this.props.register(email, password, firstName, lastName)
-        this.setState({ email: '', password: '', firstName: '', lastName: '', })
-        this.props.history.push("./dashboard")
+        try {
+            await this.props.register(email, password, firstName, lastName)
+            this.setState({ email: '', password: '', firstName: '', lastName: '', })
+            this.props.history.push('./dashboard')
+        } catch (err){
+            alert(err.message)
+        }
     }
 
     render() {
@@ -53,5 +68,10 @@ class Register extends React.Component {
 const mapDispatchToProps = {
     register
 }
-
-export default connect(null, mapDispatchToProps)(Register)
+export default withRouter(
+    connect(
+        null,
+        mapDispatchToProps
+    )(Register)
+)
+// export default connect(null, mapDispatchToProps)(Register)
