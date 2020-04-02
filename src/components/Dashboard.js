@@ -89,7 +89,7 @@ class Dashboard extends React.Component {
                     </div>
                 </div>
                 <br /><br /> */} 
-                <a href="#neworder3" className="abutton" role="button">Create a New Entry</a>
+                <a href="#neworder3" className="abutton" role="button" id="createNewEntry">Create a New Entry</a>
                 <div className="modal" id="neworder3">
                     <div className="modal-container">
                         <AddEntry />

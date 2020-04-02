@@ -51,7 +51,7 @@
   }
   
   .loginbutton {
-    background-color: lightseagreen;
+    background-color: #505470;
     color: white;
     width: 70px;
     margin: 10px auto;
@@ -64,7 +64,7 @@
   }
   
   .fooditem {
-    background-color: lightseagreen;
+    background-color: #505470;
     color: white;
     border-radius: 5px;
     border: 1px solid black;
@@ -80,7 +80,7 @@
   
   .modal-container {
     position: fixed;
-    background-color: lightseagreen;
+    background-color: #505470;
     border: 1px solid black;
     left: 50%;
     transform: translate(-50%, -200%);
@@ -117,7 +117,7 @@
   }
   
   .abutton {
-    background-color: lightseagreen;
+    background-color: #505470;
     text-decoration: none;
     color: white;
     padding: 5px;
@@ -128,13 +128,13 @@
   }
   
   .abutton:hover {
-    background-color: rgb(63, 212, 205)
+    background-color: #7b81ad
   }
   
   .abutton2 {
     background-color: white;
     text-decoration: none;
-    color: lightseagreen;
+    color: #505470;
     padding: 5px;
     border-radius: 5px;
     margin: 10px;
@@ -143,6 +143,10 @@
   }
   
   .newpickupheader {
+    color: white;
+  }
+
+  #createNewEntry {
     color: white;
   }
 
