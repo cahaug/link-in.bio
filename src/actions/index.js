@@ -40,12 +40,29 @@ export function register(email, password, firstName, lastName){
         return axios.post('https://link-in-bio.herokuapp.com/auth/register', { email, password, firstName, lastName } )
         .then((res) => {
             const payload = res.data
+            console.log('registration payload', payload)
             localStorage.setItem('token', res.data.token)
             localStorage.setItem('userId', res.data.userId)
             localStorage.setItem('email', res.data.email)
             localStorage.setItem('firstName', res.data.firstName)
-            dispatch({type:REGISTER_USER_SUCCESS, payload})
-        })
+            return axios.post('https://link-in-bio.herokuapp.com/l/new', {'userId':res.data.userId, 'backColor':'#ffffff','txtColor':'#000000', 'fontSelection':'Roboto',})
+            .then((res) => {
+                console.log('res after create list after register', res)
+                localStorage.setItem('listId', res.data.listId)
+                console.log('getting saved item?', localStorage.getItem('listId'))
+                console.log('listId', res.data.listId)
+                console.log('typeof listId', typeof res.data['listId'])
+                // const payload2 = {...payload, listId: res.data.listId}
+                alert('User Registration Complete, Try Logging in now!')
+                dispatch({type:REGISTER_USER_SUCCESS, payload})
+                // const newURL = 'https://link-in.bio/dashboard'
+                // window.location.href(newURL)
+                console.log('end of code')
+            })
+            .catch((err) => {
+                dispatch({type:REGISTER_USER_FAILED, payload:err})
+            })
+        })    
         .catch((err) => {
             dispatch({type:REGISTER_USER_FAILED, payload:err})
         })

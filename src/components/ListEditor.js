@@ -3,6 +3,9 @@ import axios from 'axios'
 // import ellipsisGif from '../files/ellipsis.gif'
 import loadingGif from '../files/loading.gif'
 import EditEntry from './EntryEditor'
+// import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+
 import { withRouter, Redirect, Link } from 'react-router-dom'
 
 

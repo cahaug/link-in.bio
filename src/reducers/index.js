@@ -44,6 +44,7 @@ export const reducer = (state=initialState, action) => {
                 ...state,
                 isLoading:false,
                 payload: action.payload,
+                // payload2:action.payload2,
                 errorMessage: null,
             }
         case REGISTER_USER_FAILED:
