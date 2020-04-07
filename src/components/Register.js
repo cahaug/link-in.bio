@@ -7,7 +7,7 @@ import { register } from '../actions'
 class Register extends React.Component {
     constructor(props) {
         super(props)
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
         this.recaptchaLoaded = this.recaptchaLoaded.bind(this);
         this.verifyCallback = this.verifyCallback.bind(this);
         this.state = {
@@ -49,11 +49,11 @@ class Register extends React.Component {
     handleSubmit = async (evt) => {
         evt.preventDefault()
         if(this.state.isVerified){
-            alert('success')
+            // alert('success')
             const { email, password, firstName, lastName } = this.state
             try {
-                await this.props.register(email, password, firstName, lastName)
                 this.setState({ email: '', password: '', firstName: '', lastName: '', })
+                await this.props.register(email, password, firstName, lastName)
                 this.props.history.push('./dashboard')
             } catch (err){
                 alert(err.message)
