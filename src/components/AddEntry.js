@@ -36,11 +36,11 @@ class AddEntry extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     {/* <input type="text" name="userId" value={userId} placeholder="Your User Id" onChange={this.handleChange} required /><br /> */}
                     {/* <input type="text" name="listId" value={listId} placeholder="Your List Id" onChange={this.handleChange} required /><br /> */}
-                    <p>Add a URL in the form http://...../ </p> 
-                    <p>(starting with http and ending in a slash)</p>
-                    <input type="text" name="referencingURL" value={referencingURL} placeholder="URL to Link" onChange={this.handleChange} required /><br />
+                    <p className="addEntryText">Add a URL in the form http://...../ </p> 
+                    <p className="addEntryText">(starting with http and ending in a slash)</p>
+                    <input type="text" name="referencingURL" value={referencingURL} placeholder="Link URL" onChange={this.handleChange} required /><br />
+                    <input type="text" name="linkTitle" value={linkTitle} placeholder="Link Title" onChange={this.handleChange} required /><br />
                     <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChange} required /><br />
-                    <input type="text" name="linkTitle" value={linkTitle} placeholder="Add A Title for Your Link" onChange={this.handleChange} required /><br />
                     <button type="submit" className="abutton2">Add Link to List</button>
                 </form>
             </div>
