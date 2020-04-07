@@ -42,7 +42,9 @@ class Register extends React.Component {
 
     verifyCallback(response){
         // console.log('response',response)
-        this.setState({isVerified:true})
+        if (response){
+            this.setState({isVerified:true})
+        }
         // console.log(this.state.isVerified)
     }
 
