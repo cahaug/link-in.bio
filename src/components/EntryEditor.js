@@ -57,9 +57,12 @@ class EntryEditor extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     {/* <input type="text" name="userId" value={userId} placeholder="Your User Id" onChange={this.handleChange} required /><br /> */}
                     {/* <input type="text" name="entryId" value={entryId} placeholder="Your Entry Id" onChange={this.handleChange} required /><br /> */}
-                    <input type="text" name="referencingURL" value={referencingURL} placeholder="URL to Link" onChange={this.handleChange} required /><br />
+                    <p>Link URL:</p>
+                    <input type="text" name="referencingURL" value={referencingURL} placeholder="Link URL" onChange={this.handleChange} required /><br />
+                    <p>Link Title:</p>
+                    <input type="text" name="linkTitle" value={linkTitle} placeholder="Link Title" onChange={this.handleChange} required /><br />
+                    <p>Link Description:</p>
                     <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChange} required /><br />
-                    <input type="text" name="linkTitle" value={linkTitle} placeholder="Add A Title for Your Link" onChange={this.handleChange} required /><br />
                     <button type="submit" className="abutton2">Submit Changes to Link</button>
                 </form>
                 {/* {this.state.successMessage ? <h4>Entry Updated Successfully</h4> : <span></span>} */}
