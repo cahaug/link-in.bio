@@ -87,7 +87,7 @@ class Register extends React.Component {
                         verifyCallback={this.verifyCallback}
                     />
                     <br />
-                    <button type="submit">Sign Up</button>
+                    <button className="abutton" type="submit">Sign Up</button>
                 </form>
             </div>
         )
