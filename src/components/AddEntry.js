@@ -11,6 +11,7 @@ class AddEntry extends React.Component {
             referencingURL: '',
             description: '',
             linkTitle: '',
+            imgURL:'',
         }
     }
 
@@ -23,13 +24,13 @@ class AddEntry extends React.Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault()
-        const { userId, listId, referencingURL, description, linkTitle } = this.state
-        this.props.addEntry(userId, listId, referencingURL, description, linkTitle)
-        this.setState({ userId: localStorage.getItem('userId'), listId: '', referencingURL:'', description: '', linkTitle: '', })
+        const { userId, listId, referencingURL, description, linkTitle, imgURL } = this.state
+        this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL)
+        this.setState({ userId: localStorage.getItem('userId'), listId: '', referencingURL:'', description: '', linkTitle: '', imgURL:''})
     }
 
     render() {
-        const { userId, listId, referencingURL, description, linkTitle } = this.state
+        const { userId, listId, referencingURL, description, linkTitle, imgURL } = this.state
         return (
             <div>
                 <h1 className="newpickupheader">Add a Link to Your List</h1>
@@ -41,6 +42,7 @@ class AddEntry extends React.Component {
                     <input type="text" name="referencingURL" value={referencingURL} placeholder="Link URL" onChange={this.handleChange} required /><br />
                     <input type="text" name="linkTitle" value={linkTitle} placeholder="Link Title" onChange={this.handleChange} required /><br />
                     <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChange} required /><br />
+                    <input type="text" name="imgURL" value={imgURL} placeholder="Image URL" onChange={this.handleChange} required /><br />
                     <button type="submit" className="abutton2">Add Link to List</button>
                 </form>
             </div>

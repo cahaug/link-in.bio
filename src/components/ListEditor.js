@@ -91,6 +91,7 @@ class ListDisplay extends React.Component {
 
                             <div className='signup' key={link.referencingURL}>
                                 <a href={`${link.referencingURL}`}>{link.linkTitle}</a>
+                                <img src={link.imgURL} alt={link.imgURL} />
                                 <p>{link.description}</p>
                                 {/* <p>{link.entryId}</p> */}
                                 <br />

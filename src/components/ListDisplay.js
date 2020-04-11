@@ -43,8 +43,9 @@ class ListDisplay extends React.Component {
                     // localStorage.setItem('listId', link.listId)
                     return (
 
-                            <div className='signup' key={link.linkTitle}>
+                            <div className='signup' key={link.entryId}>
                                 <a href={`http://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}`}>{link.linkTitle}</a>
+                                <img src={link.imgURL} alt={link.imgURL} />
                                 <p>{link.description}</p>
                             </div>
 

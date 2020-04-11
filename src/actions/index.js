@@ -104,10 +104,10 @@ export function createList(userId, backColor, txtColor, fontSelection){
     }
 }
 
-export function addEntry(userId, listId, referencingURL, description, linkTitle){
+export function addEntry(userId, listId, referencingURL, description, linkTitle, imgURL){
     return (dispatch) => {
         dispatch({type: ADD_ENTRY_START})
-        return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle })
+        return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL })
         .then((res) => {
             console.log('addEntry res.data.message', res.data.message);
             alert('Entry added successfully')
@@ -119,10 +119,10 @@ export function addEntry(userId, listId, referencingURL, description, linkTitle)
     }
 }
 
-export function editEntry(entryId, referencingURL, description, linkTitle){
+export function editEntry(entryId, referencingURL, description, linkTitle, imgURL){
     return (dispatch) => {
         dispatch({type: EDIT_ENTRY_START})
-        return axios.put('https://link-in-bio.herokuapp.com/e/replaceEntry', {entryId, referencingURL, description, linkTitle})
+        return axios.put('https://link-in-bio.herokuapp.com/e/replaceEntry', {entryId, referencingURL, description, linkTitle, imgURL})
         .then((res) => {
             console.log('editEntry res.data', res.data)
             alert('Entry Edited Successfully')
