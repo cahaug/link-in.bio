@@ -44,8 +44,10 @@ class ListDisplay extends React.Component {
                     return (
 
                             <div className='signup' key={link.entryId}>
-                                <img className='image' src={link.imgURL} alt={link.imgURL} /><br />
-                                <a href={`http://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}`}>{link.linkTitle}</a> <br />
+                                <a className='linkTitle' href={`http://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}`}>
+                                    <img className='image' src={link.imgURL} alt={link.imgURL} /> <br /> <br />
+                                    {link.linkTitle}
+                                </a> <br />
                                 <p>{link.description}</p>
                             </div>
 
