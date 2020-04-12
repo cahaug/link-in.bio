@@ -66,7 +66,7 @@ class EntryEditor extends React.Component {
                     <p>Link Description:</p>
                     <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChange} required /><br />
                     <p>Link Image URL:</p>
-                    <input type="text" name="linkTitle" value={imgURL} placeholder="Link Image URL" onChange={this.handleChange} required /><br />
+                    <input type="text" name="imgURL" value={imgURL} placeholder="Link Image URL" onChange={this.handleChange} required /><br />
                     <button type="submit" className="abutton2">Submit Changes to Link</button>
                 </form>
                 {/* {this.state.successMessage ? <h4>Entry Updated Successfully</h4> : <span></span>} */}
