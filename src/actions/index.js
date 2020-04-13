@@ -110,8 +110,15 @@ export function addEntry(userId, listId, referencingURL, description, linkTitle,
         return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL })
         .then((res) => {
             console.log('addEntry res.data.message', res.data.message);
-            alert('Entry added successfully')
-            dispatch({type: ADD_ENTRY_SUCCESS, payload:res.data})
+            console.log('addEntry res.data', res.data);
+
+            const useThisURL = `http://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}`
+            return axios.get(useThisURL)
+            .then((res) => {
+                console.log('statsRes', res)
+                alert('Entry added successfully, Try Returning to Your Dashboard and Refreshing the Page')
+                dispatch({type: ADD_ENTRY_SUCCESS, payload:res.data})
+            })
         })
         .catch((err) => {
             dispatch({type: ADD_ENTRY_FAILED, payload:err})

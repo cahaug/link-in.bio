@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addEntry } from '../actions/index'
+import { withRouter } from 'react-router-dom'
+
 
 class AddEntry extends React.Component {
     constructor() {
@@ -22,11 +24,24 @@ class AddEntry extends React.Component {
         })
     }
 
-    handleSubmit = (evt) => {
+    // handleSubmit = (evt) => {
+    //     evt.preventDefault()
+    //     const { userId, listId, referencingURL, description, linkTitle, imgURL } = this.state
+    //     this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL)
+    //     this.setState({ userId: localStorage.getItem('userId'), listId: '', referencingURL:'', description: '', linkTitle: '', imgURL:''})
+    // }
+
+    handleSubmit = async (evt) => {
         evt.preventDefault()
         const { userId, listId, referencingURL, description, linkTitle, imgURL } = this.state
-        this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL)
-        this.setState({ userId: localStorage.getItem('userId'), listId: '', referencingURL:'', description: '', linkTitle: '', imgURL:''})
+        try {
+            this.setState({ userId: localStorage.getItem('userId'), listId: '', referencingURL:'', description: '', linkTitle: '', imgURL:''})
+            await this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL)
+            this.props.history.push('./dashboard')
+        } catch (err){
+            alert(err.message)
+        }
+       
     }
 
     render() {
@@ -37,8 +52,13 @@ class AddEntry extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     {/* <input type="text" name="userId" value={userId} placeholder="Your User Id" onChange={this.handleChange} required /><br /> */}
                     {/* <input type="text" name="listId" value={listId} placeholder="Your List Id" onChange={this.handleChange} required /><br /> */}
-                    <p className="addEntryText">Add a URL in the form http://...../ </p> 
-                    <p className="addEntryText">(starting with http and ending in a slash)</p>
+                    <p className="addEntryText">Add a URL in the form http://.../ </p>
+                    <p className="addEntryText">Or in the form https://.../ </p>
+                    <p className="addEntryText">(starting with http or https and ending in a slash)</p>
+                    <p className="addEntryText">Add an Image URL in the form http://.../...jpg </p>
+                    <p className="addEntryText">Or in the form https://.../...bmp </p>
+                    <p className="addEntryText">(starting with http or https)</p>
+                    <p className="addEntryText">(and ending in the file extension of the linked image)</p>
                     <input type="text" name="referencingURL" value={referencingURL} placeholder="Link URL" onChange={this.handleChange} required /><br />
                     <input type="text" name="linkTitle" value={linkTitle} placeholder="Link Title" onChange={this.handleChange} required /><br />
                     <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChange} required /><br />
@@ -52,4 +72,9 @@ class AddEntry extends React.Component {
 
 const mapDispatchToProps = { addEntry }
 
-export default connect(null, mapDispatchToProps)(AddEntry)
+export default withRouter(
+    connect(
+        null, 
+        mapDispatchToProps
+    )(AddEntry)
+)
