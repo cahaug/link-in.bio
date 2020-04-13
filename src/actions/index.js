@@ -112,7 +112,7 @@ export function addEntry(userId, listId, referencingURL, description, linkTitle,
             console.log('addEntry res.data.message', res.data.message);
             console.log('addEntry res.data', res.data);
 
-            const useThisURL = `http://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
+            const useThisURL = `https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
             return axios.get(useThisURL)
             .then((res) => {
                 console.log('statsRes', res)
