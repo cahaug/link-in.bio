@@ -42,7 +42,7 @@ class AddEntry extends React.Component {
                     <input type="text" name="referencingURL" value={referencingURL} placeholder="Link URL" onChange={this.handleChange} required /><br />
                     <input type="text" name="linkTitle" value={linkTitle} placeholder="Link Title" onChange={this.handleChange} required /><br />
                     <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChange} required /><br />
-                    <input type="text" name="imgURL" value={imgURL} placeholder="Image URL" onChange={this.handleChange} required /><br />
+                    <input type="text" name="imgURL" value={imgURL} placeholder="Image URL" onChange={this.handleChange} /><br />
                     <button type="submit" className="abutton2">Add Link to List</button>
                 </form>
             </div>
