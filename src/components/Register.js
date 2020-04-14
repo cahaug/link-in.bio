@@ -16,6 +16,7 @@ class Register extends React.Component {
             firstName: '',
             lastName: '',
             profilePictureURL: '',
+            referredBy:'',
             isVerified:false,
         }
     }
@@ -53,10 +54,10 @@ class Register extends React.Component {
         evt.preventDefault()
         if(this.state.isVerified){
             // alert('success')
-            const { email, password, firstName, lastName, profilePictureURL } = this.state
+            const { email, password, firstName, lastName, profilePictureURL, referredBy } = this.state
             try {
-                this.setState({ email: '', password: '', firstName: '', lastName: '', profilePictureURL:'' })
-                await this.props.register(email, password, firstName, lastName, profilePictureURL)
+                this.setState({ email: '', password: '', firstName: '', lastName: '', profilePictureURL:'', referredBy:'' })
+                await this.props.register(email, password, firstName, lastName, profilePictureURL, referredBy)
                 this.props.history.push('./dashboard')
             } catch (err){
                 alert(err.message)
@@ -82,6 +83,15 @@ class Register extends React.Component {
                     <input type="text" name="lastName" placeholder="Last Name" value={lastName} onChange={this.handleChange2} required /><br/>
                     <input type="text" name="profilePictureURL" placeholder="Profile Picture URL" value={profilePictureURL} onChange={this.handleChange2}  /><br/>
                     {/*need to confirm password here*/}
+                    <label>
+                        Where Did You Hear About Link-In.bio/ ?
+                        <select value={this.state.referredBy} onChange={this.handleChange2}>
+                            <option value="from_Cale">From Cale</option>
+                            <option value="by_chance">By Chance</option>
+                            <option value="influencer1">Influencer #1 Name</option>
+                            <option value="influencer2">Influencer #2 Name</option>
+                        </select>
+                    </label>
                     <Recaptcha
                         sitekey="6Lf5n-cUAAAAACjg7VIXj2fUkfGK-zkeQ2mSXNGX"
                         render="explicit"
