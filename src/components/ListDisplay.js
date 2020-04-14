@@ -83,7 +83,8 @@ class ListDisplay extends React.Component {
                         </div>
                         <div>
                             <h3>
-                                <img src={this.state.profilePictureURL} alt={this.state.profilePictureURL} /> 
+                                <img src={this.state.profilePictureURL} alt={this.state.profilePictureURL} style={{width:"200px"}}/> 
+                                <br />
                                 {this.state.userFirstLastName}
                             </h3>
                             <p>~List Creator~</p>
