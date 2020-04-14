@@ -74,7 +74,7 @@ class ListDisplay extends React.Component {
         const isLoading = this.state.isLoading;
             {if(isLoading===true){
                 // return <h1>Loading <img src={ellipsisGif} style={{width:"30px", paddingTop:"20px"}}/></h1>
-                return <img src={loadingGif} style={{width:"200px"}}/>
+                return <img src={loadingGif} alt="Loading..." style={{width:"200px"}}/>
             }else{
                 return (
                     <div className="linkList">
