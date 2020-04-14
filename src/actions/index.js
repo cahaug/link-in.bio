@@ -34,10 +34,10 @@ export const GET_LIST_ID_SUCCESS = 'GET_LIST_ID_SUCCESS'
 export const GET_LIST_ID_FAILED = 'GET_LIST_ID_FAILED'
 
 //Action Creators
-export function register(email, password, firstName, lastName){
+export function register(email, password, firstName, lastName, profilePictureURL){
     return (dispatch) => {
         dispatch({type: REGISTER_USER_START})
-        return axios.post('https://link-in-bio.herokuapp.com/auth/register', { email, password, firstName, lastName } )
+        return axios.post('https://link-in-bio.herokuapp.com/auth/register', { email, password, firstName, lastName, profilePictureURL} )
         .then((res) => {
             const payload = res.data
             console.log('registration payload', payload)
@@ -45,6 +45,7 @@ export function register(email, password, firstName, lastName){
             localStorage.setItem('userId', res.data.userId)
             localStorage.setItem('email', res.data.email)
             localStorage.setItem('firstName', res.data.firstName)
+            localStorage.setItem('profilePictureURL', res.data.profilePictureURL)
             return axios.post('https://link-in-bio.herokuapp.com/l/new', {'userId':res.data.userId, 'backColor':'#ffffff','txtColor':'#000000', 'fontSelection':'Roboto',})
             .then((res) => {
                 console.log('res after create list after register', res)

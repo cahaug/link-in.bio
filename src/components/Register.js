@@ -15,6 +15,7 @@ class Register extends React.Component {
             password: '',
             firstName: '',
             lastName: '',
+            profilePictureURL: '',
             isVerified:false,
         }
     }
@@ -52,10 +53,10 @@ class Register extends React.Component {
         evt.preventDefault()
         if(this.state.isVerified){
             // alert('success')
-            const { email, password, firstName, lastName } = this.state
+            const { email, password, firstName, lastName, profilePictureURL } = this.state
             try {
-                this.setState({ email: '', password: '', firstName: '', lastName: '', })
-                await this.props.register(email, password, firstName, lastName)
+                this.setState({ email: '', password: '', firstName: '', lastName: '', profilePictureURL:'' })
+                await this.props.register(email, password, firstName, lastName, profilePictureURL)
                 this.props.history.push('./dashboard')
             } catch (err){
                 alert(err.message)
@@ -67,7 +68,7 @@ class Register extends React.Component {
     }
 
     render() {
-        const { email, password, firstName, lastName } = this.state
+        const { email, password, firstName, lastName, profilePictureURL } = this.state
         return (
             <div>
                 <div className='signupheader'>
@@ -79,6 +80,7 @@ class Register extends React.Component {
                     <input type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange2} required /><br/>
                     <input type="text" name="firstName" placeholder="First Name" value={firstName} onChange={this.handleChange2} required /><br/>
                     <input type="text" name="lastName" placeholder="Last Name" value={lastName} onChange={this.handleChange2} required /><br/>
+                    <input type="text" name="profilePictureURL" placeholder="Profile Picture URL" value={profilePictureURL} onChange={this.handleChange2}  /><br/>
                     {/*need to confirm password here*/}
                     <Recaptcha
                         sitekey="6Lf5n-cUAAAAACjg7VIXj2fUkfGK-zkeQ2mSXNGX"

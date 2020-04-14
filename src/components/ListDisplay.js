@@ -12,9 +12,9 @@ class ListDisplay extends React.Component {
             isLoading:true,
             goodId:null,
             listId:null,
-            profilePicture:null,
+            profilePictureURL:null,
             displayingUserInfo:null,
-            userFirstLastName:null
+            userFirstLastName:null,
         }
     }
 
@@ -33,9 +33,9 @@ class ListDisplay extends React.Component {
                 console.log('data.data.listid', data.data[0].listId)
                 const listId = data.data[0].listId
                 const userFirstLastName = `${data.data[0].firstName} ${data.data[0].lastName[0].slice(0,1)}.`
-                // const profilePicture = `${data.data[0].profilePicture}`
+                const profilePictureURL = `${data.data[0].profilePictureURL}`
                 this.setState({listId:listId})
-                // this.setState({profilePicture:profilePicture})
+                this.setState({profilePictureURL:profilePictureURL})
                 this.setState({userFirstLastName:userFirstLastName})
                 console.log('this.state', this.state)
                 // console.log(this.state)
@@ -83,7 +83,7 @@ class ListDisplay extends React.Component {
                         </div>
                         <div>
                             <h3>
-                                {this.state.profilePicture !== null ? <img src={this.state.profilePicture} alt={this.state.userFirstLastName} /> : <span></span> }
+                                <img src={this.state.profilePictureURL} alt={this.state.profilePictureURL} /> 
                                 {this.state.userFirstLastName}
                             </h3>
                             <p>~List Creator~</p>
