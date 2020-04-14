@@ -10,13 +10,15 @@ class Register extends React.Component {
         // this.handleSubmit = this.handleSubmit.bind(this);
         this.recaptchaLoaded = this.recaptchaLoaded.bind(this);
         this.verifyCallback = this.verifyCallback.bind(this);
+        this.handleChange2 = this.handleChange2.bind(this);
+        this.handleChange3 = this.handleChange3.bind(this);
         this.state = {
             email: '',
             password: '',
             firstName: '',
             lastName: '',
             profilePictureURL: '',
-            referredBy:'',
+            referredBy:'from_Cale',
             isVerified:false,
         }
     }
@@ -25,6 +27,14 @@ class Register extends React.Component {
         evt.preventDefault()
         this.setState({
             [evt.target.name]: evt.target.value,
+        })
+    }
+
+    handleChange3 = (evt) => {
+        evt.preventDefault()
+        // console.log(this.state.referredBy)
+        this.setState({
+            referredBy: evt.target.value,
         })
     }
 
@@ -85,7 +95,7 @@ class Register extends React.Component {
                     {/*need to confirm password here*/}
                     <label>
                         Where Did You Hear About Link-In.bio/ ?
-                        <select value={this.state.referredBy} onChange={this.handleChange2}>
+                        <select value={this.state.referredBy} onChange={this.handleChange3}>
                             <option value="from_Cale">From Cale</option>
                             <option value="by_chance">By Chance</option>
                             <option value="influencer1">Influencer #1 Name</option>
