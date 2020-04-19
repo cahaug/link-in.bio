@@ -69,7 +69,7 @@ class Dashboard extends React.Component {
                 <p>Your List Id is {localStorage.getItem('listId')}</p>
                 <p>Your List Views is {this.state.isLoadingListViews ? <span> Loading...</span> : this.state.listViews}</p>
                 <p>To get started, create a list, then add your entries!</p>
-                <p>Your LinkList will be hosted at: <a alt="Your LinkList" href={`http://link-in.bio/${localStorage.getItem('userId')}`}>http://link-in.bio/{localStorage.getItem('userId')}</a></p>
+                <p>Your LinkList will be hosted at: <a alt="Your LinkList" href={`http://link-in.bio/${localStorage.getItem('listId')}`}>http://link-in.bio/{localStorage.getItem('listId')}</a></p>
                 {/* <a href="#neworder" className="abutton" role="button">Create a New List</a>
                 <div className="modal" id="neworder">
                     <div className="modal-container">
