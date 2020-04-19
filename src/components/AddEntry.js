@@ -1,15 +1,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addEntry } from '../actions/index'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 
 class AddEntry extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
+        this.handleChangeTitle = this.handleChangeTitle.bind(this);
+        this.handleChangeDescription = this.handleChangeDescription.bind(this);
+        this.handleChangeImg = this.handleChangeImg.bind(this);
+        this.handleChangeURL = this.handleChangeURL.bind(this);
         this.state = {
             userId: localStorage.getItem('userId'),
-            listId: localStorage.getItem('listId'),
+            listId: this.props.match.params.listId,
             referencingURL: '',
             description: '',
             linkTitle: '',
@@ -17,10 +21,31 @@ class AddEntry extends React.Component {
         }
     }
 
-    handleChange = (evt) => {
+    handleChangeURL = (evt) => {
         evt.preventDefault()
         this.setState({
-            [evt.target.name]: evt.target.value,
+            referencingURL: evt.target.value,
+        })
+    }
+
+    handleChangeTitle = (evt) => {
+        evt.preventDefault()
+        this.setState({
+            linkTitle: evt.target.value,
+        })
+    }
+
+    handleChangeDescription = (evt) => {
+        evt.preventDefault()
+        this.setState({
+            description: evt.target.value,
+        })
+    }
+
+    handleChangeImg = (evt) => {
+        evt.preventDefault()
+        this.setState({
+            imgURL: evt.target.value,
         })
     }
 
@@ -33,9 +58,11 @@ class AddEntry extends React.Component {
 
     handleSubmit = async (evt) => {
         evt.preventDefault()
+        // const { listId } = this.props.match.params.listId
         const { userId, listId, referencingURL, description, linkTitle, imgURL } = this.state
+        console.log(userId, listId, referencingURL, description, linkTitle, imgURL)
         try {
-            this.setState({ userId: localStorage.getItem('userId'), listId: '', referencingURL:'', description: '', linkTitle: '', imgURL:''})
+            this.setState({ userId: localStorage.getItem('userId'), referencingURL:'', description: '', linkTitle: '', imgURL:''})
             await this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL)
             this.props.history.push('./dashboard')
         } catch (err){
@@ -45,9 +72,11 @@ class AddEntry extends React.Component {
     }
 
     render() {
-        const { userId, listId, referencingURL, description, linkTitle, imgURL } = this.state
+        const { referencingURL, description, linkTitle, imgURL } = this.state
         return (
             <div>
+                {console.log('this.props', this.props)}
+                {console.log('this.state', this.state)}
                 <h1 className="newpickupheader">Add a Link to Your List</h1>
                 <form onSubmit={this.handleSubmit}>
                     {/* <input type="text" name="userId" value={userId} placeholder="Your User Id" onChange={this.handleChange} required /><br /> */}
@@ -59,12 +88,14 @@ class AddEntry extends React.Component {
                     <p className="addEntryText">Or in the form https://.../...bmp </p>
                     <p className="addEntryText">(starting with http or https)</p>
                     <p className="addEntryText">(and ending in the file extension of the linked image)</p>
-                    <input type="text" name="referencingURL" value={referencingURL} placeholder="Link URL" onChange={this.handleChange} required /><br />
-                    <input type="text" name="linkTitle" value={linkTitle} placeholder="Link Title" onChange={this.handleChange} required /><br />
-                    <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChange} required /><br />
-                    <input type="text" name="imgURL" value={imgURL} placeholder="Image URL" onChange={this.handleChange} /><br />
+                    <input type="text" name="referencingURL" value={referencingURL} placeholder="Link URL" onChange={this.handleChangeURL} required /><br />
+                    <input type="text" name="linkTitle" value={linkTitle} placeholder="Link Title" onChange={this.handleChangeTitle} required /><br />
+                    <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChangeDescription} required /><br />
+                    <input type="text" name="imgURL" value={imgURL} placeholder="Image URL" onChange={this.handleChangeImg} /><br />
                     <button type="submit" className="abutton2">Add Link to List</button>
                 </form>
+                <Link to='/dashboard'><span className="abutton">Back</span></Link>
+
             </div>
         )
     }

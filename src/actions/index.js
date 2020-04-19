@@ -96,6 +96,7 @@ export function createList(userId, backColor, txtColor, fontSelection){
         dispatch({type: CREATE_LIST_START})
         return axios.post('https://link-in-bio.herokuapp.com/l/new', { userId, backColor, txtColor, fontSelection })
         .then((res) => {
+            console.log('createList res', res.data)
             localStorage.setItem('listId', res.data.listId)
             dispatch({type: CREATE_LIST_SUCCESS, payload: res.data})
         })

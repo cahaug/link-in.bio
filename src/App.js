@@ -33,7 +33,7 @@ class App extends React.Component {
         <Route exact path="/listdisplay" component={ListDisplay}/>
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/createlist" component={CreateList} />
-        <PrivateRoute exact path="/addentry" component={AddEntry} />
+        <Route path={`/addEntry/:listId`} render={props => <AddEntry {...props}/>} />
         <Route path={`/editEntry/:entryId`} render={props => <EntryEditor {...props} />} />
         <Route path="/:id" render={props => <ListDisplay {...props}/>} />
         {/* <PrivateRoute exact path="/editentry" component={EditEntry} /> */}
