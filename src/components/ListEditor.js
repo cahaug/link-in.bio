@@ -128,7 +128,7 @@ class ListDisplay extends React.Component {
                             <div>
                                 <hr />
                                 {console.log('link.listId',link.listId)}
-                                <h4>List at <a href></a>https://link-in.bio/{link.listId}</h4>
+                                <h4>List at <a href={`https://link-in.bio/${link.listId}`}>https://link-in.bio/{link.listId}</a></h4>
                                 {/* <a href="#neworder3" className="abutton" role="button" id="createNewEntry">Create a New Entry</a>
                                 <div className="modal" id="neworder3">
                                     <div className="modal-container">
