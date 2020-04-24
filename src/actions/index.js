@@ -97,8 +97,22 @@ export function createList(userId, backColor, txtColor, fontSelection){
         return axios.post('https://link-in-bio.herokuapp.com/l/new', { userId, backColor, txtColor, fontSelection })
         .then((res) => {
             console.log('createList res', res.data)
-            localStorage.setItem('listId', res.data.listId)
-            dispatch({type: CREATE_LIST_SUCCESS, payload: res.data})
+            const savedReturnList = res.data
+            localStorage.setItem('listId', res.data[res.data.length - 1].listId)
+            const standardEntry = {
+                userId: localStorage.getItem('userId'),
+                listId: res.data[res.data.length - 1].listId,
+                referencingURL:'https://link-in.bio/dashboard',
+                description:`Thank You for Choosing Link-In.bio/, Let's Get Started!  Click Add Entry to Add Your First Entry! You can delete this entry after you have added another one to your List.`,
+                linkTitle:'Welcome to Your New List!',
+                imgURL:null,
+            }
+            const { userId, listId, referencingURL, description, linkTitle, imgURL } = standardEntry
+            return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL })
+            .then((res) => {
+                console.log('create newList Std Entry', res.data)
+                dispatch({type: CREATE_LIST_SUCCESS, payload: savedReturnList})
+            })
         })
         .catch((err) => {
             dispatch({type: CREATE_LIST_FAILED, payload:err})
