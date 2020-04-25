@@ -111,7 +111,14 @@ export function createList(userId, backColor, txtColor, fontSelection){
             return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL })
             .then((res) => {
                 console.log('create newList Std Entry', res.data)
-                dispatch({type: CREATE_LIST_SUCCESS, payload: savedReturnList})
+                const useThisURL = `https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
+                return axios.get(useThisURL)
+                .then((res) => {
+                    console.log('statsRes createList', res.data)
+                    alert('List Created Successfully, Try Returning to Your Dashboard and Refreshing the Page')
+                    // dispatch({type: ADD_ENTRY_SUCCESS, payload:res.data})
+                    dispatch({type: CREATE_LIST_SUCCESS, payload: savedReturnList})
+                })
             })
         })
         .catch((err) => {
