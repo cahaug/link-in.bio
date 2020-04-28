@@ -54,11 +54,35 @@ export function register(email, password, firstName, lastName, profilePictureURL
                 console.log('listId', res.data.listId)
                 console.log('typeof listId', typeof res.data['listId'])
                 // const payload2 = {...payload, listId: res.data.listId}
-                alert('User Registration Complete, Try Logging in now!')
-                dispatch({type:REGISTER_USER_SUCCESS, payload})
+                console.log('createList res', res.data)
+                const savedReturnList = res.data
+                localStorage.setItem('listId', res.data[res.data.length - 1].listId)
+                const standardEntry = {
+                    userId: localStorage.getItem('userId'),
+                    listId: res.data[res.data.length - 1].listId,
+                    referencingURL:'https://link-in.bio/dashboard',
+                    description:`Thank You for Choosing Link-In.bio/, Let's Get Started!  Click Add Entry to Add Your First Entry! You can delete this entry after you have added another one to your List.`,
+                    linkTitle:'Welcome to Your New List!',
+                    imgURL:null,
+                }
+                const { userId, listId, referencingURL, description, linkTitle, imgURL } = standardEntry
+                return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL })
+                .then((res) => {
+                    console.log('create newList Std Entry', res.data)
+                    const useThisURL = `https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
+                    return axios.get(useThisURL)
+                    .then((res) => {
+                        console.log('statsRes createList', res.data)
+                        // alert('List Created Successfully, Try Returning to Your Dashboard and Refreshing the Page')
+                        // dispatch({type: ADD_ENTRY_SUCCESS, payload:res.data})
+                        // dispatch({type: CREATE_LIST_SUCCESS, payload: savedReturnList})
+                        alert('User Registration Complete, Try Logging in now!')
+                        dispatch({type:REGISTER_USER_SUCCESS, payload})
+                    })
+                })
+                // console.log('end of code')
                 // const newURL = 'https://link-in.bio/dashboard'
                 // window.location.href(newURL)
-                console.log('end of code')
             })
             .catch((err) => {
                 dispatch({type:REGISTER_USER_FAILED, payload:err})
