@@ -72,6 +72,8 @@ class ListDisplay extends React.Component {
 
     render() {
         const isLoading = this.state.isLoading;
+        const today = new Date();
+        const year = today.getFullYear();
             {if(isLoading===true){
                 // return <h1>Loading <img src={ellipsisGif} style={{width:"30px", paddingTop:"20px"}}/></h1>
                 return <img src={loadingGif} alt="Loading..." style={{width:"200px"}}/>
@@ -89,7 +91,7 @@ class ListDisplay extends React.Component {
                             </h3>
                             <p>~List Creator~</p>
                         </div>
-                        <h4>©2020 <a href="http://link-in.bio/">Link-In.bio/</a></h4>
+                        <h4>©{year} <a href="http://yhy.fi/">YHY Oy:</a> <a href="http://link-in.bio/">Link-In.bio/</a></h4>
                     </div>
 
                 )

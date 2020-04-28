@@ -60,6 +60,8 @@ class Dashboard extends React.Component {
     // const {loggedUser} = props
     // console.log(loggedUser)
     render() {
+        const today = new Date();
+        const year = today.getFullYear();
         return (
             <div>
                 <h1>Dashboard</h1>
@@ -103,7 +105,7 @@ class Dashboard extends React.Component {
                 <br /><br />
                 {/* <button type="button" className="abutton">Log Out</button> */}
                 <Link onClick={this.logout} to='/'><span className="abutton">Log Out</span></Link>            
-                <h4>©2020 Link-In.bio/</h4>
+                <h4>©{year} <a href="http://yhy.fi/">YHY Oy:</a> <a href="http://link-in.bio/">Link-In.bio/</a></h4>
                 {/* <MyRequestsBusiness /> */}
             </div>
         )
