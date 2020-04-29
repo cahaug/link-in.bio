@@ -81,15 +81,16 @@ class ListDisplay extends React.Component {
                 return (
                     <div className="linkList">
                         <div>
-                            {this.state.links}
-                        </div>
-                        <div>
                             <h3>
                                 <img src={this.state.profilePictureURL} alt={this.state.profilePictureURL} style={{width:"200px"}}/> 
                                 <br />
                                 {this.state.userFirstLastName}
                             </h3>
-                            <p>~List Creator~</p>
+                            {/* <p>~List Creator~</p> */}
+                        </div>
+                        <br /><hr /><br />
+                        <div>
+                            {this.state.links}
                         </div>
                         <h4>©{year} <a href="http://yhy.fi/">YHY Oy:</a> <a href="http://link-in.bio/">Link-In.bio/</a></h4>
                     </div>
