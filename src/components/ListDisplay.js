@@ -66,8 +66,10 @@ class ListDisplay extends React.Component {
             })
     }
 
-    // componentDidMount(props) {
+   
 
+    // componentDidMount(props) {
+        
     // }
 
     render() {
@@ -80,18 +82,18 @@ class ListDisplay extends React.Component {
             }else{
                 return (
                     <div className="linkList">
-                        <div>
+                        <header>
                             <h3>
                                 <img src={this.state.profilePictureURL} alt={this.state.profilePictureURL} style={{width:"200px"}}/> 
                                 <br />
                                 {this.state.userFirstLastName}
                             </h3>
                             {/* <p>~List Creator~</p> */}
-                        </div>
+                        </header>
                         <br /><hr /><br />
-                        <div>
+                        <section>
                             {this.state.links}
-                        </div>
+                        </section>
                         <h4>©{year} <a href="http://yhy.fi/">YHY Oy:</a> <a href="http://link-in.bio/">Link-In.bio/</a></h4>
                     </div>
 
