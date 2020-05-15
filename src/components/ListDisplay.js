@@ -34,9 +34,11 @@ class ListDisplay extends React.Component {
                 const listId = data.data[0].listId
                 const userFirstLastName = `${data.data[0].firstName} ${data.data[0].lastName[0].slice(0,1)}.`
                 const profilePictureURL = `${data.data[0].profilePictureURL}`
+                const displayingUserInfo = `${data.data[0].displayUserInfo}`
                 this.setState({listId:listId})
                 this.setState({profilePictureURL:profilePictureURL})
                 this.setState({userFirstLastName:userFirstLastName})
+                this.setState({displayingUserInfo:displayingUserInfo})
                 console.log('this.state', this.state)
                 // console.log(this.state)
                 const links = (data.data.map((link) => {
@@ -74,12 +76,23 @@ class ListDisplay extends React.Component {
 
     render() {
         const isLoading = this.state.isLoading;
+        const displayingUserInfo = this.state.displayingUserInfo
         const today = new Date();
         const year = today.getFullYear();
             {if(isLoading===true){
                 // return <h1>Loading <img src={ellipsisGif} style={{width:"30px", paddingTop:"20px"}}/></h1>
                 return <img src={loadingGif} alt="Loading..." style={{width:"200px"}}/>
-            }else{
+            } else if (displayingUserInfo === 'false'){
+                return (
+                    <div className="linkList">
+                        <section>
+                            {this.state.links}
+                        </section>
+                        <h4>©{year} <a href="http://yhy.fi/">YHY Oy:</a> <a href="http://link-in.bio/">Link-In.bio/</a></h4>
+                    </div>
+
+                )
+            } else{
                 return (
                     <div className="linkList">
                         <header>

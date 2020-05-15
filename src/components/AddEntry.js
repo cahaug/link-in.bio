@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { addEntry } from '../actions/index'
 import { withRouter, Link } from 'react-router-dom'
+import loadingGif from '../files/loading.gif'
 
 
 class AddEntry extends React.Component {
@@ -18,6 +19,7 @@ class AddEntry extends React.Component {
             description: '',
             linkTitle: '',
             imgURL:'',
+            isLoading: false,
         }
     }
 
@@ -59,12 +61,13 @@ class AddEntry extends React.Component {
     handleSubmit = async (evt) => {
         evt.preventDefault()
         // const { listId } = this.props.match.params.listId
-        const { userId, listId, referencingURL, description, linkTitle, imgURL } = this.state
+        const { userId, listId, referencingURL, description, linkTitle, imgURL, isLoading } = this.state
         console.log(userId, listId, referencingURL, description, linkTitle, imgURL)
         try {
-            this.setState({ userId: localStorage.getItem('userId'), referencingURL:'', description: '', linkTitle: '', imgURL:''})
+            this.setState({ userId: localStorage.getItem('userId'), referencingURL:'', description: '', linkTitle: '', imgURL:'', isLoading:true})
             await this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL)
             this.props.history.push('./dashboard')
+            window.location.reload(false)
         } catch (err){
             alert(err.message)
         }
@@ -73,31 +76,36 @@ class AddEntry extends React.Component {
 
     render() {
         const { referencingURL, description, linkTitle, imgURL } = this.state
-        return (
-            <div>
-                {console.log('this.props', this.props)}
-                {console.log('this.state', this.state)}
-                <h1 className="newpickupheader">Add a Link to Your List</h1>
-                <form onSubmit={this.handleSubmit}>
-                    {/* <input type="text" name="userId" value={userId} placeholder="Your User Id" onChange={this.handleChange} required /><br /> */}
-                    {/* <input type="text" name="listId" value={listId} placeholder="Your List Id" onChange={this.handleChange} required /><br /> */}
-                    <p className="addEntryText">Add a URL in the form http://.../ </p>
-                    <p className="addEntryText">Or in the form https://.../ </p>
-                    <p className="addEntryText">(starting with http or https and ending in a slash)</p>
-                    <p className="addEntryText">Add an Image URL in the form http://.../...jpg </p>
-                    <p className="addEntryText">Or in the form https://.../...bmp </p>
-                    <p className="addEntryText">(starting with http or https)</p>
-                    <p className="addEntryText">(and ending in the file extension of the linked image)</p>
-                    <input type="text" name="referencingURL" value={referencingURL} placeholder="Link URL" onChange={this.handleChangeURL} required /><br />
-                    <input type="text" name="linkTitle" value={linkTitle} placeholder="Link Title" onChange={this.handleChangeTitle} required /><br />
-                    <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChangeDescription} required /><br />
-                    <input type="text" name="imgURL" value={imgURL} placeholder="Image URL" onChange={this.handleChangeImg} /><br />
-                    <button type="submit" className="abutton2">Add Link to List</button>
-                </form>
-                <Link to='/dashboard'><span className="abutton">Back</span></Link>
-
-            </div>
-        )
+        const isLoading = this.state.isLoading;
+        if(isLoading===true){
+            return <img src={loadingGif} style={{width:"200px"}}/>
+        } else {
+            return (
+                <div>
+                    {console.log('this.props', this.props)}
+                    {console.log('this.state', this.state)}
+                    <h1 className="newpickupheader">Add a Link to Your List</h1>
+                    <form onSubmit={this.handleSubmit}>
+                        {/* <input type="text" name="userId" value={userId} placeholder="Your User Id" onChange={this.handleChange} required /><br /> */}
+                        {/* <input type="text" name="listId" value={listId} placeholder="Your List Id" onChange={this.handleChange} required /><br /> */}
+                        <p className="addEntryText">Add a URL in the form http://.../ </p>
+                        <p className="addEntryText">Or in the form https://.../ </p>
+                        <p className="addEntryText">(starting with http or https and ending in a slash)</p>
+                        <p className="addEntryText">Add an Image URL in the form http://.../...jpg </p>
+                        <p className="addEntryText">Or in the form https://.../...bmp </p>
+                        <p className="addEntryText">(starting with http or https)</p>
+                        <p className="addEntryText">(and ending in the file extension of the linked image)</p>
+                        <input type="text" name="referencingURL" value={referencingURL} placeholder="Link URL" onChange={this.handleChangeURL} required /><br />
+                        <input type="text" name="linkTitle" value={linkTitle} placeholder="Link Title" onChange={this.handleChangeTitle} required /><br />
+                        <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChangeDescription} required /><br />
+                        <input type="text" name="imgURL" value={imgURL} placeholder="Image URL" onChange={this.handleChangeImg} /><br />
+                        <button type="submit" className="abutton2">Add Link to List</button>
+                    </form>
+                    <Link to='/dashboard'><span className="abutton">Back</span></Link>
+    
+                </div>
+            )
+        }
     }
 }
 
