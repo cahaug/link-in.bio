@@ -11,6 +11,7 @@ import CreateList from './components/CreateList'
 import AddEntry from './components/AddEntry'
 import EntryEditor from './components/EntryEditor'
 import ListDisplay from './components/ListDisplay'
+import ListDisplayHooks from './components/ListDisplayHooks'
 
 
 
@@ -35,7 +36,8 @@ class App extends React.Component {
         <PrivateRoute exact path="/createlist" component={CreateList} />
         <Route path={`/addEntry/:listId`} render={props => <AddEntry {...props}/>} />
         <Route path={`/editEntry/:entryId`} render={props => <EntryEditor {...props} />} />
-        <Route path="/:id" render={props => <ListDisplay {...props}/>} />
+        {/* <Route path="/:id" render={props => <ListDisplay {...props}/>} /> */}
+        <Route path="/:id" render={props => <ListDisplayHooks {...props} props={props}/>} />
         {/* <PrivateRoute exact path="/editentry" component={EditEntry} /> */}
         </Switch>
       </div>
