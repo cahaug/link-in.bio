@@ -2,20 +2,24 @@ import React, { useState, useEffect } from "react"
 import ReactDOM from "react-dom"
 import { useParams } from 'react-router-dom'
 import axios from "axios"
+import loadingGif from '../files/loading.gif'
+
+
 function ListDisplayHooks(match) {
     // console.log('props1', props)
     // super(props)
-    console.log('match', match.match.url)
+    // console.log('match', match.match.url)
     const [isLoading, setIsLoading] = useState(true)
     const [links, setLinks] = useState([])
-    // const [ourURL, setourURL] = useState(props.location.pathname)
+    const [ourURL, setourURL] = useState(match.match.url)
     // const ourURL = props.location.pathname
-    let { ourURL } = useParams()
+    // let { ourURL } = useParams("/:id")
     console.log('oURL', ourURL)
     useEffect(() => {
         // console.log('this.props', props)
         // console.log('ourURL2', ourURL)
-        const useThisURL = `https://link-in-bio.herokuapp.com${match.match.url}`
+        const useThisURL = `https://link-in-bio.herokuapp.com${ourURL}`
+        console.log('thisURL',useThisURL)
         axios.get(useThisURL)
         .then(res => {
             // console.log('the data', res.data);
@@ -39,12 +43,21 @@ function ListDisplayHooks(match) {
         .catch(err => alert(err))
     }, [])
 
+    const today = new Date();
+    const year = today.getFullYear();
+
     return (
         <div>
             
             {isLoading?
-            <h1>at least she's loading</h1>:
-            <div><h1>done loading</h1><p>{links}</p></div>}
+            <img src={loadingGif} alt="Loading..." style={{width:"200px"}}/>:
+            <div>
+                <section>
+                    {links}
+                </section>
+                <h4>©{year} <a href="http://yhy.fi/">YHY Oy:</a> <a href="http://link-in.bio/">Link-In.bio/</a></h4>
+            </div>
+            }
         </div>
     )
 }

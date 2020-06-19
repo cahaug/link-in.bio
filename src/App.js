@@ -36,8 +36,8 @@ class App extends React.Component {
         <PrivateRoute exact path="/createlist" component={CreateList} />
         <Route path={`/addEntry/:listId`} render={props => <AddEntry {...props}/>} />
         <Route path={`/editEntry/:entryId`} render={props => <EntryEditor {...props} />} />
-        <Route path="/:id" render={props => <ListDisplay {...props}/>} />
-        {/* <Route path="/:id" render={({match}) => <ListDisplayHooks match={match}/>} /> */}
+        {/* <Route path="/:id" render={props => <ListDisplay {...props}/>} /> */}
+        <Route path="/:id" render={({match}) => <ListDisplayHooks match={match}/>} />
         {/* <PrivateRoute exact path="/editentry" component={EditEntry} /> */}
         </Switch>
       </div>
