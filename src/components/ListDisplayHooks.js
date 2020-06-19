@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react"
 import ReactDOM from "react-dom"
+import { useParams } from 'react-router-dom'
 import axios from "axios"
-function ListDisplayHooks(props) {
+function ListDisplayHooks(match) {
     // console.log('props1', props)
     // super(props)
+    console.log('match', match.match.url)
     const [isLoading, setIsLoading] = useState(true)
     const [links, setLinks] = useState([])
-    const [ourURL, setourURL] = useState(props.location.pathname)
+    // const [ourURL, setourURL] = useState(props.location.pathname)
     // const ourURL = props.location.pathname
-    // console.log('oURL', ourURL)
+    let { ourURL } = useParams()
+    console.log('oURL', ourURL)
     useEffect(() => {
         // console.log('this.props', props)
         // console.log('ourURL2', ourURL)
-        const useThisURL = `https://link-in-bio.herokuapp.com${ourURL}`
+        const useThisURL = `https://link-in-bio.herokuapp.com${match.match.url}`
         axios.get(useThisURL)
         .then(res => {
             // console.log('the data', res.data);

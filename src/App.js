@@ -31,13 +31,13 @@ class App extends React.Component {
         <Route exact path="/register" render={props => <Register {...props} history={this.props.history}/>} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/failedlogin" component={FailedLogin} />
-        <Route exact path="/listdisplay" component={ListDisplay}/>
+        {/* <Route exact path="/listdisplay" component={ListDisplay}/> */}
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/createlist" component={CreateList} />
         <Route path={`/addEntry/:listId`} render={props => <AddEntry {...props}/>} />
         <Route path={`/editEntry/:entryId`} render={props => <EntryEditor {...props} />} />
         <Route path="/:id" render={props => <ListDisplay {...props}/>} />
-        {/* <Route path="/:id" render={props => <ListDisplayHooks {...props} props={props}/>} /> */}
+        {/* <Route path="/:id" render={({match}) => <ListDisplayHooks match={match}/>} /> */}
         {/* <PrivateRoute exact path="/editentry" component={EditEntry} /> */}
         </Switch>
       </div>
