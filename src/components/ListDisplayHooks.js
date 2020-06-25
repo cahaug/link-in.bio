@@ -50,7 +50,7 @@ function ListDisplayHooks(match) {
             }))
             setLinks(thelinks)
         })
-        .catch(err => alert(err))
+        .catch(err => {console.log('err', err); alert('that site does not exist, yet. or check your connection.')})
     }, [])
 
     const today = new Date();
