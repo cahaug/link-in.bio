@@ -151,10 +151,10 @@ export function createList(userId, backColor, txtColor, fontSelection){
     }
 }
 
-export function addEntry(userId, listId, referencingURL, description, linkTitle, imgURL){
+export function addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token){
     return (dispatch) => {
         dispatch({type: ADD_ENTRY_START})
-        return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL })
+        return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL }, { headers: {authorization: token} })
         .then((res) => {
             console.log('addEntry res.data.message', res.data.message);
             console.log('addEntry res.data', res.data);

@@ -62,12 +62,13 @@ class AddEntry extends React.Component {
         evt.preventDefault()
         // const { listId } = this.props.match.params.listId
         const { userId, listId, referencingURL, description, linkTitle, imgURL, isLoading } = this.state
+        const token = localStorage.getItem('token')
         console.log(userId, listId, referencingURL, description, linkTitle, imgURL)
         try {
             this.setState({ userId: localStorage.getItem('userId'), referencingURL:'', description: '', linkTitle: '', imgURL:'', isLoading:true})
-            await this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL)
-            this.props.history.push('./dashboard')
-            window.location.reload(false)
+            await this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token)
+            // this.props.history.push('./dashboard')
+            // window.location.reload(false)
         } catch (err){
             alert(err.message)
         }
