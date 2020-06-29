@@ -67,8 +67,8 @@ class AddEntry extends React.Component {
         try {
             this.setState({ userId: localStorage.getItem('userId'), referencingURL:'', description: '', linkTitle: '', imgURL:'', isLoading:true})
             await this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token)
-            // this.props.history.push('./dashboard')
-            // window.location.reload(false)
+            this.props.history.push('./dashboard')
+            window.location.reload(false)
         } catch (err){
             alert(err.message)
         }

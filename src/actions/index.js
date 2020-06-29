@@ -46,7 +46,7 @@ export function register(email, password, firstName, lastName, profilePictureURL
             localStorage.setItem('email', res.data.email)
             localStorage.setItem('firstName', res.data.firstName)
             localStorage.setItem('profilePictureURL', res.data.profilePictureURL)
-            return axios.post('https://link-in-bio.herokuapp.com/l/new', {'userId':res.data.userId, 'backColor':'#ffffff','txtColor':'#000000', 'fontSelection':'Roboto',})
+            return axios.post('https://link-in-bio.herokuapp.com/l/new', {'userId':res.data.userId, 'backColor':'#ffffff','txtColor':'#000000', 'fontSelection':'Roboto',}, { headers: {authorization: res.data.token} })
             .then((res) => {
                 console.log('res after create list after register', res)
                 localStorage.setItem('listId', res.data.listId)
@@ -115,10 +115,11 @@ export function login(email, password){
     }
 }
 
-export function createList(userId, backColor, txtColor, fontSelection){
+export function createList(userId, backColor, txtColor, fontSelection, token){
     return (dispatch) => {
         dispatch({type: CREATE_LIST_START})
-        return axios.post('https://link-in-bio.herokuapp.com/l/new', { userId, backColor, txtColor, fontSelection })
+        const token = localStorage.getItem('token')
+        return axios.post('https://link-in-bio.herokuapp.com/l/new', { userId, backColor, txtColor, fontSelection }, { headers: {authorization: token} })
         .then((res) => {
             console.log('createList res', res.data)
             const savedReturnList = res.data
