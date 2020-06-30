@@ -42,6 +42,7 @@ export function register(email, password, firstName, lastName, profilePictureURL
             const payload = res.data
             console.log('registration payload', payload)
             localStorage.setItem('token', res.data.token)
+            const token = res.data.token
             localStorage.setItem('userId', res.data.userId)
             localStorage.setItem('email', res.data.email)
             localStorage.setItem('firstName', res.data.firstName)
@@ -66,7 +67,7 @@ export function register(email, password, firstName, lastName, profilePictureURL
                     imgURL:null,
                 }
                 const { userId, listId, referencingURL, description, linkTitle, imgURL } = standardEntry
-                return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL }, { headers: {authorization: res.data.token} })
+                return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL }, { headers: {authorization: token} })
                 .then((res) => {
                     console.log('create newList Std Entry', res.data)
                     const useThisURL = `https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
