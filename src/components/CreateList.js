@@ -22,8 +22,9 @@ class CreateList extends React.Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault()
+        const token = localStorage.getItem('token')
         const { userId, backColor, txtColor, fontSelection } = this.state
-        this.props.createList(userId, backColor, txtColor, fontSelection)
+        this.props.createList(userId, backColor, txtColor, fontSelection, token)
         this.setState({ userId:'', backColor:'', txtColor:'', fontSelection:'' })
     }
 

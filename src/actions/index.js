@@ -34,18 +34,20 @@ export const GET_LIST_ID_SUCCESS = 'GET_LIST_ID_SUCCESS'
 export const GET_LIST_ID_FAILED = 'GET_LIST_ID_FAILED'
 
 //Action Creators
-export function register(email, password, firstName, lastName){
+export function register(email, password, firstName, lastName, profilePictureURL, referredBy){
     return (dispatch) => {
         dispatch({type: REGISTER_USER_START})
-        return axios.post('https://link-in-bio.herokuapp.com/auth/register', { email, password, firstName, lastName } )
+        return axios.post('https://link-in-bio.herokuapp.com/auth/register', { email, password, firstName, lastName, profilePictureURL, referredBy} )
         .then((res) => {
             const payload = res.data
             console.log('registration payload', payload)
             localStorage.setItem('token', res.data.token)
+            const token = res.data.token
             localStorage.setItem('userId', res.data.userId)
             localStorage.setItem('email', res.data.email)
             localStorage.setItem('firstName', res.data.firstName)
-            return axios.post('https://link-in-bio.herokuapp.com/l/new', {'userId':res.data.userId, 'backColor':'#ffffff','txtColor':'#000000', 'fontSelection':'Roboto',})
+            localStorage.setItem('profilePictureURL', res.data.profilePictureURL)
+            return axios.post('https://link-in-bio.herokuapp.com/l/new', {'userId':res.data.userId, 'backColor':'#ffffff','txtColor':'#000000', 'fontSelection':'Roboto',}, { headers: {authorization: res.data.token} })
             .then((res) => {
                 console.log('res after create list after register', res)
                 localStorage.setItem('listId', res.data.listId)
@@ -53,11 +55,35 @@ export function register(email, password, firstName, lastName){
                 console.log('listId', res.data.listId)
                 console.log('typeof listId', typeof res.data['listId'])
                 // const payload2 = {...payload, listId: res.data.listId}
-                alert('User Registration Complete, Try Logging in now!')
-                dispatch({type:REGISTER_USER_SUCCESS, payload})
+                console.log('createList res', res.data)
+                const savedReturnList = res.data
+                localStorage.setItem('listId', res.data[res.data.length - 1].listId)
+                const standardEntry = {
+                    userId: localStorage.getItem('userId'),
+                    listId: res.data[res.data.length - 1].listId,
+                    referencingURL:'https://link-in.bio/dashboard',
+                    description:`Thank You for Choosing Link-In.bio/, Let's Get Started!  Click Add Entry to Add Your First Entry! You can delete this entry after you have added another one to your List.`,
+                    linkTitle:'Welcome to Your New List!',
+                    imgURL:null,
+                }
+                const { userId, listId, referencingURL, description, linkTitle, imgURL } = standardEntry
+                return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL }, { headers: {authorization: token} })
+                .then((res) => {
+                    console.log('create newList Std Entry', res.data)
+                    const useThisURL = `https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
+                    return axios.get(useThisURL)
+                    .then((res) => {
+                        console.log('statsRes createList', res.data)
+                        // alert('List Created Successfully, Try Returning to Your Dashboard and Refreshing the Page')
+                        // dispatch({type: ADD_ENTRY_SUCCESS, payload:res.data})
+                        // dispatch({type: CREATE_LIST_SUCCESS, payload: savedReturnList})
+                        alert('User Registration Complete, Try Logging in now!')
+                        dispatch({type:REGISTER_USER_SUCCESS, payload})
+                    })
+                })
+                // console.log('end of code')
                 // const newURL = 'https://link-in.bio/dashboard'
                 // window.location.href(newURL)
-                console.log('end of code')
             })
             .catch((err) => {
                 dispatch({type:REGISTER_USER_FAILED, payload:err})
@@ -90,13 +116,35 @@ export function login(email, password){
     }
 }
 
-export function createList(userId, backColor, txtColor, fontSelection){
+export function createList(userId, backColor, txtColor, fontSelection, token){
     return (dispatch) => {
         dispatch({type: CREATE_LIST_START})
-        return axios.post('https://link-in-bio.herokuapp.com/l/new', { userId, backColor, txtColor, fontSelection })
+        return axios.post('https://link-in-bio.herokuapp.com/l/new', { userId, backColor, txtColor, fontSelection }, { headers: {authorization: token} })
         .then((res) => {
-            localStorage.setItem('listId', res.data.listId)
-            dispatch({type: CREATE_LIST_SUCCESS, payload: res.data})
+            console.log('createList res', res.data)
+            const savedReturnList = res.data
+            localStorage.setItem('listId', res.data[res.data.length - 1].listId)
+            const standardEntry = {
+                userId: localStorage.getItem('userId'),
+                listId: res.data[res.data.length - 1].listId,
+                referencingURL:'https://link-in.bio/dashboard',
+                description:`Thank You for Choosing Link-In.bio/, Let's Get Started!  Click Add Entry to Add Your First Entry! You can delete this entry after you have added another one to your List.`,
+                linkTitle:'Welcome to Your New List!',
+                imgURL:null,
+            }
+            const { userId, listId, referencingURL, description, linkTitle, imgURL } = standardEntry
+            return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL }, { headers: {authorization: token}})
+            .then((res) => {
+                console.log('create newList Std Entry', res.data)
+                const useThisURL = `https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
+                return axios.get(useThisURL)
+                .then((res) => {
+                    console.log('statsRes createList', res.data)
+                    alert('List Created Successfully, Try Returning to Your Dashboard and Refreshing the Page')
+                    // dispatch({type: ADD_ENTRY_SUCCESS, payload:res.data})
+                    dispatch({type: CREATE_LIST_SUCCESS, payload: savedReturnList})
+                })
+            })
         })
         .catch((err) => {
             dispatch({type: CREATE_LIST_FAILED, payload:err})
@@ -104,14 +152,21 @@ export function createList(userId, backColor, txtColor, fontSelection){
     }
 }
 
-export function addEntry(userId, listId, referencingURL, description, linkTitle){
+export function addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token){
     return (dispatch) => {
         dispatch({type: ADD_ENTRY_START})
-        return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle })
+        return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL }, { headers: {authorization: token} })
         .then((res) => {
             console.log('addEntry res.data.message', res.data.message);
-            alert('Entry added successfully')
-            dispatch({type: ADD_ENTRY_SUCCESS, payload:res.data})
+            console.log('addEntry res.data', res.data);
+
+            const useThisURL = `https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
+            return axios.get(useThisURL)
+            .then((res) => {
+                console.log('statsRes', res)
+                alert('Entry added successfully, Try Returning to Your Dashboard and Refreshing the Page')
+                dispatch({type: ADD_ENTRY_SUCCESS, payload:res.data})
+            })
         })
         .catch((err) => {
             dispatch({type: ADD_ENTRY_FAILED, payload:err})
@@ -119,10 +174,10 @@ export function addEntry(userId, listId, referencingURL, description, linkTitle)
     }
 }
 
-export function editEntry(entryId, referencingURL, description, linkTitle){
+export function editEntry(entryId, referencingURL, description, linkTitle, imgURL){
     return (dispatch) => {
         dispatch({type: EDIT_ENTRY_START})
-        return axios.put('https://link-in-bio.herokuapp.com/e/replaceEntry', {entryId, referencingURL, description, linkTitle})
+        return axios.put('https://link-in-bio.herokuapp.com/e/replaceEntry', {entryId, referencingURL, description, linkTitle, imgURL})
         .then((res) => {
             console.log('editEntry res.data', res.data)
             alert('Entry Edited Successfully')

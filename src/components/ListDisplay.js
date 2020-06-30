@@ -12,9 +12,9 @@ class ListDisplay extends React.Component {
             isLoading:true,
             goodId:null,
             listId:null,
-            profilePicture:null,
+            profilePictureURL:null,
             displayingUserInfo:null,
-            userFirstLastName:null
+            userFirstLastName:null,
         }
     }
 
@@ -33,18 +33,23 @@ class ListDisplay extends React.Component {
                 console.log('data.data.listid', data.data[0].listId)
                 const listId = data.data[0].listId
                 const userFirstLastName = `${data.data[0].firstName} ${data.data[0].lastName[0].slice(0,1)}.`
-                // const profilePicture = `${data.data[0].profilePicture}`
+                const profilePictureURL = `${data.data[0].profilePictureURL}`
+                const displayingUserInfo = `${data.data[0].displayUserInfo}`
                 this.setState({listId:listId})
-                // this.setState({profilePicture:profilePicture})
+                this.setState({profilePictureURL:profilePictureURL})
                 this.setState({userFirstLastName:userFirstLastName})
+                this.setState({displayingUserInfo:displayingUserInfo})
                 console.log('this.state', this.state)
                 // console.log(this.state)
                 const links = (data.data.map((link) => {
                     // localStorage.setItem('listId', link.listId)
                     return (
 
-                            <div className='signup' key={link.linkTitle}>
-                                <a href={`http://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}`}>{link.linkTitle}</a>
+                            <div className='signup' key={link.entryId}>
+                                <a className='linkTitle' href={`http://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}`}>
+                                    <img className='image' src={link.imgURL} alt={link.imgURL} /> <br /> <br />
+                                    {link.linkTitle}
+                                </a> <br />
                                 <p>{link.description}</p>
                             </div>
 
@@ -63,29 +68,46 @@ class ListDisplay extends React.Component {
             })
     }
 
-    // componentDidMount(props) {
+   
 
+    // componentDidMount(props) {
+        
     // }
 
     render() {
         const isLoading = this.state.isLoading;
+        const displayingUserInfo = this.state.displayingUserInfo
+        const today = new Date();
+        const year = today.getFullYear();
             {if(isLoading===true){
                 // return <h1>Loading <img src={ellipsisGif} style={{width:"30px", paddingTop:"20px"}}/></h1>
-                return <img src={loadingGif} style={{width:"200px"}}/>
-            }else{
+                return <img src={loadingGif} alt="Loading..." style={{width:"200px"}}/>
+            } else if (displayingUserInfo === 'false'){
                 return (
                     <div className="linkList">
-                        <div>
+                        <section>
                             {this.state.links}
-                        </div>
-                        <div>
+                        </section>
+                        <h4>©{year} <a href="http://yhy.fi/">YHY Oy:</a> <a href="http://link-in.bio/">Link-In.bio/</a></h4>
+                    </div>
+
+                )
+            } else{
+                return (
+                    <div className="linkList">
+                        <header>
                             <h3>
-                                {this.state.profilePicture !== null ? <img src={this.state.profilePicture} alt={this.state.userFirstLastName} /> : <span></span> }
+                                <img src={this.state.profilePictureURL} alt={this.state.profilePictureURL} style={{width:"200px"}}/> 
+                                <br />
                                 {this.state.userFirstLastName}
                             </h3>
-                            <p>~List Creator~</p>
-                        </div>
-                        <h4>©2020 <a href="http://link-in.bio/">Link-In.bio/</a></h4>
+                            {/* <p>~List Creator~</p> */}
+                        </header>
+                        <br /><hr /><br />
+                        <section>
+                            {this.state.links}
+                        </section>
+                        <h4>©{year} <a href="http://yhy.fi/">YHY Oy:</a> <a href="http://link-in.bio/">Link-In.bio/</a></h4>
                     </div>
 
                 )

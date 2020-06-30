@@ -1,3 +1,7 @@
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 .App {
     text-align: center;
   }
@@ -38,7 +42,7 @@
     margin: 2.5% auto;
     padding: 7.5% 10%;
     width: 50%;
-    overflow: auto;
+
   }
   
   .signup img {
@@ -151,7 +155,7 @@
   }
 
   .addEntryText {
-    color:white;
+    color:black;
   }
 
   #g-recaptcha {
