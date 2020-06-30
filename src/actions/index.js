@@ -118,7 +118,6 @@ export function login(email, password){
 export function createList(userId, backColor, txtColor, fontSelection, token){
     return (dispatch) => {
         dispatch({type: CREATE_LIST_START})
-        const token = localStorage.getItem('token')
         return axios.post('https://link-in-bio.herokuapp.com/l/new', { userId, backColor, txtColor, fontSelection }, { headers: {authorization: token} })
         .then((res) => {
             console.log('createList res', res.data)
