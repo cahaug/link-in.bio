@@ -60,8 +60,7 @@ class AddEntry extends React.Component {
 
     handleSubmit = async (evt) => {
         evt.preventDefault()
-        // const { listId } = this.props.match.params.listId
-        const { userId, listId, referencingURL, description, linkTitle, imgURL, isLoading } = this.state
+        const { userId, listId, referencingURL, description, linkTitle, imgURL } = this.state
         const token = localStorage.getItem('token')
         console.log(userId, listId, referencingURL, description, linkTitle, imgURL)
         try {
@@ -79,7 +78,7 @@ class AddEntry extends React.Component {
         const { referencingURL, description, linkTitle, imgURL } = this.state
         const isLoading = this.state.isLoading;
         if(isLoading===true){
-            return <img src={loadingGif} style={{width:"200px"}}/>
+            return <img src={loadingGif} alt="Loading" style={{width:"200px"}}/>
         } else {
             return (
                 <div>

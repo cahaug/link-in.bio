@@ -10,7 +10,7 @@ import Dashboard from './components/Dashboard'
 import CreateList from './components/CreateList'
 import AddEntry from './components/AddEntry'
 import EntryEditor from './components/EntryEditor'
-import ListDisplay from './components/ListDisplay'
+// import ListDisplay from './components/ListDisplay'
 import ListDisplayHooks from './components/ListDisplayHooks'
 
 
