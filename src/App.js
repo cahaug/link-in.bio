@@ -12,6 +12,7 @@ import AddEntry from './components/AddEntry'
 import EntryEditor from './components/EntryEditor'
 // import ListDisplay from './components/ListDisplay'
 import ListDisplayHooks from './components/ListDisplayHooks'
+import RegisterHooks from './components/RegisterHooks'
 
 
 
@@ -29,6 +30,7 @@ class App extends React.Component {
         <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/register" render={props => <Register {...props} history={this.props.history}/>} />
+        <Route exact path="/registerHooks" component={RegisterHooks} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/failedlogin" component={FailedLogin} />
         {/* <Route exact path="/listdisplay" component={ListDisplay}/> */}
