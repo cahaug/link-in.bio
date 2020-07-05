@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import Recaptcha from 'react-recaptcha'
-import loadingGif from '../files/loading.gif'
-import ListDisplayHooks from './ListDisplayHooks'
+// import loadingGif from '../files/loading.gif'
 import * as Yup from "yup"
 
 function RegisterHooks(){
-    const [isLoading, setIsLoading] = useState(false)
+    // const [isLoading, setIsLoading] = useState(false)
 
     const [formData, setFormData] = useState({
         email: '',
@@ -116,8 +115,7 @@ function RegisterHooks(){
         const cast =  formSchema.cast(formData)
         await formSchema.isValid(cast)
         .then(function(valid) {
-            console.log('validity', valid)
-            if (valid==true){
+            if (valid===true){
                 alert(
                     'valid to submit'
                 )
