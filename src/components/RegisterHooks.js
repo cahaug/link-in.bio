@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Recaptcha from 'react-recaptcha'
 // import loadingGif from '../files/loading.gif'
 import * as Yup from "yup"
+import axios from 'axios'
 
 function RegisterHooks(){
     // const [isLoading, setIsLoading] = useState(false)
@@ -66,14 +67,14 @@ function RegisterHooks(){
             .oneOf([true, false], "Please refreshe the page")
     })
 
-    const recaptchaLoaded = (event) => {
+    const recaptchaLoaded = event => {
         setFormData({
             ...formData,
             isRecaptchaLoaded: true
         })
     }
 
-    const verifyCallback = (event) => {
+    const verifyCallback = event => {
         setFormData({
             ...formData,
             isVerified: true
@@ -113,12 +114,49 @@ function RegisterHooks(){
     const onFormSubmit = async event => {
         event.preventDefault()
         const cast =  formSchema.cast(formData)
+        console.log(cast)
         await formSchema.isValid(cast)
-        .then(function(valid) {
+        .then(async function(valid) {
             if (valid===true){
-                alert(
-                    'valid to submit'
-                )
+                try {
+                    // register the user
+                    const { email, password, firstName, lastName, profilePictureURL, referredBy} = cast
+                    const registrationReturn = await axios.post('https://link-in-bio.herokuapp.com/auth/register', { email, password, firstName, lastName, profilePictureURL, referredBy} )
+                    console.log('registration return', registrationReturn)
+                    localStorage.setItem('token', registrationReturn.data.token)
+                    const token = registrationReturn.data.token
+                    localStorage.setItem('userId', registrationReturn.data.userId)
+                    localStorage.setItem('email', registrationReturn.data.email)
+                    localStorage.setItem('firstName', registrationReturn.data.firstName)
+                    localStorage.setItem('profilePictureURL', registrationReturn.data.profilePictureURL)
+                    // create their first list
+                    const userListCreation = await axios.post('https://link-in-bio.herokuapp.com/l/new', {'userId':registrationReturn.data.userId, 'backColor':'#ffffff','txtColor':'#000000', 'fontSelection':'Roboto',}, { headers: {authorization: registrationReturn.data.token} })
+                    console.log('userListCreation return', userListCreation)
+                    localStorage.setItem('listId', userListCreation.data[userListCreation.data.length - 1].listId)
+                    // standard first entry data
+                    const standardEntry = {
+                        userId: localStorage.getItem('userId'),
+                        listId: userListCreation.data[userListCreation.data.length - 1].listId,
+                        referencingURL:'https://link-in.bio/dashboard',
+                        description:`Thank You for Choosing Link-In.bio/, Let's Get Started!  Click Add Entry to Add Your First Entry! You can delete this entry after you have added another one to your List.`,
+                        linkTitle:'Welcome to Your New List!',
+                        imgURL:null,
+                    }
+                    const { userId, listId, referencingURL, description, linkTitle, imgURL } = standardEntry
+                    // add the first entry to their list
+                    const entryCreationReturnData = await axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL }, { headers: {authorization: token} })
+                    console.log('entryCreationReturnData', entryCreationReturnData)
+                    // give the link its entry its first view
+                    const useThisURL = `https://link-in-bio.herokuapp.com/s/?eid=${entryCreationReturnData.data.result[0].entryId}&ref=${entryCreationReturnData.data.result[0].referencingURL}&red=f`
+                    const entryViewReturnData = await axios.get(useThisURL)
+                    console.log('entryViewReturnData', entryViewReturnData)
+                    
+                    // need to push to dashboard, localstorage reflects all correct info so far. :)
+                    alert('processes complete!')
+
+                } catch {
+                    alert('oh shit Form Submission Failed')
+                }
             }
             else {
                 alert(
