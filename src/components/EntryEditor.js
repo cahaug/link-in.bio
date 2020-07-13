@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { editEntry } from '../actions/index'
-import { withRouter, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 class EntryEditor extends React.Component {
@@ -52,7 +52,7 @@ class EntryEditor extends React.Component {
     
 
     render(props) {
-        const { entryId, referencingURL, description, linkTitle, imgURL } = this.state
+        const { referencingURL, description, linkTitle, imgURL } = this.state
         return (
             <div>
                 <h1 className="newpickupheader">Edit an Entry</h1>
