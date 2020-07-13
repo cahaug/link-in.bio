@@ -110,6 +110,13 @@ function RegisterHooks(){
         })
     }
 
+    const onSelectChange = event => {
+        event.preventDefault()
+        setFormData({
+            ...formData,
+            referredBy: event.target.value
+        })
+    }
 
     const onFormSubmit = async event => {
         event.preventDefault()
@@ -203,7 +210,7 @@ function RegisterHooks(){
             </label>
             <label>
                 Where Did You Hear About Link-In.Bio/ ? 
-                <select>
+                <select onChange={onSelectChange}>
                     <option value="from_Cale">From Cale</option>
                     <option value="by_chance">By Chance</option>
                     <option value="influencer1">Influencer #1 Name</option>
