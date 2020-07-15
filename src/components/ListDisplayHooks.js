@@ -59,14 +59,15 @@ function ListDisplayHooks(match) {
     } else {
         return (
             <div className="linkList">
-                <header>
+                <header className="linkListDisplayHeader">
+                    <hr/><br />
                     <h3>
                         <img src={profilePictureURL} alt={profilePictureURL} style={{width:"200px"}}/> 
                         <br />
                         {userFirstNameLastName}
                     </h3>
+                <br /><hr />
                 </header>
-                <br /><hr /><br />
                 <section>
                     {links}
                 </section>

@@ -170,6 +170,17 @@
     justify-content: center;
   }
 
+  .linkList {
+    background-color: white;
+  }
+
+  .linkListDisplayHeader{
+    position:-webkit-sticky;
+    position:sticky;
+    top:0;
+    background-color: whitesmoke;
+  }
+
   @media only screen and (max-width: 415px) {
     
     .linkList {
