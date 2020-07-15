@@ -60,7 +60,14 @@ class Register extends React.Component {
         // console.log(this.state.isVerified)
     }
 
-    handleSubmit = async (evt) => {
+    handleSubmit = event => {
+        event.preventDefault()
+        alert('Sorry, We are not accepting new users at this moment, check back soon.')
+    }
+
+    // renamed fn so no registrations happen rn
+
+    RENAMEDhandleSubmit = async (evt) => {
         evt.preventDefault()
         if(this.state.isVerified){
             // alert('success')
