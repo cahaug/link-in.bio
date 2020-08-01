@@ -48,7 +48,7 @@ header h1 {
   font-size: 1.2em;
 }
 main {
-  width: 98%;
+  width: 100%;
   max-width: 1500px;
   overflow-y: scroll;
   padding-top: 2.75vh;
@@ -69,6 +69,7 @@ main p {
   margin: 3vh 0;
   display: block;
   line-height: 1.1;
+  white-space: pre-wrap;
 }
 main img {
   width: 65%;
@@ -85,6 +86,7 @@ main div {
   flex: 1 1 450px;
   display: flex;
   flex-direction: column;
+  padding: 1.5vh;
 }
 footer {
   padding-top: 2vh;
