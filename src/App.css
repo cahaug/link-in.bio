@@ -45,7 +45,6 @@ header h1 {
 main {
   width: 100%;
   max-width: 1500px;
-  overflow-x: hidden;
   overflow-y: scroll;
   margin: 0 auto;
   margin-top: 2.75vh;
@@ -55,6 +54,7 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  scroll-behavior: smooth;
 }
 main a {
   font-family: 'Mulish', sans-serif;
@@ -67,7 +67,7 @@ main p {
   line-height: 1.1;
 }
 main img {
-  width: 80%;
+  width: 75%;
   padding: 4vh;
   height: 60%;
   min-height: 35px;
