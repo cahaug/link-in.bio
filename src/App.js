@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+// import './App.css';
 import { Route, Switch } from 'react-router-dom'
 import PrivateRoute from './components/PrivateRoute'
 import LandingPage from './components/LandingPage'

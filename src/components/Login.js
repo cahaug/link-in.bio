@@ -2,6 +2,7 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { login } from '../actions/index'
+import '../App2.css';
 
 class Login extends React.Component {
     constructor() {

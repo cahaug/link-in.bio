@@ -1,0 +1,122 @@
+a:link {
+    color:black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    color:black;
+    text-decoration: none;
+}
+
+a:active {
+    color:black;
+    text-decoration: none;
+}
+
+a:visited {
+    color:black;
+    text-decoration: none;
+}
+
+
+.App {
+    height:100vh;
+    margin:0 auto;
+    text-align: center;
+}
+
+.linkList {
+    display: grid;
+    height:100vh;
+    grid-template-rows: auto 1fr auto;
+}
+
+header {
+    overflow: hidden;
+    font-family: 'Mulish', sans-serif;
+    padding-top:2.5vh;
+    font-weight: 900;
+    max-height: 25vh;
+    height:100%;
+    border-bottom:.25vh solid black;
+    background-color: whitesmoke;
+    
+}
+
+header img {
+    max-height:10vh;
+}
+
+header h1 {
+    margin-top:1.5%;
+    font-size:1.2em;
+}
+
+main{
+    width:100%;
+    max-width:1500px;
+    overflow-x: hidden;
+    overflow-y:scroll;
+    margin:0 auto;
+    margin-top:2.75vh;
+    font-family: 'Mulish', sans-serif;
+    font-weight:400;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+main a {
+    font-family: 'Mulish', sans-serif;
+    font-weight: 700;
+    display:block;
+}
+
+main p {
+    // margin-top:5vh;
+    margin: 4vh 3vh 3vh;
+    display:block;
+    line-height:1.1;
+}
+
+main img {
+    width:80%;
+    padding:4vh;
+    height:60%;
+    min-height:35px;
+    min-width:35px;
+}
+
+main div {
+    border:2px solid black;
+    width:80%;
+    // margin:3vh auto;
+    margin:3vh;
+    border-radius: 1vh;
+    flex: 1 1 450px;
+    display:flex;
+    flex-direction: column;
+}
+
+
+footer {
+    padding: 2vh;
+    overflow:hidden;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 900;
+    border-top:.25vh solid black;
+}
+
+.footerLink {
+    font-weight:900;
+}
+
+@media screen and (max-height: 490px) {
+    header { overflow: scroll; } /* Or change the height or whatever */ 
+}
+
+@media screen and (max-width: 199px) {
+    .linkSquare { overflow: scroll; } /* Or change the height or whatever */ 
+}

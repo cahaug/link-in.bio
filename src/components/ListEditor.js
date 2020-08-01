@@ -59,6 +59,7 @@ class ListDisplay extends React.Component {
                             <div>
                                 <hr />
                                 <h4>List at <a href={`https://link-in.bio/${link.listId}`}>https://link-in.bio/{link.listId}</a></h4>
+                                <br />
                                 <Link to={`/addEntry/${link.listId}`}><span className="abutton">Add Entry</span></Link>
                                 <div className='signup' key={link.entryId}>
                                     <a className='linkTitle' href={`${link.referencingURL}`}>

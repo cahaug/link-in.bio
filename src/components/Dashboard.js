@@ -6,6 +6,7 @@ import CreateList from './CreateList'
 // import GetListId from './GetListId'
 import ListEditor from './ListEditor'
 import axios from 'axios'
+import '../App2.css';
 
 
 
@@ -64,6 +65,12 @@ class Dashboard extends React.Component {
         const year = today.getFullYear();
         return (
             <div>
+                <br />
+                <Link onClick={this.logout} to='/'><span className="abutton">Log Out</span></Link>            
+                <br /><br />
+                <h4>©{new Date().getFullYear()} <a href="http://yhy.fi/">YHY Oy:</a> <a href="http://link-in.bio/">Link-In.bio/</a></h4>
+                <br />
+                
                 <h1>Dashboard</h1>
                 <p>Welcome {localStorage.getItem('firstName')}!</p>
                 <p>Your User Id is {localStorage.getItem('userId')}</p>
@@ -72,6 +79,7 @@ class Dashboard extends React.Component {
                 <p>Your List Views is {this.state.isLoadingListViews ? <span> Loading...</span> : this.state.listViews}</p>
                 <p>To get started, create a list, then add your entries!</p>
                 <p>Your LinkList will be hosted at: <a alt="Your LinkList" href={`http://link-in.bio/${localStorage.getItem('listId')}`}>http://link-in.bio/{localStorage.getItem('listId')}</a></p>
+                <br />
                 <a href="#neworder" className="abutton" role="button">Create a New List</a>
                 <div className="modal" id="neworder">
                     <div className="modal-container">
@@ -80,7 +88,6 @@ class Dashboard extends React.Component {
                         <a href="#" className="abutton2" role="button">Close</a>
                     </div>
                 </div>
-                <br />
                 <br />
                 {/* <a href="#neworder2" className="abutton" role="button">Get List Id</a>
                 <div className="modal" id="neworder2">
@@ -99,13 +106,11 @@ class Dashboard extends React.Component {
                         {/* <a href="#" className="abutton2" role="button">Close</a>
                     </div>
                 </div> */}
+                
                 <div>
                     <ListEditor />
                 </div>
-                <br /><br />
                 {/* <button type="button" className="abutton">Log Out</button> */}
-                <Link onClick={this.logout} to='/'><span className="abutton">Log Out</span></Link>            
-                <h4>©{year} <a href="http://yhy.fi/">YHY Oy:</a> <a href="http://link-in.bio/">Link-In.bio/</a></h4>
                 {/* <MyRequestsBusiness /> */}
             </div>
         )
