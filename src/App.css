@@ -45,10 +45,10 @@ header h1 {
   font-size: 1.2em;
 }
 main {
+  width: 98%;
   max-width: 1500px;
   overflow-y: scroll;
-  margin: 0 auto;
-  margin-top: 2.75vh;
+  padding-top: 2.75vh;
   font-family: 'Mulish', sans-serif;
   font-weight: 400;
   display: flex;
