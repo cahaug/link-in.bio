@@ -12,6 +12,15 @@ function ListDisplayHooks(match) {
     const [profilePictureURL, setProfilePictureURL] = useState()
     const [userFirstNameLastName, setUserFirstNameLastName] = useState()
     const [displayingUserInfo, setDisplayingUserInfo] = useState()
+    const [darkMode, setDarkMode] = useState(false)
+
+    const applyDarkMode = () => {
+        // var element = document.body;
+        var element = document.getElementsByClassName('App')
+        console.log('getelementsbyclassname', document.getElementsByClassName('App'))
+        element[0].classList.toggle("darkMode")
+        setDarkMode(!darkMode) 
+    }
 
     useEffect(() => {
         const useThisURL = `https://link-in-bio.herokuapp.com${ourURL}`
@@ -53,7 +62,7 @@ function ListDisplayHooks(match) {
                     {links}
                 </main>
                 <footer>
-                    <h4>©{new Date().getFullYear()} <a href="http://yhy.fi/">YHY Oy:</a> <a href="http://link-in.bio/">Link-In.bio/</a></h4>
+                    <h4>{darkMode ? <span onClick={applyDarkMode}>☀️</span>:<span>🌙</span>} ©{new Date().getFullYear()} <a href="http://yhy.fi/">YHY Oy:</a> <a href="http://link-in.bio/">Link-In.bio/</a></h4>
                 </footer>
             </div>
 
@@ -76,7 +85,7 @@ function ListDisplayHooks(match) {
                     {links}
                 </main>
                 <footer>
-                    <h4>©{new Date().getFullYear()} <a href="http://yhy.fi/"><span className="footerLink">YHY Oy:</span></a> <a href="http://link-in.bio/"><span className="footerLink">Link-in.Bio/</span></a></h4>
+                    <h4>{darkMode ? <span onClick={applyDarkMode}>☀️</span>:<span onClick={applyDarkMode}>🌙</span>} ©{new Date().getFullYear()} <a href="http://yhy.fi/"><span className="footerLink">YHY Oy:</span></a> <a href="http://link-in.bio/"><span className="footerLink">Link-in.Bio/</span></a></h4>
                 </footer>
             </div>
 

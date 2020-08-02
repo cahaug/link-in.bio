@@ -3,7 +3,7 @@ body {
 }
 a:link {
   color: black;
-  font-weight: bold;
+  font-weight: 700;
   text-decoration: none;
 }
 a:hover {
@@ -16,7 +16,7 @@ a:active {
   text-decoration: underline;
 }
 a:visited {
-  color: black;
+  color: lightslategray;
   text-decoration: underline;
 }
 .App {
@@ -99,6 +99,50 @@ footer {
 }
 .footerLink {
   font-weight: 900;
+}
+.darkMode {
+  background-color: black;
+}
+.darkMode a:link {
+  color: white;
+}
+.darkMode a:hover {
+  color: white;
+}
+.darkMode a:active {
+  color: white;
+}
+.darkMode a:visited {
+  color: lightslategray;
+}
+.darkMode header {
+  border-bottom: 0.25vh solid grey;
+  background-color: black;
+  color: white;
+}
+.darkMode header img {
+  border-radius: 1vh;
+  padding: 0.25vh;
+  border: 0.25vh solid grey;
+}
+.darkMode main div {
+  border: 2px solid grey;
+  background-color: black;
+  color: white;
+}
+.darkMode main div p {
+  color: grey;
+}
+.darkMode main div img {
+  background-color: dimgrey;
+  border-radius: 1vh;
+}
+.darkMode .linkList {
+  background-color: black;
+}
+.darkMode footer {
+  color: white;
+  border-top: 0.25vh solid grey;
 }
 @media screen and (max-height: 490px) {
   header {

@@ -4,7 +4,7 @@ body {
 
 a:link {
     color:black;
-    font-weight: bold;
+    font-weight: 700;
     text-decoration: none;
 }
 
@@ -20,7 +20,8 @@ a:active {
 }
 
 a:visited {
-    color:black;
+    // color:black;
+    color:lightslategray;
     text-decoration: underline;
 }
 
@@ -123,6 +124,67 @@ footer {
 .footerLink {
     font-weight:900;
 }
+
+.darkMode {
+    // body .App {
+    background-color: black;
+
+    a:link {
+        color:white;
+    }
+    
+    a:hover {
+        color:white;
+
+    }
+    
+    a:active {
+        color:white;
+    }
+    
+    a:visited {
+        color:lightslategray;
+    }
+
+    header {
+        border-bottom:.25vh solid grey;
+        background-color: black;
+        color:white;
+    }
+
+    header img {
+        // background-color: dimgray;
+        border-radius: 1vh;
+        padding:.25vh;
+        border:.25vh solid grey;
+    }
+
+    main div {
+        border:2px solid grey;
+        background-color: black;
+        color:white;
+    }
+
+    main div p {
+        color:grey;
+    }
+
+    main div img {
+        background-color:dimgrey;
+        border-radius: 1vh;
+    }
+
+    .linkList {
+        background-color: black;
+    }
+
+    footer {
+        color:white;
+        border-top:.25vh solid grey;
+    }
+
+}
+// }
 
 @media screen and (max-height: 490px) {
     header { overflow: scroll; } /* Or change the height or whatever */ 
