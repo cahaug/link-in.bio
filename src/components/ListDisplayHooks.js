@@ -17,7 +17,6 @@ function ListDisplayHooks(match) {
     const applyDarkMode = () => {
         // var element = document.body;
         var element = document.getElementsByClassName('App')
-        console.log('getelementsbyclassname', document.getElementsByClassName('App'))
         element[0].classList.toggle("darkMode")
         setDarkMode(!darkMode) 
     }
@@ -47,6 +46,15 @@ function ListDisplayHooks(match) {
                 )
             }))
             setLinks(thelinks)
+            // mobile vh/innerHeight fix to display footer onload across all mobile browsers
+            const domComponents = document.getElementsByClassName('linkList')
+            domComponents[0].style.height = `${window.innerHeight}px`;
+            // We listen to the resize event
+            window.addEventListener("resize", () => {
+            // We execute the same script as before
+            domComponents[0].style.height = `${window.innerHeight}px`;
+            });
+
         })
         .catch(err => {console.log('err', err); alert('that site does not exist, yet. or check your connection.')})
     }, [])
@@ -87,6 +95,7 @@ function ListDisplayHooks(match) {
                 <footer>
                     <h4>{darkMode ? <span onClick={applyDarkMode}>☀️</span>:<span onClick={applyDarkMode}>🌙</span>} ©{new Date().getFullYear()} <a href="http://yhy.fi/"><span className="footerLink">YHY Oy:</span></a> <a href="http://link-in.bio/"><span className="footerLink">Link-in.Bio/</span></a></h4>
                 </footer>
+                
             </div>
 
         )
