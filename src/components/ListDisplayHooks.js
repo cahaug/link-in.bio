@@ -46,32 +46,13 @@ function ListDisplayHooks(match) {
                 )
             }))
             setLinks(thelinks)
+            // mobile vh/innerHeight fix to display footer onload across all mobile browsers
             const domComponents = document.getElementsByClassName('linkList')
-            console.log('dc ',domComponents[0].style)
             domComponents[0].style.height = `${window.innerHeight}px`;
-            console.log('dc ',domComponents[0].style)
-            // // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-            // let vh = window.innerHeight;
-            // console.log('script fired', window.innerHeight)
-            // console.log(document.querySelectorAll('App'))
-            // // document.body.style.setProperty("height", `${window.innerHeight}px`);
-            // document.getElementsByClassName('linkList').setAttribute("height", `${window.innerHeight}px`);
-            // document.querySelectorAll('App').setAttribute("max-height", `${window.innerHeight}px`);
-            // console.log('linklist set at innerHeight', window.innerHeight)
-            // let linkListdoc = document.getElementsByClassName('linkList')
-            // console.log(linkListdoc)
-            // Then we set the value in the --vh custom property to the root of the document
             // We listen to the resize event
             window.addEventListener("resize", () => {
             // We execute the same script as before
-            console.log('event lister triggered', window)
-            console.log('triggered window.innerHeight', window.innerHeight)
             domComponents[0].style.height = `${window.innerHeight}px`;
-            console.log('dc ',domComponents[0].style)
-            // document.body.style.setAttribute("height", `${window.innerHeight}px`);
-            // document.getElementsByClassName('linkList').setAttribute("height", `${window.innerHeight}px`);
-            // document.getElementsByClassName('linkList').setAttribute("height", `${window.innerHeight}px`);
-            // console.log(document)
             });
 
         })
