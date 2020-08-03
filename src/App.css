@@ -1,6 +1,10 @@
+html {
+  height: -webkit-fill-available;
+}
 body {
   width: 100%;
-  position: fixed;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 a:link {
   color: black;
@@ -25,7 +29,6 @@ a:visited {
   width: 100%;
   margin: 0 auto;
   text-align: center;
-  position: fixed;
 }
 .linkList {
   display: grid;
