@@ -36,24 +36,7 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script>
-      // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-      let vh = window.innerHeight;
-      console.log('script fired')
-      document.body.style.setProperty("height", `${window.innerHeight}px`);
-
-      console.log(document.getElementsByClassName('App'))
-      // Then we set the value in the --vh custom property to the root of the document
-      // We listen to the resize event
-      window.addEventListener("resize", () => {
-      // We execute the same script as before
-      console.log('script doing its shit', window)
-      console.log('window.innerHeight', window.innerHeight)
-      console.log('vh', vh)
-      document.body.style.setProperty("height", `${window.innerHeight}px`);
-      console.log(document)
-      });
-    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;900&display=swap" rel="stylesheet">
     <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=expli" async defer></script> 
   </body>

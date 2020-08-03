@@ -47,6 +47,11 @@ function ListDisplayHooks(match) {
                 )
             }))
             setLinks(thelinks)
+            window.onresize = function() {
+                document.body.height = window.innerHeight;
+            }
+            window.onresize();
+
         })
         .catch(err => {console.log('err', err); alert('that site does not exist, yet. or check your connection.')})
     }, [])
@@ -87,6 +92,7 @@ function ListDisplayHooks(match) {
                 <footer>
                     <h4>{darkMode ? <span onClick={applyDarkMode}>☀️</span>:<span onClick={applyDarkMode}>🌙</span>} ©{new Date().getFullYear()} <a href="http://yhy.fi/"><span className="footerLink">YHY Oy:</span></a> <a href="http://link-in.bio/"><span className="footerLink">Link-in.Bio/</span></a></h4>
                 </footer>
+                
             </div>
 
         )
