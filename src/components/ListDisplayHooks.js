@@ -24,13 +24,15 @@ function ListDisplayHooks(match) {
     useEffect(() => {
         const useThisURL = `https://link-in-bio.herokuapp.com${ourURL}`
         axios.get(useThisURL)
-        .then(res => {
+        .then(async res => {
             const userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
             const profilePictureURL = `${res.data[0].profilePictureURL}`
             const displayingUserInfo = `${res.data[0].displayUserInfo}`
             setProfilePictureURL(profilePictureURL)
             setUserFirstNameLastName(userFirstLastName)
             setDisplayingUserInfo(displayingUserInfo)
+            const incrementedListViews = axios.get(`https://link-in-bio.herokuapp.com/s/ili/${res.data[0].listId}`)
+            // console.log(incrementedListViews)
             setIsLoading(false);
             const thelinks = (res.data.map((link) => {
                 return (
