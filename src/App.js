@@ -13,6 +13,8 @@ import EntryEditor from './components/EntryEditor'
 // import ListDisplay from './components/ListDisplay'
 import ListDisplayHooks from './components/ListDisplayHooks'
 import RegisterHooks from './components/RegisterHooks'
+import ResetPassword from './components/ResetPassword'
+import ResetPWCode from './components/ResetPWCode'
 
 
 
@@ -33,6 +35,8 @@ class App extends React.Component {
         <Route exact path="/registerHooks" component={RegisterHooks} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/failedlogin" component={FailedLogin} />
+        <Route exact path="/resetPassword" component={ResetPassword} />
+        <Route exact path="/resetPWCode" component={ResetPWCode} />
         {/* <Route exact path="/listdisplay" component={ListDisplay}/> */}
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/createlist" component={CreateList} />
