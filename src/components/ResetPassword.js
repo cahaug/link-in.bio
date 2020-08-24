@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import * as Yup from 'yup'
 import axios from 'axios'
+import loadingGif from '../files/loading.gif'
+
 
 function ResetPassword(){
     const [formData, setFormData] = useState({
@@ -14,6 +17,8 @@ function ResetPassword(){
     const [messageBack, setMessageBack] = useState({
         message:'',
     })
+    
+    const [isWaiting, setIsWaiting] = useState(false)
 
     const formSchema = Yup.object().shape({
         email: Yup
@@ -48,6 +53,7 @@ function ResetPassword(){
     const onInputChange = event => {
         event.persist()
         validate(event)
+        setMessageBack({message:''})
         setFormData({
             ...formData,
             [event.target.name]:event.target.value,
@@ -56,23 +62,36 @@ function ResetPassword(){
 
     const onFormSubmit = async event => {
         event.preventDefault()
+        setIsWaiting(true)
         const cast = formSchema.cast(formData)
         console.log('cast',cast)
         await formSchema.isValid(cast)
         .then(async function(valid) {
             if(valid===true){
-                alert('valid email good to send '+ formData.email)
+                console.log('valid formdata good to send '+ formData.email)
                 try {
-                    alert('message sent')
+                    const requestResponse = await axios.post('https://link-in-bio.herokuapp.com/mailer/resetPW', {email:formData.email})
+                    console.log('requestResponse',requestResponse)
+                    if (requestResponse.data.hasOwnProperty('infoResponse')){
+                        setMessageBack({message:`All Good: ${requestResponse.data.message}`})
+                        setIsWaiting(false)
+                    } else {
+                        setIsWaiting(false)
+                        setMessageBack({message:`There was an issue: ${requestResponse.data.message}`})
+                    }
                 } catch (err) {
+                    setIsWaiting(false)
+                    setMessageBack({message:`Double Check that you Entered Your Email Correctly.`})
                     console.log('inner err', err)
                 }
             } else {
+                setIsWaiting(false)
                 alert('error in form submission, try again')
             }
         })
         .catch(err => {
             console.log('err', err)
+            setIsWaiting(false)
             alert('shit fucked up', err)
         })
     }
@@ -83,7 +102,9 @@ function ResetPassword(){
                 <h1>Link-in.Bio/</h1>
                 <h2>Password Reset Wizard</h2>
                 <h3>Request a code here:</h3>
-                {/* <img wizard image /> */}
+                <br/>
+                <span className="wizard" style={{height:"200px"}}>🧙</span>
+                <br/>            
             </div>
             <div>
                 <form id="passwordResetForm" onSubmit={onFormSubmit}>
@@ -97,8 +118,17 @@ function ResetPassword(){
                         <input className="abutton" type="submit" />
                     </label>
                 </form>
+                <br/>
+                <h3>{messageBack.message !== '' ? 'The Wizard Says: '+  messageBack.message : null}</h3>
+                <div>{isWaiting ? <img src={loadingGif} alt="Loading..." style={{width:"200px"}}/> : null}</div>
             </div>
-            
+            <br />
+            <div>
+                <Link to='/resetpwcode'><span className="abutton">Enter Reset Code</span></Link>
+                <br/> <br />
+                <Link to='/login'><span className="abutton">Return to Login</span></Link>
+            </div>
+
         </div>
     )
 }
