@@ -44,7 +44,7 @@ function RegisterHooks(){
             .string()
             .trim()
             .required("Please Enter your First Name")
-            .min(2, "First name is tofo short")
+            .min(2, "First name is too short")
             .max(20, "First name is longer than 20 characters"),
         lastName: Yup
             .string()
