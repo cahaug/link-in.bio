@@ -8,6 +8,7 @@ import ListEditor from './ListEditor'
 import axios from 'axios'
 import '../App2.css';
 
+const QRCode = require('qrcode.react')
 
 
 class Dashboard extends React.Component {
@@ -80,14 +81,20 @@ class Dashboard extends React.Component {
                 <p>To get started, create a list, then add your entries!</p>
                 <p>Your LinkList will be hosted at: <a alt="Your LinkList" href={`http://link-in.bio/${localStorage.getItem('listId')}`}>http://link-in.bio/{localStorage.getItem('listId')}</a></p>
                 <br />
-                <a href="#neworder" className="abutton" role="button">Create a New List</a>
+                <p>Your QRCode is:</p>
+                <br />
+                <QRCode value={`http://link-in.bio/${localStorage.getItem('listId')}`} />
+                <br />
+                
+                {/* <a href="#neworder" className="abutton" role="button">Create a New List</a>
                 <div className="modal" id="neworder">
                     <div className="modal-container">
                         <CreateList />
-                        {/* eslint-disable-next-line */}
+                        eslint-disable-next-line
                         <a href="#" className="abutton2" role="button">Close</a>
                     </div>
-                </div>
+                </div> */}
+
                 <br />
                 {/* <a href="#neworder2" className="abutton" role="button">Get List Id</a>
                 <div className="modal" id="neworder2">
