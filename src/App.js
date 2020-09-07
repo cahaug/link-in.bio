@@ -15,7 +15,7 @@ import ListDisplayHooks from './components/ListDisplayHooks'
 import RegisterHooks from './components/RegisterHooks'
 import ResetPassword from './components/ResetPassword'
 import ResetPWCode from './components/ResetPWCode'
-
+import PaymentSuccess from './components/PaymentSuccess'
 
 
 class App extends React.Component {
@@ -40,6 +40,7 @@ class App extends React.Component {
         {/* <Route exact path="/listdisplay" component={ListDisplay}/> */}
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/createlist" component={CreateList} />
+        <Route path={`/success`} render={props => <PaymentSuccess {...props} />} />
         <Route path={`/addEntry/:listId`} render={props => <AddEntry {...props}/>} />
         <Route path={`/editEntry/:entryId`} render={props => <EntryEditor {...props} />} />
         {/* <Route path="/:id" render={props => <ListDisplay {...props}/>} /> */}
