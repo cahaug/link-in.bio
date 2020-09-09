@@ -34,6 +34,8 @@ function ListDisplayHooks(match) {
             const incrementedListViews = axios.get(`https://link-in-bio.herokuapp.com/s/ili/${res.data[0].listId}`)
             // console.log(incrementedListViews)
             setIsLoading(false);
+            var element0 = document.getElementsByClassName('App')
+            element0[0].classList.toggle("darkMode")
             const thelinks = (res.data.map((link) => {
                 return (
 
