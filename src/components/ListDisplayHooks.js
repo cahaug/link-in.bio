@@ -48,14 +48,14 @@ function ListDisplayHooks(match) {
                 )
             }))
             setLinks(thelinks)
-            // mobile vh/innerHeight fix to display footer onload across all mobile browsers
-            const domComponents = document.getElementsByClassName('linkList')
-            domComponents[0].style.height = `${window.innerHeight}px`;
-            // We listen to the resize event
-            window.addEventListener("resize", () => {
-            // We execute the same script as before
-            domComponents[0].style.height = `${window.innerHeight}px`;
-            });
+            // // mobile vh/innerHeight fix to display footer onload across all mobile browsers
+            // const domComponents = document.getElementsByClassName('linkList')
+            // domComponents[0].style.height = `${window.innerHeight}px`;
+            // // We listen to the resize event
+            // window.addEventListener("resize", () => {
+            // // We execute the same script as before
+            // domComponents[0].style.height = `${window.innerHeight}px`;
+            // });
 
         })
         .catch(err => {console.log('err', err); alert('that site does not exist, yet. or check your connection.')})

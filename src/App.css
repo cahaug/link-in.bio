@@ -157,9 +157,6 @@ footer span {
   /* Or change the height or whatever */
 }
 @media screen and (max-width: 199px) {
-  .App {
-    max-height: 100vh;
-  }
   .linkSquare {
     overflow: scroll;
   }
