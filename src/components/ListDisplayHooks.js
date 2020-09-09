@@ -12,7 +12,7 @@ function ListDisplayHooks(match) {
     const [profilePictureURL, setProfilePictureURL] = useState()
     const [userFirstNameLastName, setUserFirstNameLastName] = useState()
     const [displayingUserInfo, setDisplayingUserInfo] = useState()
-    const [darkMode, setDarkMode] = useState(false)
+    const [darkMode, setDarkMode] = useState(true)
 
     const applyDarkMode = () => {
         // var element = document.body;

@@ -157,6 +157,9 @@ footer span {
   /* Or change the height or whatever */
 }
 @media screen and (max-width: 199px) {
+  header img {
+    display: hidden;
+  }
   .linkSquare {
     overflow: scroll;
   }
