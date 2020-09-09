@@ -158,7 +158,7 @@ footer span {
 }
 @media screen and (max-width: 376px) {
   header img {
-    display: hidden;
+    display: none;
   }
   .linkSquare {
     overflow: scroll;
