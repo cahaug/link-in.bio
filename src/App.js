@@ -15,7 +15,7 @@ import ListDisplayHooks from './components/ListDisplayHooks'
 import RegisterHooks from './components/RegisterHooks'
 import ResetPassword from './components/ResetPassword'
 import ResetPWCode from './components/ResetPWCode'
-import PaymentSuccess from './components/PaymentSuccess'
+// import PaymentSuccess from './components/PaymentSuccess'
 // import PaymentPage from './components/PaymentPage'
 
 
