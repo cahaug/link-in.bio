@@ -161,6 +161,9 @@ footer span {
     max-height: 25vh;
     height: auto;
   }
+  header img {
+    max-height: 7vh;
+  }
   .linkSquare {
     overflow: scroll;
   }
