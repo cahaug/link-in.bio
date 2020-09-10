@@ -157,8 +157,8 @@ footer span {
   /* Or change the height or whatever */
 }
 @media screen and (max-width: 376px) {
-  body {
-    max-height: 98vh;
+  header {
+    max-height: 20vh;
   }
   .linkSquare {
     overflow: scroll;
