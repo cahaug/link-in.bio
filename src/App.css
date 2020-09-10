@@ -158,8 +158,7 @@ footer span {
 }
 @media screen and (max-width: 376px) {
   header {
-    max-height: 25vh;
-    height: auto;
+    max-height: 17.5vh;
   }
   header img {
     max-height: 7vh;
