@@ -158,11 +158,12 @@ footer span {
 }
 @media screen and (max-width: 376px) {
   body {
-    height: 95%;
+    padding-top: 5vh;
+    height: 95vh;
     overflow: hidden;
   }
   .linkList {
-    height: 70vh;
+    height: 60vh;
   }
   header {
     max-height: 25vh;
