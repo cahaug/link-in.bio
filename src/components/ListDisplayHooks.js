@@ -58,7 +58,7 @@ function ListDisplayHooks(match) {
             // We execute the same script as before
             domComponents[0].style.height = `${window.innerHeight}px`;
             });
-            window.scrollTo(0, window.innerHeight)
+            window.scrollTo(0, window.outerHeight)
 
         })
         .catch(err => {console.log('err', err); alert('that site does not exist, yet. or check your connection.')})
