@@ -162,9 +162,6 @@ footer span {
     height: 95vh;
     overflow: hidden;
   }
-  .linkList {
-    height: 60vh;
-  }
   header {
     max-height: 25vh;
     height: auto;
@@ -179,6 +176,7 @@ footer span {
     max-height: 5vh;
   }
   main {
+    height: 70%;
     padding-top: 0.5vh;
   }
   .linkSquare {
