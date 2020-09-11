@@ -157,6 +157,9 @@ footer span {
   /* Or change the height or whatever */
 }
 @media screen and (max-width: 376px) {
+  body {
+    height: 95%;
+  }
   .linkList {
     height: 70vh;
   }
@@ -172,6 +175,9 @@ footer span {
   }
   header img {
     max-height: 5vh;
+  }
+  main {
+    padding-top: 0.5vh;
   }
   .linkSquare {
     overflow: scroll;
