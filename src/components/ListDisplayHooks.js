@@ -13,6 +13,7 @@ function ListDisplayHooks(match) {
     const [userFirstNameLastName, setUserFirstNameLastName] = useState()
     const [displayingUserInfo, setDisplayingUserInfo] = useState()
     const [darkMode, setDarkMode] = useState(true)
+    const [drawerPulled, setDrawerPulled] = useState(false)
 
     const applyDarkMode = () => {
         // var element = document.body;
@@ -21,10 +22,22 @@ function ListDisplayHooks(match) {
         setDarkMode(!darkMode) 
     }
 
+    const drawerToggle = () => {
+        const drawer = document.getElementsByClassName('drawer')
+        if (drawer[0].style.maxHeight){
+            drawer[0].style.maxHeight = null;
+            setDrawerPulled(false)
+        } else {
+            drawer[0].style.maxHeight = drawer[0].scrollHeight + "px";
+            setDrawerPulled(true)
+        }
+    }
+
     useEffect(() => {
         const useThisURL = `https://link-in-bio.herokuapp.com${ourURL}`
         axios.get(useThisURL)
         .then(async res => {
+            console.log('backend res', res)
             const userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
             const profilePictureURL = `${res.data[0].profilePictureURL}`
             const displayingUserInfo = `${res.data[0].displayUserInfo}`
@@ -34,6 +47,7 @@ function ListDisplayHooks(match) {
             const incrementedListViews = axios.get(`https://link-in-bio.herokuapp.com/s/ili/${res.data[0].listId}`)
             // console.log(incrementedListViews)
             setIsLoading(false);
+            // initialize in dark mode
             var element0 = document.getElementsByClassName('App')
             element0[0].classList.toggle("darkMode")
             const thelinks = (res.data.map((link) => {
@@ -50,16 +64,6 @@ function ListDisplayHooks(match) {
                 )
             }))
             setLinks(thelinks)
-            // mobile vh/innerHeight fix to display footer onload across all mobile browsers
-            const domComponents = document.getElementsByClassName('linkList')
-            domComponents[0].style.height = `${window.innerHeight}px`;
-            // We listen to the resize event
-            window.addEventListener("resize", () => {
-            // We execute the same script as before
-            domComponents[0].style.height = `${window.innerHeight}px`;
-            });
-            window.scrollTo(0, window.outerHeight)
-
         })
         .catch(err => {console.log('err', err); alert('that site does not exist, yet. or check your connection.')})
     }, [])
@@ -74,9 +78,9 @@ function ListDisplayHooks(match) {
                 <main>
                     {links}
                 </main>
-                <footer>
-                    <h4>{darkMode ? <span onClick={applyDarkMode}>☀️</span>:<span>🌙</span>} ©{new Date().getFullYear()} <a href="http://yhy.fi/">YHY Oy:</a> <a href="http://link-in.bio/">Link-In.bio/</a></h4>
-                </footer>
+                {/* <footer>
+                    <h4>{darkMode ? <span onClick={applyDarkMode}>💡</span>:<span>🏮</span>} ©{new Date().getFullYear()} <a href="http://yhy.fi/">YHY Oy:</a> <a href="http://link-in.bio/">Link-In.bio/</a></h4>
+                </footer> */}
             </div>
 
         )
@@ -86,20 +90,29 @@ function ListDisplayHooks(match) {
                 <header className="linkListDisplayHeader">
                     {/* <hr/> */}
                     <div>
-                        <img src={profilePictureURL} alt={profilePictureURL} /> 
+                        <div className="picHolder">
+                            {darkMode ? <span onClick={applyDarkMode}>💡</span>:<span onClick={applyDarkMode}>🔦</span>}
+                            <br />
+                            <img src={profilePictureURL} alt={profilePictureURL} />
+                            <br /> 
+                            {drawerPulled ? <span onClick={drawerToggle}>💭</span>:<span onClick={drawerToggle}>💬</span>}
+                        </div>
                         {/* <img src={profilePictureURL} alt={profilePictureURL} style={{width:"200px"}}/>  */}
                         <h1>
                             {userFirstNameLastName}
                         </h1>
+                        <div className="drawer">
+                            <h4> ©{new Date().getFullYear()} <a href="http://yhy.fi/"><span className="footerLink">YHY Oy:</span></a> <a href="http://link-in.bio/"><span className="footerLink">Link-in.Bio/</span></a></h4>
+                        </div>
                     </div>
                 {/* <hr /> */}
                 </header>
                 <main>
                     {links}
                 </main>
-                <footer>
-                    <h4>{darkMode ? <span onClick={applyDarkMode}>☀️</span>:<span onClick={applyDarkMode}>🌙</span>} ©{new Date().getFullYear()} <a href="http://yhy.fi/"><span className="footerLink">YHY Oy:</span></a> <a href="http://link-in.bio/"><span className="footerLink">Link-in.Bio/</span></a></h4>
-                </footer>
+                {/* <footer>
+                    <h4>{darkMode ? <span onClick={applyDarkMode}>💡</span>:<span onClick={applyDarkMode}>🏮</span>} ©{new Date().getFullYear()} <a href="http://yhy.fi/"><span className="footerLink">YHY Oy:</span></a> <a href="http://link-in.bio/"><span className="footerLink">Link-in.Bio/</span></a></h4>
+                </footer> */}
                 
             </div>
 

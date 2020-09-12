@@ -53,29 +53,60 @@ header {
     height:100%;
     border-bottom:.25vh solid black;
     background-color: whitesmoke;
-    
+
+    span {
+        cursor: pointer;
+    }
 }
 
 header img {
     max-height:10vh;
 }
 
+header .picHolder {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width:100%;
+    max-width: 800px;
+    margin:0 auto;
+    padding-bottom:2vh;
+}
+
 header h1 {
-    margin-top:1.5%;
+    // margin-top:1.5%;
     font-size:1.2em;
 }
 
+header .drawer {
+    max-height: 0;
+    overflow:hidden;
+    transition:max-height 0.2s ease-out;
+    // padding:18px;
+    
+    h4 {
+        padding-bottom:2vh;
+        padding-top:3vh;
+        // height:32px;
+        // margin:2vh;
+    }
+}
+
 main{
+    margin-top:25vh;
     width:100%;
-    max-width:1500px;
+    max-width:800px;
     // overflow-x: hidden;
     overflow-y:scroll;
-    // margin:0 auto;
+    margin:0 auto;
     padding-top:1.75vh;
     font-family: 'Mulish', sans-serif;
     font-weight:400;
-    display:flex;
-    flex-wrap:wrap;
+    display:grid;
+    // height:100vh;
+    grid-gap:1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     justify-content: center;
     align-items: center;
     scroll-behavior: smooth;
@@ -113,12 +144,16 @@ main div {
     display:flex;
     flex-direction: column;
     padding:1.5vh;
+
+    .linkDescription {
+        overflow: hidden;
+    }
 }
 
 
 footer {
-    padding-top: 1.75vh;
-    padding-bottom: 2vh;
+    // padding-top: 1.75vh;
+    // padding-bottom: 2vh;
     overflow:hidden;
     font-family: 'Mulish', sans-serif;
     font-weight: 900;
@@ -186,10 +221,10 @@ footer {
         background-color: black;
     }
 
-    footer {
-        color:white;
-        border-top:.25vh solid grey;
-    }
+    // footer {
+    //     color:white;
+    //     border-top:.25vh solid grey;
+    // }
 
 }
 // }
@@ -199,29 +234,36 @@ footer {
 }
 
 @media screen and (max-width: 376px) {
+    // body {
+    //     padding-top:5vh;
+    //     height:95vh;
+    //     overflow: hidden;
+    // }
+    // header {
+    //     max-height: 25vh;
+    //     height:auto;
+    // }
+    // header div {
+    //     display:flex;
+    //     flex-direction:row;
+    //     align-items: space-around;
+    //     justify-content: space-around;
+    // }
     body {
-        padding-top:5vh;
-        height:95vh;
-        overflow: hidden;
-    }
-    header {
-        max-height: 25vh;
-        height:auto;
-    }
-    header div {
-        display:flex;
-        flex-direction:row;
-        align-items: space-around;
-        justify-content: space-around;
+        height:100%;
     }
     header img {
         max-height:5vh;
     }
+
     main {
-        height:70%;
-        padding-top:0.5vh;
+        overflow-x:hidden;
     }
-    .linkSquare { overflow: scroll; } /* Or change the height or whatever */ 
+    // main {
+    //     height:70%;
+    //     padding-top:0.5vh;
+    // }
+    // .linkSquare { overflow: scroll; } /* Or change the height or whatever */ 
 }
 
 @media screen and (max-width: 199px) {
