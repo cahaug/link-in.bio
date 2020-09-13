@@ -33,6 +33,10 @@ function ListDisplayHooks(match) {
         }
     }
 
+    // const revealDescription = () => {
+    //     const hiddenDescription = document.get
+    // }
+
     useEffect(() => {
         const useThisURL = `https://link-in-bio.herokuapp.com${ourURL}`
         axios.get(useThisURL)
@@ -58,12 +62,28 @@ function ListDisplayHooks(match) {
                                 <img className='image' src={link.imgURL} alt={link.linkTitle} /> 
                                 <h3>{link.linkTitle}</h3>
                             </a>
+                            <p className="linkDescriptionTag">⛛ Description ⛛</p>
                             <p className='linkDescription'>{link.description}</p>
                         </div>
 
                 )
             }))
             setLinks(thelinks)
+            console.log('thelinks',thelinks)
+            //css for hiddenDescriptions
+            const collapsingDescriptions = document.getElementsByClassName('linkDescriptionTag')
+            var i
+            for (i=0; i < collapsingDescriptions.length; i++){
+                collapsingDescriptions[i].addEventListener("click", function (){
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
+                    if(content.style.maxHeight){
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px"
+                    }
+                })
+            }
         })
         .catch(err => {console.log('err', err); alert('that site does not exist, yet. or check your connection.')})
     }, [])
@@ -91,16 +111,16 @@ function ListDisplayHooks(match) {
                     {/* <hr/> */}
                     <div>
                         <div className="picHolder">
-                            {darkMode ? <span onClick={applyDarkMode}>💡</span>:<span onClick={applyDarkMode}>🔦</span>}
+                            <div className="toggleHolder">
+                                {darkMode ? <span onClick={applyDarkMode}>💡</span>:<span onClick={applyDarkMode}>🔦</span>}
+                                {drawerPulled ? <span onClick={drawerToggle}>💭</span>:<span onClick={drawerToggle}>💬</span>}
+                            </div>
                             <br />
-                            <img src={profilePictureURL} alt={profilePictureURL} />
+                            <h1>{userFirstNameLastName}</h1>
                             <br /> 
-                            {drawerPulled ? <span onClick={drawerToggle}>💭</span>:<span onClick={drawerToggle}>💬</span>}
+                            <img src={profilePictureURL} alt={profilePictureURL} />
                         </div>
                         {/* <img src={profilePictureURL} alt={profilePictureURL} style={{width:"200px"}}/>  */}
-                        <h1>
-                            {userFirstNameLastName}
-                        </h1>
                         <div className="drawer">
                             <h4> ©{new Date().getFullYear()} <a href="http://yhy.fi/"><span className="footerLink">YHY Oy:</span></a> <a href="http://link-in.bio/"><span className="footerLink">Link-in.Bio/</span></a></h4>
                         </div>
