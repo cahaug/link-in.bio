@@ -23,6 +23,13 @@ a:visited {
   text-decoration: underline;
   border: 1px solid red;
 }
+.signupcards {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+}
 .App {
   min-height: 100vh;
   height: 100%;
@@ -153,6 +160,7 @@ footer span {
 }
 .footerLink {
   font-weight: 900;
+  color: white;
 }
 .darkMode {
   background-color: black;

@@ -1,17 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import '../App2.css';
+import libIMG from '../files/libIMG.png'
+// import '../App2.css';
 
 
 const LandingPage = () => {
     return (
         <div>
-            <h1>Link-In.bio/</h1>
+            <img src={libIMG} alt="Link-In.Bio Logo" style={  {width:"50%"}}/>
             <div className='signupcards'>
                 <Link to='/register' style={{ textDecoration: 'none', color: 'black' }}>
                     <div className='signup'>
                         <h3>I'm here for my own LinkList</h3>
                         <p>Let's Begin - Register - </p>
+                        {/* remove this later */}
+                        <br />
+                        <p>--TEMPORARILY UNAVAILABLE--</p>
+                        {/* end */}
                     </div>
                 </Link>
                 <Link to='/login' style={{ textDecoration: 'none', color: 'black' }}>
