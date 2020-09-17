@@ -7,7 +7,7 @@ import libIMG from '../files/libIMG.png'
 const LandingPage = () => {
     return (
         <div>
-            <img src={libIMG} alt="Link-In.Bio Logo" style={  {width:"50%"}}/>
+            <img src={libIMG} alt="Link-In.Bio Logo" className="landingIMG"/>
             <div className='signupcards'>
                 <Link to='/register' style={{ textDecoration: 'none', color: 'black' }}>
                     <div className='signup'>

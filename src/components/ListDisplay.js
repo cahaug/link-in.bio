@@ -42,7 +42,7 @@ class ListDisplay extends React.Component {
                 console.log('this.state', this.state)
                 // console.log(this.state)
                 const links = (data.data.map((link) => {
-                    // localStorage.setItem('listId', link.listId)
+                    // sessionStorage.setItem('listId', link.listId)
                     return (
 
                             <div className='signup' key={link.entryId}>

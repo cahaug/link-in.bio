@@ -43,7 +43,7 @@ class Register extends React.Component {
     //     const { email, password, firstName, lastName } = this.state
     //     this.props.register(email, password, firstName, lastName)
     //     this.setState({ email: '', password: '', firstName: '', lastName: '', })
-    //     if(typeof localStorage.getItem('listId') == 'number'){
+    //     if(typeof sessionStorage.getItem('listId') == 'number'){
     //         this.props.history.push('./dashboard')
     //     }
     // }

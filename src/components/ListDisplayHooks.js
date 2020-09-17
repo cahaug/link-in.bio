@@ -59,7 +59,8 @@ function ListDisplayHooks(match) {
 
                         <div className='linkSquare' key={link.entryId}>
                             <a className='linkTitle' href={`http://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}`}>
-                                <img className='image' src={link.imgURL} alt={link.linkTitle} /> 
+                                {link.imgURL?<img className='image' src={link.imgURL} alt={link.linkTitle} /> : null }
+                                {/* <img className='image' src={link.imgURL} alt={link.linkTitle} />  */}
                                 <h3>{link.linkTitle}</h3>
                             </a>
                             <p className="linkDescriptionTag">▼ Description ▼</p>

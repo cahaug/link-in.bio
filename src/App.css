@@ -30,6 +30,10 @@ a:visited {
   width: 100%;
   margin: 0 auto;
 }
+.landingIMG {
+  max-width: 800px;
+  width: 50%;
+}
 .App {
   min-height: 100vh;
   height: 100%;

@@ -27,7 +27,7 @@ class ListDisplay extends React.Component {
     }
 
     UNSAFE_componentWillMount(props) {
-        const useThisURL = `https://link-in-bio.herokuapp.com/s/aio/${localStorage.getItem('userId')}`
+        const useThisURL = `https://link-in-bio.herokuapp.com/s/aio/${sessionStorage.getItem('userId')}`
         return axios.get(useThisURL)
             .then(response => {
                 return response;

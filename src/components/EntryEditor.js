@@ -14,7 +14,7 @@ class EntryEditor extends React.Component {
             referencingURL: '',
             description: '',
             linkTitle: '',
-            imgURL: '',
+            imgURL2: '',
             // successMessage: null,
         }
     }
@@ -26,13 +26,30 @@ class EntryEditor extends React.Component {
         })
     }
 
+    noImg = (evt) => {
+        evt.preventDefault()
+        this.setState({
+            imgURL2:""
+        })
+    }
+
     handleSubmit = (evt) => {
         evt.preventDefault()
 
-        const { entryId, referencingURL, description, linkTitle, imgURL } = this.state
-        console.log(linkTitle, description, referencingURL, entryId, imgURL)
-        this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL)
-        this.setState({ referencingURL:'', description: '', linkTitle: '', imgURL:''})
+        const { entryId, referencingURL, description, linkTitle } = this.state
+        const { imgURL2 } = this.state
+        console.log(linkTitle, description, referencingURL, entryId, imgURL2)
+        if(imgURL2===""){
+            const imgURL = null
+            console.log(imgURL)
+            this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL)
+            this.setState({ referencingURL:'', description: '', linkTitle: '', imgURL2:''})
+        } else {
+            const imgURL = imgURL2
+            console.log(imgURL)
+            this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL)
+            this.setState({ referencingURL:'', description: '', linkTitle: '', imgURL2:''})
+        }
     }
 
     UNSAFE_componentWillMount(props){
@@ -45,14 +62,14 @@ class EntryEditor extends React.Component {
             this.setState({referencingURL:response.data[0].referencingURL})
             this.setState({description:response.data[0].description})
             this.setState({linkTitle:response.data[0].linkTitle})
-            this.setState({imgURL:response.data[0].imgURL})
+            this.setState({imgURL2:response.data[0].imgURL})
         })
     }
 
     
 
     render(props) {
-        const { referencingURL, description, linkTitle, imgURL } = this.state
+        const { referencingURL, description, linkTitle, imgURL2 } = this.state
         return (
             <div>
                 <h1 className="newpickupheader">Edit an Entry</h1>
@@ -66,7 +83,7 @@ class EntryEditor extends React.Component {
                     <p>Link Description:</p>
                     <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChange} required /><br />
                     <p>Link Image URL:</p>
-                    <input type="text" name="imgURL" value={imgURL} placeholder="Link Image URL" onChange={this.handleChange} required /><br />
+                    <input type="text" name="imgURL2" value={imgURL2} placeholder="Link Image URL" onChange={this.handleChange} /><button onClick={this.noImg}>Click for No Image</button><br />
                     <button type="submit" className="abutton2">Submit Changes to Link</button>
                 </form>
                 {/* {this.state.successMessage ? <h4>Entry Updated Successfully</h4> : <span></span>} */}
