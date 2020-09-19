@@ -6,7 +6,7 @@ class CreateList extends React.Component {
     constructor() {
         super()
         this.state = {
-            userId: localStorage.getItem('userId'),
+            userId: sessionStorage.getItem('userId'),
             backColor: '#ffffff',
             txtColor: '#000000',
             fontSelection: 'sans-serif',
@@ -22,7 +22,7 @@ class CreateList extends React.Component {
 
     handleSubmit = (evt) => {
         evt.preventDefault()
-        const token = localStorage.getItem('token')
+        const token = sessionStorage.getItem('token')
         const { userId, backColor, txtColor, fontSelection } = this.state
         this.props.createList(userId, backColor, txtColor, fontSelection, token)
         this.setState({ userId:'', backColor:'', txtColor:'', fontSelection:'' })
@@ -34,7 +34,7 @@ class CreateList extends React.Component {
             <div>
                 <h1 className="newpickupheader">Create A List</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="userId" value={userId} placeholder={localStorage.getItem('userId')} onChange={this.handleChange} required /><br />
+                    <input type="text" name="userId" value={userId} placeholder={sessionStorage.getItem('userId')} onChange={this.handleChange} required /><br />
                     <input type="text" name="backColor" value={backColor} placeholder="Set Background Color" onChange={this.handleChange} required /><br />
                     <input type="text" name="txtColor" value={txtColor} placeholder="Set Text Color" onChange={this.handleChange} required /><br />
                     <input type="text" name="fontSelection" value={fontSelection} placeholder="Set Font" onChange={this.handleChange} required /><br />

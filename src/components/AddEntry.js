@@ -12,14 +12,17 @@ class AddEntry extends React.Component {
         this.handleChangeDescription = this.handleChangeDescription.bind(this);
         this.handleChangeImg = this.handleChangeImg.bind(this);
         this.handleChangeURL = this.handleChangeURL.bind(this);
+        this.handleChangeNoImg = this.handleChangeNoImg.bind(this);
+
         this.state = {
-            userId: localStorage.getItem('userId'),
+            userId: sessionStorage.getItem('userId'),
             listId: this.props.match.params.listId,
             referencingURL: '',
             description: '',
             linkTitle: '',
             imgURL:'',
             isLoading: false,
+            noImg:true,
         }
     }
 
@@ -51,23 +54,43 @@ class AddEntry extends React.Component {
         })
     }
 
+    handleChangeNoImg = (evt) => {
+        evt.preventDefault()
+        console.log("this.state", this.state)
+        this.setState({
+            noImg:!this.state.noImg
+        })
+    }
+
     // handleSubmit = (evt) => {
     //     evt.preventDefault()
     //     const { userId, listId, referencingURL, description, linkTitle, imgURL } = this.state
     //     this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL)
-    //     this.setState({ userId: localStorage.getItem('userId'), listId: '', referencingURL:'', description: '', linkTitle: '', imgURL:''})
+    //     this.setState({ userId: sessionStorage.getItem('userId'), listId: '', referencingURL:'', description: '', linkTitle: '', imgURL:''})
     // }
 
     handleSubmit = async (evt) => {
         evt.preventDefault()
-        const { userId, listId, referencingURL, description, linkTitle, imgURL } = this.state
-        const token = localStorage.getItem('token')
-        console.log(userId, listId, referencingURL, description, linkTitle, imgURL)
+        const { userId, listId, referencingURL, description, linkTitle, noImg } = this.state
+        var { imgURL } = this.state
+        const token = sessionStorage.getItem('token')
+        console.log(userId, listId, referencingURL, description, linkTitle, imgURL, noImg)
         try {
-            this.setState({ userId: localStorage.getItem('userId'), referencingURL:'', description: '', linkTitle: '', imgURL:'', isLoading:true})
-            await this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token)
-            this.props.history.push('./dashboard')
-            window.location.reload(false)
+            if(noImg === true){
+                imgURL = null
+                console.log('imgurl set to null succ', imgURL)
+                this.setState({ userId: sessionStorage.getItem('userId'), referencingURL:'', description: '', linkTitle: '', imgURL:'', isLoading:true})
+                await this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token)
+                this.props.history.push('./dashboard')
+                window.location.reload(false)
+            } else if (noImg === false && imgURL.length > 10){
+                this.setState({ userId: sessionStorage.getItem('userId'), referencingURL:'', description: '', linkTitle: '', imgURL:'', isLoading:true})
+                await this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token)
+                this.props.history.push('./dashboard')
+                window.location.reload(false)
+            } else {
+                console.log('image error')
+            }
         } catch (err){
             alert(err.message)
         }
@@ -75,7 +98,7 @@ class AddEntry extends React.Component {
     }
 
     render() {
-        const { referencingURL, description, linkTitle, imgURL } = this.state
+        const { referencingURL, description, linkTitle, imgURL, noImg } = this.state
         const isLoading = this.state.isLoading;
         if(isLoading===true){
             return <img src={loadingGif} alt="Loading" style={{width:"200px"}}/>
@@ -99,6 +122,10 @@ class AddEntry extends React.Component {
                         <input type="text" name="linkTitle" value={linkTitle} placeholder="Link Title" onChange={this.handleChangeTitle} required /><br />
                         <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChangeDescription} required /><br />
                         <input type="text" name="imgURL" value={imgURL} placeholder="Image URL" onChange={this.handleChangeImg} /><br />
+                        <select value={noImg} onChange={this.handleChangeNoImg}>
+                            <option value={true}>No Image on this Entry</option>
+                            <option value={false}>Image Link Entered Above</option>
+                        </select><br />
                         <button type="submit" className="abutton2">Add Link to List</button>
                     </form>
                     <Link to='/dashboard'><span className="abutton">Back</span></Link>

@@ -40,18 +40,23 @@ export function register(email, password, firstName, lastName, profilePictureURL
         return axios.post('https://link-in-bio.herokuapp.com/auth/register', { email, password, firstName, lastName, profilePictureURL, referredBy} )
         .then((res) => {
             const payload = res.data
-            localStorage.setItem('token', res.data.token)
+            // localStorage.setItem('token', res.data.token)
+            sessionStorage.setItem('token', res.data.token)
             const token = res.data.token
-            localStorage.setItem('userId', res.data.userId)
-            localStorage.setItem('email', res.data.email)
-            localStorage.setItem('firstName', res.data.firstName)
-            localStorage.setItem('profilePictureURL', res.data.profilePictureURL)
+            // localStorage.setItem('userId', res.data.userId)
+            // localStorage.setItem('email', res.data.email)
+            // localStorage.setItem('firstName', res.data.firstName)
+            // localStorage.setItem('profilePictureURL', res.data.profilePictureURL)
+            sessionStorage.setItem('userId', res.data.userId)
+            sessionStorage.setItem('email', res.data.email)
+            sessionStorage.setItem('firstName', res.data.firstName)
+            sessionStorage.setItem('profilePictureURL', res.data.profilePictureURL)
             return axios.post('https://link-in-bio.herokuapp.com/l/new', {'userId':res.data.userId, 'backColor':'#ffffff','txtColor':'#000000', 'fontSelection':'Roboto',}, { headers: {authorization: res.data.token} })
             .then((res) => {
-                localStorage.setItem('listId', res.data.listId)
-                localStorage.setItem('listId', res.data[res.data.length - 1].listId)
+                // localStorage.setItem('listId', res.data[res.data.length - 1].listId)
+                sessionStorage.setItem('listId', res.data[res.data.length - 1].listId)
                 const standardEntry = {
-                    userId: localStorage.getItem('userId'),
+                    userId: sessionStorage.getItem('userId'),
                     listId: res.data[res.data.length - 1].listId,
                     referencingURL:'https://link-in.bio/dashboard',
                     description:`Thank You for Choosing Link-In.bio/, Let's Get Started!  Click Add Entry to Add Your First Entry! You can delete this entry after you have added another one to your List.`,
@@ -86,10 +91,14 @@ export function login(email, password){
         return axios.post('https://link-in-bio.herokuapp.com/auth/login', { email, password })
         .then((res) => {
             const payload = res.data
-            localStorage.setItem('token', res.data.token)
-            localStorage.setItem('userId', res.data.userId)
-            localStorage.setItem('email', res.data.email)
-            localStorage.setItem('firstName', res.data.firstName)
+            // localStorage.setItem('token', res.data.token)
+            // localStorage.setItem('userId', res.data.userId)
+            // localStorage.setItem('email', res.data.email)
+            // localStorage.setItem('firstName', res.data.firstName)
+            sessionStorage.setItem('token', res.data.token)
+            sessionStorage.setItem('userId', res.data.userId)
+            sessionStorage.setItem('email', res.data.email)
+            sessionStorage.setItem('firstName', res.data.firstName)
             dispatch({type: LOGIN_USER_SUCCESS, payload})
         })
         .catch((res) => {
@@ -105,9 +114,10 @@ export function createList(userId, backColor, txtColor, fontSelection, token){
         return axios.post('https://link-in-bio.herokuapp.com/l/new', { userId, backColor, txtColor, fontSelection }, { headers: {authorization: token} })
         .then((res) => {
             const savedReturnList = res.data
-            localStorage.setItem('listId', res.data[res.data.length - 1].listId)
+            // localStorage.setItem('listId', res.data[res.data.length - 1].listId)
+            sessionStorage.setItem('listId', res.data[res.data.length - 1].listId)
             const standardEntry = {
-                userId: localStorage.getItem('userId'),
+                userId: sessionStorage.getItem('userId'),
                 listId: res.data[res.data.length - 1].listId,
                 referencingURL:'https://link-in.bio/dashboard',
                 description:`Thank You for Choosing Link-In.bio/, Let's Get Started!  Click Add Entry to Add Your First Entry! You can delete this entry after you have added another one to your List.`,

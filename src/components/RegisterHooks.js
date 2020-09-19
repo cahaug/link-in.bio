@@ -136,19 +136,19 @@ function RegisterHooks(){
                     const { email, password, firstName, lastName, profilePictureURL, referredBy} = cast
                     const registrationReturn = await axios.post('https://link-in-bio.herokuapp.com/auth/register', { email, password, firstName, lastName, profilePictureURL, referredBy} )
                     console.log('registration return', registrationReturn)
-                    localStorage.setItem('token', registrationReturn.data.token)
+                    sessionStorage.setItem('token', registrationReturn.data.token)
                     const token = registrationReturn.data.token
-                    localStorage.setItem('userId', registrationReturn.data.userId)
-                    localStorage.setItem('email', registrationReturn.data.email)
-                    localStorage.setItem('firstName', registrationReturn.data.firstName)
-                    localStorage.setItem('profilePictureURL', registrationReturn.data.profilePictureURL)
+                    sessionStorage.setItem('userId', registrationReturn.data.userId)
+                    sessionStorage.setItem('email', registrationReturn.data.email)
+                    sessionStorage.setItem('firstName', registrationReturn.data.firstName)
+                    sessionStorage.setItem('profilePictureURL', registrationReturn.data.profilePictureURL)
                     // create their first list
                     const userListCreation = await axios.post('https://link-in-bio.herokuapp.com/l/new', {'userId':registrationReturn.data.userId, 'backColor':'#ffffff','txtColor':'#000000', 'fontSelection':'Roboto',}, { headers: {authorization: registrationReturn.data.token} })
                     console.log('userListCreation return', userListCreation)
-                    localStorage.setItem('listId', userListCreation.data[userListCreation.data.length - 1].listId)
+                    sessionStorage.setItem('listId', userListCreation.data[userListCreation.data.length - 1].listId)
                     // standard first entry data
                     const standardEntry = {
-                        userId: localStorage.getItem('userId'),
+                        userId: sessionStorage.getItem('userId'),
                         listId: userListCreation.data[userListCreation.data.length - 1].listId,
                         referencingURL:'https://link-in.bio/dashboard',
                         description:`Thank You for Choosing Link-In.bio/, Let's Get Started!  Click Add Entry to Add Your First Entry! You can delete this entry after you have added another one to your List.`,

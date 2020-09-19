@@ -9,7 +9,7 @@ export default function(props) {
 
     return (
         <Route {...rest} render={()=>{
-            const token = localStorage.getItem('token')
+            const token = sessionStorage.getItem('token')
             return token
                 ? <Component />
                 : <Redirect to="/failedlogin" />

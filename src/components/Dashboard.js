@@ -8,6 +8,7 @@ import ListEditor from './ListEditor'
 import axios from 'axios'
 import '../App2.css';
 
+const QRCode = require('qrcode.react')
 
 
 class Dashboard extends React.Component {
@@ -27,22 +28,27 @@ class Dashboard extends React.Component {
         localStorage.removeItem('firstName');
         localStorage.removeItem('userId');
         localStorage.removeItem('token');
+        sessionStorage.removeItem('listId');
+        sessionStorage.removeItem('email');
+        sessionStorage.removeItem('firstName');
+        sessionStorage.removeItem('userId');
+        sessionStorage.removeItem('token');
         return
     }
 
     componentDidMount(props) {
-        const useThisURL = `https://link-in-bio.herokuapp.com/l/list4user/${localStorage.getItem('userId')}`
+        const useThisURL = `https://link-in-bio.herokuapp.com/l/list4user/${sessionStorage.getItem('userId')}`
         return axios.get(useThisURL)
             .then(response => {
                 console.log('dashboard cdm', response.data)
-                // localStorage.setItem('listId', response.data[0].listId)
+                // sessionStorage.setItem('listId', response.data[0].listId)
                 this.setState({isLoadingListId: false})
-                localStorage.setItem('listId', response.data[0].listId)
+                sessionStorage.setItem('listId', response.data[0].listId)
                 this.setState({listId: response.data[0].listId})
             })
             .then(stuff => {
                 console.log('stuff', stuff)
-                const listId = localStorage.getItem('listId')
+                const listId = sessionStorage.getItem('listId')
                 // console.log('listid', listId)
                 const useThisURL = `https://link-in-bio.herokuapp.com/s/listViews/${listId}`
                 return axios.get(useThisURL)
@@ -72,22 +78,28 @@ class Dashboard extends React.Component {
                 <br />
                 
                 <h1>Dashboard</h1>
-                <p>Welcome {localStorage.getItem('firstName')}!</p>
-                <p>Your User Id is {localStorage.getItem('userId')}</p>
+                <p>Welcome {sessionStorage.getItem('firstName')}!</p>
+                <p>Your User Id is {sessionStorage.getItem('userId')}</p>
                 {/* <p>Your List Id is {localStorage.getItem('listId')}</p> */}
-                <p>Your List Id is {localStorage.getItem('listId')}</p>
+                <p>Your List Id is {sessionStorage.getItem('listId')}</p>
                 <p>Your List Views is {this.state.isLoadingListViews ? <span> Loading...</span> : this.state.listViews}</p>
                 <p>To get started, create a list, then add your entries!</p>
-                <p>Your LinkList will be hosted at: <a alt="Your LinkList" href={`http://link-in.bio/${localStorage.getItem('listId')}`}>http://link-in.bio/{localStorage.getItem('listId')}</a></p>
+                <p>Your LinkList will be hosted at: <a alt="Your LinkList" href={`http://link-in.bio/${sessionStorage.getItem('listId')}`}>http://link-in.bio/{sessionStorage.getItem('listId')}</a></p>
                 <br />
-                <a href="#neworder" className="abutton" role="button">Create a New List</a>
+                <p>Your QRCode is:</p>
+                <br />
+                <QRCode value={`http://link-in.bio/${sessionStorage.getItem('listId')}`} />
+                <br />
+                
+                {/* <a href="#neworder" className="abutton" role="button">Create a New List</a>
                 <div className="modal" id="neworder">
                     <div className="modal-container">
                         <CreateList />
-                        {/* eslint-disable-next-line */}
+                        eslint-disable-next-line
                         <a href="#" className="abutton2" role="button">Close</a>
                     </div>
-                </div>
+                </div> */}
+
                 <br />
                 {/* <a href="#neworder2" className="abutton" role="button">Get List Id</a>
                 <div className="modal" id="neworder2">
