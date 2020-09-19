@@ -7,7 +7,6 @@ a:link {
   color: black;
   font-weight: 700;
   text-decoration: none;
-  border: 1px solid green;
 }
 a:hover {
   color: black;
@@ -21,7 +20,6 @@ a:active {
 a:visited {
   color: lightslategray;
   text-decoration: underline;
-  border: 1px solid red;
 }
 .signupcards {
   display: flex;
@@ -152,6 +150,12 @@ main div .linkDescriptionTag {
 }
 .linkSquare {
   background-color: whitesmoke;
+}
+.linkSquare a:link {
+  border-bottom: 1px solid green;
+}
+.linkSquare a:visited {
+  border-bottom: 1px solid red;
 }
 footer {
   overflow: hidden;
