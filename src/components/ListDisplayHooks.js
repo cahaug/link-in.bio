@@ -63,7 +63,7 @@ function ListDisplayHooks(match) {
                                 {/* <img className='image' src={link.imgURL} alt={link.linkTitle} />  */}
                                 <h3>{link.linkTitle}</h3>
                             </a>
-                            <p className="linkDescriptionTag">▼ Description ▼</p>
+                            <p className="linkDescriptionTag">▼</p>
                             <p className='linkDescription'>{link.description}</p>
                         </div>
 
