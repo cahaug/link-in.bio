@@ -89,7 +89,7 @@ export function login(email, password){
     return (dispatch) => {
         dispatch({type: LOGIN_USER_START})
         return axios.post('https://link-in-bio.herokuapp.com/auth/login', { email, password })
-        .then((res) => {
+        .then(async (res) => {
             const payload = res.data
             // localStorage.setItem('token', res.data.token)
             // localStorage.setItem('userId', res.data.userId)
@@ -99,6 +99,8 @@ export function login(email, password){
             sessionStorage.setItem('userId', res.data.userId)
             sessionStorage.setItem('email', res.data.email)
             sessionStorage.setItem('firstName', res.data.firstName)
+            const listIdHolder = await axios.get(`https://link-in-bio.herokuapp.com/l/list4user/${res.data.userId}`)
+            sessionStorage.setItem('listId', listIdHolder.data[0].listId)
             dispatch({type: LOGIN_USER_SUCCESS, payload})
         })
         .catch((res) => {

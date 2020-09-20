@@ -114,6 +114,13 @@ header .drawer {
     }
 }
 
+.qrcode {
+    display:none;
+    transition:max-height 0.2s ease-out;       
+    padding:18px;
+
+}
+
 main{
     margin-top:25vh;
     width:100%;
@@ -210,6 +217,22 @@ main div .linkDescriptionTag {
     a:visited {
         border-bottom:1px solid red;
     }
+
+    .linkSquareButtonHolder {
+        display:flex;
+        flex-direction:row;
+        max-height:2.25em;
+
+    }
+
+    .sqaureButton {
+        height:100%;
+    }
+    
+    .sqaureButton:hover {
+        background-color:darkgray;
+    }
+
 }
 
 footer {
@@ -236,6 +259,66 @@ footer {
     -webkit-transform: rotate(180deg);
     -ms-transform: rotate(180deg);
     
+}
+
+.dashboard2{
+    header{
+        max-height:70vh;
+    }
+
+    hr {
+        background-color:black;
+        border-color: black;
+        width:100%;
+    }
+}
+
+.linkListDashboardHeader {
+    display:flex;
+    flex-direction: column;
+    height:100%;
+    
+    header {
+        max-height:35vh;
+    }
+
+    .dashboardToggleHolder{
+        display:flex;
+        flex-direction:row;
+        margin:0 auto;
+        
+        p {
+            border: 1px solid black;
+            padding:1em;
+            margin: 1em;
+        }
+
+        p:hover {
+            background-color:darkgray;
+        }
+    }
+}
+
+.dashboardInfoSection {
+    color:black;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:2em;
+    text-align:center;
+    
+    table{
+        margin:0 auto;
+        border:1px solid black;
+        padding:1em;
+        border-collapse: collapse;
+        width:80%;
+
+        td {
+            border:1px solid black;
+            padding:1em;
+        }
+    }
 }
 
 .darkMode {
@@ -300,6 +383,49 @@ footer {
     .drawer {
         color:white;
     }
+
+    .dashboard2{
+        hr {
+            background-color:white;
+            border-color: white;
+        }
+    }
+
+    .linkListDashboardHeader {
+
+        .dashboardToggleHolder{
+
+            p {
+                border: 1px solid white;
+            }
+    
+            p:hover {
+                background-color:darkgray;
+            }
+        }
+    }
+
+    .dashboardInfoSection {
+    color:white;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    padding:2em;
+    text-align:center;
+    
+    table{
+        margin:0 auto;
+        border:1px solid white;
+        padding:1em;
+        border-collapse: collapse;
+        width:80%;
+
+        td {
+            border:1px solid white;
+            padding:1em;
+        }
+    }
+}
     // footer {
     //     color:white;
     //     border-top:.25vh solid grey;

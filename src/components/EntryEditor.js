@@ -87,7 +87,7 @@ class EntryEditor extends React.Component {
                     <button type="submit" className="abutton2">Submit Changes to Link</button>
                 </form>
                 {/* {this.state.successMessage ? <h4>Entry Updated Successfully</h4> : <span></span>} */}
-                <Link to='/dashboard'><span className="abutton">Back</span></Link>
+                <Link to='/dashboard2'><span className="abutton">Back</span></Link>
             </div>
         )
     }

@@ -26,7 +26,7 @@ class Login extends React.Component {
 
         this.props.login(email, password)
             .then(() => {
-                this.props.history.push("./dashboard")
+                this.props.history.push("./dashboard2")
             })
             .catch((err) => { console.error(err) })
     }
