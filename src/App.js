@@ -16,6 +16,8 @@ import RegisterHooks from './components/RegisterHooks'
 import ResetPassword from './components/ResetPassword'
 import ResetPWCode from './components/ResetPWCode'
 import InstagramPicker from './components/InstagramPicker'
+import Dashboard2 from './components/Dashboard2'
+import SettingsPanel from './components/SettingsPanel';
 // import PaymentSuccess from './components/PaymentSuccess'
 // import PaymentPage from './components/PaymentPage'
 
@@ -43,6 +45,8 @@ class App extends React.Component {
         {/* <Route exact path="/paymentPage" component={PaymentPage} /> */}
         {/* <Route exact path="/listdisplay" component={ListDisplay}/> */}
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        <PrivateRoute exact path="/dashboard2" component={Dashboard2} />
+        <PrivateRoute exact path="/settingsPanel" component={SettingsPanel} />
         <PrivateRoute exact path="/createlist" component={CreateList} />
         {/* <Route path={`/success`} render={props => <PaymentSuccess {...props} />} /> */}
         <Route path={`/addEntry/:listId`} render={props => <AddEntry {...props}/>} />

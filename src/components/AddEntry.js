@@ -128,7 +128,7 @@ class AddEntry extends React.Component {
                         </select><br />
                         <button type="submit" className="abutton2">Add Link to List</button>
                     </form>
-                    <Link to='/dashboard'><span className="abutton">Back</span></Link>
+                    <Link to='/dashboard2'><span className="abutton">Back</span></Link>
     
                 </div>
             )
