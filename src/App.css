@@ -155,6 +155,11 @@ main div .linkDescriptionTag {
   padding-bottom: 0.8vh;
   cursor: pointer;
 }
+.editLinkDescription {
+  width: 60%;
+  min-height: 20vh;
+  text-align: center;
+}
 .linkSquare {
   background-color: whitesmoke;
 }
