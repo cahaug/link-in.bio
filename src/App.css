@@ -168,6 +168,17 @@ main div .linkDescriptionTag {
   display: flex;
   flex-direction: row;
   max-height: 2.25em;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.linkSquare .linkSquareButtonHolder a:link {
+  border-bottom: none;
+}
+.linkSquare .linkSquareButtonHolder a:hover {
+  background-color: darkgray;
+}
+.linkSquare .linkSquareButtonHolder a:visited {
+  border-bottom: none;
 }
 .linkSquare .sqaureButton {
   height: 100%;
