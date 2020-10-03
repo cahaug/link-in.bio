@@ -40,7 +40,7 @@ function Dashboard2 () {
 
     useEffect(() => {
         const useThisURL = `https://link-in-bio.herokuapp.com/s/listViews/${sessionStorage.getItem('listId')}`
-        axios.get(useThisURL)
+        axios.get(useThisURL, { headers: {authorization: sessionStorage.getItem('token')} })
         .then(response => {
             setListViews(response.data['listViews'])
         })
