@@ -15,6 +15,16 @@ function ListDisplayHooks(match) {
     const [darkMode, setDarkMode] = useState(true)
     const [drawerPulled, setDrawerPulled] = useState(false)
 
+    // const browserInfoSifter = () => {
+    //     // console.log('this navigator', navigator)
+    //     if(navigator.maxTouchPoints>0){console.log('this is a touchscreen', navigator.maxTouchPoints)}else{console.log('this is not a touchscreen')}
+    //     console.log('current/primary language', navigator.language)
+    //     console.log('platform', navigator.platform)
+    //     const agten = navigator.userAgent
+    //     const chosenFew = ['Firefox','Chrome', 'Edg', '']
+        
+    // }
+
     const applyDarkMode = () => {
         // var element = document.body;
         var element = document.getElementsByClassName('App')
