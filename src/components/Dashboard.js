@@ -51,7 +51,7 @@ class Dashboard extends React.Component {
                 const listId = sessionStorage.getItem('listId')
                 // console.log('listid', listId)
                 const useThisURL = `https://link-in-bio.herokuapp.com/s/listViews/${listId}`
-                return axios.get(useThisURL)
+                return axios.get(useThisURL, { headers: {authorization: sessionStorage.getItem('token')} })
                 .then(response => {
                     console.log('successfully viewing listViews')
                     console.log('response.data', response.data['listViews'])

@@ -18,6 +18,7 @@ import ResetPWCode from './components/ResetPWCode'
 import InstagramPicker from './components/InstagramPicker'
 import Dashboard2 from './components/Dashboard2'
 import SettingsPanel from './components/SettingsPanel';
+
 // import PaymentSuccess from './components/PaymentSuccess'
 // import PaymentPage from './components/PaymentPage'
 
@@ -35,6 +36,7 @@ class App extends React.Component {
       <div className="App">
         <Switch>
         <Route exact path="/" component={LandingPage} />
+        <Route exact path="/robots.txt" onEnter={() =>{window.location.reload()}} />
         <Route exact path="/register" render={props => <Register {...props} history={this.props.history}/>} />
         <Route exact path="/registerHooks" component={RegisterHooks} />
         <Route exact path="/login" component={Login} />

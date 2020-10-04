@@ -154,6 +154,11 @@ main div .linkDescriptionTag {
   padding-bottom: 0.8vh;
   cursor: pointer;
 }
+.editLinkDescription {
+  width: 60%;
+  min-height: 20vh;
+  text-align: center;
+}
 .linkSquare {
   background-color: whitesmoke;
 }
@@ -167,12 +172,26 @@ main div .linkDescriptionTag {
   display: flex;
   flex-direction: row;
   max-height: 2.25em;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.linkSquare .linkSquareButtonHolder a:link {
+  border-bottom: none;
+}
+.linkSquare .linkSquareButtonHolder a:hover {
+  background-color: darkgray;
+}
+.linkSquare .linkSquareButtonHolder a:visited {
+  border-bottom: none;
 }
 .linkSquare .sqaureButton {
   height: 100%;
 }
 .linkSquare .sqaureButton:hover {
   background-color: darkgray;
+}
+.linkSquare:last-child {
+  margin-bottom: 7.5vh;
 }
 footer {
   overflow: hidden;

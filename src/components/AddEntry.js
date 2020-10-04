@@ -118,10 +118,10 @@ class AddEntry extends React.Component {
                         <p className="addEntryText">Or in the form https://.../...bmp </p>
                         <p className="addEntryText">(starting with http or https)</p>
                         <p className="addEntryText">(and ending in the file extension of the linked image)</p>
-                        <input type="text" name="referencingURL" value={referencingURL} placeholder="Link URL" onChange={this.handleChangeURL} required /><br />
-                        <input type="text" name="linkTitle" value={linkTitle} placeholder="Link Title" onChange={this.handleChangeTitle} required /><br />
-                        <input type="text" name="description" value={description} placeholder="Link Description" onChange={this.handleChangeDescription} required /><br />
-                        <input type="text" name="imgURL" value={imgURL} placeholder="Image URL" onChange={this.handleChangeImg} /><br />
+                        <input type="text" name="referencingURL" maxLength="498" value={referencingURL} placeholder="Link URL" onChange={this.handleChangeURL} required /><br />
+                        <input type="text" name="linkTitle" maxLength="498" value={linkTitle} placeholder="Link Title" onChange={this.handleChangeTitle} required /><br />
+                        <input type="text" className="editLinkDescription" maxLength="498" name="description" value={description} placeholder="Link Description" onChange={this.handleChangeDescription} required /><br />
+                        <input type="text" name="imgURL" value={imgURL} maxLength="498" placeholder="Image URL" onChange={this.handleChangeImg} /><br />
                         <select value={noImg} onChange={this.handleChangeNoImg}>
                             <option value={true}>No Image on this Entry</option>
                             <option value={false}>Image Link Entered Above</option>
