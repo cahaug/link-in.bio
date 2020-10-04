@@ -14,6 +14,9 @@ function ListDisplayHooks(match) {
     const [displayingUserInfo, setDisplayingUserInfo] = useState()
     const [darkMode, setDarkMode] = useState(true)
     const [drawerPulled, setDrawerPulled] = useState(false)
+    const [backgroundColor, setBackgroundColor] = useState()
+    const [textColor, setTextColor] = useState('#000000')
+    const [chosenFont, setChosenFont] = useState()
 
     // const browserInfoSifter = () => {
     //     // console.log('this navigator', navigator)
@@ -27,8 +30,48 @@ function ListDisplayHooks(match) {
 
     const applyDarkMode = () => {
         // var element = document.body;
+        // console.log('backcolor', backgroundColor, 'chosenFont', chosenFont, 'textColor', textColor)
         var element = document.getElementsByClassName('App')
         element[0].classList.toggle("darkMode")
+        if(darkMode===true){
+            var txtColorElement0 = document.getElementsByClassName('linkDescription')
+            var k
+            for (k=0; k< txtColorElement0.length; k++){
+                txtColorElement0[k].style.color = `${textColor}`
+                // txtColorElement[j].style.color = `${res.data[0].backColor}`
+            }
+            var borderElement0 = document.getElementsByClassName('linkSquare')
+            var arrowChangeColor = document.getElementsByClassName('linkDescriptionTag')
+            var n
+            for (n=0; n< borderElement0.length; n++){
+                borderElement0[n].style.border = `2px solid ${textColor}`
+                arrowChangeColor[n].style.color = `${textColor}`
+                // txtColorElement[j].style.color = `${res.data[0].backColor}`
+            }
+            var headerDividerBar = document.getElementsByClassName('linkListDisplayHeader')
+            headerDividerBar[0].style.borderBottom = `0.25vh solid ${textColor}`
+            var headerTextElement = document.getElementById('headerName')
+            headerTextElement.style.color = `${textColor}`
+        } else {
+            var txtColorElement0 = document.getElementsByClassName('linkDescription')
+            var m
+            for (m=0; m< txtColorElement0.length; m++){
+                txtColorElement0[m].style.color = 'grey'
+                // txtColorElement[j].style.color = `${res.data[0].backColor}`
+            }
+            var borderElement0 = document.getElementsByClassName('linkSquare')
+            var arrowChangeColor = document.getElementsByClassName('linkDescriptionTag')
+            var o
+            for (o=0; o< borderElement0.length; o++){
+                borderElement0[o].style.border = `2px solid grey`
+                arrowChangeColor[o].style.color = 'grey'
+                // txtColorElement[j].style.color = `${res.data[0].backColor}`
+            }
+            var headerDividerBar = document.getElementsByClassName('linkListDisplayHeader')
+            headerDividerBar[0].style.borderBottom = '0.25vh solid black'
+            var headerTextElement = document.getElementById('headerName')
+            headerTextElement.style.color = 'white'
+        }
         setDarkMode(!darkMode) 
     }
 
@@ -64,6 +107,7 @@ function ListDisplayHooks(match) {
             // initialize in dark mode
             var element0 = document.getElementsByClassName('App')
             element0[0].classList.toggle("darkMode")
+           
             const thelinks = (res.data.map((link) => {
                 return (
 
@@ -81,6 +125,18 @@ function ListDisplayHooks(match) {
             }))
             setLinks(thelinks)
             console.log('thelinks',thelinks)
+            // if 
+            console.log(res.data[0])
+            if(res.data[0].backColor){
+                setTextColor(`${res.data[0].backColor}`)
+            }
+            if(res.data[0].txtColor){
+                console.log('textColor Changed Bruh!')
+               setTextColor(`${res.data[0].txtColor}`)
+            }
+            if(res.data[0].fontSelection){
+                setChosenFont(`${res.data[0].fontSelection}`)
+            }
             //css for hiddenDescriptions
             const collapsingDescriptions = document.getElementsByClassName('linkDescriptionTag')
             var i
@@ -106,7 +162,7 @@ function ListDisplayHooks(match) {
         return (
             <div className="linkList">
                 <header className="linkListDisplayHeader"><h2>Welcome to Link-in.Bio/</h2></header>
-                <main>
+                <main id="main">
                     {links}
                 </main>
                 {/* <footer>
@@ -127,7 +183,7 @@ function ListDisplayHooks(match) {
                                 {drawerPulled ? <span onClick={drawerToggle}>💭</span>:<span onClick={drawerToggle}>💬</span>}
                             </div>
                             <br />
-                            <h1>{userFirstNameLastName}</h1>
+                            <h1 id="headerName">{userFirstNameLastName}</h1>
                             <br /> 
                             <img src={profilePictureURL} alt={profilePictureURL} />
                         </div>
