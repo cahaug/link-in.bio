@@ -219,6 +219,10 @@ footer span {
   border-color: black;
   width: 100%;
 }
+.colorPickerHolder {
+  margin: 5px auto;
+  width: 220px;
+}
 .linkListDashboardHeader {
   display: flex;
   flex-direction: column;

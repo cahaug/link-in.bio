@@ -13,6 +13,7 @@
     "axios": "^0.19.2",
     "qrcode.react": "^1.0.0",
     "react": "^16.13.1",
+    "react-color": "^2.18.1",
     "react-dom": "^16.13.1",
     "react-recaptcha": "^2.3.10",
     "react-redux": "^7.2.0",
