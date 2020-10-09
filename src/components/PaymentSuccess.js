@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 
+// Remember to come back in here and double check for payment success before account creation
+
 function PaymentSuccess( props){
     const fullSessionID =  props.location.search
     const sessionID = fullSessionID.slice(12, fullSessionID.length)
