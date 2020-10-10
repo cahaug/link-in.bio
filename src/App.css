@@ -86,6 +86,16 @@ header .drawer h4 {
   padding-bottom: 2vh;
   padding-top: 3vh;
 }
+.backColorPickerDiv {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.textColorPickerDiv {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
 .qrcode {
   display: none;
   transition: max-height 0.2s ease-out;

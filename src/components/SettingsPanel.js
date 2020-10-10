@@ -3,76 +3,45 @@ import axios from "axios"
 import loadingGif from '../files/loading.gif'
 import { Link } from 'react-router-dom'
 import { SketchPicker } from 'react-color'
+import BackgroundPicker from '../components/BackgroundColorPicker'
+import BackgroundColorPicker from '../components/BackgroundColorPicker'
+import TextColorPicker from '../components/TextColorPicker'
 
-// thank you github.com/casesandberg for the lovely react color picker
+// thank you github.com/casesandberg for the lovely react color pickers
+console.log('thank you github.com/casesandberg for the lovely react color pickers')
+
 
 function SettingsPanel(){
-    const [formData, setFormData] = useState({
-        textColor:'',
-        backgroundColor:'',
-        fontSelection:''
-    })
-
-    const [color, setColor] = useState()
-
-    const handlethecolorchange = (color) => {setColor(color); setFormData({textColor:color.hex})}
-
-    const onInputChange = event => {
-        event.preventDefault()
-        setFormData({
-            ...formData,
-            textColor:event.target.value
-        })
+    const [modifyingTextColor, setModifyingTextColor] = useState(false)
+    const [modifyingBackColor, setModifyingBackColor] = useState(false)
+    
+    const textColorDrawerToggle = () => {
+        const textColorDrawer = document.getElementsByClassName('textColorPickerDiv')
+        if (textColorDrawer[0].style.maxHeight){
+            textColorDrawer[0].style.maxHeight = null;
+            setModifyingTextColor(false)
+        } else {
+            textColorDrawer[0].style.maxHeight = textColorDrawer[0].scrollHeight + "px";
+            setModifyingTextColor(true)
+        }
     }
 
-    const onBGChange = event => {
-        event.preventDefault()
-        setFormData({...formData, backgroundColor:event.target.value})
-    }
-
-    const submitTextChange = event => {
-        event.preventDefault()
-        const txtColor = formData.textColor
-        const token = sessionStorage.getItem('token')
-        const listId = sessionStorage.getItem('listId')
-        const userId = sessionStorage.getItem('userId')
-        console.log(listId, userId, txtColor)
-        return axios.put('https://link-in-bio.herokuapp.com/l/setTcolor', {listId:listId, userId:userId, txtColor:txtColor},  { headers: {authorization: token} })
-        .then(res => {
-            console.log('textChangeres', res)
-            alert('TextColor Updated Successfully')
-        })
-        .catch(err => {
-            console.log('submit catcherror', err)
-            alert('error')
-        })
-
-    }
-
-    const submitNewBackgroundColor = event => {
-        event.preventDefault()
-        const backColor = formData.backgroundColor
-        const token = sessionStorage.getItem('token')
-        const listId = sessionStorage.getItem('listId')
-        const userId = sessionStorage.getItem('userId')
-        console.log(listId, userId, backColor)
-        return axios.put('https://link-in-bio.herokuapp.com/l/setBg', {listId:listId, userId:userId, backColor:backColor},  { headers: {authorization: token} })
-        .then(res => {
-            console.log('bg changed res', res)
-            alert('Background Color Updated Successfully')
-        })
-        .catch(err => {
-            console.log('submit catcherror', err)
-            alert('error')
-        })
-
+    const backColorDrawerToggle = () => {
+        const backColorDrawer = document.getElementsByClassName('backColorPickerDiv')
+        if (backColorDrawer[0].style.maxHeight){
+            backColorDrawer[0].style.maxHeight = null;
+            setModifyingBackColor(false)
+        } else {
+            backColorDrawer[0].style.maxHeight = backColorDrawer[0].scrollHeight + "px";
+            setModifyingBackColor(true)
+        }
     }
 
     return (
         <div>
             <p>Setting Panel</p>
             <br /> <br />
-            <form onSubmit={submitTextChange}>
+            {/* <form onSubmit={submitTextChange}>
                 <label>
                     Input Custom CSS Text Color Here (hex or word): <br />
                     <input type="text" value={formData.textColor} onChange={onInputChange} name="TextColor" /> <br />
@@ -82,12 +51,18 @@ function SettingsPanel(){
                 </label>
                 <button type="submit">Submit Text Color Change</button>
                 <br /><br />
-                <label>
-                    Input Custom CSS Background Color Here: <br />
-                    <input type="color" value={formData.backgroundColor} onChange={onBGChange} name="BackgroundColor" /> <br />
-                    <button type="button" onClick={submitNewBackgroundColor}>Submit Background Change</button>
-                </label>
-            </form>
+            </form> */}
+            {modifyingTextColor ? <span onClick={textColorDrawerToggle}>Modify Text Color ▲</span>:<span onClick={textColorDrawerToggle}>Modify Text Color	▼</span>}
+
+            <div className="textColorPickerDiv">
+                <TextColorPicker />
+            </div>
+            <br />
+            {modifyingBackColor ? <span onClick={backColorDrawerToggle}>Modify Background Color ▲</span>:<span onClick={backColorDrawerToggle}>Modify Background Color ▼</span>}
+            <div className="backColorPickerDiv">
+                <BackgroundColorPicker />
+            </div>
+            <br />
             <a href="/dashboard2" alt="Back to Dashboard">Back to Dashboard</a>
         </div>
 
