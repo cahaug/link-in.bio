@@ -37,6 +37,13 @@ function SettingsPanel(){
         }
     }
 
+    useEffect(()=>{
+        var elelist = document.getElementsByTagName("input"); for(var i = 0; i < elelist.length; i++){
+            elelist[i].addEventListener("focus", function(){
+                this.blur();
+            }); }
+    })
+
     return (
         <div>
             <p>Setting Panel</p>

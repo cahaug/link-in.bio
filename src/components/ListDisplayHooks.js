@@ -12,7 +12,7 @@ function ListDisplayHooks(match) {
     const [profilePictureURL, setProfilePictureURL] = useState()
     const [userFirstNameLastName, setUserFirstNameLastName] = useState()
     const [displayingUserInfo, setDisplayingUserInfo] = useState()
-    const [darkMode, setDarkMode] = useState(true)
+    const [darkMode, setDarkMode] = useState(false)
     const [drawerPulled, setDrawerPulled] = useState(false)
     const [backgroundColor, setBackgroundColor] = useState('#FFFFFF')
     const [textColor, setTextColor] = useState('#000000')
@@ -115,8 +115,8 @@ function ListDisplayHooks(match) {
             setIsLoading(false);
             document.title = `Link-in.bio${ourURL} - ${userFirstLastName}`
             // initialize in dark mode
-            var element0 = document.getElementsByClassName('App')
-            element0[0].classList.toggle("darkMode")
+            // var element0 = document.getElementsByClassName('App')
+            // element0[0].classList.toggle("darkMode")
            
             const thelinks = (res.data.map((link) => {
                 return (
@@ -162,6 +162,30 @@ function ListDisplayHooks(match) {
                     }
                 })
             }
+
+            // initialize in custom color mode
+            var txtColorElement0 = document.getElementsByClassName('linkDescription')
+            var k
+            for (k=0; k< txtColorElement0.length; k++){
+                txtColorElement0[k].style.color = `${res.data[0].txtColor}`
+                // txtColorElement[j].style.color = `${res.data[0].backColor}`
+            }
+            var borderElement0 = document.getElementsByClassName('linkSquare')
+            var arrowChangeColor = document.getElementsByClassName('linkDescriptionTag')
+            var n
+            for (n=0; n< borderElement0.length; n++){
+                borderElement0[n].style.border = `2px solid ${res.data[0].txtColor}`
+                arrowChangeColor[n].style.color = `${res.data[0].txtColor}`
+                // borderElement0[n].style.backgroundColor = `${backgroundColor}`
+            }
+            var headerDividerBar = document.getElementsByClassName('linkListDisplayHeader')
+            headerDividerBar[0].style.borderBottom = `0.25vh solid ${res.data[0].txtColor}`
+            // headerDividerBar[0].style.backgroundColor = `${backgroundColor}`
+            var headerTextElement = document.getElementById('headerName')
+            headerTextElement.style.color = `${res.data[0].txtColor}`
+            var mainBackgroundElement = document.getElementsByClassName('theMain')
+            console.log(mainBackgroundElement[0].style.backgroundColor)
+            mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
         })
         .catch(err => {console.log('err', err); alert('that site does not exist, yet. or check your connection.')})
     }, [])
