@@ -6,6 +6,7 @@ import { SketchPicker } from 'react-color'
 import BackgroundPicker from '../components/BackgroundColorPicker'
 import BackgroundColorPicker from '../components/BackgroundColorPicker'
 import TextColorPicker from '../components/TextColorPicker'
+import EasyAddInstagram from '../components/EasyAdd/EasyAddInstagram'
 
 // thank you github.com/casesandberg for the lovely react color pickers
 console.log('thank you github.com/casesandberg for the lovely react color pickers')
@@ -14,6 +15,7 @@ console.log('thank you github.com/casesandberg for the lovely react color picker
 function SettingsPanel(){
     const [modifyingTextColor, setModifyingTextColor] = useState(false)
     const [modifyingBackColor, setModifyingBackColor] = useState(false)
+    const [easyAddingInsta, setEasyAddingInsta] = useState(false)
     
     const textColorDrawerToggle = () => {
         const textColorDrawer = document.getElementsByClassName('textColorPickerDiv')
@@ -36,6 +38,18 @@ function SettingsPanel(){
             setModifyingBackColor(true)
         }
     }
+
+    const instaDrawerToggle = () => {
+        const instaDrawer = document.getElementsByClassName('easyAddInstaDiv')
+        if (instaDrawer[0].style.maxHeight){
+            instaDrawer[0].style.maxHeight = null;
+            setEasyAddingInsta(false)
+        } else {
+            instaDrawer[0].style.maxHeight = instaDrawer[0].scrollHeight + "px";
+            setEasyAddingInsta(true)
+        }
+    }
+
 
     useEffect(()=>{
         var elelist = document.getElementsByTagName("input"); for(var i = 0; i < elelist.length; i++){
@@ -67,6 +81,11 @@ function SettingsPanel(){
             {modifyingBackColor ? <span onClick={backColorDrawerToggle}>Modify Background Color ▲</span>:<span onClick={backColorDrawerToggle}>Modify Background Color ▼</span>}
             <div className="backColorPickerDiv">
                 <BackgroundColorPicker />
+            </div>
+            <br />
+            {easyAddingInsta ? <span onClick={instaDrawerToggle}>Easily Add Instagram Account ▲</span>:<span onClick={instaDrawerToggle}>Easily Add Instagram Account ▼</span>}
+            <div className="easyAddInstaDiv">
+                <EasyAddInstagram />
             </div>
             <br />
             <a href="/dashboard2" alt="Back to Dashboard">Back to Dashboard</a>

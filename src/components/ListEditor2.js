@@ -32,11 +32,16 @@ function ListEditor2(){
     }
 
     const deleteEntry = (entryId) => {
+        console.log('entryId',entryId)
         const useThisURL = `https://link-in-bio.herokuapp.com/e/deleteEntry`
         return axios.post(useThisURL, {entryId: entryId})
         .then(response => {
             alert('Entry Successfully Deleted')
+            console.log('deleteEntryRes',response)
             window.location.reload()
+        })
+        .catch(err => {
+            console.log('error deleting', err)
         })
     }
 
@@ -74,7 +79,7 @@ function ListEditor2(){
                                     {/* <Link className="squareButton" to={`/editEntry/${link.entryId}`}><button className="squareButton">Edit Entry</button></Link> */}
                                     <a href={`/editEntry/${link.entryId}`}><button className="squareButton">Edit Entry</button></a>
                                     <br />
-                                    <button className="sqaureButton" onClick={()=>{deleteEntry(link.entryId)}}>Delete Entry</button>
+                                    <button className="sqaureButton" onClick={() => {deleteEntry(link.entryId)}}>Delete Entry</button>
                                 </div>
                                 <p className="linkDescriptionTag">▼</p>
                                 <p className='linkDescription'>{link.description}</p>
