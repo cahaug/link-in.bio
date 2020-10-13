@@ -99,6 +99,7 @@ export function login(email, password){
             sessionStorage.setItem('userId', res.data.userId)
             sessionStorage.setItem('email', res.data.email)
             sessionStorage.setItem('firstName', res.data.firstName)
+            sessionStorage.setItem('customURL', res.data.customURL)
             const listIdHolder = await axios.get(`https://link-in-bio.herokuapp.com/l/list4user/${res.data.userId}`)
             sessionStorage.setItem('listId', listIdHolder.data[0].listId)
             dispatch({type: LOGIN_USER_SUCCESS, payload})

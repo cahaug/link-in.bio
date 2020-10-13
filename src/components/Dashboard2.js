@@ -5,6 +5,8 @@ import axios from 'axios'
 import loadingGif from '../files/loading.gif'
 import ListEditor2 from "./ListEditor2"
 import libIMG from '../files/libIMG.png'
+import CUPicker from '../components/CustomURL/CUPicker'
+
 
 
 
@@ -35,6 +37,7 @@ function Dashboard2 () {
         sessionStorage.removeItem('firstName')
         sessionStorage.removeItem('token')
         sessionStorage.removeItem('userId')
+        sessionStorage.removeItem('customURL')
         window.location.reload()
     }
 
@@ -64,7 +67,11 @@ function Dashboard2 () {
                     <br />
                     <div className="qrcode">
                         <div>
+                            {sessionStorage.getItem('customURL')==null?
                             <QRCode value={`http://link-in.bio/${sessionStorage.getItem('listId')}`} />
+                            :
+                            <QRCode value={`http://link-in.bio/${sessionStorage.getItem('customURL')}`} />
+                            }
                         </div>
                     </div>
                     <br /> 
@@ -80,7 +87,8 @@ function Dashboard2 () {
                         <tr>
                             <td>Custom URL:</td>
                             {/* fix this right here (below) */}
-                            <td>Link to CustomURL Picker || Display custom link / edit choice button</td>
+                            {/* <td>Link to CustomURL Picker || Display custom link / edit choice button</td> */}
+                            <td><CUPicker /></td>
                         </tr>
                     </table>
                 </section>

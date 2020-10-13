@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import loadingGif from '../files/loading.gif'
 import { Link } from 'react-router-dom'
-import { SketchPicker } from 'react-color'
-import BackgroundPicker from '../components/BackgroundColorPicker'
+// import CUPicker from '../components/CustomURL/CUPicker'
 import BackgroundColorPicker from '../components/BackgroundColorPicker'
 import TextColorPicker from '../components/TextColorPicker'
 import EasyAddInstagram from '../components/EasyAdd/EasyAddInstagram'
@@ -87,6 +86,7 @@ function SettingsPanel(){
             <div className="easyAddInstaDiv">
                 <EasyAddInstagram />
             </div>
+
             <br />
             <a href="/dashboard2" alt="Back to Dashboard">Back to Dashboard</a>
         </div>
