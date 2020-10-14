@@ -44,7 +44,7 @@ const EasyAddInstagram = () => {
                 <h2>Enter your Instagram Handle (Account Name) Here:</h2>
                 <form onSubmit={handleFormSubmit}>
                     <label>
-                        Instagram.com/<input value={username} name="username" placeholder="username" type="text" onChange={onChangeUsername} />
+                        Instagram.com/<input value={username} required name="username" placeholder="username" type="text" onChange={onChangeUsername} />
                     </label>
                     <br />
                     <button type="submit">Add Instagram to Link-in.Bio/</button>

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import BackgroundColorPicker from '../components/BackgroundColorPicker'
 import TextColorPicker from '../components/TextColorPicker'
 import EasyAddInstagram from '../components/EasyAdd/EasyAddInstagram'
+import ProfilePictureChanger from '../components/ProfilePictureChanger'
 
 // thank you github.com/casesandberg for the lovely react color pickers
 console.log('thank you github.com/casesandberg for the lovely react color pickers')
@@ -15,6 +16,7 @@ function SettingsPanel(){
     const [modifyingTextColor, setModifyingTextColor] = useState(false)
     const [modifyingBackColor, setModifyingBackColor] = useState(false)
     const [easyAddingInsta, setEasyAddingInsta] = useState(false)
+    const [changingProfilePic, setChangingProfilePic] = useState(false)
     
     const textColorDrawerToggle = () => {
         const textColorDrawer = document.getElementsByClassName('textColorPickerDiv')
@@ -49,16 +51,28 @@ function SettingsPanel(){
         }
     }
 
+    const profPicDrawerToggle = () => {
+        const profPicChangerDrawer = document.getElementsByClassName('profPicChangerDiv')
+        if (profPicChangerDrawer[0].style.maxHeight){
+            profPicChangerDrawer[0].style.maxHeight = null;
+            setChangingProfilePic(false)
+        } else {
+            profPicChangerDrawer[0].style.maxHeight = profPicChangerDrawer[0].scrollHeight + "px";
+            setChangingProfilePic(true)
+        }
+    }
 
     useEffect(()=>{
         var elelist = document.getElementsByTagName("input"); for(var i = 0; i < elelist.length; i++){
             elelist[i].style.fontSize = '16px'
         }
+        document.title = 'Settings Panel - Link-in.bio/'
     })
 
     return (
         <div>
-            <p>Setting Panel</p>
+            <br />
+            <p>Settings Panel</p>
             <br /> <br />
             {/* <form onSubmit={submitTextChange}>
                 <label>
@@ -82,11 +96,15 @@ function SettingsPanel(){
                 <BackgroundColorPicker />
             </div>
             <br />
+            {changingProfilePic ? <span onClick={profPicDrawerToggle}>Modify Profile Picture URL ▲</span>:<span onClick={profPicDrawerToggle}>Modify Profile Picture URL ▼</span>}
+            <div className="profPicChangerDiv">
+                <ProfilePictureChanger />
+            </div>
+            <br />
             {easyAddingInsta ? <span onClick={instaDrawerToggle}>Easily Add Instagram Account ▲</span>:<span onClick={instaDrawerToggle}>Easily Add Instagram Account ▼</span>}
             <div className="easyAddInstaDiv">
                 <EasyAddInstagram />
             </div>
-
             <br />
             <a href="/dashboard2" alt="Back to Dashboard">Back to Dashboard</a>
         </div>
