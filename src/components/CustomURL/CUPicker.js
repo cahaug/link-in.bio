@@ -10,7 +10,7 @@ const CUPicker = () => {
             const token = sessionStorage.getItem('token')
             const listId = sessionStorage.getItem('listId')
             const urlDataValue = await axios.post('https://link-in-bio.herokuapp.com/l/resolveCustom', {listId:listId}, {headers:{authorization:token}})
-            console.log('urlDataValue',urlDataValue)
+            // console.log('urlDataValue',urlDataValue)
             // alert(`https://link-in.bio/${urlDataValue.data[0].customURL}`)
             setCurrentCustom(urlDataValue.data[0].customURL)
             setIsLoading(false)

@@ -81,7 +81,7 @@ function Dashboard2 () {
                     <p>Views: {listViews ? listViews: <span>Loading...</span>}</p><br />
                     <table>
                         <tr>
-                            <td>Your Spaces:</td>
+                            <td>Your Default Space:</td>
                             <td><a href={`https://link-in.bio/${sessionStorage.getItem('listId')}`} >https://link-in.bio/{sessionStorage.getItem('listId')}</a></td>
                         </tr>
                         <tr>
