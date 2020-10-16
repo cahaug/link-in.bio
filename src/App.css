@@ -260,9 +260,11 @@ footer span {
   border: 1px solid black;
   padding: 1em;
   margin: 1em;
+  cursor: pointer;
 }
 .linkListDashboardHeader .dashboardToggleHolder p:hover {
   background-color: darkgray;
+  cursor: pointer;
 }
 .dashboardInfoSection {
   color: black;
@@ -337,9 +339,11 @@ footer span {
 }
 .darkMode .linkListDashboardHeader .dashboardToggleHolder p {
   border: 1px solid white;
+  cursor: pointer;
 }
 .darkMode .linkListDashboardHeader .dashboardToggleHolder p:hover {
   background-color: darkgray;
+  cursor: pointer;
 }
 .darkMode .dashboardInfoSection {
   color: white;
