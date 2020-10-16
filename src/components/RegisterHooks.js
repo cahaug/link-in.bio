@@ -118,13 +118,13 @@ function RegisterHooks(){
         })
     }
 
-    // const onFormSubmit = event => {
-    //     event.preventDefault()
-    //     alert('Sorry, We are not accepting new users at this moment, check back soon.')
-    // }
+    const onFormSubmit = event => {
+        event.preventDefault()
+        alert('Sorry, We are not accepting new users at this moment, check back soon.')
+    }
 
     // renamed fn so no registrations happen rn
-    const onFormSubmit = async event => {
+    const RENAMEDonFormSubmit = async event => {
         event.preventDefault()
         const cast =  formSchema.cast(formData)
         console.log(cast)
