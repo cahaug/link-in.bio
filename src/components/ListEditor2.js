@@ -99,7 +99,7 @@ function ListEditor2(){
     }
 
     useEffect(() => {
-        const useThisURL = `https://link-in-bio.herokuapp.com/s/aio/${sessionStorage.getItem('listId')}`
+        const useThisURL = `https://link-in-bio.herokuapp.com/s/aio/${sessionStorage.getItem('userId')}`
         axios.get(useThisURL, { headers: {authorization: sessionStorage.getItem('token')} })
         .then(async res => {
             console.log('backend res', res)
