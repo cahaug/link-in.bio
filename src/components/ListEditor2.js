@@ -98,6 +98,16 @@ function ListEditor2(){
         })
     }
 
+    const updateTextFont = (font) => {
+        var fontPickerSampleTextArray = document.getElementsByClassName('App')
+        var i 
+        for (i=0; i<fontPickerSampleTextArray.length; i++){
+            fontPickerSampleTextArray[i].classList.toggle(`${font}Font`)
+            // fontPickerSampleTextArray[i].style.fontFamily = fontsDict[font]['name']
+            // fontPickerSampleTextArray[i].style.fontWeight = fontsDict[font]['weight']
+        }
+    }
+
     useEffect(() => {
         const useThisURL = `https://link-in-bio.herokuapp.com/s/aio/${sessionStorage.getItem('userId')}`
         axios.get(useThisURL, { headers: {authorization: sessionStorage.getItem('token')} })
@@ -156,6 +166,7 @@ function ListEditor2(){
             }
             if(res.data[0].fontSelection){
                 setChosenFont(`${res.data[0].fontSelection}`)
+                updateTextFont(`${res.data[0].fontSelection}`)
             }
             //css for hiddenDescriptions
             const collapsingDescriptions = document.getElementsByClassName('linkDescriptionTag')

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 // import CUPicker from '../components/CustomURL/CUPicker'
 import BackgroundColorPicker from '../components/BackgroundColorPicker'
 import TextColorPicker from '../components/TextColorPicker'
+import FontPicker from '../components/FontPicker'
 import EasyAddInstagram from '../components/EasyAdd/EasyAddInstagram'
 import ProfilePictureChanger from '../components/ProfilePictureChanger'
 
@@ -15,6 +16,7 @@ console.log('thank you github.com/casesandberg for the lovely react color picker
 function SettingsPanel(){
     const [modifyingTextColor, setModifyingTextColor] = useState(false)
     const [modifyingBackColor, setModifyingBackColor] = useState(false)
+    const [changingFont, setChangingFont] = useState(false)
     const [easyAddingInsta, setEasyAddingInsta] = useState(false)
     const [changingProfilePic, setChangingProfilePic] = useState(false)
     
@@ -37,6 +39,17 @@ function SettingsPanel(){
         } else {
             backColorDrawer[0].style.maxHeight = backColorDrawer[0].scrollHeight + "px";
             setModifyingBackColor(true)
+        }
+    }
+
+    const fontDrawerToggle = () => {
+        const fontDrawer = document.getElementsByClassName('fontPickerDiv')
+        if (fontDrawer[0].style.maxHeight){
+            fontDrawer[0].style.maxHeight = null;
+            setChangingFont(false)
+        } else {
+            fontDrawer[0].style.maxHeight = fontDrawer[0].scrollHeight + "px";
+            setChangingFont(true)
         }
     }
 
@@ -94,6 +107,11 @@ function SettingsPanel(){
             {modifyingBackColor ? <span onClick={backColorDrawerToggle}>Modify Background Color ▲</span>:<span onClick={backColorDrawerToggle}>Modify Background Color ▼</span>}
             <div className="backColorPickerDiv">
                 <BackgroundColorPicker />
+            </div>
+            <br />
+            {changingFont ? <span onClick={fontDrawerToggle}>Modify Font ▲</span>:<span onClick={fontDrawerToggle}>Modify Font ▼</span>}
+            <div className="fontPickerDiv">
+                <FontPicker />
             </div>
             <br />
             {changingProfilePic ? <span onClick={profPicDrawerToggle}>Modify Profile Picture URL ▲</span>:<span onClick={profPicDrawerToggle}>Modify Profile Picture URL ▼</span>}

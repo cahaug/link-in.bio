@@ -96,6 +96,11 @@ header .drawer h4 {
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
+.fontPickerDiv {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
 .easyAddInstaDiv {
   max-height: 0;
   overflow: hidden;
@@ -363,6 +368,134 @@ footer span {
 .darkMode .dashboardInfoSection table td {
   border: 1px solid white;
   padding: 1em;
+}
+.amaticSCFont header {
+  font-family: 'Amatic SC', cursive;
+  font-weight: 700;
+}
+.amaticSCFont main {
+  font-family: 'Amatic SC', cursive;
+  font-weight: 400;
+}
+.amaticSCFont main a {
+  font-family: 'Amatic SC', cursive;
+  font-weight: 700;
+}
+.amaticSCFont footer {
+  font-family: 'Amatic SC', cursive;
+  font-weight: 700;
+}
+.carterOneFont header {
+  font-family: 'Carter One', cursive;
+  font-weight: 400;
+}
+.carterOneFont main {
+  font-family: 'Carter One', cursive;
+  font-weight: 400;
+}
+.carterOneFont main a {
+  font-family: 'Carter One', cursive;
+  font-weight: 400;
+}
+.carterOneFont footer {
+  font-family: 'Carter One', cursive;
+  font-weight: 400;
+}
+.holtwoodOneFont header {
+  font-family: 'Holtwood One SC', serif;
+  font-weight: 400;
+}
+.holtwoodOneFont main {
+  font-family: 'Holtwood One SC', serif;
+  font-weight: 400;
+}
+.holtwoodOneFont main a {
+  font-family: 'Holtwood One SC', serif;
+  font-weight: 400;
+}
+.holtwoodOneFont footer {
+  font-family: 'Holtwood One SC', serif;
+  font-weight: 400;
+}
+.mulishFont header {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 900;
+}
+.mulishFont main {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 400;
+}
+.mulishFont main a {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 700;
+}
+.mulishFont footer {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 900;
+}
+.pacificoFont header {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+}
+.pacificoFont main {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+}
+.pacificoFont main a {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+}
+.pacificoFont footer {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+}
+.radleyFont header {
+  font-family: 'Radley', serif;
+  font-weight: 400;
+}
+.radleyFont main {
+  font-family: 'Radley', serif;
+  font-weight: 400;
+}
+.radleyFont main a {
+  font-family: 'Radley', serif;
+  font-weight: 400;
+}
+.radleyFont footer {
+  font-family: 'Radley', serif;
+  font-weight: 400;
+}
+.sigmarOneFont header {
+  font-family: 'Sigmar One', cursive;
+  font-weight: 400;
+}
+.sigmarOneFont main {
+  font-family: 'Sigmar One', cursive;
+  font-weight: 400;
+}
+.sigmarOneFont main a {
+  font-family: 'Sigmar One', cursive;
+  font-weight: 400;
+}
+.sigmarOneFont footer {
+  font-family: 'Sigmar One', cursive;
+  font-weight: 400;
+}
+.smytheFont header {
+  font-family: 'Smythe', cursive;
+  font-weight: 400;
+}
+.smytheFont main {
+  font-family: 'Smythe', cursive;
+  font-weight: 400;
+}
+.smytheFont main a {
+  font-family: 'Smythe', cursive;
+  font-weight: 400;
+}
+.smytheFont footer {
+  font-family: 'Smythe', cursive;
+  font-weight: 400;
 }
 @media screen and (max-height: 490px) {
   header {
