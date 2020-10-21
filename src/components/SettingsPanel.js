@@ -61,7 +61,7 @@ function SettingsPanel(){
             instaDrawer[0].style.maxHeight = null;
             setEasyAddingInsta(false)
         } else {
-            instaDrawer[0].style.maxHeight = instaDrawer[0].scrollHeight + 20 + "px";
+            instaDrawer[0].style.maxHeight = instaDrawer[0].scrollHeight + 60 + "px";
             setEasyAddingInsta(true)
         }
     }
@@ -88,7 +88,7 @@ function SettingsPanel(){
         <div className="settingsPanel">
             <br />
             <p>Settings Panel</p>
-            <br /> <br />
+            <br /> <hr /><br />
             {/* <form onSubmit={submitTextChange}>
                 <label>
                     Input Custom CSS Text Color Here (hex or word): <br />
@@ -121,7 +121,7 @@ function SettingsPanel(){
                 <ProfilePictureChanger />
             </div>
             <br />
-            {easyAddingInsta ? <span onClick={instaDrawerToggle}>Check CustomURL Availability ▲</span>:<span onClick={instaDrawerToggle}>Check CustomURL Availability ▼</span>}
+            {easyAddingInsta ? <span onClick={instaDrawerToggle}>CustomURL Picker ▲</span>:<span onClick={instaDrawerToggle}>CustomURL Picker ▼</span>}
             <div className="easyAddInstaDiv">
                 <AvailabilityChecker />
             </div>
