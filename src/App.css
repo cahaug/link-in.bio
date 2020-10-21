@@ -271,6 +271,9 @@ footer span {
   background-color: darkgray;
   cursor: pointer;
 }
+.settingsPanel span {
+  cursor: pointer;
+}
 .dashboardInfoSection {
   color: black;
   display: flex;
@@ -278,6 +281,12 @@ footer span {
   justify-content: center;
   padding: 2em;
   text-align: center;
+}
+.dashboardInfoSection span {
+  cursor: pointer;
+}
+.dashboardInfoSection h2 {
+  font-weight: bolder;
 }
 .dashboardInfoSection table {
   margin: 0 auto;
@@ -373,13 +382,18 @@ footer span {
   font-family: 'Amatic SC', cursive;
   font-weight: 700;
 }
+.amaticSCFont header h1 {
+  font-size: 2.75em;
+}
 .amaticSCFont main {
   font-family: 'Amatic SC', cursive;
   font-weight: 400;
+  font-size: 1.6em;
 }
 .amaticSCFont main a {
   font-family: 'Amatic SC', cursive;
   font-weight: 700;
+  font-size: 1.1em;
 }
 .amaticSCFont footer {
   font-family: 'Amatic SC', cursive;
@@ -412,6 +426,7 @@ footer span {
 .holtwoodOneFont main a {
   font-family: 'Holtwood One SC', serif;
   font-weight: 400;
+  font-size: 1.1em;
 }
 .holtwoodOneFont footer {
   font-family: 'Holtwood One SC', serif;
@@ -440,10 +455,12 @@ footer span {
 .pacificoFont main {
   font-family: 'Pacifico', cursive;
   font-weight: 400;
+  font-size: 1.1em;
 }
 .pacificoFont main a {
   font-family: 'Pacifico', cursive;
   font-weight: 400;
+  font-size: 1.25em;
 }
 .pacificoFont footer {
   font-family: 'Pacifico', cursive;
@@ -453,13 +470,18 @@ footer span {
   font-family: 'Radley', serif;
   font-weight: 400;
 }
+.radleyFont header h1 {
+  font-size: 2.5em;
+}
 .radleyFont main {
   font-family: 'Radley', serif;
   font-weight: 400;
+  font-size: 1.3em;
 }
 .radleyFont main a {
   font-family: 'Radley', serif;
   font-weight: 400;
+  font-size: 1.1em;
 }
 .radleyFont footer {
   font-family: 'Radley', serif;
@@ -469,13 +491,18 @@ footer span {
   font-family: 'Sigmar One', cursive;
   font-weight: 400;
 }
+.sigmarOneFont header h1 {
+  font-size: 2.25em;
+}
 .sigmarOneFont main {
   font-family: 'Sigmar One', cursive;
   font-weight: 400;
+  font-size: 1.1em;
 }
 .sigmarOneFont main a {
   font-family: 'Sigmar One', cursive;
   font-weight: 400;
+  font-size: 1.1em;
 }
 .sigmarOneFont footer {
   font-family: 'Sigmar One', cursive;
@@ -485,13 +512,18 @@ footer span {
   font-family: 'Smythe', cursive;
   font-weight: 400;
 }
+.smytheFont header h1 {
+  font-size: 2.75em;
+}
 .smytheFont main {
   font-family: 'Smythe', cursive;
   font-weight: 400;
+  font-size: 1.6em;
 }
 .smytheFont main a {
   font-family: 'Smythe', cursive;
   font-weight: 400;
+  font-size: 1.1em;
 }
 .smytheFont footer {
   font-family: 'Smythe', cursive;

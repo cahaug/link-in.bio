@@ -6,7 +6,8 @@ import { Link } from 'react-router-dom'
 import BackgroundColorPicker from '../components/BackgroundColorPicker'
 import TextColorPicker from '../components/TextColorPicker'
 import FontPicker from '../components/FontPicker'
-import EasyAddInstagram from '../components/EasyAdd/EasyAddInstagram'
+// import EasyAddInstagram from '../components/EasyAdd/EasyAddInstagram'
+import EasyAddMultiTool from '../components/EasyAdd/EasyAddMultiTool'
 import ProfilePictureChanger from '../components/ProfilePictureChanger'
 
 // thank you github.com/casesandberg for the lovely react color pickers
@@ -83,7 +84,7 @@ function SettingsPanel(){
     })
 
     return (
-        <div>
+        <div className="settingsPanel">
             <br />
             <p>Settings Panel</p>
             <br /> <br />
@@ -119,9 +120,9 @@ function SettingsPanel(){
                 <ProfilePictureChanger />
             </div>
             <br />
-            {easyAddingInsta ? <span onClick={instaDrawerToggle}>Easily Add Instagram Account ▲</span>:<span onClick={instaDrawerToggle}>Easily Add Instagram Account ▼</span>}
+            {easyAddingInsta ? <span onClick={instaDrawerToggle}>Easily Add Social Account ▲</span>:<span onClick={instaDrawerToggle}>Easily Add Social Account ▼</span>}
             <div className="easyAddInstaDiv">
-                <EasyAddInstagram />
+                <EasyAddMultiTool />
             </div>
             <br />
             <a href="/dashboard2" alt="Back to Dashboard">Back to Dashboard</a>
