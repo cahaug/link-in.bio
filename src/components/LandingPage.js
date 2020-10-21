@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import libIMG from '../files/libIMG.png'
+// import AvailabilityChecker from './CustomURL/AvailabilityChecker'
 // import '../App2.css';
 
 
@@ -26,7 +27,6 @@ const LandingPage = () => {
                     </div>
                 </Link>
             </div>
-            
         </div>
     )
 }

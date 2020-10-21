@@ -7,8 +7,9 @@ import BackgroundColorPicker from '../components/BackgroundColorPicker'
 import TextColorPicker from '../components/TextColorPicker'
 import FontPicker from '../components/FontPicker'
 // import EasyAddInstagram from '../components/EasyAdd/EasyAddInstagram'
-import EasyAddMultiTool from '../components/EasyAdd/EasyAddMultiTool'
+// import EasyAddMultiTool from '../components/EasyAdd/EasyAddMultiTool'
 import ProfilePictureChanger from '../components/ProfilePictureChanger'
+import AvailabilityChecker from "./CustomURL/AvailabilityChecker"
 
 // thank you github.com/casesandberg for the lovely react color pickers
 console.log('thank you github.com/casesandberg for the lovely react color pickers')
@@ -60,7 +61,7 @@ function SettingsPanel(){
             instaDrawer[0].style.maxHeight = null;
             setEasyAddingInsta(false)
         } else {
-            instaDrawer[0].style.maxHeight = instaDrawer[0].scrollHeight + "px";
+            instaDrawer[0].style.maxHeight = instaDrawer[0].scrollHeight + 20 + "px";
             setEasyAddingInsta(true)
         }
     }
@@ -120,9 +121,9 @@ function SettingsPanel(){
                 <ProfilePictureChanger />
             </div>
             <br />
-            {easyAddingInsta ? <span onClick={instaDrawerToggle}>Easily Add Social Account ▲</span>:<span onClick={instaDrawerToggle}>Easily Add Social Account ▼</span>}
+            {easyAddingInsta ? <span onClick={instaDrawerToggle}>Check CustomURL Availability ▲</span>:<span onClick={instaDrawerToggle}>Check CustomURL Availability ▼</span>}
             <div className="easyAddInstaDiv">
-                <EasyAddMultiTool />
+                <AvailabilityChecker />
             </div>
             <br />
             <a href="/dashboard2" alt="Back to Dashboard">Back to Dashboard</a>
