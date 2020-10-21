@@ -86,6 +86,31 @@ header .drawer h4 {
   padding-bottom: 2vh;
   padding-top: 3vh;
 }
+.backColorPickerDiv {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.textColorPickerDiv {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.fontPickerDiv {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.easyAddInstaDiv {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.profPicChangerDiv {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
 .qrcode {
   display: none;
   transition: max-height 0.2s ease-out;
@@ -219,6 +244,10 @@ footer span {
   border-color: black;
   width: 100%;
 }
+.colorPickerHolder {
+  margin: 5px auto;
+  width: 220px;
+}
 .linkListDashboardHeader {
   display: flex;
   flex-direction: column;
@@ -236,9 +265,14 @@ footer span {
   border: 1px solid black;
   padding: 1em;
   margin: 1em;
+  cursor: pointer;
 }
 .linkListDashboardHeader .dashboardToggleHolder p:hover {
   background-color: darkgray;
+  cursor: pointer;
+}
+.settingsPanel span {
+  cursor: pointer;
 }
 .dashboardInfoSection {
   color: black;
@@ -247,6 +281,12 @@ footer span {
   justify-content: center;
   padding: 2em;
   text-align: center;
+}
+.dashboardInfoSection span {
+  cursor: pointer;
+}
+.dashboardInfoSection h2 {
+  font-weight: bolder;
 }
 .dashboardInfoSection table {
   margin: 0 auto;
@@ -313,9 +353,11 @@ footer span {
 }
 .darkMode .linkListDashboardHeader .dashboardToggleHolder p {
   border: 1px solid white;
+  cursor: pointer;
 }
 .darkMode .linkListDashboardHeader .dashboardToggleHolder p:hover {
   background-color: darkgray;
+  cursor: pointer;
 }
 .darkMode .dashboardInfoSection {
   color: white;
@@ -335,6 +377,157 @@ footer span {
 .darkMode .dashboardInfoSection table td {
   border: 1px solid white;
   padding: 1em;
+}
+.amaticSCFont header {
+  font-family: 'Amatic SC', cursive;
+  font-weight: 700;
+}
+.amaticSCFont header h1 {
+  font-size: 2.75em;
+}
+.amaticSCFont main {
+  font-family: 'Amatic SC', cursive;
+  font-weight: 400;
+  font-size: 1.6em;
+}
+.amaticSCFont main a {
+  font-family: 'Amatic SC', cursive;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+.amaticSCFont footer {
+  font-family: 'Amatic SC', cursive;
+  font-weight: 700;
+}
+.carterOneFont header {
+  font-family: 'Carter One', cursive;
+  font-weight: 400;
+}
+.carterOneFont main {
+  font-family: 'Carter One', cursive;
+  font-weight: 400;
+}
+.carterOneFont main a {
+  font-family: 'Carter One', cursive;
+  font-weight: 400;
+}
+.carterOneFont footer {
+  font-family: 'Carter One', cursive;
+  font-weight: 400;
+}
+.holtwoodOneFont header {
+  font-family: 'Holtwood One SC', serif;
+  font-weight: 400;
+}
+.holtwoodOneFont main {
+  font-family: 'Holtwood One SC', serif;
+  font-weight: 400;
+}
+.holtwoodOneFont main a {
+  font-family: 'Holtwood One SC', serif;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+.holtwoodOneFont footer {
+  font-family: 'Holtwood One SC', serif;
+  font-weight: 400;
+}
+.mulishFont header {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 900;
+}
+.mulishFont main {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 400;
+}
+.mulishFont main a {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 700;
+}
+.mulishFont footer {
+  font-family: 'Mulish', sans-serif;
+  font-weight: 900;
+}
+.pacificoFont header {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+}
+.pacificoFont main {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+.pacificoFont main a {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  font-size: 1.25em;
+}
+.pacificoFont footer {
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+}
+.radleyFont header {
+  font-family: 'Radley', serif;
+  font-weight: 400;
+}
+.radleyFont header h1 {
+  font-size: 2.5em;
+}
+.radleyFont main {
+  font-family: 'Radley', serif;
+  font-weight: 400;
+  font-size: 1.3em;
+}
+.radleyFont main a {
+  font-family: 'Radley', serif;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+.radleyFont footer {
+  font-family: 'Radley', serif;
+  font-weight: 400;
+}
+.sigmarOneFont header {
+  font-family: 'Sigmar One', cursive;
+  font-weight: 400;
+}
+.sigmarOneFont header h1 {
+  font-size: 2.25em;
+}
+.sigmarOneFont main {
+  font-family: 'Sigmar One', cursive;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+.sigmarOneFont main a {
+  font-family: 'Sigmar One', cursive;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+.sigmarOneFont footer {
+  font-family: 'Sigmar One', cursive;
+  font-weight: 400;
+}
+.smytheFont header {
+  font-family: 'Smythe', cursive;
+  font-weight: 400;
+}
+.smytheFont header h1 {
+  font-size: 2.75em;
+}
+.smytheFont main {
+  font-family: 'Smythe', cursive;
+  font-weight: 400;
+  font-size: 1.6em;
+}
+.smytheFont main a {
+  font-family: 'Smythe', cursive;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+.smytheFont footer {
+  font-family: 'Smythe', cursive;
+  font-weight: 400;
 }
 @media screen and (max-height: 490px) {
   header {

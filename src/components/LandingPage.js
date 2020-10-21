@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import libIMG from '../files/libIMG.png'
+import HomepageAvailability from './CustomURL/HomepageAvailability'
 // import '../App2.css';
 
 
@@ -8,6 +9,9 @@ const LandingPage = () => {
     return (
         <div>
             <img src={libIMG} alt="Link-In.Bio Logo" className="landingIMG"/>
+            <br />
+            <HomepageAvailability />
+            <br />
             <div className='signupcards'>
                 <Link to='/register' style={{ textDecoration: 'none', color: 'black' }}>
                     <div className='signup'>
@@ -26,7 +30,6 @@ const LandingPage = () => {
                     </div>
                 </Link>
             </div>
-            
         </div>
     )
 }

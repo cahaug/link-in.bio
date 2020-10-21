@@ -10,13 +10,66 @@ function ListEditor2(){
     const [profilePictureURL, setProfilePictureURL] = useState()
     const [userFirstNameLastName, setUserFirstNameLastName] = useState()
     const [ourURL] = useState(sessionStorage.getItem('listId'))
-    const [darkMode, setDarkMode] = useState(true)
+    const [darkMode, setDarkMode] = useState(false)
     const [drawerPulled, setDrawerPulled] = useState(false)
+    const [backgroundColor, setBackgroundColor] = useState('#FFFFFF')
+    const [textColor, setTextColor] = useState('#000000')
+    const [chosenFont, setChosenFont] = useState()
+
 
     const applyDarkMode = () => {
         // var element = document.body;
+        // console.log('backcolor', backgroundColor, 'chosenFont', chosenFont, 'textColor', textColor)
         var element = document.getElementsByClassName('App')
         element[0].classList.toggle("darkMode")
+        if(darkMode===true){
+            var txtColorElement0 = document.getElementsByClassName('linkDescription')
+            var k
+            for (k=0; k< txtColorElement0.length; k++){
+                txtColorElement0[k].style.color = `${textColor}`
+                // txtColorElement[j].style.color = `${res.data[0].backColor}`
+            }
+            var borderElement0 = document.getElementsByClassName('linkSquare')
+            var arrowChangeColor = document.getElementsByClassName('linkDescriptionTag')
+            var n
+            for (n=0; n< borderElement0.length; n++){
+                borderElement0[n].style.border = `2px solid ${textColor}`
+                arrowChangeColor[n].style.color = `${textColor}`
+                // borderElement0[n].style.backgroundColor = `${backgroundColor}`
+            }
+            var headerDividerBar = document.getElementsByClassName('linkListDisplayHeader')
+            headerDividerBar[0].style.borderBottom = `0.25vh solid ${textColor}`
+            // headerDividerBar[0].style.backgroundColor = `${backgroundColor}`
+            var headerTextElement = document.getElementById('headerName')
+            headerTextElement.style.color = `${textColor}`
+            var mainBackgroundElement = document.getElementsByClassName('theMain')
+            console.log(mainBackgroundElement[0].style.backgroundColor)
+            mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${textColor}, ${backgroundColor})`
+        } else {
+            var txtColorElement0 = document.getElementsByClassName('linkDescription')
+            var m
+            for (m=0; m< txtColorElement0.length; m++){
+                txtColorElement0[m].style.color = 'grey'
+                // txtColorElement[j].style.color = `${res.data[0].backColor}`
+            }
+            var borderElement0 = document.getElementsByClassName('linkSquare')
+            var arrowChangeColor = document.getElementsByClassName('linkDescriptionTag')
+            var o
+            for (o=0; o< borderElement0.length; o++){
+                borderElement0[o].style.border = `2px solid grey`
+                arrowChangeColor[o].style.color = 'grey'
+                // borderElement0[o].style.backgroundColor = '#000000'
+            }
+            var headerDividerBar = document.getElementsByClassName('linkListDisplayHeader')
+            headerDividerBar[0].style.borderBottom = '0.25vh solid black'
+            // headerDividerBar[0].style.backgroundColor = '#000000'
+            var headerTextElement = document.getElementById('headerName')
+            headerTextElement.style.color = 'white'
+            var mainBackgroundElement = document.getElementsByClassName('theMain')
+            console.log(mainBackgroundElement[0].style.backgroundColor)
+            // mainBackgroundElement[0].style.backgroundColor = '#000000'
+            mainBackgroundElement[0].style.backgroundImage = 'linear-gradient(70deg, #151515, black)'
+        }
         setDarkMode(!darkMode) 
     }
 
@@ -32,16 +85,31 @@ function ListEditor2(){
     }
 
     const deleteEntry = (entryId) => {
+        console.log('entryId',entryId)
         const useThisURL = `https://link-in-bio.herokuapp.com/e/deleteEntry`
         return axios.post(useThisURL, {entryId: entryId})
         .then(response => {
             alert('Entry Successfully Deleted')
+            console.log('deleteEntryRes',response)
             window.location.reload()
+        })
+        .catch(err => {
+            console.log('error deleting', err)
         })
     }
 
+    const updateTextFont = (font) => {
+        var fontPickerSampleTextArray = document.getElementsByClassName('App')
+        var i 
+        for (i=0; i<fontPickerSampleTextArray.length; i++){
+            fontPickerSampleTextArray[i].classList.toggle(`${font}Font`)
+            // fontPickerSampleTextArray[i].style.fontFamily = fontsDict[font]['name']
+            // fontPickerSampleTextArray[i].style.fontWeight = fontsDict[font]['weight']
+        }
+    }
+
     useEffect(() => {
-        const useThisURL = `https://link-in-bio.herokuapp.com/s/aio/${sessionStorage.getItem('listId')}`
+        const useThisURL = `https://link-in-bio.herokuapp.com/s/aio/${sessionStorage.getItem('userId')}`
         axios.get(useThisURL, { headers: {authorization: sessionStorage.getItem('token')} })
         .then(async res => {
             console.log('backend res', res)
@@ -55,8 +123,8 @@ function ListEditor2(){
             // console.log(incrementedListViews)
             setIsLoading(false);
             // initialize in dark mode
-            var element0 = document.getElementsByClassName('App')
-            element0[0].classList.toggle("darkMode")
+            // var element0 = document.getElementsByClassName('App')
+            // element0[0].classList.toggle("darkMode")
             const thelinks = (res.data.map((link) => {
                 console.log('link.keys.length', link)
                 if(link.hasOwnProperty('entryId')){
@@ -74,7 +142,7 @@ function ListEditor2(){
                                     {/* <Link className="squareButton" to={`/editEntry/${link.entryId}`}><button className="squareButton">Edit Entry</button></Link> */}
                                     <a href={`/editEntry/${link.entryId}`}><button className="squareButton">Edit Entry</button></a>
                                     <br />
-                                    <button className="sqaureButton" onClick={()=>{deleteEntry(link.entryId)}}>Delete Entry</button>
+                                    <button className="sqaureButton" onClick={() => {deleteEntry(link.entryId)}}>Delete Entry</button>
                                 </div>
                                 <p className="linkDescriptionTag">▼</p>
                                 <p className='linkDescription'>{link.description}</p>
@@ -88,6 +156,18 @@ function ListEditor2(){
             }))
             setLinks(thelinks)
             console.log('thelinks',thelinks)
+            if(res.data[0].backColor){
+                console.log('backColor Changed Bruh!')
+                setBackgroundColor(`${res.data[0].backColor}`)
+            }
+            if(res.data[0].txtColor){
+                console.log('textColor Changed Bruh!')
+               setTextColor(`${res.data[0].txtColor}`)
+            }
+            if(res.data[0].fontSelection){
+                setChosenFont(`${res.data[0].fontSelection}`)
+                updateTextFont(`${res.data[0].fontSelection}`)
+            }
             //css for hiddenDescriptions
             const collapsingDescriptions = document.getElementsByClassName('linkDescriptionTag')
             var i
@@ -102,6 +182,30 @@ function ListEditor2(){
                     }
                 })
             }
+
+            // initialize in custom color mode
+            var txtColorElement0 = document.getElementsByClassName('linkDescription')
+            var k
+            for (k=0; k< txtColorElement0.length; k++){
+                txtColorElement0[k].style.color = `${res.data[0].txtColor}`
+                // txtColorElement[j].style.color = `${res.data[0].backColor}`
+            }
+            var borderElement0 = document.getElementsByClassName('linkSquare')
+            var arrowChangeColor = document.getElementsByClassName('linkDescriptionTag')
+            var n
+            for (n=0; n< borderElement0.length; n++){
+                borderElement0[n].style.border = `2px solid ${res.data[0].txtColor}`
+                arrowChangeColor[n].style.color = `${res.data[0].txtColor}`
+                // borderElement0[n].style.backgroundColor = `${backgroundColor}`
+            }
+            var headerDividerBar = document.getElementsByClassName('linkListDisplayHeader')
+            headerDividerBar[0].style.borderBottom = `0.25vh solid ${res.data[0].txtColor}`
+            // headerDividerBar[0].style.backgroundColor = `${backgroundColor}`
+            var headerTextElement = document.getElementById('headerName')
+            headerTextElement.style.color = `${res.data[0].txtColor}`
+            var mainBackgroundElement = document.getElementsByClassName('theMain')
+            console.log(mainBackgroundElement[0].style.backgroundColor)
+            mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
         })
         .catch(err => {console.log('err', err); alert('that site does not exist, yet. or check your connection.')})
     }, [])
@@ -120,7 +224,7 @@ function ListEditor2(){
                                 {drawerPulled ? <span onClick={drawerToggle}>💭</span>:<span onClick={drawerToggle}>💬</span>}
                             </div>
                             <br />
-                            <h1>{userFirstNameLastName}</h1>
+                            <h1 id="headerName">{userFirstNameLastName}</h1>
                             <br /> 
                             <img src={profilePictureURL} alt={profilePictureURL} />
                         </div>
@@ -131,7 +235,7 @@ function ListEditor2(){
                     </div>
                 {/* <hr /> */}
                 </header>
-                <main>
+                <main className="theMain">
                     {links}
                 </main>
                 {/* <footer>

@@ -116,6 +116,37 @@ header .drawer {
     }
 }
 
+.backColorPickerDiv {
+    max-height: 0;
+    overflow:hidden;
+    transition:max-height 0.2s ease-out;
+}
+
+.textColorPickerDiv {
+    max-height: 0;
+    overflow:hidden;
+    transition:max-height 0.2s ease-out;
+}
+
+.fontPickerDiv {
+    max-height: 0;
+    overflow:hidden;
+    transition:max-height 0.2s ease-out;
+}
+
+.easyAddInstaDiv {
+    max-height: 0;
+    overflow:hidden;
+    transition:max-height 0.2s ease-out;
+    // margin:5px;
+}
+
+.profPicChangerDiv {
+    max-height: 0;
+    overflow:hidden;
+    transition:max-height 0.2s ease-out;
+}
+
 .qrcode {
     display:none;
     transition:max-height 0.2s ease-out;       
@@ -301,6 +332,11 @@ footer {
     }
 }
 
+.colorPickerHolder{
+    margin:5px auto;
+    width:220px;
+}
+
 .linkListDashboardHeader {
     display:flex;
     flex-direction: column;
@@ -319,11 +355,19 @@ footer {
             border: 1px solid black;
             padding:1em;
             margin: 1em;
+            cursor: pointer;
         }
 
         p:hover {
             background-color:darkgray;
+            cursor: pointer;
         }
+    }
+}
+
+.settingsPanel{
+    span{
+        cursor: pointer;
     }
 }
 
@@ -334,6 +378,14 @@ footer {
     justify-content: center;
     padding:2em;
     text-align:center;
+
+    span{
+        cursor: pointer;
+    }
+
+    h2 {
+        font-weight: bolder;
+    }
     
     table{
         margin:0 auto;
@@ -425,10 +477,12 @@ footer {
 
             p {
                 border: 1px solid white;
+                cursor: pointer;
             }
     
             p:hover {
                 background-color:darkgray;
+                cursor: pointer;
             }
         }
     }
@@ -461,6 +515,221 @@ footer {
 
 }
 // }
+
+.amaticSCFont {
+    header {
+        font-family:'Amatic SC', cursive;
+        font-weight: 700;
+
+        h1 {
+            font-size:2.75em;
+        }
+    }
+
+    main {
+        font-family: 'Amatic SC', cursive;
+        font-weight:400;
+        font-size:1.6em;
+    }
+
+    main a {
+        font-family:'Amatic SC', cursive;
+        font-weight:700;
+        font-size: 1.1em;
+    }
+
+    footer {
+        font-family:'Amatic SC', cursive;
+        font-weight:700;
+    }
+
+}
+
+.carterOneFont {
+    header {
+        font-family: 'Carter One', cursive;
+        font-weight: 400;
+    }
+
+    main {
+        font-family: 'Carter One', cursive;
+        font-weight:400;
+    }
+
+    main a {
+        font-family: 'Carter One', cursive;
+        font-weight:400;
+    }
+
+    footer {
+        font-family: 'Carter One', cursive;
+        font-weight:400;
+    }
+
+}
+
+.holtwoodOneFont {
+    // .fontPickerSampleText {
+    //     font-family:'Holtwood One SC', serif;
+    // }
+
+    header {
+        font-family: 'Holtwood One SC', serif;
+        font-weight: 400;
+    }
+
+    main {
+        font-family: 'Holtwood One SC', serif;
+        font-weight:400;
+    }
+
+    main a {
+        font-family: 'Holtwood One SC', serif;
+        font-weight:400;
+        font-size: 1.1em;
+    }
+
+    footer {
+        font-family: 'Holtwood One SC', serif;
+        font-weight:400;
+    }
+
+}
+
+.mulishFont {
+    header {
+        font-family: 'Mulish', sans-serif;
+        font-weight: 900;
+    }
+
+    main {
+        font-family: 'Mulish', sans-serif;
+        font-weight:400;
+    }
+
+    main a {
+        font-family: 'Mulish', sans-serif;
+        font-weight:700;
+    }
+
+    footer {
+        font-family: 'Mulish', sans-serif;
+        font-weight:900;
+    }
+
+}
+
+.pacificoFont {
+    header {
+        font-family: 'Pacifico', cursive;
+        font-weight: 400;
+    }
+
+    main {
+        font-family: 'Pacifico', cursive;
+        font-weight:400;
+        font-size: 1.1em;
+    }
+
+    main a {
+        font-family: 'Pacifico', cursive;
+        font-weight:400;
+        font-size: 1.25em;
+    }
+
+    footer {
+        font-family: 'Pacifico', cursive;
+        font-weight:400;
+    }
+
+}
+
+.radleyFont {
+    header {
+        font-family: 'Radley', serif;
+        font-weight: 400;
+
+        h1 {
+            font-size: 2.5em;
+        }
+    }
+
+    main {
+        font-family: 'Radley', serif;
+        font-weight:400;
+        font-size: 1.3em;
+    }
+
+    main a {
+        font-family: 'Radley', serif;
+        font-weight:400;
+        font-size: 1.1em;
+    }
+
+    footer {
+        font-family: 'Radley', serif;
+        font-weight:400;
+    }
+
+}
+
+.sigmarOneFont {
+    header {
+        font-family: 'Sigmar One', cursive;
+        font-weight: 400;
+
+        h1 {
+            font-size: 2.25em;
+        }
+    }
+
+    main {
+        font-family: 'Sigmar One', cursive;
+        font-weight:400;
+        font-size: 1.1em;
+    }
+
+    main a {
+        font-family: 'Sigmar One', cursive;
+        font-weight:400;
+        font-size:1.1em;
+    }
+
+    footer {
+        font-family: 'Sigmar One', cursive;
+        font-weight:400;
+    }
+
+}
+
+.smytheFont {
+    header {
+        font-family: 'Smythe', cursive;
+        font-weight: 400;
+
+        h1 {
+            font-size: 2.75em;
+        }
+    }
+
+    main {
+        font-family: 'Smythe', cursive;
+        font-weight:400;
+        font-size: 1.6em;
+    }
+
+    main a {
+        font-family: 'Smythe', cursive;
+        font-weight:400;
+        font-size:1.1em;
+    }
+
+    footer {
+        font-family: 'Smythe', cursive;
+        font-weight:400;
+    }
+
+}
 
 @media screen and (max-height: 490px) {
     header { overflow: scroll; } /* Or change the height or whatever */ 

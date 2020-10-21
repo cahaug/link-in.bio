@@ -5,6 +5,9 @@ import axios from 'axios'
 import loadingGif from '../files/loading.gif'
 import ListEditor2 from "./ListEditor2"
 import libIMG from '../files/libIMG.png'
+import CUPicker from '../components/CustomURL/CUPicker'
+import EasyAddDash from '../components/EasyAdd/EasyAddDash'
+
 
 
 
@@ -16,6 +19,19 @@ function Dashboard2 () {
     const [displayingSettings, setDisplayingSettings] = useState(false)
     const [listViews, setListViews] = useState(null)
     const [qrShowing, setQRShowing] = useState(false)
+    const [isEasyAdding, setIsEasyAdding] = useState(false)
+
+
+    const easyAddDrawerToggle = () => {
+        const easyAddDrawer = document.getElementsByClassName('easyAddInstaDiv')
+        if (easyAddDrawer[0].style.maxHeight){
+            easyAddDrawer[0].style.maxHeight = null;
+            setIsEasyAdding(false)
+        } else {
+            easyAddDrawer[0].style.maxHeight = easyAddDrawer[0].scrollHeight + "px";
+            setIsEasyAdding(true)
+        }
+    }
 
     const qrToggle = () => {
         var qrElement = document.getElementsByClassName('qrcode')
@@ -35,6 +51,7 @@ function Dashboard2 () {
         sessionStorage.removeItem('firstName')
         sessionStorage.removeItem('token')
         sessionStorage.removeItem('userId')
+        sessionStorage.removeItem('customURL')
         window.location.reload()
     }
 
@@ -43,6 +60,7 @@ function Dashboard2 () {
         axios.get(useThisURL, { headers: {authorization: sessionStorage.getItem('token')} })
         .then(response => {
             setListViews(response.data['listViews'])
+            document.title = 'Dashboard - Link-in.bio/'
         })
         .catch(err =>  {
             console.log(err)
@@ -64,7 +82,11 @@ function Dashboard2 () {
                     <br />
                     <div className="qrcode">
                         <div>
+                            {sessionStorage.getItem('customURL')==null?
                             <QRCode value={`http://link-in.bio/${sessionStorage.getItem('listId')}`} />
+                            :
+                            <QRCode value={`http://link-in.bio/${sessionStorage.getItem('customURL')}`} />
+                            }
                         </div>
                     </div>
                     <br /> 
@@ -74,20 +96,30 @@ function Dashboard2 () {
                     <p>Views: {listViews ? listViews: <span>Loading...</span>}</p><br />
                     <table>
                         <tr>
-                            <td>Your Spaces:</td>
+                            <td>Your Default Space:</td>
                             <td><a href={`https://link-in.bio/${sessionStorage.getItem('listId')}`} >https://link-in.bio/{sessionStorage.getItem('listId')}</a></td>
                         </tr>
                         <tr>
                             <td>Custom URL:</td>
                             {/* fix this right here (below) */}
-                            <td>Link to CustomURL Picker || Display custom link / edit choice button</td>
+                            {/* <td>Link to CustomURL Picker || Display custom link / edit choice button</td> */}
+                            <td><CUPicker /></td>
                         </tr>
                     </table>
                 </section>
                 <section className="dashboardInfoSection">
-                    <h2>Your List:</h2>
+                    <h2>Add Entries to Your List:</h2>
+                    <br /> <br />
+                    <Link to={`/addEntry/${sessionStorage.getItem('listId')}`}><span className="abutton">Add Custom Entry</span></Link>
+                    <br /> <br />
+                    {isEasyAdding ? <span onClick={easyAddDrawerToggle}>Easy-Add Social Account  ▲</span>:<span onClick={easyAddDrawerToggle}>Easy-Add Social Account  ▼</span>}
+                    <div className="easyAddInstaDiv">
+                        <EasyAddDash />
+                    </div>
+                    <br /> <br /> 
+                    <hr />
                     <br />
-                    <Link to={`/addEntry/${sessionStorage.getItem('listId')}`}><span className="abutton">Add Entry</span></Link>
+                    <h2>List Editor:</h2>
                     <br />
                     <hr />
                     <ListEditor2 />
