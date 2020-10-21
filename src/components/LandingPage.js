@@ -9,6 +9,9 @@ const LandingPage = () => {
     return (
         <div>
             <img src={libIMG} alt="Link-In.Bio Logo" className="landingIMG"/>
+            <br />
+            <HomepageAvailability />
+            <br />
             <div className='signupcards'>
                 <Link to='/register' style={{ textDecoration: 'none', color: 'black' }}>
                     <div className='signup'>
@@ -27,8 +30,6 @@ const LandingPage = () => {
                     </div>
                 </Link>
             </div>
-            <br />
-            <HomepageAvailability />
         </div>
     )
 }
