@@ -11,6 +11,7 @@ function ListDisplayHooks(match) {
     const [ourURL] = useState(match.match.url)
     const [profilePictureURL, setProfilePictureURL] = useState()
     const [userFirstNameLastName, setUserFirstNameLastName] = useState()
+    const [displayName, setDisplayName] = useState()
     const [displayingUserInfo, setDisplayingUserInfo] = useState()
     const [darkMode, setDarkMode] = useState(false)
     const [drawerPulled, setDrawerPulled] = useState(false)
@@ -115,8 +116,10 @@ function ListDisplayHooks(match) {
         .then(async res => {
             console.log('backend res', res)
             const userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
+            const displayName = res.data[0].displayName
             const profilePictureURL = `${res.data[0].profilePictureURL}`
             const displayingUserInfo = `${res.data[0].displayUserInfo}`
+            setDisplayName(displayName)
             setProfilePictureURL(profilePictureURL)
             setUserFirstNameLastName(userFirstLastName)
             setDisplayingUserInfo(displayingUserInfo)
@@ -229,7 +232,7 @@ function ListDisplayHooks(match) {
                                 {drawerPulled ? <span onClick={drawerToggle}>💭</span>:<span onClick={drawerToggle}>💬</span>}
                             </div>
                             <br />
-                            <h1 id="headerName">{userFirstNameLastName}</h1>
+                            <h1 id="headerName">{displayName===null?userFirstNameLastName:displayName}</h1>
                             <br /> 
                             <img src={profilePictureURL} alt={profilePictureURL} />
                         </div>
