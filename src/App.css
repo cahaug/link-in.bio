@@ -111,6 +111,11 @@ header .drawer h4 {
   overflow: hidden;
   transition: max-height 0.2s ease-out;
 }
+.displayNameChangerDiv {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
 .qrcode {
   display: none;
   transition: max-height 0.2s ease-out;

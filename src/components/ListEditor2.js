@@ -9,6 +9,7 @@ function ListEditor2(){
     const [links, setLinks] = useState([])
     const [profilePictureURL, setProfilePictureURL] = useState()
     const [userFirstNameLastName, setUserFirstNameLastName] = useState()
+    const [displayName, setDisplayName] = useState()
     const [ourURL] = useState(sessionStorage.getItem('listId'))
     const [darkMode, setDarkMode] = useState(false)
     const [drawerPulled, setDrawerPulled] = useState(false)
@@ -114,8 +115,10 @@ function ListEditor2(){
         .then(async res => {
             console.log('backend res', res)
             const userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
+            const displayName = res.data[0].displayName
             const profilePictureURL = `${res.data[0].profilePictureURL}`
             // const displayingUserInfo = `${res.data[0].displayUserInfo}`
+            setDisplayName(displayName)
             setProfilePictureURL(profilePictureURL)
             setUserFirstNameLastName(userFirstLastName)
             // setDisplayingUserInfo(displayingUserInfo)
@@ -224,7 +227,7 @@ function ListEditor2(){
                                 {drawerPulled ? <span onClick={drawerToggle}>💭</span>:<span onClick={drawerToggle}>💬</span>}
                             </div>
                             <br />
-                            <h1 id="headerName">{userFirstNameLastName}</h1>
+                            <h1 id="headerName">{displayName===null?userFirstNameLastName:displayName}</h1>
                             <br /> 
                             <img src={profilePictureURL} alt={profilePictureURL} />
                         </div>

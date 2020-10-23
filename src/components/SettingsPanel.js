@@ -9,7 +9,8 @@ import FontPicker from '../components/FontPicker'
 // import EasyAddInstagram from '../components/EasyAdd/EasyAddInstagram'
 // import EasyAddMultiTool from '../components/EasyAdd/EasyAddMultiTool'
 import ProfilePictureChanger from '../components/ProfilePictureChanger'
-import AvailabilityChecker from "./CustomURL/AvailabilityChecker"
+import AvailabilityChecker from './CustomURL/AvailabilityChecker'
+import ChangeDisplayName from '../components/ChangeDisplayName'
 
 
 // thank you github.com/casesandberg for the lovely react color pickers
@@ -22,6 +23,7 @@ function SettingsPanel(){
     const [changingFont, setChangingFont] = useState(false)
     const [easyAddingInsta, setEasyAddingInsta] = useState(false)
     const [changingProfilePic, setChangingProfilePic] = useState(false)
+    const [settingDisplayName, setSettingDisplayName] = useState(false)
     
     const textColorDrawerToggle = () => {
         const textColorDrawer = document.getElementsByClassName('textColorPickerDiv')
@@ -78,6 +80,17 @@ function SettingsPanel(){
         }
     }
 
+    const displayNameDrawerToggle = () => {
+        const displayNameChangerDrawer = document.getElementsByClassName('displayNameChangerDiv')
+        if (displayNameChangerDrawer[0].style.maxHeight){
+            displayNameChangerDrawer[0].style.maxHeight = null;
+            setSettingDisplayName(false)
+        } else {
+            displayNameChangerDrawer[0].style.maxHeight = displayNameChangerDrawer[0].scrollHeight + "px";
+            setSettingDisplayName(true)
+        }
+    }
+
     useEffect(()=>{
         var elelist = document.getElementsByTagName("input"); for(var i = 0; i < elelist.length; i++){
             elelist[i].style.fontSize = '16px'
@@ -125,6 +138,11 @@ function SettingsPanel(){
             {easyAddingInsta ? <span onClick={instaDrawerToggle}>CustomURL Picker ▲</span>:<span onClick={instaDrawerToggle}>CustomURL Picker ▼</span>}
             <div className="easyAddInstaDiv">
                 <AvailabilityChecker />
+            </div>
+            <br />
+            {settingDisplayName ? <span onClick={displayNameDrawerToggle}>Set Display Name ▲</span>:<span onClick={displayNameDrawerToggle}>Set Display Name ▼</span>}
+            <div className="displayNameChangerDiv">
+                <ChangeDisplayName />
             </div>
             <br />
             <a href="/dashboard2" alt="Back to Dashboard">Back to Dashboard</a>
