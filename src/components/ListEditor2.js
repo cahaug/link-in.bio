@@ -86,9 +86,12 @@ function ListEditor2(){
     }
 
     const deleteEntry = (entryId) => {
-        console.log('entryId',entryId)
+        // console.log('entryId',entryId)
+        const userId = sessionStorage.getItem('userId')
+        const listId = sessionStorage.getItem('listId')
+        const token = sessionStorage.getItem('token')
         const useThisURL = `https://link-in-bio.herokuapp.com/e/deleteEntry`
-        return axios.post(useThisURL, {entryId: entryId})
+        return axios.post(useThisURL, {entryId: entryId, listId:listId, userId:userId}, {headers:{authorization:token}})
         .then(response => {
             alert('Entry Successfully Deleted')
             console.log('deleteEntryRes',response)

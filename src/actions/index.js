@@ -163,10 +163,10 @@ export function addEntry(userId, listId, referencingURL, description, linkTitle,
     }
 }
 
-export function editEntry(entryId, referencingURL, description, linkTitle, imgURL){
+export function editEntry(entryId, referencingURL, description, linkTitle, imgURL, token, listId){
     return (dispatch) => {
         dispatch({type: EDIT_ENTRY_START})
-        return axios.put('https://link-in-bio.herokuapp.com/e/replaceEntry', {entryId, referencingURL, description, linkTitle, imgURL})
+        return axios.put('https://link-in-bio.herokuapp.com/e/replaceEntry', {entryId, referencingURL, description, linkTitle, imgURL, listId}, { headers: {authorization: token}})
         .then((res) => {
             alert('Entry Edited Successfully')
             dispatch({type: EDIT_ENTRY_SUCCESS, payload:res.data})
