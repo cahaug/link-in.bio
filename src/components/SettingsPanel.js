@@ -11,6 +11,7 @@ import FontPicker from '../components/FontPicker'
 import ProfilePictureChanger from '../components/ProfilePictureChanger'
 import AvailabilityChecker from './CustomURL/AvailabilityChecker'
 import ChangeDisplayName from '../components/ChangeDisplayName'
+import SettingsChangePassword from "./SettingsChangePassword"
 
 
 // thank you github.com/casesandberg for the lovely react color pickers
@@ -24,6 +25,7 @@ function SettingsPanel(){
     const [easyAddingInsta, setEasyAddingInsta] = useState(false)
     const [changingProfilePic, setChangingProfilePic] = useState(false)
     const [settingDisplayName, setSettingDisplayName] = useState(false)
+    const [changingPassword, setChangingPassword] = useState(false)
     
     const textColorDrawerToggle = () => {
         const textColorDrawer = document.getElementsByClassName('textColorPickerDiv')
@@ -91,6 +93,17 @@ function SettingsPanel(){
         }
     }
 
+    const changePasswordDrawerToggle = () => {
+        const passwordChangerDrawer = document.getElementsByClassName('passwordChangerDiv')
+        if (passwordChangerDrawer[0].style.maxHeight){
+            passwordChangerDrawer[0].style.maxHeight = null;
+            setChangingPassword(false)
+        } else {
+            passwordChangerDrawer[0].style.maxHeight = passwordChangerDrawer[0].scrollHeight + 120 + "px";
+            setChangingPassword(true)
+        }
+    }
+
     useEffect(()=>{
         var elelist = document.getElementsByTagName("input"); for(var i = 0; i < elelist.length; i++){
             elelist[i].style.fontSize = '16px'
@@ -143,6 +156,11 @@ function SettingsPanel(){
             {settingDisplayName ? <span onClick={displayNameDrawerToggle}>Set Display Name ▲</span>:<span onClick={displayNameDrawerToggle}>Set Display Name ▼</span>}
             <div className="displayNameChangerDiv">
                 <ChangeDisplayName />
+            </div>
+            <br />
+            {changingPassword ? <span onClick={changePasswordDrawerToggle}>Change Password ▲</span>:<span onClick={changePasswordDrawerToggle}>Change Password ▼</span>}
+            <div className="passwordChangerDiv">
+                <SettingsChangePassword />
             </div>
             <br />
             <a href="/dashboard2" alt="Back to Dashboard">Back to Dashboard</a>
