@@ -51,8 +51,8 @@ class App extends React.Component {
         <PrivateRoute exact path="/settingsPanel" component={SettingsPanel} />
         <PrivateRoute exact path="/createlist" component={CreateList} />
         {/* <Route path={`/success`} render={props => <PaymentSuccess {...props} />} /> */}
-        <Route path={`/addEntry/:listId`} render={props => <AddEntry {...props}/>} />
-        <Route path={`/editEntry/:entryId`} render={props => <EntryEditor {...props} />} />
+        <PrivateRoute path={`/addEntry/:listId`} render={props => <AddEntry {...props}/>} />
+        <PrivateRoute path={`/editEntry/:entryId`} render={props => <EntryEditor {...props} />} />
         {/* <Route path="/:id" render={props => <ListDisplay {...props}/>} /> */}
         <Route path="/:id" render={({match}) => <ListDisplayHooks match={match}/>} />
         {/* <PrivateRoute exact path="/editentry" component={EditEntry} /> */}
