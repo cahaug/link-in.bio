@@ -102,6 +102,8 @@ function ListEditor2(){
         })
     }
 
+    const monthsDict = {'01':'January', '02':'February', '03':'March', '04':'April', '05':'May', '06':'June', '07':'July', '08':'August', '09':'September', '10':'October', '11':'November', '12':'December'}
+
     const updateTextFont = (font) => {
         var fontPickerSampleTextArray = document.getElementsByClassName('App')
         var i 
@@ -151,7 +153,7 @@ function ListEditor2(){
                                     <button className="sqaureButton" onClick={() => {deleteEntry(link.entryId)}}>Delete Entry</button>
                                 </div>
                                 <p className="linkDescriptionTag">▼</p>
-                                <p className='linkDescription'>{link.description}</p>
+                    <p className='linkDescription'>{link.description} <br /> <br />Added: {monthsDict[`${link.creationDate.slice(5,7)}`]} {link.creationDate.slice(8,10)}, at {link.creationDate.slice(11,16)} UTC</p>
                             </div>
     
                     )
