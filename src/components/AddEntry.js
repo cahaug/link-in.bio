@@ -16,7 +16,7 @@ class AddEntry extends React.Component {
 
         this.state = {
             userId: sessionStorage.getItem('userId'),
-            listId: this.props.match.params.listId,
+            listId: sessionStorage.getItem('listId'),
             referencingURL: '',
             description: '',
             linkTitle: '',

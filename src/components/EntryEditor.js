@@ -55,6 +55,8 @@ class EntryEditor extends React.Component {
     }
 
     UNSAFE_componentWillMount(props){
+        console.log('props', props)
+        // console.log('curpath', props.curPath)
         const useThisURL = `https://link-in-bio.herokuapp.com/e${this.props.match.url}`
         return axios.get(useThisURL)
         .then(response => {

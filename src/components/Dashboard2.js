@@ -110,7 +110,7 @@ function Dashboard2 () {
                 <section className="dashboardInfoSection">
                     <h2>Add Entries to Your List:</h2>
                     <br /> <br />
-                    <Link to={`/addEntry/${sessionStorage.getItem('listId')}`}><span className="abutton">Add Custom Entry</span></Link>
+                    <Link to={`/addEntry/`}><span className="abutton">Add Custom Entry</span></Link>
                     <br /> <br />
                     {isEasyAdding ? <span onClick={easyAddDrawerToggle}>Easy-Add Social Account  ▲</span>:<span onClick={easyAddDrawerToggle}>Easy-Add Social Account  ▼</span>}
                     <div className="easyAddInstaDiv">
