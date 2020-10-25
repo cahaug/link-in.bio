@@ -7,6 +7,7 @@ import ListEditor2 from "./ListEditor2"
 import libIMG from '../files/libIMG.png'
 import CUPicker from '../components/CustomURL/CUPicker'
 import EasyAddDash from '../components/EasyAdd/EasyAddDash'
+// import GraphForEntry from "../components/GraphForEntry"
 
 
 
@@ -35,7 +36,7 @@ function Dashboard2 () {
 
     const qrToggle = () => {
         var qrElement = document.getElementsByClassName('qrcode')
-        console.log('qrelement', qrElement)
+        // console.log('qrelement', qrElement)
         if (qrShowing){
             qrElement[0].style.display = 'none';
             setQRShowing(false)
@@ -117,6 +118,12 @@ function Dashboard2 () {
                         <EasyAddDash />
                     </div>
                     <br /> <br /> 
+                    {/* remove */}
+                    {/* <div>
+                        <GraphForEntry />
+                    </div>
+                    <br /> */}
+                    {/* remove */}
                     <hr />
                     <br />
                     <h2>List Editor:</h2>
