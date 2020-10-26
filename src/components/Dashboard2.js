@@ -114,7 +114,6 @@ function Dashboard2 () {
                         <p>Clickthrough For Your Links:</p><br />
                         <GraphForEntry />
                     </div>
-                    <br />
                     {/* remove */}
                     <br /><br />
                     <h2>Add Entries to Your List:</h2>

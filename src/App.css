@@ -133,6 +133,8 @@ header .drawer h4 {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
 }
 .qrcode {
   display: none;
