@@ -153,7 +153,7 @@ function ListEditor2(){
                                     <button className="sqaureButton" onClick={() => {deleteEntry(link.entryId)}}>Delete Entry</button>
                                 </div>
                                 <p className="linkDescriptionTag">▼</p>
-                    <p className='linkDescription'>{link.description} <br /> <br />Added: {monthsDict[`${link.creationDate.slice(5,7)}`]} {link.creationDate.slice(8,10)}, at {link.creationDate.slice(11,16)} UTC</p>
+                                <p className='linkDescription'>{link.description} <br /> <br />Added: {monthsDict[`${link.creationDate.slice(5,7)}`]} {link.creationDate.slice(8,10)}, at {link.creationDate.slice(11,16)} UTC</p>
                             </div>
     
                     )

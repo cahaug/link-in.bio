@@ -7,7 +7,7 @@ import ListEditor2 from "./ListEditor2"
 import libIMG from '../files/libIMG.png'
 import CUPicker from '../components/CustomURL/CUPicker'
 import EasyAddDash from '../components/EasyAdd/EasyAddDash'
-// import GraphForEntry from "../components/GraphForEntry"
+import GraphForEntry from "../components/GraphForEntry"
 
 
 
@@ -109,6 +109,14 @@ function Dashboard2 () {
                     </table>
                 </section>
                 <section className="dashboardInfoSection">
+                    {/* remove */}
+                    <div>
+                        <p>Clickthrough For Your Links:</p><br />
+                        <GraphForEntry />
+                    </div>
+                    <br />
+                    {/* remove */}
+                    <br /><br />
                     <h2>Add Entries to Your List:</h2>
                     <br /> <br />
                     <Link to={`/addEntry/`}><span className="abutton">Add Custom Entry</span></Link>
@@ -118,12 +126,6 @@ function Dashboard2 () {
                         <EasyAddDash />
                     </div>
                     <br /> <br /> 
-                    {/* remove */}
-                    {/* <div>
-                        <GraphForEntry />
-                    </div>
-                    <br /> */}
-                    {/* remove */}
                     <hr />
                     <br />
                     <h2>List Editor:</h2>
