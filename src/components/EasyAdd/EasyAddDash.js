@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
+// to add new social media option add to choicesDict and then add option in select
+
 const EasyAddDash = () => {
     const [choice, setChoice] = useState('instagram')
     const [username, setUsername] = useState('')
@@ -21,7 +23,13 @@ const EasyAddDash = () => {
         setIsLoading(true)
         const description = `${username} - Link to my ${choicesDict[`${choice}`]['label']} Account ${choicesDict[`${choice}`]['emoji']}`
         const linkTitle = `${choicesDict[`${choice}`]['label']}`
-        const referencingURL = `https://${choicesDict[`${choice}`]['form']}${username}`
+        let referencingURL = `https://${choicesDict[`${choice}`]['form']}${username}`
+        //because needs appending to front of url
+        if(choice === 'bandcamp'){
+            console.log('chose bandcamp')
+            referencingURL = `https://${username}.bandcamp.com/`
+        }
+        console.log('refurl', referencingURL)
         const imgURL = `${choicesDict[`${choice}`]['img']}`
         const token = sessionStorage.getItem('token')
         const userId = sessionStorage.getItem('userId')
@@ -66,6 +74,7 @@ const EasyAddDash = () => {
         'imgur':{label:'Imgur', form:'imgur.com/user/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Imgur_logo.svg/1280px-Imgur_logo.svg.png', emoji:'📸🌐'},
         'imdb':{label:'IMDB', form:'imdb.me/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/1200px-IMDB_Logo_2016.svg.png', emoji:'📝🎥'},
         'soundcloud':{label:'SoundCloud', form:'soundcloud.com/', img:'https://e7.pngegg.com/pngimages/929/310/png-clipart-soundcloud-logo-music-drawing-streaming-media-others-miscellaneous-orange.png', emoji:'🔉☁️'},
+        'bandcamp':{label:'Bandcamp', form:'->____.bandcamp.com/ ', img:'https://bandcamp.com/img/buttons/bandcamp-logotype-color-512.png', emoji:'🔉🏕️'}
     }
 
     return (
@@ -97,6 +106,7 @@ const EasyAddDash = () => {
                     <option value="imgur">Imgur</option>
                     <option value="imdb">IMDB</option>
                     <option value="soundcloud">SoundCloud</option>
+                    <option value="bandcamp">Bandcamp</option>
                 </select>
                 <br />
                 {choice == '' ? <p>Choose an Account Type To Add</p> : <form onSubmit={handleFormSubmit}>
