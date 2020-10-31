@@ -156,7 +156,6 @@ main {
   grid-auto-rows: min-content;
   justify-content: center;
   align-items: flex-start;
-  scroll-behavior: smooth;
   background-image: linear-gradient(70deg, white, darkGray);
   background-attachment: fixed;
 }

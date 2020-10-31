@@ -74,7 +74,8 @@ const EasyAddDash = () => {
         'imgur':{label:'Imgur', form:'imgur.com/user/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Imgur_logo.svg/1280px-Imgur_logo.svg.png', emoji:'📸🌐'},
         'imdb':{label:'IMDB', form:'imdb.me/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/1200px-IMDB_Logo_2016.svg.png', emoji:'📝🎥'},
         'soundcloud':{label:'SoundCloud', form:'soundcloud.com/', img:'https://e7.pngegg.com/pngimages/929/310/png-clipart-soundcloud-logo-music-drawing-streaming-media-others-miscellaneous-orange.png', emoji:'🔉☁️'},
-        'bandcamp':{label:'Bandcamp', form:'->____.bandcamp.com/ ', img:'https://bandcamp.com/img/buttons/bandcamp-logotype-color-512.png', emoji:'🔉🏕️'}
+        'bandcamp':{label:'Bandcamp', form:'->____.bandcamp.com/ ', img:'https://bandcamp.com/img/buttons/bandcamp-logotype-color-512.png', emoji:'🔉🏕️'},
+        'onlyfans':{label:'OnlyFans', form:'onlyfans.com/', img:'https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/OnlyFans_logo.svg/1280px-OnlyFans_logo.svg.png', emoji:'🔐📸'}
     }
 
     return (
@@ -107,6 +108,7 @@ const EasyAddDash = () => {
                     <option value="imdb">IMDB</option>
                     <option value="soundcloud">SoundCloud</option>
                     <option value="bandcamp">Bandcamp</option>
+                    <option value="onlyfans">OnlyFans</option>
                 </select>
                 <br />
                 {choice == '' ? <p>Choose an Account Type To Add</p> : <form onSubmit={handleFormSubmit}>
