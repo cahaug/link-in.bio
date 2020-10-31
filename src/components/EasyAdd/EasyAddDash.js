@@ -65,6 +65,7 @@ const EasyAddDash = () => {
         'cashapp':{label:'Cash App', form:'cash.app/$', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Square_Cash_app_logo.svg/1920px-Square_Cash_app_logo.svg.png', emoji:'💸🌐'},
         'telegram':{label:'Telegram', form:'t.me/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/1920px-Telegram_2019_Logo.svg.png', emoji:'🔒✉️'},
         'patreon':{label:'Patreon', form:'patreon.com/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Patreon_wordmark.svg/2880px-Patreon_wordmark.svg.png', emoji:'💸🌐'},
+        'gofundme':{label:'GoFundMe', form:'gofundme.com/', img:'https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/GoFundMe_logo.svg/1024px-GoFundMe_logo.svg.png', emoji:'💸🙏'},
         'paypal':{label:'PayPal', form:'paypal.me/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2880px-PayPal.svg.png', emoji:'💳🌐'},
         'etsy':{label:'Etsy', form:'etsy.com/shop/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Etsy_logo.svg/2880px-Etsy_logo.svg.png', emoji:'🖌📮'},
         'ebay':{label:'Ebay', form:'ebay.com/usr/', img:'https://upload.wikimedia.org/wikipedia/commons/4/48/EBay_logo.png', emoji:'📦🌐'},
@@ -98,6 +99,7 @@ const EasyAddDash = () => {
                     <option value="cashapp">Cash App</option>
                     <option value="telegram">Telegram</option>
                     <option value="patreon">Patreon</option>
+                    <option value="gofundme">GoFundMe</option>
                     <option value="paypal">PayPal</option>
                     <option value="etsy">Etsy</option>
                     <option value="ebay">Ebay</option>
