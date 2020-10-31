@@ -3,8 +3,12 @@ import React from 'react'
 const FailedLogin = () => {
     return (
         <div>
-            <h1>Your login attempt failed. Please go back and try again.</h1>
-            <a href="/">Go Home</a>
+            <br />
+            <h1>You need to log in to see this page.</h1>
+            <br />
+            <a href="/login">Login</a>
+            <br /><br />
+            <a href="/">Home</a>
         </div>
     )
 }

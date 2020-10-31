@@ -53,6 +53,7 @@ function Dashboard2 () {
         sessionStorage.removeItem('token')
         sessionStorage.removeItem('userId')
         sessionStorage.removeItem('customURL')
+        alert('Logged Out Successfully')
         window.location.reload()
     }
 

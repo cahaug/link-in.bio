@@ -85,10 +85,10 @@ export function register(email, password, firstName, lastName, profilePictureURL
     }
 }
 
-export function login(email, password){
+export function login(email, password, token){
     return (dispatch) => {
         dispatch({type: LOGIN_USER_START})
-        return axios.post('https://link-in-bio.herokuapp.com/auth/login', { email, password })
+        return axios.post('https://link-in-bio.herokuapp.com/auth/login', { email, password, token })
         .then(async (res) => {
             const payload = res.data
             // localStorage.setItem('token', res.data.token)
