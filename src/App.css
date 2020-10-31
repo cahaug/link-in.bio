@@ -6,6 +6,9 @@ body {
 body input {
   font-size: 16px;
 }
+body select {
+  font-size: 16px;
+}
 a:link {
   color: black;
   font-weight: 700;
