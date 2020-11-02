@@ -247,7 +247,7 @@ main div .linkDescriptionTag {
   background-color: darkgray;
 }
 .linkSquare:last-child {
-  margin-bottom: 7.5vh;
+  margin-bottom: 10vh;
 }
 footer {
   overflow: hidden;
