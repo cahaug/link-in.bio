@@ -123,7 +123,8 @@ function ListDisplayHooks(match) {
             setProfilePictureURL(profilePictureURL)
             setUserFirstNameLastName(userFirstLastName)
             setDisplayingUserInfo(displayingUserInfo)
-            const incrementedListViews = axios.get(`https://link-in-bio.herokuapp.com/s/ili/${res.data[0].listId}`)
+            const mt = navigator.maxTouchPoints
+            const incrementedListViews = axios.get(`https://link-in-bio.herokuapp.com/s/ili/${res.data[0].listId}?mt=${mt}`)
             // console.log(incrementedListViews)
             setIsLoading(false);
             document.title = `Link-in.bio${ourURL} - ${displayName}`
