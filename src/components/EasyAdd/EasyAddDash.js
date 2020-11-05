@@ -76,6 +76,7 @@ const EasyAddDash = () => {
         'imdb':{label:'IMDB', form:'imdb.me/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/1200px-IMDB_Logo_2016.svg.png', emoji:'📝🎥'},
         'soundcloud':{label:'SoundCloud', form:'soundcloud.com/', img:'https://e7.pngegg.com/pngimages/929/310/png-clipart-soundcloud-logo-music-drawing-streaming-media-others-miscellaneous-orange.png', emoji:'🔉☁️'},
         'bandcamp':{label:'Bandcamp', form:'->____.bandcamp.com/ ', img:'https://bandcamp.com/img/buttons/bandcamp-logotype-color-512.png', emoji:'🔉🏕️'},
+        'github':{label:'GitHub', form:'github.com/', img:'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png', emoji:'👩‍💻👨‍💻'},
         'onlyfans':{label:'OnlyFans', form:'onlyfans.com/', img:'https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/OnlyFans_logo.svg/1280px-OnlyFans_logo.svg.png', emoji:'🔐📸'}
     }
 
@@ -110,6 +111,7 @@ const EasyAddDash = () => {
                     <option value="imdb">IMDB</option>
                     <option value="soundcloud">SoundCloud</option>
                     <option value="bandcamp">Bandcamp</option>
+                    <option value="github">GitHub</option>
                     <option value="onlyfans">OnlyFans</option>
                 </select>
                 <br />
