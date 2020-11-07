@@ -21,7 +21,18 @@ function Dashboard2 () {
     const [listViews, setListViews] = useState(null)
     const [qrShowing, setQRShowing] = useState(false)
     const [isEasyAdding, setIsEasyAdding] = useState(false)
+    const [isShowingStats, setIsShowingStats] = useState(false)
 
+    const statsDrawerToggle = () => {
+        const statDrawer = document.getElementsByClassName('statsDisplayDiv')
+        if(statDrawer[0].style.maxHeight){
+            statDrawer[0].style.maxHeight = null;
+            setIsShowingStats(false)
+        } else {
+            statDrawer[0].style.maxHeight = statDrawer[0].scrollHeight + "px";
+            setIsShowingStats(true)
+        }
+    }
 
     const easyAddDrawerToggle = () => {
         const easyAddDrawer = document.getElementsByClassName('easyAddInstaDiv')
@@ -111,12 +122,9 @@ function Dashboard2 () {
                 </section>
                 <section className="dashboardInfoSection">
                     {/* remove */}
-                    <div>
-                        <p>Clickthrough For Your Links:</p><br />
-                        <GraphForEntry />
-                    </div>
+                    
                     {/* remove */}
-                    <br /><br />
+                    {/* <br /><br /> */}
                     <h2>Add Entries to Your List:</h2>
                     <br /> <br />
                     <Link to={`/addEntry/`}><span className="abutton">Add Custom Entry</span></Link>
@@ -124,6 +132,15 @@ function Dashboard2 () {
                     {isEasyAdding ? <span onClick={easyAddDrawerToggle}>Easy-Add Social Account  ▲</span>:<span onClick={easyAddDrawerToggle}>Easy-Add Social Account  ▼</span>}
                     <div className="easyAddInstaDiv">
                         <EasyAddDash />
+                    </div>
+                    <br /><br />
+                    <div>
+                        {/* <p>Your Stats:</p> */}
+                        {/* <br /> */}
+                        {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Your List Stats  ▼</span>}
+                        <div className="statsDisplayDiv">
+                            <GraphForEntry />
+                        </div>
                     </div>
                     <br /> <br /> 
                     <hr />

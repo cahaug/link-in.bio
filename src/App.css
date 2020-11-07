@@ -9,6 +9,12 @@ body input {
 body select {
   font-size: 16px;
 }
+.linkListDisplayHeader {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background-color: whitesmoke;
+}
 a:link {
   color: black;
   font-weight: 700;
@@ -111,6 +117,11 @@ header .drawer h4 {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
+}
+.statsDisplayDiv {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease-out;
 }
 .profPicChangerDiv {
   max-height: 0;

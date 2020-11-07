@@ -226,7 +226,7 @@ function ListEditor2(){
             <div className="linkList">
                 <header className="linkListDisplayHeader">
                     {/* <hr/> */}
-                    <div>
+                    <div className="scroller">
                         <div className="picHolder">
                             <div className="toggleHolder">
                                 {darkMode ? <span onClick={applyDarkMode}>💡</span>:<span onClick={applyDarkMode}>🔦</span>}
