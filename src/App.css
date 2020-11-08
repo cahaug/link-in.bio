@@ -591,6 +591,7 @@ footer span {
   }
   main {
     overflow-x: hidden;
+    overscroll-behavior: contain;
   }
   .entryChartHolder {
     flex-direction: column;
