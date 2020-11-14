@@ -12,7 +12,11 @@ const GraphForEntry = () => {
         browserNameCounts:[],
         countries:[],
         deviceTypes:[],
-        regions:[]
+        regions:[],
+        isTouchDevice:[],
+        osFamilyCount:[],
+        deviceOwnNamesCount:[],
+        deviceBrandNamesCount:[],
     })
 
     const getData = () => {
@@ -77,6 +81,24 @@ const GraphForEntry = () => {
                     </div>
                 </div>
                 {/* <br /> */}
+                <div className="entryChartHolder">
+                    <div className="vicPie">
+                        <VictoryPie animate={{duration:3000}} data={datasetBravo.isTouchDevice} x='isMobileDevice' y='count' />
+                    </div>
+                    <div className="vicPie">
+                        <VictoryPie animate={{duration:3000}} data={datasetBravo.osFamilyCount} x='osFamily' y='count' />
+                    </div>
+                </div>
+
+                <div className="entryChartHolder">
+                    <div className="vicPie">
+                        <VictoryPie animate={{duration:3000}} data={datasetBravo.deviceBrandNamesCount} x='deviceBrandName' y='count' />
+                    </div>
+                    <div className="vicPie">
+                        <VictoryPie animate={{duration:3000}} data={datasetBravo.deviceOwnNamesCount} x='deviceOwnName' y='count' />
+                    </div>
+                </div>
+
                 <div className="entryChartHolder">
                     <div className="vicPie">
                         <VictoryPie animate={{duration:3000}} data={datasetBravo.countries} x='countryOfOrigin' y='count' />
