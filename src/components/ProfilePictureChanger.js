@@ -14,7 +14,8 @@ const ProfilePictureChanger = () => {
         setIsLoading(true)
         const token = sessionStorage.getItem('token')
         const userId = sessionStorage.getItem('userId')
-        return axios.put('https://link-in-bio.herokuapp.com/l/changeProfilePicture', {userId:userId, profilePictureURL:profilePictureURL}, {headers:{authorization:token}})
+        const shackImageId = null
+        return axios.put('https://link-in-bio.herokuapp.com/l/changeProfilePicture', {userId:userId, profilePictureURL:profilePictureURL, shackImageId:shackImageId}, {headers:{authorization:token}})
         .then(res => {
             console.log('profPicChangeRes', res)
             setProfilePictureURL('')
@@ -41,7 +42,8 @@ const ProfilePictureChanger = () => {
                     <label>
                         Choose an image on the web and open it in a new tab.<br />
                         Copy the URL for that image, and add it below.<br />
-                        Only links to valid image files will correctly display. <br /> <br />
+                        Only links to valid image files will correctly display. <br />
+                        Alternatively, Upload a Profile Picture in the bottom tab.<br /> <br />
                         <input onChange={handleURLChange} value={profilePictureURL} name="ProfilePictureURL" type="url" required maxLength="499" placeholder="https://asdf.com/image.jpg" />
                     </label>
                     <br />
