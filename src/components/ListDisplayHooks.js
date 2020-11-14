@@ -29,6 +29,26 @@ function ListDisplayHooks(match) {
         
     // }
 
+    function ColorLuminance(hex, lum) {
+
+        // validate hex string
+        hex = String(hex).replace(/[^0-9a-f]/gi, '');
+        if (hex.length < 6) {
+            hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+        }
+        lum = lum || 0;
+    
+        // convert to decimal and change luminosity
+        var rgb = "#", c, i;
+        for (i = 0; i < 3; i++) {
+            c = parseInt(hex.substr(i*2,2), 16);
+            c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+            rgb += ("00"+c).substr(c.length);
+        }
+    
+        return rgb;
+    }
+
     const applyDarkMode = () => {
         // var element = document.body;
         // console.log('backcolor', backgroundColor, 'chosenFont', chosenFont, 'textColor', textColor)
@@ -207,7 +227,7 @@ function ListDisplayHooks(match) {
             let mql = window.matchMedia('(prefers-color-scheme: dark)')
             console.log('mql', mql)            
             if(mql.matches === true ){
-
+                headerTextElement.style.color = ColorLuminance(`${res.data[0].txtColor}`, 2)
                 // initialize in dark mode
                 var element0 = document.getElementsByClassName('App')
                 element0[0].classList.toggle("darkMode")
