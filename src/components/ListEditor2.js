@@ -131,9 +131,6 @@ function ListEditor2(){
             // console.log(incrementedListViews)
             setIsLoading(false);
             const mt = navigator.maxTouchPoints
-            // initialize in dark mode
-            // var element0 = document.getElementsByClassName('App')
-            // element0[0].classList.toggle("darkMode")
             const thelinks = (res.data.map((link) => {
                 console.log('link.keys.length', link)
                 if(link.hasOwnProperty('entryId')){
@@ -215,6 +212,15 @@ function ListEditor2(){
             var mainBackgroundElement = document.getElementsByClassName('theMain')
             console.log(mainBackgroundElement[0].style.backgroundColor)
             mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
+            let mql = window.matchMedia('(prefers-color-scheme: dark)')
+            console.log('mql', mql)            
+            if(mql.matches === true ){
+
+                // initialize in dark mode
+                var element0 = document.getElementsByClassName('App')
+                element0[0].classList.toggle("darkMode")
+                setDarkMode(true)
+            }
         })
         .catch(err => {console.log('err', err); alert('that site does not exist, yet. or check your connection.')})
     }, [])
