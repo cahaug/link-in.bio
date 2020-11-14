@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../App.css'
-import { VictoryPie, VictoryChart, VictoryAxis, VictoryBar } from 'victory'
+import { VictoryPie, VictoryChart, VictoryAxis, VictoryBar, VictoryLine, VictoryTheme } from 'victory'
 
 
 const GraphForEntry = () => {
@@ -17,6 +17,7 @@ const GraphForEntry = () => {
         osFamilyCount:[],
         deviceOwnNamesCount:[],
         deviceBrandNamesCount:[],
+        timeline:[]
     })
 
     const getData = () => {
@@ -49,6 +50,7 @@ const GraphForEntry = () => {
         .then(res => {
             console.log('res.data bravo', res.data)
             setDatasetBravo(res.data)
+
             setIsLoading(false)
         })
         .catch(err => {
@@ -72,38 +74,54 @@ const GraphForEntry = () => {
             <div>
                 <br />
                 <p>List Viewer Location {`&`} Device Information:</p>
+                <div>
+                    <div className="vicLine">
+                        <h2>Lifetime ListViews:</h2>
+                        <VictoryChart theme={VictoryTheme.material}>
+                            <VictoryLine data={datasetBravo.timeline} style={{data: { stroke: "#c43a31" }, parent: { border: "1px solid #ccc"}}} scale={{x:"time", y:"linear"}} />
+                        </VictoryChart>
+                    </div>
+                </div>
                 <div className="entryChartHolder">
                     <div className="vicPie">
+                        <h2>Viewer Device Category</h2>
                         <VictoryPie animate={{duration:3000}}  data={datasetBravo.deviceTypes} x='deviceType' y='count' />
                     </div>
                     <div className="vicPie">
+                        <h2>Browsers Used By Viewers</h2>
                         <VictoryPie animate={{duration:3000}}  data={datasetBravo.browserNameCounts} x='browserName' y='count' />
                     </div>
                 </div>
                 {/* <br /> */}
                 <div className="entryChartHolder">
                     <div className="vicPie">
+                        <h2>Do Your Viewers Have Touchscreen?</h2>
                         <VictoryPie animate={{duration:3000}} data={datasetBravo.isTouchDevice} x='isMobileDevice' y='count' />
                     </div>
                     <div className="vicPie">
+                        <h2>Operating System of Viewer</h2>
                         <VictoryPie animate={{duration:3000}} data={datasetBravo.osFamilyCount} x='osFamily' y='count' />
                     </div>
                 </div>
 
                 <div className="entryChartHolder">
                     <div className="vicPie">
+                        <h2>Brand of Device</h2>
                         <VictoryPie animate={{duration:3000}} data={datasetBravo.deviceBrandNamesCount} x='deviceBrandName' y='count' />
                     </div>
                     <div className="vicPie">
+                        <h2>Name of Device</h2>
                         <VictoryPie animate={{duration:3000}} data={datasetBravo.deviceOwnNamesCount} x='deviceOwnName' y='count' />
                     </div>
                 </div>
 
                 <div className="entryChartHolder">
                     <div className="vicPie">
+                        <h2>Country Your Viewers Are From</h2>
                         <VictoryPie animate={{duration:3000}} data={datasetBravo.countries} x='countryOfOrigin' y='count' />
                     </div>
                     <div className="vicPie">
+                        <h2>Best Guess Location</h2>
                         <VictoryPie animate={{duration:3000}} data={datasetBravo.regions} x='province' y='count' />
                     </div>
                 </div>
