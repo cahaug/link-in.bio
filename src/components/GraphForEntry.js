@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../App.css'
-import { VictoryPie, VictoryChart, VictoryAxis, VictoryBar, VictoryLine, VictoryTheme } from 'victory'
+import { VictoryPie, VictoryChart, VictoryAxis, VictoryBar, VictoryLine, VictoryTheme, VictoryLabel } from 'victory'
 
 
 const GraphForEntry = () => {
@@ -76,9 +76,14 @@ const GraphForEntry = () => {
                 <p>List Viewer Location {`&`} Device Information:</p>
                 <div>
                     <div className="vicLine">
-                        <h2>Lifetime ListViews:</h2>
+                        <h2>Daily Viewers:</h2>
                         <VictoryChart theme={VictoryTheme.material}>
-                            <VictoryLine data={datasetBravo.timeline} style={{data: { stroke: "#c43a31" }, parent: { border: "1px solid #ccc"}}} scale={{x:"time", y:"linear"}} />
+                            <VictoryLine data={datasetBravo.timeline} style={{
+                                data: { stroke: "#c43a31" ,}, 
+                                tickLabels:{angle:45,}, 
+                                parent: { border: "1px solid #ccc"}}} scale={{x:"time", y:"linear"}} />
+                            <VictoryAxis dependentAxis />
+                            <VictoryAxis style={{tickLabels:{angle:45, textAnchor:"start", }, labels:{padding:-20}}} />
                         </VictoryChart>
                     </div>
                 </div>
@@ -128,16 +133,18 @@ const GraphForEntry = () => {
                 {/* <br /> */}
                 <p>Clicked Links Counts Breakdown: </p>
                 <div className="entryChartHolder">
-                    <div className="vicPie">
-                        <VictoryPie animate={{duration:3000}} data={pieGraphData} x='linkTitle' y='count' />
-                        {/* <VictoryChart domainPadding={20}> */}
-                        {/* </VictoryChart> */}
-                    </div>
                     <div className="vicBar">
                         {/* <VictoryChart domainPadding={20}> */}
                         <VictoryChart>
                             <VictoryBar animate={{duration:3000}} data={pieGraphData} x='linkTitle' y='count' />
+                            <VictoryAxis dependentAxis />
+                            <VictoryAxis style={{tickLabels:{angle:45, textAnchor:"start", }, labels:{padding:-20}}} />
                         </VictoryChart>
+                    </div>
+                    <div className="vicPie">
+                        <VictoryPie animate={{duration:3000}} data={pieGraphData} x='linkTitle' y='count' />
+                        {/* <VictoryChart domainPadding={20}> */}
+                        {/* </VictoryChart> */}
                     </div>
                 </div>
             </div>
