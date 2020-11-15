@@ -236,6 +236,9 @@ function ListEditor2(){
             if(mql.matches === true ){
                 headerTextElement.style.color = ColorLuminance(`${res.data[0].txtColor}`, 2)
                 // initialize in dark mode
+                if(`${res.data[0].txtColor}`==='#000000'){
+                    headerTextElement.style.color = '#FFFFFF'    
+                }
                 var element0 = document.getElementsByClassName('App')
                 element0[0].classList.toggle("darkMode")
                 setDarkMode(true)
