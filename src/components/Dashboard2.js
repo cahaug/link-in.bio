@@ -29,7 +29,7 @@ function Dashboard2 () {
             statDrawer[0].style.maxHeight = null;
             setIsShowingStats(false)
         } else {
-            statDrawer[0].style.maxHeight = statDrawer[0].scrollHeight + "px";
+            statDrawer[0].style.maxHeight = statDrawer[0].scrollHeight + 100 + "px";
             setIsShowingStats(true)
         }
     }
@@ -140,6 +140,8 @@ function Dashboard2 () {
                         {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Your List Stats  ▼</span>}
                         <div className="statsDisplayDiv">
                             <GraphForEntry />
+                            {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Your List Stats  ▼</span>}
+
                         </div>
                     </div>
                     <br /> <br /> 

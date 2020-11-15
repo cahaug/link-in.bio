@@ -158,8 +158,8 @@ header .drawer h4 {
   padding: 5%;
 }
 .vicLine {
-  width: 400px;
-  height: 430px;
+  width: 500px;
+  height: 560px;
   margin: 0 auto;
   padding: 5%;
 }
@@ -302,6 +302,10 @@ footer span {
 .dashboard2 header {
   max-height: 70vh;
 }
+.dashboard2 tspan {
+  color: #252525;
+  fill: #252525;
+}
 .dashboard2 hr {
   background-color: black;
   border-color: black;
@@ -413,6 +417,10 @@ footer span {
 .darkMode .dashboard2 hr {
   background-color: white;
   border-color: white;
+}
+.darkMode .dashboard2 tspan {
+  fill: #ffffff;
+  color: #ffffff;
 }
 .darkMode .linkListDashboardHeader .dashboardToggleHolder p {
   border: 1px solid white;

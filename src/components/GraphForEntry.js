@@ -77,57 +77,89 @@ const GraphForEntry = () => {
                 <div>
                     <div className="vicLine">
                         <h2>Daily Viewers:</h2>
-                        <VictoryChart theme={VictoryTheme.material}>
+                        <VictoryChart theme={VictoryTheme.material} padding={{bottom:75, left:50,right:50}}>
                             <VictoryLine data={datasetBravo.timeline} style={{
                                 data: { stroke: "#c43a31" ,}, 
                                 tickLabels:{angle:45,}, 
                                 parent: { border: "1px solid #ccc"}}} scale={{x:"time", y:"linear"}} />
                             <VictoryAxis dependentAxis />
-                            <VictoryAxis style={{tickLabels:{angle:45, textAnchor:"start", }, labels:{padding:-20}}} />
+                            <VictoryAxis tickFormat={(t) => {const out = t.toString().slice(0,10); return `${out}`}} style={{tickLabels:{angle:45, textAnchor:"start", }, labels:{padding:-20}}} />
                         </VictoryChart>
                     </div>
                 </div>
                 <div className="entryChartHolder">
                     <div className="vicPie">
                         <h2>Viewer Device Category</h2>
-                        <VictoryPie animate={{duration:3000}}  data={datasetBravo.deviceTypes} x='deviceType' y='count' />
+                        <VictoryPie animate={{duration:3000}}  data={datasetBravo.deviceTypes} colorScale="qualitative" x='deviceType' y='count' style={{
+                            labels: {
+                                fontSize: 25, fill: '#929292'
+                              }
+                        }} />
                     </div>
                     <div className="vicPie">
                         <h2>Browsers Used By Viewers</h2>
-                        <VictoryPie animate={{duration:3000}}  data={datasetBravo.browserNameCounts} x='browserName' y='count' />
+                        <VictoryPie animate={{duration:3000}}  data={datasetBravo.browserNameCounts} colorScale="qualitative" x='browserName' y='count' style={{
+                            labels: {
+                                fontSize: 25, fill: '#929292'
+                              }
+                        }} />
                     </div>
                 </div>
                 {/* <br /> */}
                 <div className="entryChartHolder">
                     <div className="vicPie">
                         <h2>Do Your Viewers Have Touchscreen?</h2>
-                        <VictoryPie animate={{duration:3000}} data={datasetBravo.isTouchDevice} x='isMobileDevice' y='count' />
+                        <VictoryPie animate={{duration:3000}} data={datasetBravo.isTouchDevice} colorScale="qualitative" x='isMobileDevice' y='count' style={{
+                            labels: {
+                                fontSize: 30, fill: '#929292'
+                              }
+                        }} />
                     </div>
                     <div className="vicPie">
                         <h2>Operating System of Viewer</h2>
-                        <VictoryPie animate={{duration:3000}} data={datasetBravo.osFamilyCount} x='osFamily' y='count' />
+                        <VictoryPie animate={{duration:3000}} data={datasetBravo.osFamilyCount} colorScale="qualitative" x='osFamily' y='count' style={{
+                            labels: {
+                                fontSize: 30, fill: '#929292'
+                              }
+                        }} />
                     </div>
                 </div>
 
                 <div className="entryChartHolder">
                     <div className="vicPie">
                         <h2>Brand of Device</h2>
-                        <VictoryPie animate={{duration:3000}} data={datasetBravo.deviceBrandNamesCount} x='deviceBrandName' y='count' />
+                        <VictoryPie animate={{duration:3000}} data={datasetBravo.deviceBrandNamesCount} colorScale="qualitative" x='deviceBrandName' y='count' style={{
+                            labels: {
+                                fontSize: 20, fill: '#929292'
+                              }
+                        }} />
                     </div>
                     <div className="vicPie">
                         <h2>Name of Device</h2>
-                        <VictoryPie animate={{duration:3000}} data={datasetBravo.deviceOwnNamesCount} x='deviceOwnName' y='count' />
+                        <VictoryPie animate={{duration:3000}} data={datasetBravo.deviceOwnNamesCount} colorScale="qualitative" x='deviceOwnName' y='count' style={{
+                            labels: {
+                                fontSize: 20, fill: '#929292'
+                              }
+                        }} />
                     </div>
                 </div>
 
                 <div className="entryChartHolder">
                     <div className="vicPie">
                         <h2>Country Your Viewers Are From</h2>
-                        <VictoryPie animate={{duration:3000}} data={datasetBravo.countries} x='countryOfOrigin' y='count' />
+                        <VictoryPie animate={{duration:3000}} data={datasetBravo.countries} colorScale="qualitative" x='countryOfOrigin' y='count' style={{
+                            labels: {
+                                fontSize: 30, fill: '#929292'
+                              }
+                        }} />
                     </div>
                     <div className="vicPie">
                         <h2>Best Guess Location</h2>
-                        <VictoryPie animate={{duration:3000}} data={datasetBravo.regions} x='province' y='count' />
+                        <VictoryPie animate={{duration:3000}} data={datasetBravo.regions} colorScale="qualitative" x='province' y='count' style={{
+                            labels: {
+                                fontSize: 20, fill: '#929292'
+                              }
+                        }} />
                     </div>
                 </div>
                 {/* <br /> */}
@@ -135,14 +167,18 @@ const GraphForEntry = () => {
                 <div className="entryChartHolder">
                     <div className="vicBar">
                         {/* <VictoryChart domainPadding={20}> */}
-                        <VictoryChart>
-                            <VictoryBar animate={{duration:3000}} data={pieGraphData} x='linkTitle' y='count' />
+                        <VictoryChart  theme={VictoryTheme.material}>
+                            <VictoryBar animate={{duration:3000}} data={pieGraphData} x='linkTitle' y='count' style={{data:{fill:'tomato', fillOpacity: 1}}} />
                             <VictoryAxis dependentAxis />
                             <VictoryAxis style={{tickLabels:{angle:45, textAnchor:"start", }, labels:{padding:-20}}} />
                         </VictoryChart>
                     </div>
                     <div className="vicPie">
-                        <VictoryPie animate={{duration:3000}} data={pieGraphData} x='linkTitle' y='count' />
+                        <VictoryPie animate={{duration:3000}} data={pieGraphData} colorScale="qualitative" x='linkTitle' y='count' style={{
+                            labels: {
+                                fontSize: 20, fill: '#929292'
+                              }
+                        }} />
                         {/* <VictoryChart domainPadding={20}> */}
                         {/* </VictoryChart> */}
                     </div>
