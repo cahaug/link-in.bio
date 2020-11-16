@@ -37,7 +37,7 @@ function AddEntryWithFile(){
                     if(addingStatView.data){
                         setBigData({referencingURL:'',description:'',linkTitle:''})
                         setIsLoading(false)
-                        alert('Upload Successful, Return to Dashboard to See the Change!')
+                        alert('Upload Successful, Refresh this page to see the change.')
                     } else {
                         setIsLoading(false)
                         alert('Error Adding StatView to Entry')

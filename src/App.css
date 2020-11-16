@@ -117,7 +117,7 @@ header .drawer h4 {
 .easyAddInstaDiv {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  transition: max-height 0.3s ease-out;
 }
 .statsDisplayDiv {
   max-height: 0;
@@ -137,7 +137,7 @@ header .drawer h4 {
 .addwithPhotoDiv {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.2s ease-out;
+  transition: max-height 0.4s ease-out;
 }
 #imgPreview {
   max-width: 250px;
