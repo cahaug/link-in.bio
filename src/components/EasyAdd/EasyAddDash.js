@@ -82,6 +82,7 @@ const EasyAddDash = () => {
 
     return (
         <div>
+            <hr />
             {isLoading? <p>Loading...</p> :
             <div>
                 <br />

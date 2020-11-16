@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import {Link} from 'react-router-dom'
 // import axios from "axios"
 // import loadingGif from '../files/loading.gif'
 // import { Link } from 'react-router-dom'
@@ -13,6 +14,7 @@ import AvailabilityChecker from './CustomURL/AvailabilityChecker'
 import ChangeDisplayName from '../components/ChangeDisplayName'
 import SettingsChangePassword from "./SettingsChangePassword"
 import ProfPicUpload from './ProfPicUpload'
+
 
 
 // thank you github.com/casesandberg for the lovely react color pickers
@@ -183,8 +185,11 @@ function SettingsPanel(){
             </div>
             <br/>
             <br/>
-
-            <a href="/dashboard2" alt="Back to Dashboard">Back to Dashboard</a>
+            <Link to={`/addEntry/`}><span className="abutton">Add Entry Manually</span></Link>
+            <br/>
+            <br/>
+            <Link to='/dashboard2'><span className="abutton">Back to Dash</span></Link>
+            {/* <a href="/dashboard2" alt="Back to Dashboard">Back to Dashboard</a> */}
         </div>
 
     )

@@ -145,10 +145,10 @@ export function createList(userId, backColor, txtColor, fontSelection, token){
     }
 }
 
-export function addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token){
+export function addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token, shackImageId){
     return (dispatch) => {
         dispatch({type: ADD_ENTRY_START})
-        return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL }, { headers: {authorization: token} })
+        return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL, shackImageId }, { headers: {authorization: token} })
         .then((res) => {
             const useThisURL = `https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
             return axios.get(useThisURL)

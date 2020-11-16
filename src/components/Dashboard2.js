@@ -8,6 +8,7 @@ import libIMG from '../files/libIMG.png'
 import CUPicker from '../components/CustomURL/CUPicker'
 import EasyAddDash from '../components/EasyAdd/EasyAddDash'
 import GraphForEntry from "../components/GraphForEntry"
+import AddEntryWithFile from '../components/AddEntryWithFile'
 
 
 
@@ -22,6 +23,7 @@ function Dashboard2 () {
     const [qrShowing, setQRShowing] = useState(false)
     const [isEasyAdding, setIsEasyAdding] = useState(false)
     const [isShowingStats, setIsShowingStats] = useState(false)
+    const [addingWithFile, setIsAddingWithFile] = useState(false)
 
     const statsDrawerToggle = () => {
         const statDrawer = document.getElementsByClassName('statsDisplayDiv')
@@ -42,6 +44,17 @@ function Dashboard2 () {
         } else {
             easyAddDrawer[0].style.maxHeight = easyAddDrawer[0].scrollHeight + "px";
             setIsEasyAdding(true)
+        }
+    }
+
+    const withFileDrawerToggle = () => {
+        const withFileDrawer = document.getElementsByClassName('addwithPhotoDiv')
+        if (withFileDrawer[0].style.maxHeight){
+            withFileDrawer[0].style.maxHeight = null;
+            setIsAddingWithFile(false)
+        } else {
+            withFileDrawer[0].style.maxHeight = withFileDrawer[0].scrollHeight + 250 + "px";
+            setIsAddingWithFile(true)
         }
     }
 
@@ -106,7 +119,18 @@ function Dashboard2 () {
                     {/* <img src={profilePictureURL} alt={profilePictureURL} /> */}
                 </header>
                 <section className="dashboardInfoSection">
-                    <p>Views: {listViews ? listViews: <span>Loading...</span>}</p><br />
+                <div>
+                        {/* <p>Your Stats:</p> */}
+                        {/* <br /> */}
+                        {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Your List Stats  ▼</span>}
+                        <div className="statsDisplayDiv">
+                            <GraphForEntry />
+                            {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Your List Stats  ▼</span>}
+
+                        </div>
+                    </div>
+                    <br /> <br /> 
+                    <br />
                     <table>
                         <tr>
                             <td>Your Default Space:</td>
@@ -122,21 +146,22 @@ function Dashboard2 () {
                 </section>
                 <section className="dashboardInfoSection">
                     {/* remove */}
-                    
+                    <p>Views: {listViews ? listViews: <span>Loading...</span>}</p>
+                    <br /><br />
                     {/* remove */}
-                    {/* <br /><br /> */}
-                    <h2>Add Entries to Your List:</h2>
+                    {/* <h2>Add Entries to Your List:</h2> */}
                     <br /> <br />
-                    <Link to={`/addEntry/`}><span className="abutton">Add Custom Entry</span></Link>
-                    <br /> <br />
+                    {addingWithFile ? <span onClick={withFileDrawerToggle}>Add Link with Image  ▲</span>:<span onClick={withFileDrawerToggle}>Add Link with Image  ▼</span>}
+                    <div className="addwithPhotoDiv">
+                        <AddEntryWithFile />
+                    </div>
+                    <br /> <br /><br />
                     {isEasyAdding ? <span onClick={easyAddDrawerToggle}>Easy-Add Social Account  ▲</span>:<span onClick={easyAddDrawerToggle}>Easy-Add Social Account  ▼</span>}
                     <div className="easyAddInstaDiv">
                         <EasyAddDash />
                     </div>
                     <br /><br />
-                    <div>
-                        {/* <p>Your Stats:</p> */}
-                        {/* <br /> */}
+                    {/* <div>
                         {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Your List Stats  ▼</span>}
                         <div className="statsDisplayDiv">
                             <GraphForEntry />
@@ -144,7 +169,7 @@ function Dashboard2 () {
 
                         </div>
                     </div>
-                    <br /> <br /> 
+                    <br /> <br />  */}
                     <hr />
                     <br />
                     <h2>List Editor:</h2>
