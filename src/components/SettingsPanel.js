@@ -173,7 +173,7 @@ function SettingsPanel(){
                 <ChangeDisplayName />
             </div>
             <br />
-            {changingProfilePic ? <span onClick={profPicDrawerToggle}>Set Profile Pic To Online Image ▲</span>:<span onClick={profPicDrawerToggle}>Set Profile Pic To Online Image ▼</span>}
+            {changingProfilePic ? <span onClick={profPicDrawerToggle}>Set Profile Pic To Online Image <br /> {`&`} Delete Profile Pic ▲</span>:<span onClick={profPicDrawerToggle}>Set Profile Pic To Online Image <br /> {`&`} Delete Profile Pic ▼</span>}
             <div className="profPicChangerDiv">
                 <ProfilePictureChanger />
             </div>

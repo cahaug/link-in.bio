@@ -24,7 +24,27 @@ const ProfilePictureChanger = () => {
         })
         .catch(err => {
             console.log('change profilepicURL err',err)
+            setIsLoading(false)
             alert('Error in Changing Profile Picture URL')
+        })
+    }
+    const deleteProfilePicture = (event) => {
+        event.preventDefault()
+        setIsLoading(true)
+        const token = sessionStorage.getItem('token')
+        const userId = sessionStorage.getItem('userId')
+        const profilePictureURL = 'https://imagizer.imageshack.com/img924/128/aacWe9.jpg'
+        const shackImageId = null
+        return axios.put('https://link-in-bio.herokuapp.com/l/changeProfilePicture', {userId:userId, profilePictureURL:profilePictureURL, shackImageId:shackImageId}, {headers:{authorization:token}})
+        .then(res => {
+            console.log('swapped prof to anon & deleted old res', res.data)
+            setIsLoading(false)
+            alert('Deleted Profile Picture Successfully')
+        })
+        .catch(err => {
+            console.log('err deleting profile picture', err)
+            setIsLoading(false)
+            alert('Unsuccessful Deleting Profile Picture')
         })
     }
 
@@ -49,6 +69,17 @@ const ProfilePictureChanger = () => {
                     <br />
                     <button type="submit">Submit Change to Profile Picture URL</button>
                 </form>
+                <br />
+                <hr />
+                <br />
+                <h2>Delete Profile Picture</h2>
+                <h2>Warning: This Cannot Be Undone</h2>
+                <br />
+                <h2>This copy of that photo will be gone forever.</h2>
+                <br />
+                <button type="abutton" onClick={deleteProfilePicture}>Delete Profile Picture</button>
+                <br /><br />
+                <hr />
                 <br />
             </div>
         )

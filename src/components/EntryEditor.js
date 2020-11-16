@@ -73,9 +73,10 @@ class EntryEditor extends React.Component {
 
     UNSAFE_componentWillMount(props){
         console.log('props', props)
+        const token = sessionStorage.getItem('token')
         // console.log('curpath', props.curPath)
         const useThisURL = `https://link-in-bio.herokuapp.com/e${this.props.match.url}`
-        return axios.get(useThisURL)
+        return axios.get(useThisURL, {headers:{authorization:token}})
         .then(response => {
             console.log('response', response)
             this.setState({userId:response.data[0].userId})
