@@ -89,31 +89,31 @@ const EasyAddDash = () => {
                 <h2>Choose Which Type of Account to Link:</h2>
                 <br />
                 <select onChange={handleAccountType}>
-                    <option value="instagram">Instagram</option>
-                    <option value="youtube">YouTube</option>
-                    <option value="facebook">Facebook</option>
-                    <option value="twitter">Twitter</option>
-                    <option value="tiktok">TikTok</option>
-                    <option value="reddit">Reddit</option>
-                    <option value="pinterest">Pinterest</option>
-                    <option value="snapchat">SnapChat</option>
-                    <option value="linkedin">LinkedIn</option>
-                    <option value="cashapp">Cash App</option>
-                    <option value="telegram">Telegram</option>
-                    <option value="patreon">Patreon</option>
-                    <option value="gofundme">GoFundMe</option>
-                    <option value="paypal">PayPal</option>
-                    <option value="etsy">Etsy</option>
-                    <option value="ebay">Ebay</option>
-                    <option value="twitch">Twitch</option>
-                    <option value="steam">Steam</option>
-                    <option value="discord">Discord</option>
-                    <option value="imgur">Imgur</option>
-                    <option value="imdb">IMDB</option>
-                    <option value="soundcloud">SoundCloud</option>
                     <option value="bandcamp">Bandcamp</option>
+                    <option value="cashapp">Cash App</option>
+                    <option value="discord">Discord</option>
+                    <option value="ebay">Ebay</option>
+                    <option value="etsy">Etsy</option>
+                    <option value="facebook">Facebook</option>
                     <option value="github">GitHub</option>
+                    <option value="gofundme">GoFundMe</option>
+                    <option value="imdb">IMDB</option>
+                    <option value="imgur">Imgur</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="linkedin">LinkedIn</option>
                     <option value="onlyfans">OnlyFans</option>
+                    <option value="patreon">Patreon</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="pinterest">Pinterest</option>
+                    <option value="reddit">Reddit</option>
+                    <option value="snapchat">SnapChat</option>
+                    <option value="soundcloud">SoundCloud</option>
+                    <option value="steam">Steam</option>
+                    <option value="telegram">Telegram</option>
+                    <option value="tiktok">TikTok</option>
+                    <option value="twitch">Twitch</option>
+                    <option value="twitter">Twitter</option>
+                    <option value="youtube">YouTube</option>
                 </select>
                 <br />
                 {choice == '' ? <p>Choose an Account Type To Add</p> : <form onSubmit={handleFormSubmit}>
