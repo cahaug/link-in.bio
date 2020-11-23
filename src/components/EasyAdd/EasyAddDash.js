@@ -98,6 +98,7 @@ const EasyAddDash = () => {
         'soundcloud':{label:'SoundCloud', form:'soundcloud.com/', img:'https://imagizer.imageshack.com/img924/5484/VQ5N3V.png', emoji:'🔉☁️'},
         'bandcamp':{label:'Bandcamp', form:'->____.bandcamp.com/ ', img:'https://imagizer.imageshack.com/img924/5015/UfrqPr.png', emoji:'🔉🏕️'},
         'github':{label:'GitHub', form:'github.com/', img:'https://imagizer.imageshack.com/img923/2070/CdhTJ7.png', emoji:'👩‍💻👨‍💻'},
+        'vk':{label:'VK', form:'vk.com/', img:'https://imagizer.imageshack.com/img924/9673/LnXxDo.png', emoji:'📸🌐'},
         'onlyfans':{label:'OnlyFans', form:'onlyfans.com/', img:'https://imagizer.imageshack.com/img923/7375/DEREnR.png', emoji:'🔐📸'}
     }
 
@@ -136,6 +137,7 @@ const EasyAddDash = () => {
                     <option value="tiktok">TikTok</option>
                     <option value="twitch">Twitch</option>
                     <option value="twitter">Twitter</option>
+                    <option value="vk">VK</option>
                     <option value="xbox">Xbox Live Gamertag</option>
                     <option value="youtube">YouTube</option>
                 </select>
