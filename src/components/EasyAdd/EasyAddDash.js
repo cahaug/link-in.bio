@@ -4,7 +4,7 @@ import axios from 'axios'
 // to add new social media option add to choicesDict and then add option in select
 
 const EasyAddDash = () => {
-    const [choice, setChoice] = useState('instagram')
+    const [choice, setChoice] = useState('bandcamp')
     const [username, setUsername] = useState('')
     const [isLoading, setIsLoading] = useState(false)
 
@@ -43,7 +43,7 @@ const EasyAddDash = () => {
         }
         if(choice === 'nintendo'){
             console.log('chose nintendo')
-            referencingURL = `#`
+            referencingURL = `https://en-americas-support.nintendo.com/app/answers/detail/a_id/22326`
             description = `Add me at my Friend Code: SW-${username}`
             linkTitle = `My Nintendo Friend Code`
         }
@@ -71,34 +71,34 @@ const EasyAddDash = () => {
     }
 
     const choicesDict = {
-        'instagram':{label:'Instagram', form:'instagram.com/', img:'https://instagram-brand.com/wp-content/uploads/2016/11/Instagram_AppIcon_Aug2017.png', emoji:'📸🌐'},
-        'youtube':{label:'YouTube', form:'youtube.com/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2880px-YouTube_Logo_2017.svg.png', emoji:'📹📺'},
-        'facebook':{label:'Facebook', form:'facebook.com/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/2880px-Facebook_Logo_%282019%29.svg.png', emoji:'🙂📖'},
-        'twitter':{label:'Twitter', form:'twitter.com/', img:'https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Twitter_bird_logo_2012.svg/2560px-Twitter_bird_logo_2012.svg.png', emoji:'🐤🌐'},
-        'tiktok':{label:'TikTok', form:'tiktok.com/@', img:'https://upload.wikimedia.org/wikipedia/en/thumb/a/a9/TikTok_logo.svg/2880px-TikTok_logo.svg.png', emoji:'🎥🌐'},
-        'reddit':{label:'Reddit', form:'reddit.com/user/', img:'https://upload.wikimedia.org/wikipedia/en/thumb/5/58/Reddit_logo_new.svg/2880px-Reddit_logo_new.svg.png', emoji:'🐱🎞'},
-        'pinterest':{label:'Pinterest', form:'pinterest.com/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Pinterest_Logo.svg/2880px-Pinterest_Logo.svg.png', emoji:'🧭🗺'},
-        'snapchat':{label:'Snap', form:'story.snapchat.com/s/', img:'https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Snapchat_logo.svg/1920px-Snapchat_logo.svg.png', emoji:'⏱📸'},
-        'linkedin':{label:'LinkedIn', form:'linkedin.com/in/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/LinkedIn_Logo_2013.svg/2880px-LinkedIn_Logo_2013.svg.png', emoji:'🎓🕴'},
-        'cashapp':{label:'Cash App', form:'cash.app/$', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Square_Cash_app_logo.svg/1920px-Square_Cash_app_logo.svg.png', emoji:'💸🌐'},
-        'telegram':{label:'Telegram', form:'t.me/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/1920px-Telegram_2019_Logo.svg.png', emoji:'🔒✉️'},
-        'patreon':{label:'Patreon', form:'patreon.com/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Patreon_wordmark.svg/2880px-Patreon_wordmark.svg.png', emoji:'💸🌐'},
-        'gofundme':{label:'GoFundMe', form:'gofundme.com/', img:'https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/GoFundMe_logo.svg/1024px-GoFundMe_logo.svg.png', emoji:'💸🙏'},
-        'paypal':{label:'PayPal', form:'paypal.me/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2880px-PayPal.svg.png', emoji:'💳🌐'},
+        'instagram':{label:'Instagram', form:'instagram.com/', img:'https://imagizer.imageshack.com/img922/6017/SGljDs.png', emoji:'📸🌐'},
+        'youtube':{label:'YouTube', form:'youtube.com/', img:'https://imagizer.imageshack.com/img922/8479/NdKJYa.png', emoji:'📹📺'},
+        'facebook':{label:'Facebook', form:'facebook.com/', img:'https://imagizer.imageshack.com/img922/6720/SE3PxV.png', emoji:'🙂📖'},
+        'twitter':{label:'Twitter', form:'twitter.com/', img:'https://imagizer.imageshack.com/img923/4275/7EMI4o.png', emoji:'🐤🌐'},
+        'tiktok':{label:'TikTok', form:'tiktok.com/@', img:'https://imagizer.imageshack.com/img924/5162/GDKl61.png', emoji:'🎥🌐'},
+        'reddit':{label:'Reddit', form:'reddit.com/user/', img:'https://imagizer.imageshack.com/img924/21/7kCemT.png', emoji:'🐱🎞'},
+        'pinterest':{label:'Pinterest', form:'pinterest.com/', img:'https://imagizer.imageshack.com/img924/4403/9WBdyw.png', emoji:'🧭🗺'},
+        'snapchat':{label:'Snap', form:'story.snapchat.com/s/', img:'https://imagizer.imageshack.com/img924/3490/rAtlyJ.png', emoji:'⏱📸'},
+        'linkedin':{label:'LinkedIn', form:'linkedin.com/in/', img:'https://imagizer.imageshack.com/img924/2977/dUaUGg.png', emoji:'🎓🕴'},
+        'cashapp':{label:'Cash App', form:'cash.app/$', img:'https://imagizer.imageshack.com/img922/2778/ID3PbR.png', emoji:'💸🌐'},
+        'telegram':{label:'Telegram', form:'t.me/', img:'https://imagizer.imageshack.com/img922/909/vNZYkL.png', emoji:'🔒✉️'},
+        'patreon':{label:'Patreon', form:'patreon.com/', img:'https://imagizer.imageshack.com/img923/9927/yX6oWA.png', emoji:'💸🌐'},
+        'gofundme':{label:'GoFundMe', form:'gofundme.com/', img:'https://imagizer.imageshack.com/img923/9072/2nPeOI.png', emoji:'💸🙏'},
+        'paypal':{label:'PayPal', form:'paypal.me/', img:'https://imagizer.imageshack.com/img923/6537/UjUIgP.png', emoji:'💳🌐'},
         'playstation':{label:'Playstation Network', form:'Your PSN Gamertag: ', img:'https://imagizer.imageshack.com/img922/7303/mTwffk.png' ,emoji:'🕹️🏷️' },
         'xbox':{label:'Xbox Live', form:'Your Live Gamertag: ', img:'https://imagizer.imageshack.com/img922/4650/OdtJsD.jpg', emoji:'🕹️🏷️'},
-        'nintendo':{label:'Nintendo Friend Code', form:'Your Nintendo Friend Code (include dashes): : SW-', img:'https://imagizer.imageshack.com/img924/5847/fTqMCQ.png', emoji:'🕹️🏷️'},
-        'etsy':{label:'Etsy', form:'etsy.com/shop/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Etsy_logo.svg/2880px-Etsy_logo.svg.png', emoji:'🖌📮'},
-        'ebay':{label:'Ebay', form:'ebay.com/usr/', img:'https://upload.wikimedia.org/wikipedia/commons/4/48/EBay_logo.png', emoji:'📦🌐'},
-        'twitch':{label:'Twitch', form:'twitch.tv/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Twitch_logo.svg/1280px-Twitch_logo.svg.png', emoji:'🕹️📹'},
-        'steam':{label:'Steam', form:'steamcommunity.com/id/', img:'https://i.pinimg.com/originals/f8/8c/a6/f88ca65aad1daa1c32d8a073fee0d036.jpg', emoji:'🎮'},
-        'discord':{label:'Discord', form:'discordapp.com/users/', img:'https://discord.com/assets/94db9c3c1eba8a38a1fcf4f223294185.png', emoji:'🎤🕹️'},
-        'imgur':{label:'Imgur', form:'imgur.com/user/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Imgur_logo.svg/1280px-Imgur_logo.svg.png', emoji:'📸🌐'},
-        'imdb':{label:'IMDB', form:'imdb.me/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/1200px-IMDB_Logo_2016.svg.png', emoji:'📝🎥'},
-        'soundcloud':{label:'SoundCloud', form:'soundcloud.com/', img:'https://e7.pngegg.com/pngimages/929/310/png-clipart-soundcloud-logo-music-drawing-streaming-media-others-miscellaneous-orange.png', emoji:'🔉☁️'},
-        'bandcamp':{label:'Bandcamp', form:'->____.bandcamp.com/ ', img:'https://bandcamp.com/img/buttons/bandcamp-logotype-color-512.png', emoji:'🔉🏕️'},
-        'github':{label:'GitHub', form:'github.com/', img:'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png', emoji:'👩‍💻👨‍💻'},
-        'onlyfans':{label:'OnlyFans', form:'onlyfans.com/', img:'https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/OnlyFans_logo.svg/1280px-OnlyFans_logo.svg.png', emoji:'🔐📸'}
+        'nintendo':{label:'Nintendo Friend Code', form:'Your Nintendo Friend Code (include dashes): SW-', img:'https://imagizer.imageshack.com/img924/5847/fTqMCQ.png', emoji:'🕹️🏷️'},
+        'etsy':{label:'Etsy', form:'etsy.com/shop/', img:'https://imagizer.imageshack.com/img922/8896/7mengW.png', emoji:'🖌📮'},
+        'ebay':{label:'Ebay', form:'ebay.com/usr/', img:'https://imagizer.imageshack.com/img923/9052/na6lGQ.png', emoji:'📦🌐'},
+        'twitch':{label:'Twitch', form:'twitch.tv/', img:'https://imagizer.imageshack.com/img924/4011/FRXstk.png', emoji:'🕹️📹'},
+        'steam':{label:'Steam', form:'steamcommunity.com/id/', img:'https://imagizer.imageshack.com/img922/1269/jaLEjC.jpg', emoji:'🎮'},
+        'discord':{label:'Discord', form:'discordapp.com/users/', img:'https://imagizer.imageshack.com/img922/8148/sIBMwf.png', emoji:'🎤🕹️'},
+        'imgur':{label:'Imgur', form:'imgur.com/user/', img:'https://imagizer.imageshack.com/img922/944/aj62jA.png', emoji:'📸🌐'},
+        'imdb':{label:'IMDB', form:'imdb.me/', img:'https://imagizer.imageshack.com/img923/6572/UNq2ej.png', emoji:'📝🎥'},
+        'soundcloud':{label:'SoundCloud', form:'soundcloud.com/', img:'https://imagizer.imageshack.com/img924/5484/VQ5N3V.png', emoji:'🔉☁️'},
+        'bandcamp':{label:'Bandcamp', form:'->____.bandcamp.com/ ', img:'https://imagizer.imageshack.com/img924/5015/UfrqPr.png', emoji:'🔉🏕️'},
+        'github':{label:'GitHub', form:'github.com/', img:'https://imagizer.imageshack.com/img923/2070/CdhTJ7.png', emoji:'👩‍💻👨‍💻'},
+        'onlyfans':{label:'OnlyFans', form:'onlyfans.com/', img:'https://imagizer.imageshack.com/img923/7375/DEREnR.png', emoji:'🔐📸'}
     }
 
     return (
