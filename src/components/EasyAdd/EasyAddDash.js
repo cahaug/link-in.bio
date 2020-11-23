@@ -100,6 +100,10 @@ const EasyAddDash = () => {
         'github':{label:'GitHub', form:'github.com/', img:'https://imagizer.imageshack.com/img923/2070/CdhTJ7.png', emoji:'👩‍💻👨‍💻'},
         'vk':{label:'VK', form:'vk.com/', img:'https://imagizer.imageshack.com/img924/9673/LnXxDo.png', emoji:'📸🌐'},
         'nebula':{label:'Nebula', form:'watchnebula.com/', img:'https://imagizer.imageshack.com/img924/3839/fgFVLI.jpg', emoji:'🎥🌐'},
+        'flickr':{label:'Flickr', form:'flickr.com/photos/', img:'https://imagizer.imageshack.com/img923/8778/JytgsJ.png', emoji:'📸🌐'},
+        'imageshack':{label:'ImageShack', form:'imageshack.com/user/', img:'https://imagizer.imageshack.com/img924/5308/wNfQLy.png', emoji:'📸🌐'},
+        'startengine':{label:'StartEngine', form:'startengine.com/', img:'https://imagizer.imageshack.com/img924/3169/lW3Q7T.png', emoji:'💸🌐'},
+        'kickstarter':{label:'Kickstarter', form:'kickstarter.com/profile/', img:'https://imagizer.imageshack.com/img924/368/ZyT9Ts.png', emoji:'💸🌐'},
         'onlyfans':{label:'OnlyFans', form:'onlyfans.com/', img:'https://imagizer.imageshack.com/img923/7375/DEREnR.png', emoji:'🔐📸'}
     }
 
@@ -118,11 +122,14 @@ const EasyAddDash = () => {
                     <option value="ebay">Ebay</option>
                     <option value="etsy">Etsy</option>
                     <option value="facebook">Facebook</option>
+                    <option value="flickr">Flickr</option>
                     <option value="github">GitHub</option>
                     <option value="gofundme">GoFundMe</option>
+                    <option value="imageshack">ImageShack</option>
                     <option value="imdb">IMDB</option>
                     <option value="imgur">Imgur</option>
                     <option value="instagram">Instagram</option>
+                    <option value="kickstarter">Kickstarter</option>
                     <option value="linkedin">LinkedIn</option>
                     <option value="nintendo">Nintendo Friend Code</option>
                     <option value="nebula">Nebula</option>
@@ -134,6 +141,7 @@ const EasyAddDash = () => {
                     <option value="reddit">Reddit</option>
                     <option value="snapchat">SnapChat</option>
                     <option value="soundcloud">SoundCloud</option>
+                    <option value="startengine">StartEngine</option>
                     <option value="steam">Steam</option>
                     <option value="telegram">Telegram</option>
                     <option value="tiktok">TikTok</option>
