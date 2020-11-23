@@ -156,7 +156,7 @@ function Dashboard2 () {
                         <AddEntryWithFile />
                     </div>
                     <br /> <br /><br />
-                    {isEasyAdding ? <span onClick={easyAddDrawerToggle}>Easy-Add Social Account  ▲</span>:<span onClick={easyAddDrawerToggle}>Easy-Add Social Account  ▼</span>}
+                    {isEasyAdding ? <span onClick={easyAddDrawerToggle}>Easy-Add a Link  ▲</span>:<span onClick={easyAddDrawerToggle}>Easy-Add a Link  ▼</span>}
                     <div className="easyAddInstaDiv">
                         <EasyAddDash />
                     </div>
