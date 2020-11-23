@@ -21,13 +21,31 @@ const EasyAddDash = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault()
         setIsLoading(true)
-        const description = `${username} - Link to my ${choicesDict[`${choice}`]['label']} Account ${choicesDict[`${choice}`]['emoji']}`
-        const linkTitle = `${choicesDict[`${choice}`]['label']}`
+        let description = `${username} - Link to my ${choicesDict[`${choice}`]['label']} Account ${choicesDict[`${choice}`]['emoji']}`
+        let linkTitle = `${choicesDict[`${choice}`]['label']}`
         let referencingURL = `https://${choicesDict[`${choice}`]['form']}${username}`
         //because needs appending to front of url
         if(choice === 'bandcamp'){
             console.log('chose bandcamp')
             referencingURL = `https://${username}.bandcamp.com/`
+        }
+        if(choice === 'xbox'){
+            console.log('chose xbox')
+            referencingURL = `https://live.xbox.com/en-US/Profile?Gamertag=${username}`
+            description = `Link to my Xbox Live, ${choicesDict[`${choice}`]['emoji']}: ${username}`
+            linkTitle = `${choicesDict[`${choice}`]['label']} - ${username}`
+        }
+        if(choice === 'playstation'){
+            console.log('chose playstation')
+            referencingURL = `https://my.playstation.com/profile/${username}`
+            description = `Link to my Playstation Network, ${choicesDict[`${choice}`]['emoji']}: ${username}`
+            linkTitle = `${choicesDict[`${choice}`]['label']} - ${username}`
+        }
+        if(choice === 'nintendo'){
+            console.log('chose nintendo')
+            referencingURL = `#`
+            description = `Add me at my Friend Code: SW-${username}`
+            linkTitle = `My Nintendo Friend Code`
         }
         console.log('refurl', referencingURL)
         const imgURL = `${choicesDict[`${choice}`]['img']}`
@@ -67,6 +85,9 @@ const EasyAddDash = () => {
         'patreon':{label:'Patreon', form:'patreon.com/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Patreon_wordmark.svg/2880px-Patreon_wordmark.svg.png', emoji:'💸🌐'},
         'gofundme':{label:'GoFundMe', form:'gofundme.com/', img:'https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/GoFundMe_logo.svg/1024px-GoFundMe_logo.svg.png', emoji:'💸🙏'},
         'paypal':{label:'PayPal', form:'paypal.me/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2880px-PayPal.svg.png', emoji:'💳🌐'},
+        'playstation':{label:'Playstation Network', form:'Your PSN Gamertag: ', img:'https://imagizer.imageshack.com/img922/7303/mTwffk.png' ,emoji:'🕹️🏷️' },
+        'xbox':{label:'Xbox Live', form:'Your Live Gamertag: ', img:'https://imagizer.imageshack.com/img922/4650/OdtJsD.jpg', emoji:'🕹️🏷️'},
+        'nintendo':{label:'Nintendo Friend Code', form:'Your Nintendo Friend Code (include dashes): : SW-', img:'https://imagizer.imageshack.com/img924/5847/fTqMCQ.png', emoji:'🕹️🏷️'},
         'etsy':{label:'Etsy', form:'etsy.com/shop/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Etsy_logo.svg/2880px-Etsy_logo.svg.png', emoji:'🖌📮'},
         'ebay':{label:'Ebay', form:'ebay.com/usr/', img:'https://upload.wikimedia.org/wikipedia/commons/4/48/EBay_logo.png', emoji:'📦🌐'},
         'twitch':{label:'Twitch', form:'twitch.tv/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Twitch_logo.svg/1280px-Twitch_logo.svg.png', emoji:'🕹️📹'},
@@ -101,10 +122,12 @@ const EasyAddDash = () => {
                     <option value="imgur">Imgur</option>
                     <option value="instagram">Instagram</option>
                     <option value="linkedin">LinkedIn</option>
+                    <option value="nintendo">Nintendo Friend Code</option>
                     <option value="onlyfans">OnlyFans</option>
                     <option value="patreon">Patreon</option>
                     <option value="paypal">PayPal</option>
                     <option value="pinterest">Pinterest</option>
+                    <option value="playstation">Playstation Network Gamertag</option>
                     <option value="reddit">Reddit</option>
                     <option value="snapchat">SnapChat</option>
                     <option value="soundcloud">SoundCloud</option>
@@ -113,6 +136,7 @@ const EasyAddDash = () => {
                     <option value="tiktok">TikTok</option>
                     <option value="twitch">Twitch</option>
                     <option value="twitter">Twitter</option>
+                    <option value="xbox">Xbox Live Gamertag</option>
                     <option value="youtube">YouTube</option>
                 </select>
                 <br />
