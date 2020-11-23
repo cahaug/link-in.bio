@@ -99,6 +99,7 @@ const EasyAddDash = () => {
         'bandcamp':{label:'Bandcamp', form:'->____.bandcamp.com/ ', img:'https://imagizer.imageshack.com/img924/5015/UfrqPr.png', emoji:'🔉🏕️'},
         'github':{label:'GitHub', form:'github.com/', img:'https://imagizer.imageshack.com/img923/2070/CdhTJ7.png', emoji:'👩‍💻👨‍💻'},
         'vk':{label:'VK', form:'vk.com/', img:'https://imagizer.imageshack.com/img924/9673/LnXxDo.png', emoji:'📸🌐'},
+        'nebula':{label:'Nebula', form:'watchnebula.com/', img:'https://imagizer.imageshack.com/img924/3839/fgFVLI.jpg', emoji:'🎥🌐'},
         'onlyfans':{label:'OnlyFans', form:'onlyfans.com/', img:'https://imagizer.imageshack.com/img923/7375/DEREnR.png', emoji:'🔐📸'}
     }
 
@@ -124,6 +125,7 @@ const EasyAddDash = () => {
                     <option value="instagram">Instagram</option>
                     <option value="linkedin">LinkedIn</option>
                     <option value="nintendo">Nintendo Friend Code</option>
+                    <option value="nebula">Nebula</option>
                     <option value="onlyfans">OnlyFans</option>
                     <option value="patreon">Patreon</option>
                     <option value="paypal">PayPal</option>
