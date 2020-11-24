@@ -156,7 +156,7 @@ const EasyAddDash = () => {
         'paypal':{label:'PayPal', form:'paypal.me/', img:'https://imagizer.imageshack.com/img923/6537/UjUIgP.png', emoji:'💳🌐', type:'text'},
         'playstation':{label:'Playstation Network', form:'Your PSN Gamertag: ', img:'https://imagizer.imageshack.com/img922/7303/mTwffk.png' ,emoji:'🕹️🏷️', type:'text' },
         'xbox':{label:'Xbox Live', form:'Your Live Gamertag (include suffix if you have one): ', img:'https://imagizer.imageshack.com/img922/4650/OdtJsD.jpg', emoji:'🕹️🏷️', type:'text'},
-        'nintendo':{label:'Nintendo Friend Code', form:'Your Nintendo Friend Code (include dashes): SW-', img:'https://imagizer.imageshack.com/img924/5847/fTqMCQ.png', emoji:'🕹️🏷️', type:'tel', pattern:'[0-9]{4}-[0-9]{4}-[0-9]{4}'},
+        'nintendo':{label:'Nintendo Friend Code', form:'Your Nintendo Friend Code (include dashes): SW-', img:'https://imagizer.imageshack.com/img924/5847/fTqMCQ.png', emoji:'🕹️🏷️', type:'tel'},
         'etsy':{label:'Etsy', form:'etsy.com/shop/', img:'https://imagizer.imageshack.com/img922/8896/7mengW.png', emoji:'🖌📮', type:'text'},
         'ebay':{label:'Ebay', form:'ebay.com/usr/', img:'https://imagizer.imageshack.com/img923/9052/na6lGQ.png', emoji:'📦🌐', type:'text'},
         'twitch':{label:'Twitch', form:'twitch.tv/', img:'https://imagizer.imageshack.com/img924/4011/FRXstk.png', emoji:'🕹️📹', type:'text'},
