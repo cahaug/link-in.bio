@@ -29,6 +29,26 @@ function ListDisplayHooks(match) {
         
     // }
 
+    function ColorLuminance(hex, lum) {
+
+        // validate hex string
+        hex = String(hex).replace(/[^0-9a-f]/gi, '');
+        if (hex.length < 6) {
+            hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+        }
+        lum = lum || 0;
+    
+        // convert to decimal and change luminosity
+        var rgb = "#", c, i;
+        for (i = 0; i < 3; i++) {
+            c = parseInt(hex.substr(i*2,2), 16);
+            c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+            rgb += ("00"+c).substr(c.length);
+        }
+    
+        return rgb;
+    }
+
     const applyDarkMode = () => {
         // var element = document.body;
         // console.log('backcolor', backgroundColor, 'chosenFont', chosenFont, 'textColor', textColor)
@@ -123,10 +143,14 @@ function ListDisplayHooks(match) {
             setProfilePictureURL(profilePictureURL)
             setUserFirstNameLastName(userFirstLastName)
             setDisplayingUserInfo(displayingUserInfo)
-            const incrementedListViews = axios.get(`https://link-in-bio.herokuapp.com/s/ili/${res.data[0].listId}`)
+            const mt = navigator.maxTouchPoints
+            const incrementedListViews = axios.get(`https://link-in-bio.herokuapp.com/s/ili/${res.data[0].listId}?mt=${mt}`)
             // console.log(incrementedListViews)
             setIsLoading(false);
-            document.title = `Link-in.bio${ourURL} - ${userFirstLastName}`
+            document.title = `Link-in.bio${ourURL} - ${displayName}`
+            if(displayName===null){
+                document.title = `Link-in.bio${ourURL} - ${userFirstLastName}`
+            }
             // initialize in dark mode
             // var element0 = document.getElementsByClassName('App')
             // element0[0].classList.toggle("darkMode")
@@ -135,7 +159,7 @@ function ListDisplayHooks(match) {
                 return (
 
                         <div className='linkSquare' key={link.entryId}>
-                            <a className='linkTitle' href={`http://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}`}>
+                            <a className='linkTitle' href={`http://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}`}>
                                 {link.imgURL?<img className='image' src={link.imgURL} alt={link.linkTitle} /> : null }
                                 {/* <img className='image' src={link.imgURL} alt={link.linkTitle} />  */}
                                 <h3>{link.linkTitle}</h3>
@@ -200,6 +224,18 @@ function ListDisplayHooks(match) {
             var mainBackgroundElement = document.getElementsByClassName('theMain')
             console.log(mainBackgroundElement[0].style.backgroundColor)
             mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
+            let mql = window.matchMedia('(prefers-color-scheme: dark)')
+            console.log('mql', mql)            
+            if(mql.matches === true ){
+                headerTextElement.style.color = ColorLuminance(`${res.data[0].txtColor}`, 2)
+                // initialize in dark mode
+                if(`${res.data[0].txtColor}`==='#000000'){
+                    headerTextElement.style.color = '#FFFFFF'    
+                }
+                var element0 = document.getElementsByClassName('App')
+                element0[0].classList.toggle("darkMode")
+                setDarkMode(true)
+            }
         })
         .catch(err => {console.log('err', err); alert('that site does not exist, yet. or check your connection.')})
     }, [])
@@ -225,7 +261,7 @@ function ListDisplayHooks(match) {
             <div className="linkList">
                 <header className="linkListDisplayHeader">
                     {/* <hr/> */}
-                    <div>
+                    <div className="scroller">
                         <div className="picHolder">
                             <div className="toggleHolder">
                                 {darkMode ? <span onClick={applyDarkMode}>💡</span>:<span onClick={applyDarkMode}>🔦</span>}

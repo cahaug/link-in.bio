@@ -2,11 +2,13 @@ import React from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { login } from '../actions/index'
+import ReCAPTCHA from 'react-google-recaptcha'
 import '../App2.css';
 
 class Login extends React.Component {
     constructor() {
         super()
+        this.reCap = React.createRef();
         this.state = {
             email: '',
             password: '',
@@ -20,11 +22,12 @@ class Login extends React.Component {
         })
     }
 
-    handleSubmit = (evt) => {
+    handleSubmit = async (evt) => {
         evt.preventDefault()
         const { email, password } = this.state
-
-        this.props.login(email, password)
+        const token = await this.reCap.current.executeAsync()
+        this.reCap.current.reset()
+        this.props.login(email, password, token)
             .then(() => {
                 this.props.history.push("./dashboard2")
             })
@@ -38,6 +41,7 @@ class Login extends React.Component {
             <div>
                 <h1>Log In</h1>
                 <br/>
+                <ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHAPUBLIC} size="invisible" ref={this.reCap} />
                 <form onSubmit={this.handleSubmit}>
                     {/* {errorMessage && <p className="error">{errorMessage}</p>} */}
                     <input type="text" name="email" placeholder="email" value={email} onChange={this.handleChange} /><br />

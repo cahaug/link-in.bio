@@ -6,8 +6,8 @@ import LandingPage from './components/LandingPage'
 import Register from './components/Register'
 import Login from './components/Login'
 import FailedLogin from './components/FailedLogin'
-import Dashboard from './components/Dashboard'
-import CreateList from './components/CreateList'
+// import Dashboard from './components/Dashboard'
+// import CreateList from './components/CreateList'
 import AddEntry from './components/AddEntry'
 import EntryEditor from './components/EntryEditor'
 // import ListDisplay from './components/ListDisplay'
@@ -15,7 +15,7 @@ import ListDisplayHooks from './components/ListDisplayHooks'
 import RegisterHooks from './components/RegisterHooks'
 import ResetPassword from './components/ResetPassword'
 import ResetPWCode from './components/ResetPWCode'
-import InstagramPicker from './components/InstagramPicker'
+// import InstagramPicker from './components/InstagramPicker'
 import Dashboard2 from './components/Dashboard2'
 import SettingsPanel from './components/SettingsPanel';
 
@@ -43,16 +43,17 @@ class App extends React.Component {
         <Route exact path="/failedlogin" component={FailedLogin} />
         <Route exact path="/resetPassword" component={ResetPassword} />
         <Route exact path="/resetPWCode" component={ResetPWCode} />
-        <Route exact path="/instaPicker" component={InstagramPicker} />
+        {/* <Route exact path="/instaPicker" component={InstagramPicker} /> */}
         {/* <Route exact path="/paymentPage" component={PaymentPage} /> */}
         {/* <Route exact path="/listdisplay" component={ListDisplay}/> */}
-        <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        {/* <PrivateRoute exact path="/dashboard" component={Dashboard} /> */}
         <PrivateRoute exact path="/dashboard2" component={Dashboard2} />
         <PrivateRoute exact path="/settingsPanel" component={SettingsPanel} />
-        <PrivateRoute exact path="/createlist" component={CreateList} />
+        {/* <PrivateRoute exact path="/createlist" component={CreateList} /> */}
         {/* <Route path={`/success`} render={props => <PaymentSuccess {...props} />} /> */}
-        <Route path={`/addEntry/:listId`} render={props => <AddEntry {...props}/>} />
-        <Route path={`/editEntry/:entryId`} render={props => <EntryEditor {...props} />} />
+        <PrivateRoute exact path='/addEntry' component={AddEntry} />
+        <PrivateRoute path={`/editEntry/:entryId`} component={props => <EntryEditor {...props} />} />
+        {/* <PrivateRoute path={`/editEntry/:entryId`} render={({match}) => <EntryEditor match={match} />} /> */}
         {/* <Route path="/:id" render={props => <ListDisplay {...props}/>} /> */}
         <Route path="/:id" render={({match}) => <ListDisplayHooks match={match}/>} />
         {/* <PrivateRoute exact path="/editentry" component={EditEntry} /> */}

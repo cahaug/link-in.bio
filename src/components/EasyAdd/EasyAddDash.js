@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 
+// to add new social media option add to choicesDict and then add option in select
+
 const EasyAddDash = () => {
-    const [choice, setChoice] = useState('instagram')
-    const [username, setUsername] = useState('')
+    const [choice, setChoice] = useState('bandcamp')
+    let [username, setUsername] = useState('')
     const [isLoading, setIsLoading] = useState(false)
 
     const onChangeUsername = (event) => {
@@ -14,95 +16,221 @@ const EasyAddDash = () => {
     const handleAccountType = (event) => {
         event.preventDefault()
         setChoice(event.target.value)
+        setUsername('')
+    }
+
+    const trimUsername = (usernameToTrim) => {
+        const preUser = usernameToTrim.trim()
+        return preUser
+    }
+
+    const hasNoIllegalChars = (value) => {
+        // const stringHasSpaces = value.indexOf(' ')
+        const stringHasIllegalSlash1 = value.indexOf(`\\`)
+        const stringHasIllegalSlash2 = value.indexOf(`/`)
+        const stringHasIllegalQuote1 = value.indexOf(`'`)
+        const stringHasIllegalQuote2 = value.indexOf(`"`)
+        const stringHasIllegalSemicolon = value.indexOf(`;`)
+        const stringHasIllegalColon = value.indexOf(`:`) 
+        const stringHasIllegalCaret = value.indexOf(`^`)
+        const stringHasIllegalStar = value.indexOf(`*`)
+        const stringHasIllegalHTML = value.indexOf(`<`)
+        const stringHasIllegalPercent = value.indexOf('%')
+        if(
+            stringHasIllegalSlash1 === -1 &&
+            stringHasIllegalSlash2 === -1 &&
+            stringHasIllegalQuote1 === -1 &&
+            stringHasIllegalQuote2 === -1 &&
+            stringHasIllegalSemicolon === -1 &&
+            stringHasIllegalColon === -1 &&
+            stringHasIllegalCaret === -1 &&
+            stringHasIllegalHTML === -1 &&
+            stringHasIllegalStar === -1 &&
+            stringHasIllegalPercent === -1
+            // stringHasSpaces === -1 && 
+        ){
+            return true
+        } else {
+            return false
+        }
+    }
+
+    const validateForm = (fromForm) => {
+        const didtrimUsername =  trimUsername(fromForm)
+        setUsername(didtrimUsername)
+        console.log('trimmed',didtrimUsername)
+        if(hasNoIllegalChars(didtrimUsername) === true){
+            return {legal:true, trimmed:didtrimUsername}
+        } else {
+            alert(`There are illegal characters in your input, please remove them and try again`)
+            return false
+        }
     }
 
     const handleFormSubmit = async (event) => {
         event.preventDefault()
         setIsLoading(true)
-        const description = `${username} - Link to my ${choicesDict[`${choice}`]['label']} Account ${choicesDict[`${choice}`]['emoji']}`
-        const linkTitle = `${choicesDict[`${choice}`]['label']}`
-        const referencingURL = `https://${choicesDict[`${choice}`]['form']}${username}`
-        const imgURL = `${choicesDict[`${choice}`]['img']}`
-        const token = sessionStorage.getItem('token')
-        const userId = sessionStorage.getItem('userId')
-        const listId = sessionStorage.getItem('listId')
-        console.log('description', description)
-        console.log('linktitle', linkTitle)
-        console.log('referencingURL', referencingURL)
-        return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId:userId, listId:listId, referencingURL:referencingURL, description:description, linkTitle:linkTitle, imgURL:imgURL }, { headers: {authorization: token} })
-        .then(async (res) => {
-            console.log('successful res',res)
-            const statForNewEntry = await axios.get(`https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`)
-            console.log('statForNewEntry',statForNewEntry)
+        const isValidated = await validateForm(username)
+        console.log('isvalidated',isValidated)
+        username = isValidated.trimmed 
+        if(isValidated.legal === true){
+            let description = `${username} - Link to my ${choicesDict[`${choice}`]['label']} Account ${choicesDict[`${choice}`]['emoji']}`
+            let linkTitle = `${choicesDict[`${choice}`]['label']}`
+            let referencingURL = `https://${choicesDict[`${choice}`]['form']}${username}`
+            //because needs appending to front of url
+            if(choice === 'bandcamp'){
+                console.log('chose bandcamp')
+                referencingURL = `https://${username}.bandcamp.com/`
+            }
+            if(choice === 'xbox'){
+                console.log('chose xbox')
+                referencingURL = `https://live.xbox.com/en-US/Profile?Gamertag=${username}`
+                description = `Link to my Xbox Live, ${choicesDict[`${choice}`]['emoji']}: ${username}`
+                linkTitle = `${choicesDict[`${choice}`]['label']} - ${username}`
+            }
+            if(choice === 'playstation'){
+                console.log('chose playstation')
+                referencingURL = `https://my.playstation.com/profile/${username}`
+                description = `Link to my Playstation Network, ${choicesDict[`${choice}`]['emoji']}: ${username}`
+                linkTitle = `${choicesDict[`${choice}`]['label']} - ${username}`
+            }
+            if(choice === 'nintendo'){
+                console.log('chose nintendo')
+                referencingURL = `https://en-americas-support.nintendo.com/app/answers/detail/a_id/22326`
+                description = `Add me at my Friend Code: SW-${username}`
+                linkTitle = `My Nintendo Friend Code`
+            }
+            if(choice === 'email'){
+                console.log('chose email')
+                referencingURL = `mailto:${username}?subject=Found%20You%20On%20Link-in.Bio/&body=Your%20Message%20Here`
+                description = `For inquiries, please send an email to: ${username}`
+                linkTitle = `Contact Email ${choicesDict[`${choice}`]['emoji']}`
+            }
+            if(choice === 'phone'){
+                console.log('chose phone')
+                referencingURL = `tel:${username}`
+                description = `Call Us at: ${username} `
+                linkTitle = `${choicesDict[`${choice}`]['label']} ${choicesDict[`${choice}`]['emoji']}`
+            }
+            console.log('refurl', referencingURL)
+            const imgURL = `${choicesDict[`${choice}`]['img']}`
+            const token = sessionStorage.getItem('token')
+            const userId = sessionStorage.getItem('userId')
+            const listId = sessionStorage.getItem('listId')
+            console.log('description', description)
+            console.log('linktitle', linkTitle)
+            console.log('referencingURL', referencingURL)
+            return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId:userId, listId:listId, referencingURL:referencingURL, description:description, linkTitle:linkTitle, imgURL:imgURL }, { headers: {authorization: token} })
+            .then(async (res) => {
+                console.log('successful res',res)
+                const statForNewEntry = await axios.get(`https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`)
+                console.log('statForNewEntry',statForNewEntry)
+                setIsLoading(false)
+                alert(`Link To ${choicesDict[`${choice}`]['label']} Successfully Added to Account`)
+                window.location.reload()
+            })
+            .catch((err) => {
+                console.log('error easyadd', err)
+                alert('Error EasyAdd Account')
+            })
+        } else {
             setIsLoading(false)
-            alert(`Link To ${choicesDict[`${choice}`]['label']} Successfully Added to Account`)
-            window.location.reload()
-        })
-        .catch((err) => {
-            console.log('error easyadd', err)
-            alert('Error EasyAdd Account')
-        })
+            return
+        }
     }
 
     const choicesDict = {
-        'instagram':{label:'Instagram', form:'instagram.com/', img:'https://instagram-brand.com/wp-content/uploads/2016/11/Instagram_AppIcon_Aug2017.png', emoji:'📸🌐'},
-        'youtube':{label:'YouTube', form:'youtube.com/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2880px-YouTube_Logo_2017.svg.png', emoji:'📹📺'},
-        'facebook':{label:'Facebook', form:'facebook.com/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Facebook_Logo_%282019%29.svg/2880px-Facebook_Logo_%282019%29.svg.png', emoji:'🙂📖'},
-        'twitter':{label:'Twitter', form:'twitter.com/', img:'https://upload.wikimedia.org/wikipedia/en/thumb/9/9f/Twitter_bird_logo_2012.svg/2560px-Twitter_bird_logo_2012.svg.png', emoji:'🐤🌐'},
-        'tiktok':{label:'TikTok', form:'tiktok.com/@', img:'https://upload.wikimedia.org/wikipedia/en/thumb/a/a9/TikTok_logo.svg/2880px-TikTok_logo.svg.png', emoji:'🎥🌐'},
-        'reddit':{label:'Reddit', form:'reddit.com/user/', img:'https://upload.wikimedia.org/wikipedia/en/thumb/5/58/Reddit_logo_new.svg/2880px-Reddit_logo_new.svg.png', emoji:'🐱🎞'},
-        'pinterest':{label:'Pinterest', form:'pinterest.com/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Pinterest_Logo.svg/2880px-Pinterest_Logo.svg.png', emoji:'🧭🗺'},
-        'snapchat':{label:'Snap', form:'story.snapchat.com/s/', img:'https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Snapchat_logo.svg/1920px-Snapchat_logo.svg.png', emoji:'⏱📸'},
-        'linkedin':{label:'LinkedIn', form:'linkedin.com/in/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/LinkedIn_Logo_2013.svg/2880px-LinkedIn_Logo_2013.svg.png', emoji:'🎓🕴'},
-        'cashapp':{label:'Cash App', form:'cash.app/$', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Square_Cash_app_logo.svg/1920px-Square_Cash_app_logo.svg.png', emoji:'💸🌐'},
-        'telegram':{label:'Telegram', form:'t.me/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/1920px-Telegram_2019_Logo.svg.png', emoji:'🔒✉️'},
-        'patreon':{label:'Patreon', form:'patreon.com/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Patreon_wordmark.svg/2880px-Patreon_wordmark.svg.png', emoji:'💸🌐'},
-        'paypal':{label:'PayPal', form:'paypal.me/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/PayPal.svg/2880px-PayPal.svg.png', emoji:'💳🌐'},
-        'etsy':{label:'Etsy', form:'etsy.com/shop/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Etsy_logo.svg/2880px-Etsy_logo.svg.png', emoji:'🖌📮'},
-        'ebay':{label:'Ebay', form:'ebay.com/usr/', img:'https://upload.wikimedia.org/wikipedia/commons/4/48/EBay_logo.png', emoji:'📦🌐'},
-        'twitch':{label:'Twitch', form:'twitch.tv/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Twitch_logo.svg/1280px-Twitch_logo.svg.png', emoji:'🕹️📹'},
-        'steam':{label:'Steam', form:'steamcommunity.com/id/', img:'https://i.pinimg.com/originals/f8/8c/a6/f88ca65aad1daa1c32d8a073fee0d036.jpg', emoji:'🎮'},
-        'discord':{label:'Discord', form:'discordapp.com/users/', img:'https://discord.com/assets/94db9c3c1eba8a38a1fcf4f223294185.png', emoji:'🎤🕹️'},
-        'imgur':{label:'Imgur', form:'imgur.com/user/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Imgur_logo.svg/1280px-Imgur_logo.svg.png', emoji:'📸🌐'},
-        'imdb':{label:'IMDB', form:'imdb.me/', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/1200px-IMDB_Logo_2016.svg.png', emoji:'📝🎥'},
-        'soundcloud':{label:'SoundCloud', form:'soundcloud.com/', img:'https://e7.pngegg.com/pngimages/929/310/png-clipart-soundcloud-logo-music-drawing-streaming-media-others-miscellaneous-orange.png', emoji:'🔉☁️'},
+        'instagram':{label:'Instagram', form:'instagram.com/', img:'https://imagizer.imageshack.com/img922/6017/SGljDs.png', emoji:'📸🌐', type:'text'},
+        'youtube':{label:'YouTube', form:'youtube.com/', img:'https://imagizer.imageshack.com/img922/8479/NdKJYa.png', emoji:'📹📺', type:'text'},
+        'facebook':{label:'Facebook', form:'facebook.com/', img:'https://imagizer.imageshack.com/img922/6720/SE3PxV.png', emoji:'🙂📖', type:'text'},
+        'twitter':{label:'Twitter', form:'twitter.com/', img:'https://imagizer.imageshack.com/img923/4275/7EMI4o.png', emoji:'🐤🌐', type:'text'},
+        'tiktok':{label:'TikTok', form:'tiktok.com/@', img:'https://imagizer.imageshack.com/img924/5162/GDKl61.png', emoji:'🎥🌐', type:'text'},
+        'reddit':{label:'Reddit', form:'reddit.com/user/', img:'https://imagizer.imageshack.com/img924/21/7kCemT.png', emoji:'🐱🎞', type:'text'},
+        'pinterest':{label:'Pinterest', form:'pinterest.com/', img:'https://imagizer.imageshack.com/img924/4403/9WBdyw.png', emoji:'🧭🗺', type:'text'},
+        'snapchat':{label:'Snap', form:'story.snapchat.com/s/', img:'https://imagizer.imageshack.com/img924/3490/rAtlyJ.png', emoji:'⏱📸', type:'text'},
+        'linkedin':{label:'LinkedIn', form:'linkedin.com/in/', img:'https://imagizer.imageshack.com/img924/2977/dUaUGg.png', emoji:'🎓🕴', type:'text'},
+        'cashapp':{label:'Cash App', form:'cash.app/$', img:'https://imagizer.imageshack.com/img922/2778/ID3PbR.png', emoji:'💸🌐', type:'text'},
+        'telegram':{label:'Telegram', form:'t.me/', img:'https://imagizer.imageshack.com/img922/909/vNZYkL.png', emoji:'🔒✉️', type:'text'},
+        'patreon':{label:'Patreon', form:'patreon.com/', img:'https://imagizer.imageshack.com/img923/9927/yX6oWA.png', emoji:'💸🌐', type:'text'},
+        'gofundme':{label:'GoFundMe', form:'gofundme.com/', img:'https://imagizer.imageshack.com/img923/9072/2nPeOI.png', emoji:'💸🙏', type:'text'},
+        'paypal':{label:'PayPal', form:'paypal.me/', img:'https://imagizer.imageshack.com/img923/6537/UjUIgP.png', emoji:'💳🌐', type:'text'},
+        'playstation':{label:'Playstation Network', form:'Your PSN Gamertag: ', img:'https://imagizer.imageshack.com/img922/7303/mTwffk.png' ,emoji:'🕹️🏷️', type:'text' },
+        'xbox':{label:'Xbox Live', form:'Your Live Gamertag (include suffix if you have one): ', img:'https://imagizer.imageshack.com/img922/4650/OdtJsD.jpg', emoji:'🕹️🏷️', type:'text'},
+        'nintendo':{label:'Nintendo Friend Code', form:'Your Nintendo Friend Code (include dashes): SW-', img:'https://imagizer.imageshack.com/img924/5847/fTqMCQ.png', emoji:'🕹️🏷️', type:'tel', pattern:'[0-9]{4}-[0-9]{4}-[0-9]{4}'},
+        'etsy':{label:'Etsy', form:'etsy.com/shop/', img:'https://imagizer.imageshack.com/img922/8896/7mengW.png', emoji:'🖌📮', type:'text'},
+        'ebay':{label:'Ebay', form:'ebay.com/usr/', img:'https://imagizer.imageshack.com/img923/9052/na6lGQ.png', emoji:'📦🌐', type:'text'},
+        'twitch':{label:'Twitch', form:'twitch.tv/', img:'https://imagizer.imageshack.com/img924/4011/FRXstk.png', emoji:'🕹️📹', type:'text'},
+        'steam':{label:'Steam', form:'steamcommunity.com/id/', img:'https://imagizer.imageshack.com/img922/1269/jaLEjC.jpg', emoji:'🎮', type:'text'},
+        'discord':{label:'Discord', form:'discordapp.com/users/', img:'https://imagizer.imageshack.com/img922/8148/sIBMwf.png', emoji:'🎤🕹️', type:'text'},
+        'imgur':{label:'Imgur', form:'imgur.com/user/', img:'https://imagizer.imageshack.com/img922/944/aj62jA.png', emoji:'📸🌐', type:'text'},
+        'imdb':{label:'IMDB', form:'imdb.me/', img:'https://imagizer.imageshack.com/img923/6572/UNq2ej.png', emoji:'📝🎥', type:'text'},
+        'soundcloud':{label:'SoundCloud', form:'soundcloud.com/', img:'https://imagizer.imageshack.com/img924/5484/VQ5N3V.png', emoji:'🔉☁️', type:'text'},
+        'bandcamp':{label:'Bandcamp', form:'->____.bandcamp.com/ ', img:'https://imagizer.imageshack.com/img924/5015/UfrqPr.png', emoji:'🔉🏕️', type:'text'},
+        'github':{label:'GitHub', form:'github.com/', img:'https://imagizer.imageshack.com/img923/2070/CdhTJ7.png', emoji:'👩‍💻👨‍💻', type:'text'},
+        'vk':{label:'VK', form:'vk.com/', img:'https://imagizer.imageshack.com/img924/9673/LnXxDo.png', emoji:'📸🌐', type:'text'},
+        'nebula':{label:'Nebula', form:'watchnebula.com/', img:'https://imagizer.imageshack.com/img924/3839/fgFVLI.jpg', emoji:'🎥🌐', type:'text'},
+        'flickr':{label:'Flickr', form:'flickr.com/photos/', img:'https://imagizer.imageshack.com/img923/8778/JytgsJ.png', emoji:'📸🌐', type:'text'},
+        'imageshack':{label:'ImageShack', form:'imageshack.com/user/', img:'https://imagizer.imageshack.com/img924/5308/wNfQLy.png', emoji:'📸🌐', type:'text'},
+        'startengine':{label:'StartEngine', form:'startengine.com/', img:'https://imagizer.imageshack.com/img924/3169/lW3Q7T.png', emoji:'💸🌐', type:'text'},
+        'kickstarter':{label:'Kickstarter', form:'kickstarter.com/profile/', img:'https://imagizer.imageshack.com/img924/368/ZyT9Ts.png', emoji:'💸🌐', type:'text'},
+        'email':{label:'Contact Email', form:'Enter Your Contact Email Here: ', img:'https://imagizer.imageshack.com/img923/5410/AmQrEf.jpg', emoji:'📧📥', type:'email'},
+        'phone':{label:'Contact Phone', form:'Enter Your Contact Phone Number Here: ', img:'https://imagizer.imageshack.com/img922/3903/H262eI.jpg', emoji:'📱☎️', type:'tel'},
+        'onlyfans':{label:'OnlyFans', form:'onlyfans.com/', img:'https://imagizer.imageshack.com/img923/7375/DEREnR.png', emoji:'🔐📸', type:'text'}
     }
 
     return (
         <div>
+            <hr />
             {isLoading? <p>Loading...</p> :
             <div>
                 <br />
                 <h2>Choose Which Type of Account to Link:</h2>
                 <br />
                 <select onChange={handleAccountType}>
-                    <option value="instagram">Instagram</option>
-                    <option value="youtube">YouTube</option>
-                    <option value="facebook">Facebook</option>
-                    <option value="twitter">Twitter</option>
-                    <option value="tiktok">TikTok</option>
-                    <option value="reddit">Reddit</option>
-                    <option value="pinterest">Pinterest</option>
-                    <option value="snapchat">SnapChat</option>
-                    <option value="linkedin">LinkedIn</option>
+                    <option value="bandcamp">Bandcamp</option>
                     <option value="cashapp">Cash App</option>
-                    <option value="telegram">Telegram</option>
+                    <option value="discord">Discord</option>
+                    <option value="ebay">Ebay</option>
+                    <option value="email">Email Address</option>
+                    <option value="etsy">Etsy</option>
+                    <option value="facebook">Facebook</option>
+                    <option value="flickr">Flickr</option>
+                    <option value="github">GitHub</option>
+                    <option value="gofundme">GoFundMe</option>
+                    <option value="imageshack">ImageShack</option>
+                    <option value="imdb">IMDB</option>
+                    <option value="imgur">Imgur</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="kickstarter">Kickstarter</option>
+                    <option value="linkedin">LinkedIn</option>
+                    <option value="nintendo">Nintendo Friend Code</option>
+                    <option value="nebula">Nebula</option>
+                    <option value="onlyfans">OnlyFans</option>
                     <option value="patreon">Patreon</option>
                     <option value="paypal">PayPal</option>
-                    <option value="etsy">Etsy</option>
-                    <option value="ebay">Ebay</option>
-                    <option value="twitch">Twitch</option>
-                    <option value="steam">Steam</option>
-                    <option value="discord">Discord</option>
-                    <option value="imgur">Imgur</option>
-                    <option value="imdb">IMDB</option>
+                    <option value="phone">Phone Number</option>
+                    <option value="pinterest">Pinterest</option>
+                    <option value="playstation">Playstation Network Gamertag</option>
+                    <option value="reddit">Reddit</option>
+                    <option value="snapchat">SnapChat</option>
                     <option value="soundcloud">SoundCloud</option>
+                    <option value="startengine">StartEngine</option>
+                    <option value="steam">Steam</option>
+                    <option value="telegram">Telegram</option>
+                    <option value="tiktok">TikTok</option>
+                    <option value="twitch">Twitch</option>
+                    <option value="twitter">Twitter</option>
+                    <option value="vk">VK</option>
+                    <option value="xbox">Xbox Live Gamertag</option>
+                    <option value="youtube">YouTube</option>
                 </select>
                 <br />
                 {choice == '' ? <p>Choose an Account Type To Add</p> : <form onSubmit={handleFormSubmit}>
                     <br />
+                    <img src={choicesDict[`${choice}`]['img']} alt={choicesDict[`${choice}`]['label']} className="addLinkPreviewImage" /> 
+                    <br /> <br />
                     <label>
-                        {choicesDict[`${choice}`]['form']}<input value={username} required name="username" placeholder="username" type="text" onChange={onChangeUsername} />
+                        {choicesDict[`${choice}`]['form']}<input value={username} required name="username" placeholder={choicesDict[`${choice}`]['label']} type={choicesDict[`${choice}`]['type']} onChange={onChangeUsername} pattern={choicesDict[`${choice}`]['pattern'] ? choicesDict[`${choice}`]['pattern']:null} />
                     </label>
                     <br /> <br />
                     <button type="submit">Add {choicesDict[`${choice}`]['label']} to Link-in.Bio/</button>

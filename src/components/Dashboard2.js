@@ -7,6 +7,8 @@ import ListEditor2 from "./ListEditor2"
 import libIMG from '../files/libIMG.png'
 import CUPicker from '../components/CustomURL/CUPicker'
 import EasyAddDash from '../components/EasyAdd/EasyAddDash'
+import GraphForEntry from "../components/GraphForEntry"
+import AddEntryWithFile from '../components/AddEntryWithFile'
 
 
 
@@ -20,7 +22,19 @@ function Dashboard2 () {
     const [listViews, setListViews] = useState(null)
     const [qrShowing, setQRShowing] = useState(false)
     const [isEasyAdding, setIsEasyAdding] = useState(false)
+    const [isShowingStats, setIsShowingStats] = useState(false)
+    const [addingWithFile, setIsAddingWithFile] = useState(false)
 
+    const statsDrawerToggle = () => {
+        const statDrawer = document.getElementsByClassName('statsDisplayDiv')
+        if(statDrawer[0].style.maxHeight){
+            statDrawer[0].style.maxHeight = null;
+            setIsShowingStats(false)
+        } else {
+            statDrawer[0].style.maxHeight = statDrawer[0].scrollHeight + 100 + "px";
+            setIsShowingStats(true)
+        }
+    }
 
     const easyAddDrawerToggle = () => {
         const easyAddDrawer = document.getElementsByClassName('easyAddInstaDiv')
@@ -33,9 +47,20 @@ function Dashboard2 () {
         }
     }
 
+    const withFileDrawerToggle = () => {
+        const withFileDrawer = document.getElementsByClassName('addwithPhotoDiv')
+        if (withFileDrawer[0].style.maxHeight){
+            withFileDrawer[0].style.maxHeight = null;
+            setIsAddingWithFile(false)
+        } else {
+            withFileDrawer[0].style.maxHeight = withFileDrawer[0].scrollHeight + 250 + "px";
+            setIsAddingWithFile(true)
+        }
+    }
+
     const qrToggle = () => {
         var qrElement = document.getElementsByClassName('qrcode')
-        console.log('qrelement', qrElement)
+        // console.log('qrelement', qrElement)
         if (qrShowing){
             qrElement[0].style.display = 'none';
             setQRShowing(false)
@@ -52,6 +77,7 @@ function Dashboard2 () {
         sessionStorage.removeItem('token')
         sessionStorage.removeItem('userId')
         sessionStorage.removeItem('customURL')
+        alert('Logged Out Successfully')
         window.location.reload()
     }
 
@@ -93,7 +119,18 @@ function Dashboard2 () {
                     {/* <img src={profilePictureURL} alt={profilePictureURL} /> */}
                 </header>
                 <section className="dashboardInfoSection">
-                    <p>Views: {listViews ? listViews: <span>Loading...</span>}</p><br />
+                <div>
+                        {/* <p>Your Stats:</p> */}
+                        {/* <br /> */}
+                        {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Your List Stats  ▼</span>}
+                        <div className="statsDisplayDiv">
+                            <GraphForEntry />
+                            {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Your List Stats  ▼</span>}
+
+                        </div>
+                    </div>
+                    <br /> <br /> 
+                    <br />
                     <table>
                         <tr>
                             <td>Your Default Space:</td>
@@ -108,15 +145,31 @@ function Dashboard2 () {
                     </table>
                 </section>
                 <section className="dashboardInfoSection">
-                    <h2>Add Entries to Your List:</h2>
+                    {/* remove */}
+                    <p>Views: {listViews ? listViews: <span>Loading...</span>}</p>
+                    <br /><br />
+                    {/* remove */}
+                    {/* <h2>Add Entries to Your List:</h2> */}
                     <br /> <br />
-                    <Link to={`/addEntry/${sessionStorage.getItem('listId')}`}><span className="abutton">Add Custom Entry</span></Link>
-                    <br /> <br />
-                    {isEasyAdding ? <span onClick={easyAddDrawerToggle}>Easy-Add Social Account  ▲</span>:<span onClick={easyAddDrawerToggle}>Easy-Add Social Account  ▼</span>}
+                    {addingWithFile ? <span onClick={withFileDrawerToggle}>Add Link with Image  ▲</span>:<span onClick={withFileDrawerToggle}>Add Link with Image  ▼</span>}
+                    <div className="addwithPhotoDiv">
+                        <AddEntryWithFile />
+                    </div>
+                    <br /> <br /><br />
+                    {isEasyAdding ? <span onClick={easyAddDrawerToggle}>Easy-Add a Link  ▲</span>:<span onClick={easyAddDrawerToggle}>Easy-Add a Link  ▼</span>}
                     <div className="easyAddInstaDiv">
                         <EasyAddDash />
                     </div>
-                    <br /> <br /> 
+                    <br /><br />
+                    {/* <div>
+                        {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Your List Stats  ▼</span>}
+                        <div className="statsDisplayDiv">
+                            <GraphForEntry />
+                            {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Your List Stats  ▼</span>}
+
+                        </div>
+                    </div>
+                    <br /> <br />  */}
                     <hr />
                     <br />
                     <h2>List Editor:</h2>

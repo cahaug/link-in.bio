@@ -85,10 +85,10 @@ export function register(email, password, firstName, lastName, profilePictureURL
     }
 }
 
-export function login(email, password){
+export function login(email, password, token){
     return (dispatch) => {
         dispatch({type: LOGIN_USER_START})
-        return axios.post('https://link-in-bio.herokuapp.com/auth/login', { email, password })
+        return axios.post('https://link-in-bio.herokuapp.com/auth/login', { email, password, token })
         .then(async (res) => {
             const payload = res.data
             // localStorage.setItem('token', res.data.token)
@@ -145,10 +145,10 @@ export function createList(userId, backColor, txtColor, fontSelection, token){
     }
 }
 
-export function addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token){
+export function addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token, shackImageId){
     return (dispatch) => {
         dispatch({type: ADD_ENTRY_START})
-        return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL }, { headers: {authorization: token} })
+        return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL, shackImageId }, { headers: {authorization: token} })
         .then((res) => {
             const useThisURL = `https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
             return axios.get(useThisURL)
@@ -163,10 +163,10 @@ export function addEntry(userId, listId, referencingURL, description, linkTitle,
     }
 }
 
-export function editEntry(entryId, referencingURL, description, linkTitle, imgURL){
+export function editEntry(entryId, referencingURL, description, linkTitle, imgURL, token, listId){
     return (dispatch) => {
         dispatch({type: EDIT_ENTRY_START})
-        return axios.put('https://link-in-bio.herokuapp.com/e/replaceEntry', {entryId, referencingURL, description, linkTitle, imgURL})
+        return axios.put('https://link-in-bio.herokuapp.com/e/replaceEntry', {entryId, referencingURL, description, linkTitle, imgURL, listId}, { headers: {authorization: token}})
         .then((res) => {
             alert('Entry Edited Successfully')
             dispatch({type: EDIT_ENTRY_SUCCESS, payload:res.data})

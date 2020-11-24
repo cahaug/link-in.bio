@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react"
-import axios from "axios"
-import loadingGif from '../files/loading.gif'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
+// import axios from "axios"
+// import loadingGif from '../files/loading.gif'
+// import { Link } from 'react-router-dom'
 // import CUPicker from '../components/CustomURL/CUPicker'
 import BackgroundColorPicker from '../components/BackgroundColorPicker'
 import TextColorPicker from '../components/TextColorPicker'
@@ -11,6 +12,9 @@ import FontPicker from '../components/FontPicker'
 import ProfilePictureChanger from '../components/ProfilePictureChanger'
 import AvailabilityChecker from './CustomURL/AvailabilityChecker'
 import ChangeDisplayName from '../components/ChangeDisplayName'
+import SettingsChangePassword from "./SettingsChangePassword"
+import ProfPicUpload from './ProfPicUpload'
+
 
 
 // thank you github.com/casesandberg for the lovely react color pickers
@@ -24,6 +28,8 @@ function SettingsPanel(){
     const [easyAddingInsta, setEasyAddingInsta] = useState(false)
     const [changingProfilePic, setChangingProfilePic] = useState(false)
     const [settingDisplayName, setSettingDisplayName] = useState(false)
+    const [changingPassword, setChangingPassword] = useState(false)
+    const [uploadingPhoto, setUploadingPhoto] = useState(false)
     
     const textColorDrawerToggle = () => {
         const textColorDrawer = document.getElementsByClassName('textColorPickerDiv')
@@ -80,6 +86,17 @@ function SettingsPanel(){
         }
     }
 
+    const uploadingPhotoDrawerToggle = () => {
+        const profPicUploadDrawer = document.getElementsByClassName('profPicUploadDiv')
+        if (profPicUploadDrawer[0].style.maxHeight){
+            profPicUploadDrawer[0].style.maxHeight = null;
+            setUploadingPhoto(false)
+        } else {
+            profPicUploadDrawer[0].style.maxHeight = profPicUploadDrawer[0].scrollHeight + 275 + "px";
+            setUploadingPhoto(true)
+        }
+    }
+
     const displayNameDrawerToggle = () => {
         const displayNameChangerDrawer = document.getElementsByClassName('displayNameChangerDiv')
         if (displayNameChangerDrawer[0].style.maxHeight){
@@ -88,6 +105,17 @@ function SettingsPanel(){
         } else {
             displayNameChangerDrawer[0].style.maxHeight = displayNameChangerDrawer[0].scrollHeight + "px";
             setSettingDisplayName(true)
+        }
+    }
+
+    const changePasswordDrawerToggle = () => {
+        const passwordChangerDrawer = document.getElementsByClassName('passwordChangerDiv')
+        if (passwordChangerDrawer[0].style.maxHeight){
+            passwordChangerDrawer[0].style.maxHeight = null;
+            setChangingPassword(false)
+        } else {
+            passwordChangerDrawer[0].style.maxHeight = passwordChangerDrawer[0].scrollHeight + 120 + "px";
+            setChangingPassword(true)
         }
     }
 
@@ -130,9 +158,9 @@ function SettingsPanel(){
                 <FontPicker />
             </div>
             <br />
-            {changingProfilePic ? <span onClick={profPicDrawerToggle}>Modify Profile Picture URL ▲</span>:<span onClick={profPicDrawerToggle}>Modify Profile Picture URL ▼</span>}
-            <div className="profPicChangerDiv">
-                <ProfilePictureChanger />
+            {changingPassword ? <span onClick={changePasswordDrawerToggle}>Change Password ▲</span>:<span onClick={changePasswordDrawerToggle}>Change Password ▼</span>}
+            <div className="passwordChangerDiv">
+                <SettingsChangePassword />
             </div>
             <br />
             {easyAddingInsta ? <span onClick={instaDrawerToggle}>CustomURL Picker ▲</span>:<span onClick={instaDrawerToggle}>CustomURL Picker ▼</span>}
@@ -145,7 +173,23 @@ function SettingsPanel(){
                 <ChangeDisplayName />
             </div>
             <br />
-            <a href="/dashboard2" alt="Back to Dashboard">Back to Dashboard</a>
+            {changingProfilePic ? <span onClick={profPicDrawerToggle}>Set Profile Pic To Online Image <br /> {`&`} Delete Profile Pic ▲</span>:<span onClick={profPicDrawerToggle}>Set Profile Pic To Online Image <br /> {`&`} Delete Profile Pic ▼</span>}
+            <div className="profPicChangerDiv">
+                <ProfilePictureChanger />
+            </div>
+            <br />
+
+            {uploadingPhoto ? <span onClick={uploadingPhotoDrawerToggle}>Upload a Profile Picture ▲</span>:<span onClick={uploadingPhotoDrawerToggle}>Upload a Profile Picture ▼</span>}
+            <div className="profPicUploadDiv">
+                <ProfPicUpload />
+            </div>
+            <br/>
+            <br/>
+            <Link to={`/addEntry/`}><span className="abutton">Add Entry Manually</span></Link>
+            <br/>
+            <br/>
+            <Link to='/dashboard2'><span className="abutton">Back to Dash</span></Link>
+            {/* <a href="/dashboard2" alt="Back to Dashboard">Back to Dashboard</a> */}
         </div>
 
     )
