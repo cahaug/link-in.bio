@@ -22,7 +22,8 @@ const AvailabilityChecker = () => {
         setLastCheckedCURL(intermediate)
         console.log('intermediate', intermediate)
         setChosenCustom('')
-        return axios.post('https://link-in-bio.herokuapp.com/l/checkCustom', {customURL:intermediate})
+        const token = sessionStorage.getItem('token')
+        return axios.post('https://link-in-bio.herokuapp.com/l/checkCustom', {customURL:intermediate}, {headers:{authorization:token}})
         .then(res => {
             console.log('res.data chosenCustom', res.data)
             if(res.data.length === 0){

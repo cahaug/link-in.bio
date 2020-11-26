@@ -75,8 +75,9 @@ class EntryEditor extends React.Component {
         console.log('props', props)
         const token = sessionStorage.getItem('token')
         // console.log('curpath', props.curPath)
+        const listId = sessionStorage.getItem('listId')
         const useThisURL = `https://link-in-bio.herokuapp.com/e${this.props.match.url}`
-        return axios.get(useThisURL, {headers:{authorization:token}})
+        return axios.get(useThisURL, {listId:listId}, {headers:{authorization:token}})
         .then(response => {
             console.log('response', response)
             this.setState({userId:response.data[0].userId})

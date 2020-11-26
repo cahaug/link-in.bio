@@ -244,7 +244,7 @@ function ListEditor2(){
                 setDarkMode(true)
             }
         })
-        .catch(err => {console.log('err', err); alert('that site does not exist, yet. or check your connection.')})
+        .catch(err => {console.log('err', err); alert('Please close this tab and log back in.')})
     }, [])
 
     if(isLoading===true){

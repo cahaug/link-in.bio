@@ -82,8 +82,9 @@ function Dashboard2 () {
     }
 
     useEffect(() => {
+        const token = sessionStorage.getItem('token')
         const useThisURL = `https://link-in-bio.herokuapp.com/s/listViews/${sessionStorage.getItem('listId')}`
-        axios.get(useThisURL, { headers: {authorization: sessionStorage.getItem('token')} })
+        axios.get(useThisURL, { headers: {authorization: token} })
         .then(response => {
             setListViews(response.data['listViews'])
             document.title = 'Dashboard - Link-in.bio/'
