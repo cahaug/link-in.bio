@@ -100,6 +100,12 @@ const EasyAddDash = () => {
                 description = `Add me at my Friend Code: SW-${username.slice(0,4)}-${username.slice(4,8)}-${username.slice(8,12)}`
                 linkTitle = `My Nintendo Friend Code`
             }
+            if(choice === 'venmo'){
+                console.log('chose venmo')
+                referencingURL = `https://venmo.com/account/sign-in`
+                description = `Venmo me at ${username}  ${choicesDict[`${choice}`]['emoji']}`
+                linkTitle = `${choicesDict[`${choice}`]['label']} - ${username}`
+            }
             if(choice === 'email'){
                 console.log('chose email')
                 referencingURL = `mailto:${username}?subject=Found%20You%20On%20Link-in.Bio/&body=Your%20Message%20Here`
@@ -150,6 +156,7 @@ const EasyAddDash = () => {
         'snapchat':{label:'Snap', form:'story.snapchat.com/s/', img:'https://imagizer.imageshack.com/img924/3490/rAtlyJ.png', emoji:'⏱📸', type:'text'},
         'linkedin':{label:'LinkedIn', form:'linkedin.com/in/', img:'https://imagizer.imageshack.com/img924/2977/dUaUGg.png', emoji:'🎓🕴', type:'text'},
         'cashapp':{label:'Cash App', form:'cash.app/$', img:'https://imagizer.imageshack.com/img922/2778/ID3PbR.png', emoji:'💸🌐', type:'text'},
+        'venmo':{label:'Venmo', form:'Enter Your Venmo Username: ', img:'https://imagizer.imageshack.com/img922/8315/KKDAzH.png', emoji:'💸🌐', type:'text'},
         'telegram':{label:'Telegram', form:'t.me/', img:'https://imagizer.imageshack.com/img922/909/vNZYkL.png', emoji:'🔒✉️', type:'text'},
         'patreon':{label:'Patreon', form:'patreon.com/', img:'https://imagizer.imageshack.com/img923/9927/yX6oWA.png', emoji:'💸🌐', type:'text'},
         'gofundme':{label:'GoFundMe', form:'gofundme.com/', img:'https://imagizer.imageshack.com/img923/9072/2nPeOI.png', emoji:'💸🙏', type:'text'},
@@ -220,6 +227,7 @@ const EasyAddDash = () => {
                     <option value="tiktok">TikTok</option>
                     <option value="twitch">Twitch</option>
                     <option value="twitter">Twitter</option>
+                    <option value="venmo">Venmo</option>
                     <option value="vk">VK</option>
                     <option value="xbox">Xbox Live Gamertag</option>
                     <option value="youtube">YouTube</option>
