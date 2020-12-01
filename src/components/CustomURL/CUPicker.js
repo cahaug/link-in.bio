@@ -40,7 +40,7 @@ const CUPicker = () => {
             return (
                 <div>
                     {/* <p>Your Current CustomURL is:</p> */}
-                    <p><a alt="Your Custom URL" href={`https://link-in.bio/${currentCustom}`}>https://link-in.bio/{currentCustom}</a></p>
+                    <p><a alt="Your Custom URL" href={currentCustom}>{currentCustom}</a></p>
                 </div>
             )
         } else {
