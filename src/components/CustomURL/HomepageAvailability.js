@@ -90,6 +90,10 @@ const HomepageAvailability = () => {
         return (
             <div>
                 <br />
+                <h3>When You Get a Link-in.Bio, You get a number to access your list across all of the following URL's,<br /><br /> You also get a custom URL you can set and change whenever.</h3>
+                <br />
+                <h3>Choose the URL that Best fits your style:</h3>
+                <br />
                 <ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHAPUBLIC} size="invisible" ref={reRef} />
                 <form onSubmit={submitCheckChosenCustom}>
                     <label>
