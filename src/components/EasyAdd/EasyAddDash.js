@@ -160,6 +160,7 @@ const EasyAddDash = () => {
         'telegram':{label:'Telegram', form:'t.me/', img:'https://imagizer.imageshack.com/img922/909/vNZYkL.png', emoji:'🔒✉️', type:'text'},
         'patreon':{label:'Patreon', form:'patreon.com/', img:'https://imagizer.imageshack.com/img923/9927/yX6oWA.png', emoji:'💸🌐', type:'text'},
         'gofundme':{label:'GoFundMe', form:'gofundme.com/', img:'https://imagizer.imageshack.com/img923/9072/2nPeOI.png', emoji:'💸🙏', type:'text'},
+        'depop':{label:'depop', form:'depop.com/', img:'https://imagizer.imageshack.com/img923/9610/O5VVkS.png', emoji:'👜💸', type:'text'},
         'paypal':{label:'PayPal', form:'paypal.me/', img:'https://imagizer.imageshack.com/img923/6537/UjUIgP.png', emoji:'💳🌐', type:'text'},
         'playstation':{label:'Playstation Network', form:'Your PSN Gamertag: ', img:'https://imagizer.imageshack.com/img922/7303/mTwffk.png' ,emoji:'🕹️🏷️', type:'text' },
         'xbox':{label:'Xbox Live', form:'Your Live Gamertag (include suffix if you have one): ', img:'https://imagizer.imageshack.com/img922/4650/OdtJsD.jpg', emoji:'🕹️🏷️', type:'text'},
@@ -196,6 +197,7 @@ const EasyAddDash = () => {
                 <select onChange={handleAccountType}>
                     <option value="bandcamp">Bandcamp</option>
                     <option value="cashapp">Cash App</option>
+                    <option value="depop">Depop</option>
                     <option value="discord">Discord</option>
                     <option value="ebay">Ebay</option>
                     <option value="email">Email Address</option>
