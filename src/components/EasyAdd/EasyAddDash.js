@@ -100,6 +100,10 @@ const EasyAddDash = () => {
                 description = `Add me at my Friend Code: SW-${username.slice(0,4)}-${username.slice(4,8)}-${username.slice(8,12)}`
                 linkTitle = `My Nintendo Friend Code`
             }
+            if(choice === 'depop'){
+                linkTitle = 'depop - My Store'
+                description = `Check out what I'm selling at depop.com/{username}`
+            }
             if(choice === 'venmo'){
                 console.log('chose venmo')
                 referencingURL = `https://venmo.com/account/sign-in`
