@@ -115,6 +115,8 @@ const AvailabilityChecker = () => {
                         Is Your Name Free? Check Availability:<br />
                         <select onChange={setPrefix}>
                             <option value="https://link-in.bio/">link-in.bio/</option>
+                            <option value="https://link-m.ee/">link-m.ee/</option>
+                            <option value="https://link-me.ee/">link-me.ee/</option>
                             <option value="https://link-in-profile.co/">link-in-profile.co/</option>
                             <option value="https://link-in-description.co/">link-in-description.co/</option>
                             <option value="https://the-link.is/">the-link.is/</option>
