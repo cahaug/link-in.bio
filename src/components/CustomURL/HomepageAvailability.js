@@ -90,7 +90,7 @@ const HomepageAvailability = () => {
         return (
             <div>
                 <br />
-                <h3>When You Get a Link-in.Bio, You Get a Webpage publicly hosted on the internet.<br /><br /> You get a number to link to your list across all of the URL's in the dropdown,<br /><br /> And You also get one custom URL you can set to almost anything and change whenever you want.</h3>
+                <h3>When You Get a Link-in.Bio, You Get a Webpage publicly hosted on the internet.<br /><br /> You get a number to link to your list across any and all of the website URL's in the dropdown below,<br /><br /> And you also get one custom URL you can set to almost anything and change whenever you want.</h3>
                 <br />
                 <h3>Choose the URL that Best fits your style:</h3>
                 <br />

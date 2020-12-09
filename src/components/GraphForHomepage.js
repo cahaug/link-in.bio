@@ -46,12 +46,13 @@ const GraphForHomepage = () => {
         return(
             <div>
                 <br />
-                <p>We're tracking this page! (Anonymously and Legally, of course.)</p>
-                <p>Link-in.Bio logs anonymous information for you about your users, so you can better know your audience.</p>
-                <p>Link-in.Bio is PCI, CCPA and GDPR Compliant, and is based in Scottsdale, Arizona.</p>
-                <p>Link-in.Bio uses industry-leading security to safeguard your data and reCAPTCHA to protect against robot attack.</p>
-                <p>We will never give or sell any of your information to anyone, and you won't see a cookie disclaimer on our website ❌🍪❌, because we do not use cookies. 👍 </p>
-                <p>Here's a sample of the information we provide all our users about their own lists, only it's the live data for viewers of this very page!</p>
+                <p>We're tracking this page! (Anonymously and Legally, of course.)</p> <br/>
+                <p>Link-in.Bio logs anonymous information for you about your page viewers, so you can better know your audience.</p><br/>
+                <p>Link-in.Bio is PCI, CCPA and GDPR Compliant, and is based in Scottsdale, Arizona.</p><br/>
+                <p>Link-in.Bio uses industry-leading practices to safeguard your data and reCAPTCHA to protect against robot attack.</p><br/>
+                <p>We will never give or sell any of your information to anyone.</p><br/>
+                <p>You won't ever see a cookie disclaimer on our website ❌🍪❌, because we do not use cookies. 👍 </p><br/>
+                <p>Here's a sample of the information we provide all our users about their own lists, only it's the live data for viewers of this very page!</p><br/>
                 <div>
                     <div className="vicLine">
                         <h2>Daily Link-in.Bio Homepage Viewers:</h2>
@@ -125,7 +126,7 @@ const GraphForHomepage = () => {
                 <div className="entryChartHolder">
                     <div className="vicPie">
                         <h2>Country Link-in.Bio Homepage Viewers Are From</h2>
-                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.countries} colorScale="qualitative" x='countryOfOrigin' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={45} data={datasetBravo.countries} colorScale="qualitative" x='countryOfOrigin' y='count' style={{
                             labels: {
                                 fontSize: 30, fill: '#929292'
                               }
@@ -133,7 +134,7 @@ const GraphForHomepage = () => {
                     </div>
                     <div className="vicPie">
                         <h2>Region Location Approximation for Link-in.Bio Homepage Viewers</h2>
-                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.regions} colorScale="qualitative" x='province' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={45} data={datasetBravo.regions} colorScale="qualitative" x='province' y='count' style={{
                             labels: {
                                 fontSize: 20, fill: '#929292'
                               }

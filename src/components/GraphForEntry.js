@@ -147,7 +147,7 @@ const GraphForEntry = () => {
                 <div className="entryChartHolder">
                     <div className="vicPie">
                         <h2>Country Your Viewers Are From</h2>
-                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.countries} colorScale="qualitative" x='countryOfOrigin' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={45} data={datasetBravo.countries} colorScale="qualitative" x='countryOfOrigin' y='count' style={{
                             labels: {
                                 fontSize: 30, fill: '#929292'
                               }
@@ -155,7 +155,7 @@ const GraphForEntry = () => {
                     </div>
                     <div className="vicPie">
                         <h2>Best Guess Location</h2>
-                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.regions} colorScale="qualitative" x='province' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={45} data={datasetBravo.regions} colorScale="qualitative" x='province' y='count' style={{
                             labels: {
                                 fontSize: 20, fill: '#929292'
                               }
@@ -174,7 +174,7 @@ const GraphForEntry = () => {
                         </VictoryChart>
                     </div>
                     <div className="vicPie">
-                        <VictoryPie animate={{duration:3000}} padding={40} data={pieGraphData} colorScale="qualitative" x='linkTitle' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={45} data={pieGraphData} colorScale="qualitative" x='linkTitle' y='count' style={{
                             labels: {
                                 fontSize: 20, fill: '#929292'
                               }
