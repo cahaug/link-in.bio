@@ -125,10 +125,10 @@ function SettingsPanel(){
         const bgPicUploadDrawer = document.getElementsByClassName('bgPicUploadDiv')
         if (bgPicUploadDrawer[0].style.maxHeight){
             bgPicUploadDrawer[0].style.maxHeight = null;
-            setUploadingPhoto(false)
+            setUploadingBackground(false)
         } else {
             bgPicUploadDrawer[0].style.maxHeight = bgPicUploadDrawer[0].scrollHeight + 325 + "px";
-            setUploadingPhoto(true)
+            setUploadingBackground(true)
         }
     }
 
