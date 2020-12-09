@@ -22,7 +22,7 @@ const GraphForHomepage = () => {
     const getDatasetBravo = () => {
         axios.get('https://link-in-bio.herokuapp.com/s/steakSauce')
         .then(res => {
-            // console.log('res.data bravo', res.data)
+            console.log('res.data bravo', res.data)
             setDatasetBravo(res.data)
 
             setIsLoading(false)
