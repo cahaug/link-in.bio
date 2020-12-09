@@ -87,7 +87,7 @@ function Dashboard2 () {
         axios.get(useThisURL, { headers: {authorization: token} })
         .then(response => {
             setListViews(response.data['listViews'])
-            document.title = 'Dashboard - Link-in.bio/'
+            document.title = `Dashboard - ${window.location.host}`
         })
         .catch(err =>  {
             console.log(err)

@@ -136,7 +136,7 @@ function SettingsPanel(){
         var elelist = document.getElementsByTagName("input"); for(var i = 0; i < elelist.length; i++){
             elelist[i].style.fontSize = '16px'
         }
-        document.title = 'Settings Panel - Link-in.bio/'
+        document.title = `Settings Panel - ${window.location.host}`
     })
 
     return (

@@ -156,9 +156,9 @@ function ListDisplayHooks(match) {
             const incrementedListViews = axios.get(`https://link-in-bio.herokuapp.com/s/ili/${res.data[0].listId}?mt=${mt}`)
             // console.log(incrementedListViews)
             setIsLoading(false);
-            document.title = `${window.location.host}/${ourURL} - ${displayName}`
+            document.title = `${window.location.host}${ourURL} - ${displayName}`
             if(displayName===null){
-                document.title = `${window.location.host}/${ourURL} - ${userFirstLastName}`
+                document.title = `${window.location.host}${ourURL} - ${userFirstLastName}`
             }
             // initialize in dark mode
             // var element0 = document.getElementsByClassName('App')
