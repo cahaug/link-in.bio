@@ -134,8 +134,8 @@ const HomepageAvailability = () => {
                             <option value="https://stream-he.re/">stream-he.re/</option>
                             <option value="https://watch-he.re/">watch-he.re/</option>
                         </select>
-                        <input onChange={handleChange} value={chosenCustom} name="CustomURL" type="text" required maxLength="127" placeholder="YourNameHere"  />
                     </label>
+                    <input onChange={handleChange} value={chosenCustom} name="CustomURL" type="text" required maxLength="127" placeholder="YourNameHere"  />
                     <br />
                     {isLoading? <p>Searching Database...</p>:<button type="submit">Check CustomURL Availability</button>}
                 </form>

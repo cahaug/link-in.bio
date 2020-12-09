@@ -17,6 +17,7 @@ function ListDisplayHooks(match) {
     const [drawerPulled, setDrawerPulled] = useState(false)
     const [backgroundColor, setBackgroundColor] = useState('#FFFFFF')
     const [textColor, setTextColor] = useState('#000000')
+    const [backgroundURL, setBackgroundURL] = useState('')
     const [chosenFont, setChosenFont] = useState()
 
     // const browserInfoSifter = () => {
@@ -76,7 +77,9 @@ function ListDisplayHooks(match) {
             headerTextElement.style.color = `${textColor}`
             var mainBackgroundElement = document.getElementsByClassName('theMain')
             console.log(mainBackgroundElement[0].style.backgroundColor)
-            mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${textColor}, ${backgroundColor})`
+            if(backgroundURL.length<8){
+                mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${textColor}, ${backgroundColor})`
+            }
         } else {
             var txtColorElement0 = document.getElementsByClassName('linkDescription')
             var m
@@ -100,7 +103,9 @@ function ListDisplayHooks(match) {
             var mainBackgroundElement = document.getElementsByClassName('theMain')
             console.log(mainBackgroundElement[0].style.backgroundColor)
             // mainBackgroundElement[0].style.backgroundColor = '#000000'
-            mainBackgroundElement[0].style.backgroundImage = 'linear-gradient(70deg, #151515, black)'
+            if(backgroundURL.length<8){
+                mainBackgroundElement[0].style.backgroundImage = 'linear-gradient(70deg, #151515, black)'
+            }
         }
         setDarkMode(!darkMode) 
     }
@@ -143,13 +148,17 @@ function ListDisplayHooks(match) {
             setProfilePictureURL(profilePictureURL)
             setUserFirstNameLastName(userFirstLastName)
             setDisplayingUserInfo(displayingUserInfo)
+            if(res.data[0].listBackgroundURL !== null){
+                const backgroundImageURL = `${res.data[0].listBackgroundURL}`
+                setBackgroundURL(backgroundImageURL)
+            }
             const mt = navigator.maxTouchPoints
             const incrementedListViews = axios.get(`https://link-in-bio.herokuapp.com/s/ili/${res.data[0].listId}?mt=${mt}`)
             // console.log(incrementedListViews)
             setIsLoading(false);
-            document.title = `Link-in.bio${ourURL} - ${displayName}`
+            document.title = `${window.location.host}/${ourURL} - ${displayName}`
             if(displayName===null){
-                document.title = `Link-in.bio${ourURL} - ${userFirstLastName}`
+                document.title = `${window.location.host}/${ourURL} - ${userFirstLastName}`
             }
             // initialize in dark mode
             // var element0 = document.getElementsByClassName('App')
@@ -223,7 +232,11 @@ function ListDisplayHooks(match) {
             headerTextElement.style.color = `${res.data[0].txtColor}`
             var mainBackgroundElement = document.getElementsByClassName('theMain')
             console.log(mainBackgroundElement[0].style.backgroundColor)
-            mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
+            if(res.data[0].listBackgroundURL !== null){
+                mainBackgroundElement[0].style.backgroundImage = `url("${res.data[0].listBackgroundURL}")`
+            } else {
+                mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
+            }
             let mql = window.matchMedia('(prefers-color-scheme: dark)')
             console.log('mql', mql)            
             if(mql.matches === true ){

@@ -151,8 +151,8 @@ const AvailabilityChecker = () => {
                         </select>
                         <br /><br />
                         {prefixHost.slice(8)}
-                        <input onChange={handleChange} value={chosenCustom} name="CustomURL" type="text" required maxLength="96" placeholder="YourNameHere"  />
                     </label>
+                    <input onChange={handleChange} value={chosenCustom} name="CustomURL" type="text" required maxLength="96" placeholder="YourNameHere"  />
                     <br />
                     {isLoading? <p>Searching Database...</p>:<button type="submit">Check CustomURL Availability</button>}
                 </form>
