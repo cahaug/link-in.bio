@@ -145,6 +145,7 @@ const AvailabilityChecker = () => {
                             <option value="https://im-he.re/">im-he.re/</option>
                             <option value="https://listen-he.re/">listen-he.re/</option>
                             <option value="https://look-he.re/">look-he.re/</option>
+                            <option value="https://resumelink.me/">resumelink.me/</option>
                             <option value="https://stream-he.re/">stream-he.re/</option>
                             <option value="https://watch-he.re/">watch-he.re/</option>
                         </select>
