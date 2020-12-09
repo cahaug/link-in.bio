@@ -100,6 +100,8 @@ const HomepageAvailability = () => {
                         Is The URL You Want Available? Check Here:<br />
                         <select onChange={setPrefix}>
                             <option value="https://link-in.bio/">link-in.bio/</option>
+                            <option value="https://linkinbio.us/">linkinbio.us/</option>
+                            <option value="https://link-in-bio.us/">link-in-bio.us/</option>
                             <option value="https://link-m.ee/">link-m.ee/</option>
                             <option value="https://link-me.ee/">link-me.ee/</option>
                             <option value="https://link-in-profile.co/">link-in-profile.co/</option>
@@ -107,12 +109,29 @@ const HomepageAvailability = () => {
                             <option value="https://the-link.is/">the-link.is/</option>
                             <option value="https://this-links.to/">this-links.to/</option>
                             <option value="https://bio-link.me/">bio-link.me/</option>
+                            <option value="https://for-my.art/">for-my.art/</option>
+                            <option value="https://for-my.click/">for-my.click/</option>
+                            <option value="https://for-my.club/">for-my.club/</option>
+                            <option value="https://for-my.design/">for-my.design/</option>
+                            <option value="https://for-my.digital/">for-my.digital/</option>
+                            <option value="https://for-my.fans/">for-my.fans/</option>
+                            <option value="https://for-my.health/">for-my.health/</option>
+                            <option value="https://for-my.link/">for-my.link/</option>
+                            <option value="https://for-my.network/">for-my.network/</option>
+                            <option value="https://for-my.news/">for-my.news/</option>
+                            <option value="https://for-my.shop/">for-my.shop/</option>
+                            <option value="https://for-my.studio/">for-my.studio/</option>
                             <option value="https://i-am.so/">i-am.so/</option>
                             <option value="https://i-am.name/">i-am.name/</option>
                             <option value="https://i-am.onl/">i-am.onl/</option>
                             <option value="https://i-am.show/">i-am.show/</option>
                             <option value="https://i-am.place/">i-am.place/</option>
                             <option value="https://i-am.directory/">i-am.directory/</option>
+                            <option value="https://im-he.re/">im-he.re/</option>
+                            <option value="https://listen-he.re/">listen-he.re/</option>
+                            <option value="https://look-he.re/">look-he.re/</option>
+                            <option value="https://stream-he.re/">stream-he.re/</option>
+                            <option value="https://watch-he.re/">watch-he.re/</option>
                         </select>
                         <input onChange={handleChange} value={chosenCustom} name="CustomURL" type="text" required maxLength="127" placeholder="YourNameHere"  />
                     </label>
