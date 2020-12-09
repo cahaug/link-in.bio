@@ -193,12 +193,12 @@ function SettingsPanel(){
             <br />
             {uploadingPhoto ? <span onClick={uploadingPhotoDrawerToggle}>Upload a Profile Picture ▲</span>:<span onClick={uploadingPhotoDrawerToggle}>Upload a Profile Picture ▼</span>}
             <div className="bgPicUploadDiv">
-                <ListBackgroundChanger />
+                <ProfPicUpload />
             </div>
             <br/>
             {uploadingBackground ? <span onClick={uploadingBackgroundDrawerToggle}>Upload a List Background ▲</span>:<span onClick={uploadingBackgroundDrawerToggle}>Upload a List Background ▼</span>}
             <div className="profPicUploadDiv">
-                <ProfPicUpload />
+                <ListBackgroundChanger />
             </div>
             <br/>
             <br/>
@@ -206,6 +206,10 @@ function SettingsPanel(){
             <br/>
             <br/>
             <Link to='/dashboard2'><span className="abutton">Back to Dash</span></Link>
+            <br/>
+            <br/>
+          
+            
             {/* <a href="/dashboard2" alt="Back to Dashboard">Back to Dashboard</a> */}
         </div>
 

@@ -16,6 +16,8 @@ function ListEditor2(){
     const [backgroundColor, setBackgroundColor] = useState('#FFFFFF')
     const [textColor, setTextColor] = useState('#000000')
     const [chosenFont, setChosenFont] = useState()
+    const [backgroundURL, setBackgroundURL] = useState('')
+
 
     function ColorLuminance(hex, lum) {
 
@@ -64,7 +66,9 @@ function ListEditor2(){
             headerTextElement.style.color = `${textColor}`
             var mainBackgroundElement = document.getElementsByClassName('theMain')
             console.log(mainBackgroundElement[0].style.backgroundColor)
-            mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${textColor}, ${backgroundColor})`
+            if(backgroundURL.length<8){
+                mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${textColor}, ${backgroundColor})`
+            }
         } else {
             var txtColorElement0 = document.getElementsByClassName('linkDescription')
             var m
@@ -88,8 +92,9 @@ function ListEditor2(){
             var mainBackgroundElement = document.getElementsByClassName('theMain')
             console.log(mainBackgroundElement[0].style.backgroundColor)
             // mainBackgroundElement[0].style.backgroundColor = '#000000'
-            mainBackgroundElement[0].style.backgroundImage = 'linear-gradient(70deg, #151515, black)'
-        }
+            if(backgroundURL.length<8){
+                mainBackgroundElement[0].style.backgroundImage = 'linear-gradient(70deg, #151515, black)'
+            }        }
         setDarkMode(!darkMode) 
     }
 
@@ -138,6 +143,8 @@ function ListEditor2(){
         axios.get(useThisURL, { headers: {authorization: sessionStorage.getItem('token')} })
         .then(async res => {
             console.log('backend res', res)
+            const normalList = await axios.get(`https://link-in-bio.herokuapp.com/${sessionStorage.getItem('listId')}`)
+            console.log('normal list', normalList)
             const userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
             const displayName = res.data[0].displayName
             const profilePictureURL = `${res.data[0].profilePictureURL}`
@@ -145,6 +152,10 @@ function ListEditor2(){
             setDisplayName(displayName)
             setProfilePictureURL(profilePictureURL)
             setUserFirstNameLastName(userFirstLastName)
+            if(normalList.data[0].listBackgroundURL !== null){
+                const backgroundImageURL = `${normalList.data[0].listBackgroundURL}`
+                setBackgroundURL(backgroundImageURL)
+            }
             // setDisplayingUserInfo(displayingUserInfo)
             // const incrementedListViews = axios.get(`https://link-in-bio.herokuapp.com/s/ili/${res.data[0].listId}`)
             // console.log(incrementedListViews)
@@ -230,7 +241,11 @@ function ListEditor2(){
             headerTextElement.style.color = `${res.data[0].txtColor}`
             var mainBackgroundElement = document.getElementsByClassName('theMain')
             console.log(mainBackgroundElement[0].style.backgroundColor)
-            mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
+            if(normalList.data[0].listBackgroundURL !== null){
+                mainBackgroundElement[0].style.backgroundImage = `url("${normalList.data[0].listBackgroundURL}")`
+            } else {
+                mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
+            }
             let mql = window.matchMedia('(prefers-color-scheme: dark)')
             console.log('mql', mql)            
             if(mql.matches === true ){
