@@ -192,12 +192,12 @@ function SettingsPanel(){
             </div>
             <br />
             {uploadingPhoto ? <span onClick={uploadingPhotoDrawerToggle}>Upload a Profile Picture ▲</span>:<span onClick={uploadingPhotoDrawerToggle}>Upload a Profile Picture ▼</span>}
-            <div className="bgPicUploadDiv">
+            <div className="profPicUploadDiv">
                 <ProfPicUpload />
             </div>
             <br/>
             {uploadingBackground ? <span onClick={uploadingBackgroundDrawerToggle}>Upload a List Background ▲</span>:<span onClick={uploadingBackgroundDrawerToggle}>Upload a List Background ▼</span>}
-            <div className="profPicUploadDiv">
+            <div className="bgPicUploadDiv">
                 <ListBackgroundChanger />
             </div>
             <br/>
