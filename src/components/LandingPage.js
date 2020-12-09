@@ -24,7 +24,8 @@ const LandingPage = () => {
 
     useEffect(() => {
         if(loggedViewNoIP === false){
-            axios.get('https://link-in-bio.herokuapp.com/s/hpA1')
+            const mt = navigator.maxTouchPoints
+            axios.get(`https://link-in-bio.herokuapp.com/s/hpA1?mt=${mt}`)
             .then(res => {
                 console.log(res.data.message)
                 setLoggedViewNoIP(true)
