@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 import libIMG from '../files/libIMG.png'
 import HomepageAvailability from './CustomURL/HomepageAvailability'
 import GraphForHomepage from './GraphForHomepage'
@@ -8,6 +9,7 @@ import GraphForHomepage from './GraphForHomepage'
 
 const LandingPage = () => {
     const [isShowingStats, setIsShowingStats] = useState(false)
+    const [loggedViewNoIP, setLoggedViewNoIP] = useState(false)
     
     const statsDrawerToggle = () => {
         const statDrawer = document.getElementsByClassName('statsDisplayDiv')
@@ -20,16 +22,32 @@ const LandingPage = () => {
         }
     }
 
+    useEffect(() => {
+        if(loggedViewNoIP === false){
+            axios.get('https://link-in-bio.herokuapp.com/s/hpA1')
+            .then(res => {
+                console.log('serverloggingres',res.data[0].message)
+                setLoggedViewNoIP(true)
+            })
+            .catch(err => {
+                console.log('errorloggingview', err)
+                setLoggedViewNoIP(true)
+            })
+        } else{
+            return
+        }
+    })
+
     return (
         <div>
             <img src={libIMG} alt="Link-In.Bio Logo" className="landingIMG"/>
             <br />
             <HomepageAvailability />
             <br />
-            {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Your List Stats  ▼</span>}
+            {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Homepage Stats  ▼</span>}
             <div className="statsDisplayDiv">
                 <GraphForHomepage />
-                {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Your List Stats  ▼</span>}
+                {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Homepage Stats  ▼</span>}
 
             </div>
             <br />
