@@ -77,6 +77,9 @@ const ListBackgroundChanger = () => {
     return (
         <div>
             <br/>
+            <p>Hint: Portrait (tall, rectangular) photos will display best.</p><br/>
+            <p>But on the real, feel free to express yourself however you please.</p><br/>
+            <p>( This is your Link-in.Bio, After All! )</p>
             <br />
             <form onSubmit={handleSubmit} >
                 <label>
