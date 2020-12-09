@@ -26,11 +26,11 @@ const LandingPage = () => {
         if(loggedViewNoIP === false){
             axios.get('https://link-in-bio.herokuapp.com/s/hpA1')
             .then(res => {
-                console.log('serverloggingres',res.data)
+                console.log(res.data.message)
                 setLoggedViewNoIP(true)
             })
             .catch(err => {
-                console.log('errorloggingview', err)
+                console.log('error', err)
                 setLoggedViewNoIP(true)
             })
         } else{
