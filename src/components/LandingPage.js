@@ -47,7 +47,7 @@ const LandingPage = () => {
             <br />
             {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Homepage Stats  ▼</span>}
             <div className="statsDisplayDiv">
-                <GraphForHomepage />
+                <GraphForHomepage /> <br />
                 {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Homepage Stats  ▼</span>}
 
             </div>
@@ -70,6 +70,10 @@ const LandingPage = () => {
                     </div>
                 </Link>
             </div>
+            <br />
+            <h2>Link-in.Bio Ltd purchases Carbon Offsets to Stay Carbon Neutral. 🍀🍃</h2>
+            <br />
+            
         </div>
     )
 }
