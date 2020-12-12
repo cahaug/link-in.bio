@@ -28,8 +28,8 @@ const GraphForHomepage = () => {
             setDatasetBravo(res.data)
             const processedTop10 = (res.data.mostPopular.map((mostPopular) => {
                 console.log('mostp',mostPopular)
-                return (<div>
-                {/* <p><a alt={`https://link-in.bio/${mostPopular.listId}`} href={`https://link-in.bio/${mostPopular.listId}`}>{`https://link-in.bio/${mostPopular.listId}`}</a> - {`${mostPopular.count}`}</p> */}
+                return (<div key={mostPopular.listId}>
+                <p><a alt={`https://link-in.bio/${mostPopular.listId}`} href={`https://link-in.bio/${mostPopular.listId}`}>{`https://link-in.bio/${mostPopular.listId}`}</a> - {`${mostPopular.count}`}</p>
                 </div>)
             }))
             setDatasetBravo({...datasetBravo, mostPopular:processedTop10})

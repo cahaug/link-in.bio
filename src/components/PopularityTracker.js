@@ -16,8 +16,8 @@ const PopularityTracker = (mostPopular) => {
 
     useEffect((mostPopular) => {
         const mostPop = mostPopular.map((mostPopular) => {
-            return (<div>
-            <p><a alt={`https://link-in.bio/${mostPopular.x.listId}`} href={`https://link-in.bio/${mostPopular.x.listId}`}>{`https://link-in.bio/${mostPopular.x.listId}`}</a> - {mostPopular.x.count}</p>
+            return (<div key={mostPopular.listId}>
+            <p><a alt={`https://link-in.bio/${mostPopular.listId}`} href={`https://link-in.bio/${mostPopular.listId}`}>{`https://link-in.bio/${mostPopular.listId}`}</a> - {mostPopular.count}</p>
             </div>)
         })
         setMostPop(mostPop)
