@@ -5,7 +5,7 @@ import { VictoryPie, VictoryChart, VictoryAxis, VictoryBar, VictoryLine, Victory
 
 
 const GraphForEntry = () => {
-    const [isLoading, setIsLoading] = useState()
+    const [isLoading, setIsLoading] = useState(true)
     const [pieGraphData, setPieGraphData] = useState([])
     const [countMax, setCountMax] = useState()
     const [datasetBravo, setDatasetBravo] = useState({

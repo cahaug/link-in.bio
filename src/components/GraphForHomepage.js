@@ -5,7 +5,7 @@ import { VictoryPie, VictoryChart, VictoryAxis, VictoryLine, VictoryTheme } from
 
 
 const GraphForHomepage = () => {
-    const [isLoading, setIsLoading] = useState()
+    const [isLoading, setIsLoading] = useState(true)
     const [datasetBravo, setDatasetBravo] = useState({
         browserNameCounts:[],
         countries:[],
