@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../App.css'
 import { VictoryPie, VictoryChart, VictoryAxis, VictoryLine, VictoryTheme } from 'victory'
-import PopularityTracker from './PopularityTracker'
+// import PopularityTracker from './PopularityTracker'
 
 
 const GraphForHomepage = () => {
@@ -26,6 +26,12 @@ const GraphForHomepage = () => {
         .then(res => {
             console.log('res.data bravo', res.data)
             setDatasetBravo(res.data)
+            const processedTop10 = (res.data.mostPopular.map((mostPopular) => {
+                return (<div>
+                <p><a alt={`https://link-in.bio/${mostPopular.x.listId}`} href={`https://link-in.bio/${mostPopular.x.listId}`}>{`https://link-in.bio/${mostPopular.x.listId}`}</a> - {mostPopular.x.count}</p>
+                </div>)
+            }))
+            setDatasetBravo({...datasetBravo, mostPopular:processedTop10})
 
             setIsLoading(false)
         })
@@ -145,7 +151,8 @@ const GraphForHomepage = () => {
                 </div>
                 <br />
                 <div>
-                    <PopularityTracker mostPopular={datasetBravo.mostPopular} />
+                    {/* <PopularityTracker mostPopular={datasetBravo.mostPopular} /> */}
+                    {datasetBravo.mostPopular}
                 </div>
             </div>
         )

@@ -4,7 +4,7 @@ import '../App.css'
 
 const PopularityTracker = (mostPopular) => {
     const [isLoading, setIsLoading] = useState(false)
-    // const [mostPop, setMostPop] = useState([])
+    const [mostPop, setMostPop] = useState([])
 
     useEffect(() => {
         if(mostPopular.length>1){
@@ -14,10 +14,13 @@ const PopularityTracker = (mostPopular) => {
         }
     })
 
-    const mostPop =mostPopular.map((x) => {
-        return (<div>
-        <p><a alt={`https://link-in.bio/${mostPopular.x.listId}`} href={`https://link-in.bio/${mostPopular.x.listId}`}>{`https://link-in.bio/${mostPopular.x.listId}`}</a> - {mostPopular.x.count}</p>
-        </div>)
+    useEffect((mostPopular) => {
+        const mostPop = mostPopular.map((mostPopular) => {
+            return (<div>
+            <p><a alt={`https://link-in.bio/${mostPopular.x.listId}`} href={`https://link-in.bio/${mostPopular.x.listId}`}>{`https://link-in.bio/${mostPopular.x.listId}`}</a> - {mostPopular.x.count}</p>
+            </div>)
+        })
+        
     })
 
     if(isLoading === true){
