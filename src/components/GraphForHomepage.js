@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../App.css'
 import { VictoryPie, VictoryChart, VictoryAxis, VictoryLine, VictoryTheme } from 'victory'
+import PopularityTracker from './PopularityTracker'
 
 
 const GraphForHomepage = () => {
@@ -15,7 +16,8 @@ const GraphForHomepage = () => {
         osFamilyCount:[],
         deviceOwnNamesCount:[],
         deviceBrandNamesCount:[],
-        timeline:[]
+        timeline:[],
+        mostPopular:[]
     })
 
    
@@ -141,8 +143,10 @@ const GraphForHomepage = () => {
                         }} />
                     </div>
                 </div>
-                {/* <br /> */}
-                
+                <br />
+                <div>
+                    <PopularityTracker mostPopular={datasetBravo.mostPopular} />
+                </div>
             </div>
         )
     }
