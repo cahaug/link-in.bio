@@ -20,7 +20,7 @@ const PopularityTracker = (mostPopular) => {
             <p><a alt={`https://link-in.bio/${mostPopular.x.listId}`} href={`https://link-in.bio/${mostPopular.x.listId}`}>{`https://link-in.bio/${mostPopular.x.listId}`}</a> - {mostPopular.x.count}</p>
             </div>)
         })
-        
+        setMostPop(mostPop)
     })
 
     if(isLoading === true){
