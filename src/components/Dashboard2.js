@@ -112,7 +112,7 @@ function Dashboard2 () {
                             {sessionStorage.getItem('customURL')==null?
                             <QRCode value={`https://link-in.bio/${sessionStorage.getItem('listId')}`} />
                             :
-                            <QRCode value={`https://${sessionStorage.getItem('customURL')}`} />
+                            <QRCode value={sessionStorage.getItem('customURL')} />
                             }
                         </div>
                     </div>
