@@ -64,7 +64,7 @@ class EntryEditor extends React.Component {
         'inprnt':'https://imagizer.imageshack.com/img922/4316/Drqa4B.jpg',
         'behance':'https://imagizer.imageshack.com/img923/7082/EgwMvY.png',
         'tumblr':'https://imagizer.imageshack.com/img922/6862/scQdRH.png',
-        'amazonmusic':'https://imagizer.imageshack.com/img922/5107/DKtKI8.jpg',
+        'amazonmusic':'https://imagizer.imageshack.com/img922/313/r61KwD.png',
         'deezer':'https://imagizer.imageshack.com/img923/7159/DYfWbG.png',
         'applemusic':'https://imagizer.imageshack.com/img923/7135/WaXX3v.png',
         'spotify':'https://imagizer.imageshack.com/img922/9761/3HcN7o.png',
