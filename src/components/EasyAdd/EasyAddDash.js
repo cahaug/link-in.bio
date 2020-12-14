@@ -119,9 +119,26 @@ const EasyAddDash = () => {
                 console.log('chose tumblr')
                 referencingURL = `https://${username}.tumblr.com/`
             }
+            if(choice === 'spotifyartist'){
+                console.log('chose spotifyartist')
+                description = `Link to my ${choicesDict[`${choice}`]['label']} Artist Account ${choicesDict[`${choice}`]['emoji']}`
+            }
+            if(choice === 'spotifyalbum'){
+                console.log('chose spotifyalbum')
+                description = `Link to my ${choicesDict[`${choice}`]['label']} Album ${choicesDict[`${choice}`]['emoji']}`
+            }
+            if(choice === 'spotifypodcast'){
+                console.log('chose spotifypodcast')
+                description = `Link to my ${choicesDict[`${choice}`]['label']} Podcast ${choicesDict[`${choice}`]['emoji']}`
+            }
+            if(choice === 'spotifyplaylist'){
+                console.log('chose spotifyplaylist')
+                description = `Link to my ${choicesDict[`${choice}`]['label']} Playlist ${choicesDict[`${choice}`]['emoji']}`
+            }
             if(choice === 'applemusic'){
                 console.log('chose applemusic')
                 referencingURL = `https://music.apple.com/${username}`
+                description = `Link to my ${choicesDict[`${choice}`]['label']} Account ${choicesDict[`${choice}`]['emoji']}`
             }
             if(choice === 'kik'){
                 console.log('chose kik')
@@ -244,7 +261,7 @@ const EasyAddDash = () => {
         'onlyfans':{label:'OnlyFans', form:'onlyfans.com/', img:'https://imagizer.imageshack.com/img923/7375/DEREnR.png', emoji:'🔐📸', type:'text'},
         'poshmark':{label:'Poshmark', form:'poshmark.com/closet/', img:'https://imagizer.imageshack.com/img923/8699/2ov1wB.png', emoji:'👜💸', type:'text'},
         'inprnt':{label:'INPRNT', form:'inprnt.com/gallery/', img:'https://imagizer.imageshack.com/img923/3006/RTsxP7.png', emoji:'🎨💸', type:'text'},
-        'behance':{label:'Bēhance', form:'behance.net/', img:'https://imagizer.imageshack.com/img923/7082/EgwMvY.png', emoji:'🎨🌐', type:'text'},
+        'behance':{label:'Behance', form:'behance.net/', img:'https://imagizer.imageshack.com/img923/7082/EgwMvY.png', emoji:'🎨🌐', type:'text'},
         'amazonmusicpodcast':{label:'Amazon Music Podcast', form:'music.amazon.com/podcasts/', img:'https://imagizer.imageshack.com/img924/3471/q3gJZh.png', emoji:'🌐🔉', type:'text'},
         'amazonmusicalbum':{label:'Amazon Music Album', form:'music.amazon.com/albums/', img:'https://imagizer.imageshack.com/img924/3471/q3gJZh.png', emoji:'🌐🔉', type:'text'},
         'amazonmusicartist':{label:'Amazon Music Artist', form:'music.amazon.com/artists/', img:'https://imagizer.imageshack.com/img924/3471/q3gJZh.png', emoji:'🌐🔉', type:'text'},
@@ -275,7 +292,7 @@ const EasyAddDash = () => {
                     <option value="amazonmusicpodcast">Amazon Music - Podcast</option>
                     <option value="applemusic">Apple Music</option>
                     <option value="bandcamp">Bandcamp</option>
-                    <option value="behance">Bēhance</option>
+                    <option value="behance">Behance</option>
                     <option value="cashapp">Cash App</option>
                     <option value="deezerartist">Deezer - Artist</option>
                     <option value="deezeralbum">Deezer - Album</option>
