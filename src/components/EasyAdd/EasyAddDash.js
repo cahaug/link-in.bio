@@ -4,7 +4,7 @@ import axios from 'axios'
 // to add new social media option add to choicesDict and then add option in select
 
 const EasyAddDash = () => {
-    const [choice, setChoice] = useState('bandcamp')
+    const [choice, setChoice] = useState('amazonmusicartist')
     let [username, setUsername] = useState('')
     const [isLoading, setIsLoading] = useState(false)
 
