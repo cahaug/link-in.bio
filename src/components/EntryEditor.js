@@ -59,7 +59,18 @@ class EntryEditor extends React.Component {
         'kickstarter':'https://imagizer.imageshack.com/img924/368/ZyT9Ts.png',
         'email':'https://imagizer.imageshack.com/img923/5410/AmQrEf.jpg',
         'phone':'https://imagizer.imageshack.com/img922/3903/H262eI.jpg',
-        'onlyfans':'https://imagizer.imageshack.com/img923/7375/DEREnR.png'
+        'onlyfans':'https://imagizer.imageshack.com/img923/7375/DEREnR.png',
+        'poshmark':'https://imagizer.imageshack.com/img923/8699/2ov1wB.png',
+        'inprnt':'https://imagizer.imageshack.com/img923/3006/RTsxP7.png',
+        'behance':'https://imagizer.imageshack.com/img923/7082/EgwMvY.png',
+        'tumblr':'https://imagizer.imageshack.com/img922/6862/scQdRH.png',
+        'amazonmusic':'https://imagizer.imageshack.com/img924/3471/q3gJZh.png',
+        'deezer':'https://imagizer.imageshack.com/img923/7159/DYfWbG.png',
+        'applemusic':'https://imagizer.imageshack.com/img923/7135/WaXX3v.png',
+        'spotify':'https://imagizer.imageshack.com/img922/9761/3HcN7o.png',
+        'kik':'https://imagizer.imageshack.com/img922/5820/HgFrU4.png',
+        'whatsapp':'https://imagizer.imageshack.com/img924/4369/v8LUWb.png',
+        'tidal':'https://imagizer.imageshack.com/img922/4056/eJz3yR.jpg'
     }
 
     handleChange = (evt) => {
