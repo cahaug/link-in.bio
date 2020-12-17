@@ -30,7 +30,6 @@ const GraphForHomepage = () => {
             console.log('res.data bravo', res.data)
             setDatasetBravo(res.data)
             const wordCloudRaw =  JSON.stringify(res.data.regions)
-
             var rst = JSON.parse(wordCloudRaw.replace(/"province"/g, '"text"').replace(/"count"/g, '"value"'))
             console.log('rst', rst)
             setCloudData(rst)
@@ -161,12 +160,12 @@ const GraphForHomepage = () => {
                 </div>
                 <br />
                 <div className="wCloud">
-                    <div style={{ width: "90%", height: "90%", margin:"0 auto" }}>
+                    <div style={{ width: "100%", height: "100%", margin:"0 auto" }}>
                         <ReactWordcloud words={cloudData} />
                     </div>
                 </div>
                 <br />
-                <div>
+                <div style={{ width: "98%", height: "98%", margin:"0 auto" }}>
                     <p>Most Popular Accounts:</p>
                     {mostPopular}
                 </div>

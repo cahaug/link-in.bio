@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../App.css'
 import { VictoryPie, VictoryChart, VictoryAxis, VictoryBar, VictoryLine, VictoryTheme, VictoryLabel } from 'victory'
+import ReactWordcloud from "react-wordcloud";
 
 
 const GraphForEntry = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [pieGraphData, setPieGraphData] = useState([])
     const [countMax, setCountMax] = useState()
+    const [cloudData, setCloudData] = useState([])
     const [datasetBravo, setDatasetBravo] = useState({
         browserNameCounts:[],
         countries:[],
@@ -50,7 +52,10 @@ const GraphForEntry = () => {
         .then(res => {
             console.log('res.data bravo', res.data)
             setDatasetBravo(res.data)
-
+            const wordCloudRaw =  JSON.stringify(res.data.regions)
+            var rst = JSON.parse(wordCloudRaw.replace(/"province"/g, '"text"').replace(/"count"/g, '"value"'))
+            console.log('rst', rst)
+            setCloudData(rst)
             setIsLoading(false)
         })
         .catch(err => {
@@ -162,7 +167,13 @@ const GraphForEntry = () => {
                         }} />
                     </div>
                 </div>
-                {/* <br /> */}
+                <br />
+                <div className="wCloud">
+                    <div style={{ width: "98%", height: "98%", margin:"0 auto" }}>
+                        <ReactWordcloud words={cloudData} />
+                    </div>
+                </div>
+                <br />
                 <p>Clicked Links Counts Breakdown: </p>
                 <div className="entryChartHolder">
                     <div className="vicBar">
