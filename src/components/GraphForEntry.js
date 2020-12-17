@@ -80,13 +80,15 @@ const GraphForEntry = () => {
         return(
             <div>
                 <br />
-                <p>List Viewer Location {`&`} Device Information:</p>
                 <br />
                 <div className="discreteViewers">
                     <div style={{ width: "98%", height: "98%", margin:"0 auto" }}>
-                        <h3>{discreteViewers} different people have seen your page.</h3>
+                        <h2>{discreteViewers} different people have seen your page.</h2>
                     </div>
                 </div>
+                <br />
+                <br />
+                <p>List Viewer Location {`&`} Device Information:</p>
                 <br />
                 <div>
                     <div className="vicLine">
