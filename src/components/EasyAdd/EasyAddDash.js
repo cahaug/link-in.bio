@@ -275,7 +275,8 @@ const EasyAddDash = () => {
         'spotifypodcast':{label:'Spotify Podcast', form:'open.spotify.com/show/', img:'https://imagizer.imageshack.com/img922/9761/3HcN7o.png', emoji:'🌐🔉', type:'text'},
         'kik':{label:'Kik', form:'Enter Your Kik Username Here: ', img:'https://imagizer.imageshack.com/img922/5820/HgFrU4.png', emoji:'🔒✉️', type:'text'},
         'whatsapp':{label:'WhatsApp', form:'Enter Your WhatsApp Number Here: ', img:'https://imagizer.imageshack.com/img924/4369/v8LUWb.png', emoji:'📱☎️', type:'tel'},
-        'tidal':{label:'TIDAL', form:'tidal.com/', img:'https://imagizer.imageshack.com/img922/4056/eJz3yR.jpg', emoji:'🔉📹', type:'text'}
+        'tidal':{label:'TIDAL', form:'tidal.com/', img:'https://imagizer.imageshack.com/img922/4056/eJz3yR.jpg', emoji:'🔉📹', type:'text'},
+        'parler':{label:'Parler', form:'parler.com/profile/', img:'https://imagizer.imageshack.com/img923/7476/LdQcTG.jpg', emoji:'🆓🗨️', type:'text'}
     }
 
     return (
@@ -317,6 +318,7 @@ const EasyAddDash = () => {
                     <option value="nintendo">Nintendo Friend Code</option>
                     <option value="nebula">Nebula</option>
                     <option value="onlyfans">OnlyFans</option>
+                    <option value="parler">Parler</option>
                     <option value="patreon">Patreon</option>
                     <option value="paypal">PayPal</option>
                     <option value="phone">Phone Number</option>
