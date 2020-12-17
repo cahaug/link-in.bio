@@ -10,6 +10,7 @@ const GraphForEntry = () => {
     const [pieGraphData, setPieGraphData] = useState([])
     const [countMax, setCountMax] = useState()
     const [cloudData, setCloudData] = useState([])
+    const [discreteViewers, setDiscreteViewers] = useState(2)
     const [datasetBravo, setDatasetBravo] = useState({
         browserNameCounts:[],
         countries:[],
@@ -52,6 +53,7 @@ const GraphForEntry = () => {
         .then(res => {
             console.log('res.data bravo', res.data)
             setDatasetBravo(res.data)
+            setDiscreteViewers(res.data.distinctViewersCount)
             const wordCloudRaw =  JSON.stringify(res.data.regions)
             var rst = JSON.parse(wordCloudRaw.replace(/"province"/g, '"text"').replace(/"count"/g, '"value"'))
             console.log('rst', rst)
@@ -79,9 +81,16 @@ const GraphForEntry = () => {
             <div>
                 <br />
                 <p>List Viewer Location {`&`} Device Information:</p>
+                <br />
+                <div className="discreteViewers">
+                    <div style={{ width: "98%", height: "98%", margin:"0 auto" }}>
+                        <h3>{discreteViewers} different people have seen your page.</h3>
+                    </div>
+                </div>
+                <br />
                 <div>
                     <div className="vicLine">
-                        <h2>Daily Viewers:</h2>
+                        <h2>Daily Views:</h2>
                         <VictoryChart theme={VictoryTheme.material} padding={{bottom:75, left:50,right:50}}>
                             <VictoryLine data={datasetBravo.timeline} style={{
                                 data: { stroke: "#c43a31" ,}, 
