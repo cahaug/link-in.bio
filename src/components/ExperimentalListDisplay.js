@@ -222,9 +222,10 @@ function ExperimentalListDisplay() {
             // ban right click
             const allTrackedLinks = document.getElementsByClassName('linkTitle')
             for(i=0; i < allTrackedLinks.length; i++){
-                allTrackedLinks[i].addEventListener('contextmenu', e => {
-                    e.preventDefault();
-                });
+                allTrackedLinks[i].addEventListener('contextmenu', function (e) { 
+                    // do something here... 
+                    e.preventDefault(); 
+                }, false);
                 allTrackedLinks[i].addEventListener('oncontextmenu', e => {
                     e.preventDefault();
                 });
