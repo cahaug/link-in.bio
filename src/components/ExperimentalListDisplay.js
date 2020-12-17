@@ -172,7 +172,7 @@ function ExperimentalListDisplay() {
                                 e.preventDefault()
                                 setIsLoading(true) 
                                 console.log('fired', link.referencingURL, link.entryId, mt)
-                                const trashRequest = await axios.get(`http://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
+                                const trashRequest = await axios.get(`https://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                 console.log('trashRequest', trashRequest)
                                 window.location.href = link.referencingURL
                             }}>
