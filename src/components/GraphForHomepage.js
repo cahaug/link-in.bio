@@ -161,7 +161,7 @@ const GraphForHomepage = () => {
                 </div>
                 <br />
                 <div className="wCloud">
-                    <div style={{ width: "90%", height: "90%" }}>
+                    <div style={{ width: "90%", height: "90%", margin:"0 auto" }}>
                         <ReactWordcloud words={cloudData} />
                     </div>
                 </div>
