@@ -171,7 +171,8 @@ function ExperimentalListDisplay() {
                             <a className='linkTitle' href={link.referencingURL} onClick={async (e)=>{
                                 e.preventDefault()
                                 setIsLoading(true) 
-                                const trashRequest = await axios.get(`http://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}`)
+                                console.log('fired', link.referencingURL, link.entryId, mt)
+                                const trashRequest = await axios.get(`http://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                 window.location.href = link.referencingURL
                             }}>
                             {/* <a className='linkTitle' href={`http://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}`}> */}
