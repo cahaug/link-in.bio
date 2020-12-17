@@ -89,11 +89,11 @@ function Dashboard2 () {
         const customURL = sessionStorage.getItem('customURL')
         window.Intercom("boot", {
             app_id: "ya321a09",
-            email: `"<%= ${email} %>"`,
-            firstName: `"<%= ${firstName} %>"`,
-            userId: `"<%= ${userId} %>"`,
-            listId: `"<%= ${listId} %>"`,
-            customURL: `"<%= ${customURL} %>"`,
+            email: email,
+            firstName: firstName,
+            userId: userId,
+            listId: listId,
+            customURL: customURL,
         });
         const token = sessionStorage.getItem('token')
         const useThisURL = `https://link-in-bio.herokuapp.com/s/listViews/${sessionStorage.getItem('listId')}`
