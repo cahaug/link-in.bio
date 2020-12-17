@@ -223,7 +223,7 @@ function ExperimentalListDisplay() {
             const allTrackedLinks = document.getElementsByClassName('linkTitle')
             for(i=0; i < allTrackedLinks.length; i++){
                 allTrackedLinks[i].addEventListener('contextmenu', function (e) { 
-                    // do something here... 
+                    // do something here... BAN
                     e.preventDefault(); 
                 }, false);
                 allTrackedLinks[i].addEventListener('oncontextmenu', e => {
