@@ -168,7 +168,15 @@ function ListDisplayHooks(match) {
                 return (
 
                         <div className='linkSquare' key={link.entryId}>
-                            <a className='linkTitle' href={`https://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}`}>
+                             <a className='linkTitle' href={link.referencingURL} onClick={async (e)=>{
+                                e.preventDefault()
+                                setIsLoading(true) 
+                                console.log('fired', link.referencingURL, link.entryId, mt)
+                                const trashRequest = axios.get(`https://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
+                                // const trashRequest = await axios.get(`https://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
+                                console.log('trashRequest', trashRequest)
+                                window.location.href = link.referencingURL
+                            }}>
                                 {link.imgURL?<img className='image' src={link.imgURL} alt={link.linkTitle} /> : null }
                                 {/* <img className='image' src={link.imgURL} alt={link.linkTitle} />  */}
                                 <h3>{link.linkTitle}</h3>
