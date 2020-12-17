@@ -210,9 +210,8 @@ main {
   justify-content: center;
   align-items: flex-start;
   background-image: linear-gradient(70deg, white, darkGray);
-  background-size: cover;
+  background-size: auto;
   background-position: top;
-  background-repeat: repeat;
   background-attachment: fixed;
 }
 main a {
