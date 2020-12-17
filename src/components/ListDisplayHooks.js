@@ -175,6 +175,7 @@ function ListDisplayHooks(match) {
                                 const trashRequest = axios.get(`https://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                 // const trashRequest = await axios.get(`https://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                 console.log('trashRequest', trashRequest)
+                                setIsLoading(false)
                                 window.location.href = link.referencingURL
                             }}>
                                 {link.imgURL?<img className='image' src={link.imgURL} alt={link.linkTitle} /> : null }
