@@ -83,7 +83,12 @@ function Dashboard2 () {
 
     useEffect(() => {
         window.Intercom("boot", {
-            app_id: "ya321a09"
+            app_id: "ya321a09",
+            email: `${sessionStorage.getItem('email')}`,
+            firstName: `${sessionStorage.getItem('firstName')}`,
+            userId: `${sessionStorage.getItem('userId')}`,
+            listId: `${sessionStorage.getItem('listId')}`,
+            customURL: `${sessionStorage.getItem('customURL')}`,
         });
         const token = sessionStorage.getItem('token')
         const useThisURL = `https://link-in-bio.herokuapp.com/s/listViews/${sessionStorage.getItem('listId')}`
