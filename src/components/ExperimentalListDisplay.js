@@ -225,6 +225,9 @@ function ExperimentalListDisplay() {
                 allTrackedLinks[i].addEventListener('contextmenu', e => {
                     e.preventDefault();
                 });
+                allTrackedLinks[i].addEventListener('oncontextmenu', e => {
+                    e.preventDefault();
+                });
             }
 
             // initialize in custom color mode
