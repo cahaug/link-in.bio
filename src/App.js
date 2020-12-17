@@ -18,6 +18,7 @@ import ResetPWCode from './components/ResetPWCode'
 // import InstagramPicker from './components/InstagramPicker'
 import Dashboard2 from './components/Dashboard2'
 import SettingsPanel from './components/SettingsPanel';
+import ExperimentalListDisplay from './components/ExperimentalListDisplay';
 
 // import PaymentSuccess from './components/PaymentSuccess'
 // import PaymentPage from './components/PaymentPage'
@@ -43,6 +44,7 @@ class App extends React.Component {
         <Route exact path="/failedlogin" component={FailedLogin} />
         <Route exact path="/resetPassword" component={ResetPassword} />
         <Route exact path="/resetPWCode" component={ResetPWCode} />
+        <Route exact path="/experimentalSh1t" component={ExperimentalListDisplay} />
         {/* <Route exact path="/instaPicker" component={InstagramPicker} /> */}
         {/* <Route exact path="/paymentPage" component={PaymentPage} /> */}
         {/* <Route exact path="/listdisplay" component={ListDisplay}/> */}

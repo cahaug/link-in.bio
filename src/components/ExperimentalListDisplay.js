@@ -4,11 +4,11 @@ import loadingGif from '../files/loading.gif'
 import '../App.css'
 
 
-function ListDisplayHooks(match) {
+function ExperimentalListDisplay() {
 
     const [isLoading, setIsLoading] = useState(true)
     const [links, setLinks] = useState([])
-    const [ourURL] = useState(match.match.url)
+    const [ourURL] = useState('/1')
     const [profilePictureURL, setProfilePictureURL] = useState()
     const [userFirstNameLastName, setUserFirstNameLastName] = useState()
     const [displayName, setDisplayName] = useState()
@@ -168,7 +168,13 @@ function ListDisplayHooks(match) {
                 return (
 
                         <div className='linkSquare' key={link.entryId}>
-                            <a className='linkTitle' href={`http://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}`}>
+                            <a className='linkTitle' href={link.referencingURL} onClick={async (e)=>{
+                                e.preventDefault()
+                                setIsLoading(true) 
+                                const trashRequest = await axios.get(`http://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}`)
+                                window.location.href = link.referencingURL
+                            }}>
+                            {/* <a className='linkTitle' href={`http://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}`}> */}
                                 {link.imgURL?<img className='image' src={link.imgURL} alt={link.linkTitle} /> : null }
                                 {/* <img className='image' src={link.imgURL} alt={link.linkTitle} />  */}
                                 <h3>{link.linkTitle}</h3>
@@ -305,4 +311,4 @@ function ListDisplayHooks(match) {
     }
 }
 
-export default ListDisplayHooks
+export default ExperimentalListDisplay
