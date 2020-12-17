@@ -3,6 +3,8 @@ import axios from 'axios'
 import '../App.css'
 import { VictoryPie, VictoryChart, VictoryAxis, VictoryLine, VictoryTheme } from 'victory'
 // import PopularityTracker from './PopularityTracker'
+import ReactWordcloud from "react-wordcloud";
+
 
 
 const GraphForHomepage = () => {
@@ -19,6 +21,7 @@ const GraphForHomepage = () => {
         timeline:[],
     })
     const [mostPopular, setMostPopular] = useState([])
+    const [cloudData, setCloudData] = useState([])
 
    
     const getDatasetBravo = () => {
@@ -26,6 +29,11 @@ const GraphForHomepage = () => {
         .then(res => {
             console.log('res.data bravo', res.data)
             setDatasetBravo(res.data)
+            const wordCloudRaw =  JSON.stringify(res.data.regions)
+
+            var rst = JSON.parse(wordCloudRaw.replace(/"province"/g, '"text"').replace(/"count"/g, '"value"'))
+            console.log('rst', rst)
+            setCloudData(rst)
             const processedTop10 = (res.data.mostPopular.map((mostPopular) => {
                 console.log('mostp',mostPopular)
                 return (
@@ -149,6 +157,12 @@ const GraphForHomepage = () => {
                                 fontSize: 20, fill: '#929292'
                               }
                         }} />
+                    </div>
+                </div>
+                <br />
+                <div className="wCloud">
+                    <div style={{ width: "90%", height: "90%" }}>
+                        <ReactWordcloud words={cloudData} />
                     </div>
                 </div>
                 <br />
