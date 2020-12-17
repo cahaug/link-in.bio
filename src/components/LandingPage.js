@@ -24,6 +24,9 @@ const LandingPage = () => {
 
     useEffect(() => {
         if(loggedViewNoIP === false){
+            window.Intercom("boot", {
+                app_id: "ya321a09"
+              });
             const mt = navigator.maxTouchPoints
             axios.get(`https://link-in-bio.herokuapp.com/s/hpA1?mt=${mt}`)
             .then(res => {
@@ -35,6 +38,7 @@ const LandingPage = () => {
                 setLoggedViewNoIP(true)
             })
         } else{
+            window.Intercom("update");
             return
         }
     })
@@ -73,7 +77,7 @@ const LandingPage = () => {
             <br />
             <h2>Link-in.Bio Ltd purchases Carbon Offsets to Stay Carbon Neutral. 🍀🍃</h2>
             <br />
-            
+            {/* <a href="#!" class="paddle_button" data-product="631279">Subscribe Now!</a> */}
         </div>
     )
 }

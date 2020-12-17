@@ -82,6 +82,9 @@ function Dashboard2 () {
     }
 
     useEffect(() => {
+        window.Intercom("boot", {
+            app_id: "ya321a09"
+        });
         const token = sessionStorage.getItem('token')
         const useThisURL = `https://link-in-bio.herokuapp.com/s/listViews/${sessionStorage.getItem('listId')}`
         axios.get(useThisURL, { headers: {authorization: token} })
