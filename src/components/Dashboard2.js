@@ -82,11 +82,25 @@ function Dashboard2 () {
     }
 
     useEffect(() => {
+        const email = sessionStorage.getItem('email')
+        const firstName = sessionStorage.getItem('firstName')
+        const userId = sessionStorage.getItem('userId')
+        const listId = sessionStorage.getItem('listId')
+        const customURL = sessionStorage.getItem('customURL')
+        window.Intercom("boot", {
+            app_id: "ya321a09",
+            email: email,
+            firstName: firstName,
+            userId: userId,
+            listId: listId,
+            customURL: customURL,
+        });
+        const token = sessionStorage.getItem('token')
         const useThisURL = `https://link-in-bio.herokuapp.com/s/listViews/${sessionStorage.getItem('listId')}`
-        axios.get(useThisURL, { headers: {authorization: sessionStorage.getItem('token')} })
+        axios.get(useThisURL, { headers: {authorization: token} })
         .then(response => {
             setListViews(response.data['listViews'])
-            document.title = 'Dashboard - Link-in.bio/'
+            document.title = `Dashboard - ${window.location.host}`
         })
         .catch(err =>  {
             console.log(err)
@@ -109,9 +123,9 @@ function Dashboard2 () {
                     <div className="qrcode">
                         <div>
                             {sessionStorage.getItem('customURL')==null?
-                            <QRCode value={`http://link-in.bio/${sessionStorage.getItem('listId')}`} />
+                            <QRCode value={`https://link-in.bio/${sessionStorage.getItem('listId')}`} />
                             :
-                            <QRCode value={`http://link-in.bio/${sessionStorage.getItem('customURL')}`} />
+                            <QRCode value={sessionStorage.getItem('customURL')} />
                             }
                         </div>
                     </div>

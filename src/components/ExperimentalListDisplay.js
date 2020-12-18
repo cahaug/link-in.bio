@@ -4,11 +4,11 @@ import loadingGif from '../files/loading.gif'
 import '../App.css'
 
 
-function ListDisplayHooks(match) {
+function ExperimentalListDisplay() {
 
     const [isLoading, setIsLoading] = useState(true)
     const [links, setLinks] = useState([])
-    const [ourURL] = useState(match.match.url)
+    const [ourURL] = useState('/1')
     const [profilePictureURL, setProfilePictureURL] = useState()
     const [userFirstNameLastName, setUserFirstNameLastName] = useState()
     const [displayName, setDisplayName] = useState()
@@ -136,9 +136,6 @@ function ListDisplayHooks(match) {
     }
 
     useEffect(() => {
-        window.Intercom("boot", {
-            app_id: "ya321a09"
-          });
         const useThisURL = `https://link-in-bio.herokuapp.com${ourURL}`
         axios.get(useThisURL)
         .then(async res => {
@@ -171,7 +168,7 @@ function ListDisplayHooks(match) {
                 return (
 
                         <div className='linkSquare' key={link.entryId}>
-                             <a className='linkTitle' href={link.referencingURL} onClick={async (e)=>{
+                            <a className='linkTitle' href={link.referencingURL} onClick={async (e)=>{
                                 e.preventDefault()
                                 setIsLoading(true) 
                                 console.log('fired', link.referencingURL, link.entryId, mt)
@@ -229,9 +226,9 @@ function ListDisplayHooks(match) {
                     // do something here... BAN
                     e.preventDefault(); 
                 }, false);
-                // allTrackedLinks[i].addEventListener('oncontextmenu', e => {
-                //     e.preventDefault();
-                // });
+                allTrackedLinks[i].addEventListener('oncontextmenu', e => {
+                    e.preventDefault();
+                });
             }
 
             // initialize in custom color mode
@@ -329,4 +326,4 @@ function ListDisplayHooks(match) {
     }
 }
 
-export default ListDisplayHooks
+export default ExperimentalListDisplay

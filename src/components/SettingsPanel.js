@@ -14,6 +14,7 @@ import AvailabilityChecker from './CustomURL/AvailabilityChecker'
 import ChangeDisplayName from '../components/ChangeDisplayName'
 import SettingsChangePassword from "./SettingsChangePassword"
 import ProfPicUpload from './ProfPicUpload'
+import ListBackgroundChanger from './ListBackgroundChanger'
 
 
 
@@ -30,6 +31,7 @@ function SettingsPanel(){
     const [settingDisplayName, setSettingDisplayName] = useState(false)
     const [changingPassword, setChangingPassword] = useState(false)
     const [uploadingPhoto, setUploadingPhoto] = useState(false)
+    const [uploadingBackground, setUploadingBackground] = useState(false)
     
     const textColorDrawerToggle = () => {
         const textColorDrawer = document.getElementsByClassName('textColorPickerDiv')
@@ -119,11 +121,22 @@ function SettingsPanel(){
         }
     }
 
+    const uploadingBackgroundDrawerToggle = () => {
+        const bgPicUploadDrawer = document.getElementsByClassName('bgPicUploadDiv')
+        if (bgPicUploadDrawer[0].style.maxHeight){
+            bgPicUploadDrawer[0].style.maxHeight = null;
+            setUploadingBackground(false)
+        } else {
+            bgPicUploadDrawer[0].style.maxHeight = bgPicUploadDrawer[0].scrollHeight + 325 + "px";
+            setUploadingBackground(true)
+        }
+    }
+
     useEffect(()=>{
         var elelist = document.getElementsByTagName("input"); for(var i = 0; i < elelist.length; i++){
             elelist[i].style.fontSize = '16px'
         }
-        document.title = 'Settings Panel - Link-in.bio/'
+        document.title = `Settings Panel - ${window.location.host}`
     })
 
     return (
@@ -178,10 +191,14 @@ function SettingsPanel(){
                 <ProfilePictureChanger />
             </div>
             <br />
-
             {uploadingPhoto ? <span onClick={uploadingPhotoDrawerToggle}>Upload a Profile Picture ▲</span>:<span onClick={uploadingPhotoDrawerToggle}>Upload a Profile Picture ▼</span>}
             <div className="profPicUploadDiv">
                 <ProfPicUpload />
+            </div>
+            <br/>
+            {uploadingBackground ? <span onClick={uploadingBackgroundDrawerToggle}>Upload a List Background ▲</span>:<span onClick={uploadingBackgroundDrawerToggle}>Upload a List Background ▼</span>}
+            <div className="bgPicUploadDiv">
+                <ListBackgroundChanger />
             </div>
             <br/>
             <br/>
@@ -189,6 +206,10 @@ function SettingsPanel(){
             <br/>
             <br/>
             <Link to='/dashboard2'><span className="abutton">Back to Dash</span></Link>
+            <br/>
+            <br/>
+          
+            
             {/* <a href="/dashboard2" alt="Back to Dashboard">Back to Dashboard</a> */}
         </div>
 

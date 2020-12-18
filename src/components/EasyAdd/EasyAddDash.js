@@ -4,7 +4,7 @@ import axios from 'axios'
 // to add new social media option add to choicesDict and then add option in select
 
 const EasyAddDash = () => {
-    const [choice, setChoice] = useState('bandcamp')
+    const [choice, setChoice] = useState('amazonmusicartist')
     let [username, setUsername] = useState('')
     const [isLoading, setIsLoading] = useState(false)
 
@@ -55,11 +55,44 @@ const EasyAddDash = () => {
         }
     }
 
+    const hasNoIllegalCharsAPL = (value) => {
+        // const stringHasSpaces = value.indexOf(' ')
+        const stringHasIllegalSlash1 = value.indexOf(`\\`)
+        // const stringHasIllegalSlash2 = value.indexOf(`/`)
+        const stringHasIllegalQuote1 = value.indexOf(`'`)
+        const stringHasIllegalQuote2 = value.indexOf(`"`)
+        const stringHasIllegalSemicolon = value.indexOf(`;`)
+        const stringHasIllegalColon = value.indexOf(`:`) 
+        const stringHasIllegalCaret = value.indexOf(`^`)
+        const stringHasIllegalStar = value.indexOf(`*`)
+        const stringHasIllegalHTML = value.indexOf(`<`)
+        const stringHasIllegalPercent = value.indexOf('%')
+        if(
+            stringHasIllegalSlash1 === -1 &&
+            // stringHasIllegalSlash2 === -1 &&
+            stringHasIllegalQuote1 === -1 &&
+            stringHasIllegalQuote2 === -1 &&
+            stringHasIllegalSemicolon === -1 &&
+            stringHasIllegalColon === -1 &&
+            stringHasIllegalCaret === -1 &&
+            stringHasIllegalHTML === -1 &&
+            stringHasIllegalStar === -1 &&
+            stringHasIllegalPercent === -1
+            // stringHasSpaces === -1 && 
+        ){
+            return true
+        } else {
+            return false
+        }
+    }
+
     const validateForm = (fromForm) => {
         const didtrimUsername =  trimUsername(fromForm)
         setUsername(didtrimUsername)
         console.log('trimmed',didtrimUsername)
         if(hasNoIllegalChars(didtrimUsername) === true){
+            return {legal:true, trimmed:didtrimUsername}
+        } else if(choice === 'applemusic' && hasNoIllegalCharsAPL(didtrimUsername) === true){
             return {legal:true, trimmed:didtrimUsername}
         } else {
             alert(`There are illegal characters in your input, please remove them and try again`)
@@ -82,6 +115,43 @@ const EasyAddDash = () => {
                 console.log('chose bandcamp')
                 referencingURL = `https://${username}.bandcamp.com/`
             }
+            if(choice === 'tumblr'){
+                console.log('chose tumblr')
+                referencingURL = `https://${username}.tumblr.com/`
+            }
+            if(choice === 'spotifyartist'){
+                console.log('chose spotifyartist')
+                description = `Link to my ${choicesDict[`${choice}`]['label']} Artist Account ${choicesDict[`${choice}`]['emoji']}`
+            }
+            if(choice === 'spotifyalbum'){
+                console.log('chose spotifyalbum')
+                description = `Link to my ${choicesDict[`${choice}`]['label']} Album ${choicesDict[`${choice}`]['emoji']}`
+            }
+            if(choice === 'spotifypodcast'){
+                console.log('chose spotifypodcast')
+                description = `Link to my ${choicesDict[`${choice}`]['label']} Podcast ${choicesDict[`${choice}`]['emoji']}`
+            }
+            if(choice === 'spotifyplaylist'){
+                console.log('chose spotifyplaylist')
+                description = `Link to my ${choicesDict[`${choice}`]['label']} Playlist ${choicesDict[`${choice}`]['emoji']}`
+            }
+            if(choice === 'applemusic'){
+                console.log('chose applemusic')
+                referencingURL = `https://music.apple.com/${username}`
+                description = `Link to my ${choicesDict[`${choice}`]['label']} Account ${choicesDict[`${choice}`]['emoji']}`
+            }
+            if(choice === 'kik'){
+                console.log('chose kik')
+                referencingURL = `https://kik.com/`
+                description = `Add me on Kik, ${choicesDict[`${choice}`]['emoji']}: ${username}`
+                linkTitle = `${choicesDict[`${choice}`]['label']} - ${username}`
+            }
+            if(choice === 'whatsapp'){
+                console.log('chose whatsapp')
+                referencingURL = `https://api.whatsapp.com/send?phone="${username}"`
+                description = `Call me with WhatsApp, ${choicesDict[`${choice}`]['emoji']}: ${username}`
+                linkTitle = `Click to Call Me with WhatsApp`
+            }
             if(choice === 'xbox'){
                 console.log('chose xbox')
                 referencingURL = `https://live.xbox.com/en-US/Profile?Gamertag=${username}`
@@ -97,8 +167,18 @@ const EasyAddDash = () => {
             if(choice === 'nintendo'){
                 console.log('chose nintendo')
                 referencingURL = `https://en-americas-support.nintendo.com/app/answers/detail/a_id/22326`
-                description = `Add me at my Friend Code: SW-${username}`
+                description = `Add me at my Friend Code: SW-${username.slice(0,4)}-${username.slice(4,8)}-${username.slice(8,12)}`
                 linkTitle = `My Nintendo Friend Code`
+            }
+            if(choice === 'depop'){
+                linkTitle = 'depop - My Store'
+                description = `Check out what I'm selling at depop.com/{username}`
+            }
+            if(choice === 'venmo'){
+                console.log('chose venmo')
+                referencingURL = `https://venmo.com/account/sign-in`
+                description = `Venmo me at ${username}  ${choicesDict[`${choice}`]['emoji']}`
+                linkTitle = `${choicesDict[`${choice}`]['label']} - ${username}`
             }
             if(choice === 'email'){
                 console.log('chose email')
@@ -150,13 +230,15 @@ const EasyAddDash = () => {
         'snapchat':{label:'Snap', form:'story.snapchat.com/s/', img:'https://imagizer.imageshack.com/img924/3490/rAtlyJ.png', emoji:'⏱📸', type:'text'},
         'linkedin':{label:'LinkedIn', form:'linkedin.com/in/', img:'https://imagizer.imageshack.com/img924/2977/dUaUGg.png', emoji:'🎓🕴', type:'text'},
         'cashapp':{label:'Cash App', form:'cash.app/$', img:'https://imagizer.imageshack.com/img922/2778/ID3PbR.png', emoji:'💸🌐', type:'text'},
+        'venmo':{label:'Venmo', form:'Enter Your Venmo Username: ', img:'https://imagizer.imageshack.com/img922/8315/KKDAzH.png', emoji:'💸🌐', type:'text'},
         'telegram':{label:'Telegram', form:'t.me/', img:'https://imagizer.imageshack.com/img922/909/vNZYkL.png', emoji:'🔒✉️', type:'text'},
         'patreon':{label:'Patreon', form:'patreon.com/', img:'https://imagizer.imageshack.com/img923/9927/yX6oWA.png', emoji:'💸🌐', type:'text'},
         'gofundme':{label:'GoFundMe', form:'gofundme.com/', img:'https://imagizer.imageshack.com/img923/9072/2nPeOI.png', emoji:'💸🙏', type:'text'},
+        'depop':{label:'depop', form:'depop.com/', img:'https://imagizer.imageshack.com/img923/9610/O5VVkS.png', emoji:'👜💸', type:'text'},
         'paypal':{label:'PayPal', form:'paypal.me/', img:'https://imagizer.imageshack.com/img923/6537/UjUIgP.png', emoji:'💳🌐', type:'text'},
         'playstation':{label:'Playstation Network', form:'Your PSN Gamertag: ', img:'https://imagizer.imageshack.com/img922/7303/mTwffk.png' ,emoji:'🕹️🏷️', type:'text' },
         'xbox':{label:'Xbox Live', form:'Your Live Gamertag (include suffix if you have one): ', img:'https://imagizer.imageshack.com/img922/4650/OdtJsD.jpg', emoji:'🕹️🏷️', type:'text'},
-        'nintendo':{label:'Nintendo Friend Code', form:'Your Nintendo Friend Code (include dashes): SW-', img:'https://imagizer.imageshack.com/img924/5847/fTqMCQ.png', emoji:'🕹️🏷️', type:'tel', pattern:'[0-9]{4}-[0-9]{4}-[0-9]{4}'},
+        'nintendo':{label:'Nintendo Friend Code', form:'Your Nintendo Friend Code (without dashes): SW-', img:'https://imagizer.imageshack.com/img924/5847/fTqMCQ.png', emoji:'🕹️🏷️', type:'tel'},
         'etsy':{label:'Etsy', form:'etsy.com/shop/', img:'https://imagizer.imageshack.com/img922/8896/7mengW.png', emoji:'🖌📮', type:'text'},
         'ebay':{label:'Ebay', form:'ebay.com/usr/', img:'https://imagizer.imageshack.com/img923/9052/na6lGQ.png', emoji:'📦🌐', type:'text'},
         'twitch':{label:'Twitch', form:'twitch.tv/', img:'https://imagizer.imageshack.com/img924/4011/FRXstk.png', emoji:'🕹️📹', type:'text'},
@@ -166,6 +248,7 @@ const EasyAddDash = () => {
         'imdb':{label:'IMDB', form:'imdb.me/', img:'https://imagizer.imageshack.com/img923/6572/UNq2ej.png', emoji:'📝🎥', type:'text'},
         'soundcloud':{label:'SoundCloud', form:'soundcloud.com/', img:'https://imagizer.imageshack.com/img924/5484/VQ5N3V.png', emoji:'🔉☁️', type:'text'},
         'bandcamp':{label:'Bandcamp', form:'->____.bandcamp.com/ ', img:'https://imagizer.imageshack.com/img924/5015/UfrqPr.png', emoji:'🔉🏕️', type:'text'},
+        'tumblr':{label:'tumblr', form:'->____.tumblr.com/ ', img:'https://imagizer.imageshack.com/img922/6862/scQdRH.png', emoji:'📸🌐', type:'text'},
         'github':{label:'GitHub', form:'github.com/', img:'https://imagizer.imageshack.com/img923/2070/CdhTJ7.png', emoji:'👩‍💻👨‍💻', type:'text'},
         'vk':{label:'VK', form:'vk.com/', img:'https://imagizer.imageshack.com/img924/9673/LnXxDo.png', emoji:'📸🌐', type:'text'},
         'nebula':{label:'Nebula', form:'watchnebula.com/', img:'https://imagizer.imageshack.com/img924/3839/fgFVLI.jpg', emoji:'🎥🌐', type:'text'},
@@ -175,7 +258,25 @@ const EasyAddDash = () => {
         'kickstarter':{label:'Kickstarter', form:'kickstarter.com/profile/', img:'https://imagizer.imageshack.com/img924/368/ZyT9Ts.png', emoji:'💸🌐', type:'text'},
         'email':{label:'Contact Email', form:'Enter Your Contact Email Here: ', img:'https://imagizer.imageshack.com/img923/5410/AmQrEf.jpg', emoji:'📧📥', type:'email'},
         'phone':{label:'Contact Phone', form:'Enter Your Contact Phone Number Here: ', img:'https://imagizer.imageshack.com/img922/3903/H262eI.jpg', emoji:'📱☎️', type:'tel'},
-        'onlyfans':{label:'OnlyFans', form:'onlyfans.com/', img:'https://imagizer.imageshack.com/img923/7375/DEREnR.png', emoji:'🔐📸', type:'text'}
+        'onlyfans':{label:'OnlyFans', form:'onlyfans.com/', img:'https://imagizer.imageshack.com/img923/7375/DEREnR.png', emoji:'🔐📸', type:'text'},
+        'poshmark':{label:'Poshmark', form:'poshmark.com/closet/', img:'https://imagizer.imageshack.com/img923/8699/2ov1wB.png', emoji:'👜💸', type:'text'},
+        'inprnt':{label:'INPRNT', form:'inprnt.com/gallery/', img:'https://imagizer.imageshack.com/img922/4316/Drqa4B.jpg', emoji:'🎨💸', type:'text'},
+        'behance':{label:'Behance', form:'behance.net/', img:'https://imagizer.imageshack.com/img923/7082/EgwMvY.png', emoji:'🎨🌐', type:'text'},
+        'amazonmusicpodcast':{label:'Amazon Music Podcast', form:'music.amazon.com/podcasts/', img:'https://imagizer.imageshack.com/img922/313/r61KwD.png', emoji:'🌐🔉', type:'text'},
+        'amazonmusicalbum':{label:'Amazon Music Album', form:'music.amazon.com/albums/', img:'https://imagizer.imageshack.com/img922/313/r61KwD.png', emoji:'🌐🔉', type:'text'},
+        'amazonmusicartist':{label:'Amazon Music Artist', form:'music.amazon.com/artists/', img:'https://imagizer.imageshack.com/img922/313/r61KwD.png', emoji:'🌐🔉', type:'text'},
+        'deezerpodcast':{label:'Deezer Podcast USA', form:'deezer.com/us/show/', img:'https://imagizer.imageshack.com/img923/7159/DYfWbG.png', emoji:'🌐🔉', type:'text'},
+        'deezerartist':{label:'Deezer Artist USA', form:'deezer.com/us/artist/', img:'https://imagizer.imageshack.com/img923/7159/DYfWbG.png', emoji:'🌐🔉', type:'text'},
+        'deezeralbum':{label:'Deezer Album USA', form:'deezer.com/us/album/', img:'https://imagizer.imageshack.com/img923/7159/DYfWbG.png', emoji:'🌐🔉', type:'text'},
+        'applemusic':{label:'Apple Music', form:'music.apple.com/', img:'https://imagizer.imageshack.com/img923/7135/WaXX3v.png', emoji:'🌐🔉', type:'text'},
+        'spotifyartist':{label:'Spotify Artist', form:'open.spotify.com/artist/', img:'https://imagizer.imageshack.com/img922/9761/3HcN7o.png', emoji:'🌐🔉', type:'text'},
+        'spotifyalbum':{label:'Spotify Album', form:'open.spotify.com/album/', img:'https://imagizer.imageshack.com/img922/9761/3HcN7o.png', emoji:'🌐🔉', type:'text'},
+        'spotifyplaylist':{label:'Spotify Playlist', form:'open.spotify.com/playlist/', img:'https://imagizer.imageshack.com/img922/9761/3HcN7o.png', emoji:'🌐🔉', type:'text'},
+        'spotifypodcast':{label:'Spotify Podcast', form:'open.spotify.com/show/', img:'https://imagizer.imageshack.com/img922/9761/3HcN7o.png', emoji:'🌐🔉', type:'text'},
+        'kik':{label:'Kik', form:'Enter Your Kik Username Here: ', img:'https://imagizer.imageshack.com/img922/5820/HgFrU4.png', emoji:'🔒✉️', type:'text'},
+        'whatsapp':{label:'WhatsApp', form:'Enter Your WhatsApp Number Here: ', img:'https://imagizer.imageshack.com/img924/4369/v8LUWb.png', emoji:'📱☎️', type:'tel'},
+        'tidal':{label:'TIDAL', form:'tidal.com/', img:'https://imagizer.imageshack.com/img922/4056/eJz3yR.jpg', emoji:'🔉📹', type:'text'},
+        'parler':{label:'Parler', form:'parler.com/profile/', img:'https://imagizer.imageshack.com/img923/7476/LdQcTG.jpg', emoji:'🆓🗨️', type:'text'}
     }
 
     return (
@@ -187,8 +288,17 @@ const EasyAddDash = () => {
                 <h2>Choose Which Type of Account to Link:</h2>
                 <br />
                 <select onChange={handleAccountType}>
+                    <option value="amazonmusicartist">Amazon Music - Artist</option>
+                    <option value="amazonmusicalbum">Amazon Music - Album</option>
+                    <option value="amazonmusicpodcast">Amazon Music - Podcast</option>
+                    <option value="applemusic">Apple Music</option>
                     <option value="bandcamp">Bandcamp</option>
+                    <option value="behance">Behance</option>
                     <option value="cashapp">Cash App</option>
+                    <option value="deezerartist">Deezer - Artist</option>
+                    <option value="deezeralbum">Deezer - Album</option>
+                    <option value="deezerpodcast">Deezer - Podcast</option>
+                    <option value="depop">Depop</option>
                     <option value="discord">Discord</option>
                     <option value="ebay">Ebay</option>
                     <option value="email">Email Address</option>
@@ -200,27 +310,39 @@ const EasyAddDash = () => {
                     <option value="imageshack">ImageShack</option>
                     <option value="imdb">IMDB</option>
                     <option value="imgur">Imgur</option>
+                    <option value="inprnt">INPRNT</option>
                     <option value="instagram">Instagram</option>
                     <option value="kickstarter">Kickstarter</option>
+                    <option value="kik">Kik Messenger</option>
                     <option value="linkedin">LinkedIn</option>
                     <option value="nintendo">Nintendo Friend Code</option>
                     <option value="nebula">Nebula</option>
                     <option value="onlyfans">OnlyFans</option>
+                    <option value="parler">Parler</option>
                     <option value="patreon">Patreon</option>
                     <option value="paypal">PayPal</option>
                     <option value="phone">Phone Number</option>
                     <option value="pinterest">Pinterest</option>
                     <option value="playstation">Playstation Network Gamertag</option>
+                    <option value="poshmark">Poshmark</option>
                     <option value="reddit">Reddit</option>
                     <option value="snapchat">SnapChat</option>
                     <option value="soundcloud">SoundCloud</option>
+                    <option value="spotifyartist">Spotify - Artist</option>
+                    <option value="spotifyalbum">Spotify - Album</option>
+                    <option value="spotifyplaylist">Spotify - Playlist</option>
+                    <option value="spotifypodcast">Spotify - Podcast</option>
                     <option value="startengine">StartEngine</option>
                     <option value="steam">Steam</option>
                     <option value="telegram">Telegram</option>
+                    <option value="tidal">TIDAL</option>
                     <option value="tiktok">TikTok</option>
+                    <option value="tumblr">Tumblr</option>
                     <option value="twitch">Twitch</option>
                     <option value="twitter">Twitter</option>
+                    <option value="venmo">Venmo</option>
                     <option value="vk">VK</option>
+                    <option value="whatsapp">WhatsApp</option>
                     <option value="xbox">Xbox Live Gamertag</option>
                     <option value="youtube">YouTube</option>
                 </select>

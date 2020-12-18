@@ -1,16 +1,60 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 import libIMG from '../files/libIMG.png'
 import HomepageAvailability from './CustomURL/HomepageAvailability'
+import GraphForHomepage from './GraphForHomepage'
 // import '../App2.css';
 
 
 const LandingPage = () => {
+    const [isShowingStats, setIsShowingStats] = useState(false)
+    const [loggedViewNoIP, setLoggedViewNoIP] = useState(false)
+    
+    const statsDrawerToggle = () => {
+        const statDrawer = document.getElementsByClassName('statsDisplayDiv')
+        if(statDrawer[0].style.maxHeight){
+            statDrawer[0].style.maxHeight = null;
+            setIsShowingStats(false)
+        } else {
+            statDrawer[0].style.maxHeight = statDrawer[0].scrollHeight + 100 + "px";
+            setIsShowingStats(true)
+        }
+    }
+
+    useEffect(() => {
+        if(loggedViewNoIP === false){
+            window.Intercom("boot", {
+                app_id: "ya321a09"
+              });
+            const mt = navigator.maxTouchPoints
+            axios.get(`https://link-in-bio.herokuapp.com/s/hpA1?mt=${mt}`)
+            .then(res => {
+                console.log(res.data.message)
+                setLoggedViewNoIP(true)
+            })
+            .catch(err => {
+                console.log('error', err)
+                setLoggedViewNoIP(true)
+            })
+        } else{
+            window.Intercom("update");
+            return
+        }
+    })
+
     return (
         <div>
             <img src={libIMG} alt="Link-In.Bio Logo" className="landingIMG"/>
             <br />
             <HomepageAvailability />
+            <br />
+            {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Homepage Stats  ▼</span>}
+            <div className="statsDisplayDiv">
+                <GraphForHomepage /> <br />
+                {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Homepage Stats  ▼</span>}
+
+            </div>
             <br />
             <div className='signupcards'>
                 <Link to='/register' style={{ textDecoration: 'none', color: 'black' }}>
@@ -30,6 +74,10 @@ const LandingPage = () => {
                     </div>
                 </Link>
             </div>
+            <br />
+            <h2>Link-in.Bio Ltd purchases Carbon Offsets to Stay Carbon Neutral. 🍀🍃</h2>
+            <br />
+            {/* <a href="#!" class="paddle_button" data-product="631279">Subscribe Now!</a> */}
         </div>
     )
 }
