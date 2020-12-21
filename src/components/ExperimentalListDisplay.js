@@ -182,8 +182,8 @@ function ExperimentalListDisplay() {
                                 {/* <img className='image' src={link.imgURL} alt={link.linkTitle} />  */}
                                 <h3>{link.linkTitle}</h3>
                             </a>
-                            {link.description !== ' '?<div><p className="linkDescriptionTag">▼</p>
-                            <p className='linkDescription'>{link.description}</p></div> :null}
+                            {link.description !== ' '?<span><p className="linkDescriptionTag">▼</p>
+                            <p className='linkDescription'>{link.description}</p></span> :null}
                         </div>
 
                 )
