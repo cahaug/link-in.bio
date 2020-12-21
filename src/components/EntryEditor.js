@@ -162,7 +162,7 @@ class EntryEditor extends React.Component {
                     {protectedInput === false ? <div><p>Link URL:</p><input type="url" name="referencingURL" value={referencingURL} placeholder="Link URL"  maxLength="498" onChange={this.handleChange} required /><br /></div>:null}
                     <p>Link Title:</p>
                     <input type="text" name="linkTitle" value={linkTitle} placeholder="Link Title"  maxLength="498" onChange={this.handleChange} required /><br />
-                    <p>Link Description:</p>
+                    <p>Link Description (put a single space for no description):</p>
                     <input className="editLinkDescription" type="text" name="description" value={description} placeholder="Link Description" maxLength="498" onChange={this.handleChange} required /><br />
                     {protectedInput === false ? <div><p>Link Image URL:</p>{shackImageId === null?<div><input type="text" name="imgURL2" value={imgURL2} placeholder="Link Image URL"  maxLength="498" onChange={this.handleChange} /><button onClick={this.noImg}>Click for No Image</button></div>:<div><p>Link-in.Bio administrates this photo for You.</p><br /><img id="imgPreview" src={imgURL2} alt={imgURL2} /><br /><button onClick={this.deleteHostedImage} type="button">Delete This Image</button></div>}<br /></div>:null}
                     <button type="submit" className="abutton2">Submit Changes to Link</button>

@@ -67,8 +67,11 @@ function ExperimentalListDisplay() {
             var n
             for (n=0; n< borderElement0.length; n++){
                 borderElement0[n].style.border = `2px solid ${textColor}`
-                arrowChangeColor[n].style.color = `${textColor}`
+                // arrowChangeColor[n].style.color = `${textColor}`
                 // borderElement0[n].style.backgroundColor = `${backgroundColor}`
+            }
+            for(n=0;n<arrowChangeColor.length;n++){
+                arrowChangeColor[n].style.color = `${textColor}`
             }
             var headerDividerBar = document.getElementsByClassName('linkListDisplayHeader')
             headerDividerBar[0].style.borderBottom = `0.25vh solid ${textColor}`
@@ -76,7 +79,6 @@ function ExperimentalListDisplay() {
             var headerTextElement = document.getElementById('headerName')
             headerTextElement.style.color = `${textColor}`
             var mainBackgroundElement = document.getElementsByClassName('theMain')
-            console.log(mainBackgroundElement[0].style.backgroundColor)
             if(backgroundURL.length<8){
                 mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${textColor}, ${backgroundColor})`
             }
@@ -92,6 +94,11 @@ function ExperimentalListDisplay() {
             var o
             for (o=0; o< borderElement0.length; o++){
                 borderElement0[o].style.border = `2px solid grey`
+                // arrowChangeColor[o].style.color = 'grey'
+                // borderElement0[o].style.backgroundColor = '#000000'
+            }
+            for (o=0; o< arrowChangeColor.length; o++){
+                // borderElement0[o].style.border = `2px solid grey`
                 arrowChangeColor[o].style.color = 'grey'
                 // borderElement0[o].style.backgroundColor = '#000000'
             }
@@ -101,7 +108,6 @@ function ExperimentalListDisplay() {
             var headerTextElement = document.getElementById('headerName')
             headerTextElement.style.color = 'white'
             var mainBackgroundElement = document.getElementsByClassName('theMain')
-            console.log(mainBackgroundElement[0].style.backgroundColor)
             // mainBackgroundElement[0].style.backgroundColor = '#000000'
             if(backgroundURL.length<8){
                 mainBackgroundElement[0].style.backgroundImage = 'linear-gradient(70deg, #151515, black)'
@@ -240,11 +246,14 @@ function ExperimentalListDisplay() {
             }
             var borderElement0 = document.getElementsByClassName('linkSquare')
             var arrowChangeColor = document.getElementsByClassName('linkDescriptionTag')
+            console.log('arrowchangecolor', arrowChangeColor[0].style)
             var n
             for (n=0; n< borderElement0.length; n++){
                 borderElement0[n].style.border = `2px solid ${res.data[0].txtColor}`
-                arrowChangeColor[n].style.color = `${res.data[0].txtColor}`
                 // borderElement0[n].style.backgroundColor = `${backgroundColor}`
+            }
+            for(n=0;n<arrowChangeColor.length;n++){
+                arrowChangeColor[n].style.color = `${res.data[0].txtColor}`
             }
             var headerDividerBar = document.getElementsByClassName('linkListDisplayHeader')
             headerDividerBar[0].style.borderBottom = `0.25vh solid ${res.data[0].txtColor}`
