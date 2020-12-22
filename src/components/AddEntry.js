@@ -119,6 +119,7 @@ class AddEntry extends React.Component {
                         <p className="addEntryText">Or in the form https://.../...bmp </p>
                         <p className="addEntryText">(starting with http or https)</p>
                         <p className="addEntryText">(and ending in the file extension of the linked image)</p>
+                        <p className="addEntryText">Put a single space in the description for no description</p>
                         <input type="text" name="referencingURL" maxLength="498" value={referencingURL} placeholder="Link URL" onChange={this.handleChangeURL} required /><br />
                         <input type="text" name="linkTitle" maxLength="498" value={linkTitle} placeholder="Link Title" onChange={this.handleChangeTitle} required /><br />
                         <input type="text" className="editLinkDescription" maxLength="498" name="description" value={description} placeholder="Link Description" onChange={this.handleChangeDescription} required /><br />

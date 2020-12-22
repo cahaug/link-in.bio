@@ -33,11 +33,15 @@ const GraphForHomepage = () => {
             var rst = JSON.parse(wordCloudRaw.replace(/"province"/g, '"text"').replace(/"count"/g, '"value"'))
             console.log('rst', rst)
             setCloudData(rst)
-            const processedTop10 = (res.data.mostPopular.map((mostPopular) => {
+            console.log('top10', res.data.mostPopular)
+            const testData = res.data.mostPopular
+            testData.sort((a, b) => (parseInt(a.count,10) < parseInt(b.count,10)) ? 1 : -1)
+            const processedTop10 = (testData.map((mostPopular) => {
                 console.log('mostp',mostPopular)
                 return (
                     <div key={mostPopular.listId}>
-                    <p><a alt={`https://link-in.bio/${mostPopular.listId}`} href={`https://link-in.bio/${mostPopular.listId}`}>{`https://link-in.bio/${mostPopular.listId}`}</a> - <a alt={`${mostPopular.customURL}`} href={`${mostPopular.customURL}`}>{`${mostPopular.customURL}`}</a> - {`${mostPopular.count}`}</p>
+                    <br />
+                    <p><a alt={`https://link-in.bio/${mostPopular.listId}`} href={`https://link-in.bio/${mostPopular.listId}`}>{`https://link-in.bio/${mostPopular.listId}`}</a> - <a alt={`${mostPopular.customURL}`} href={`${mostPopular.customURL}`}>{`${mostPopular.customURL}`}</a> - {`${mostPopular.count} views`}</p>
                     </div>
                 )
             }))
