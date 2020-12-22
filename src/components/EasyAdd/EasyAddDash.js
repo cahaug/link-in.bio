@@ -328,7 +328,7 @@ const EasyAddDash = () => {
                     <option value="kickstarter">Kickstarter</option>
                     <option value="kik">Kik Messenger</option>
                     <option value="linkedin">LinkedIn</option>
-                    <option value="mixcloud">Mixcloud</option>
+                    <option value="mixcloud">MixCloud</option>
                     <option value="nintendo">Nintendo Friend Code</option>
                     <option value="nebula">Nebula</option>
                     <option value="onlyfans">OnlyFans</option>
