@@ -103,7 +103,7 @@ function AddEntryWithFile(){
                 <br />
                 <br />
                 <label>
-                    Link Description (put a single space for no description): <input type="text" onChange={handleChangeText} name="description" maxLength="498" placeholder="Description" required />
+                    Link Description: <input type="text" onChange={handleChangeText} name="description" maxLength="498" placeholder="Description" required />
                 </label>
                 <br />
                 <br />

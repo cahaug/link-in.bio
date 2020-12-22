@@ -82,13 +82,15 @@ class AddEntry extends React.Component {
                 console.log('imgurl set to null succ', imgURL)
                 this.setState({ userId: sessionStorage.getItem('userId'), referencingURL:'', description: '', linkTitle: '', imgURL:'', isLoading:true})
                 await this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token, shackImageId)
-                this.props.history.push('./dashboard2')
-                window.location.reload(false)
+                // this.props.history.push('./dashboard2')
+                // window.location.reload(false)
+                this.setState({isLoading:false})
             } else if (noImg === false && imgURL.length > 10){
                 this.setState({ userId: sessionStorage.getItem('userId'), referencingURL:'', description: '', linkTitle: '', imgURL:'', isLoading:true})
                 await this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token, shackImageId)
-                this.props.history.push('./dashboard2')
-                window.location.reload(false)
+                // this.props.history.push('../dashboard2')
+                // window.location.reload(false)
+                this.setState({isLoading:false})
             } else {
                 console.log('image error')
             }
