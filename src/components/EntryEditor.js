@@ -71,7 +71,10 @@ class EntryEditor extends React.Component {
         'kik':'https://imagizer.imageshack.com/img922/5820/HgFrU4.png',
         'whatsapp':'https://imagizer.imageshack.com/img924/4369/v8LUWb.png',
         'tidal':'https://imagizer.imageshack.com/img922/4056/eJz3yR.jpg',
-        'parler':'https://imagizer.imageshack.com/img923/7476/LdQcTG.jpg'
+        'parler':'https://imagizer.imageshack.com/img923/7476/LdQcTG.jpg',
+        'bandsintown':'https://imagizer.imageshack.com/img922/733/La7FSI.png',
+        'mixcloud':'https://imagizer.imageshack.com/img923/5218/GmKv69.png',
+        'zelle':'https://imagizer.imageshack.com/img924/2998/gYOvQh.jpg'
     }
 
     handleChange = (evt) => {

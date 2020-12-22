@@ -119,6 +119,15 @@ const EasyAddDash = () => {
                 console.log('chose tumblr')
                 referencingURL = `https://${username}.tumblr.com/`
             }
+            if(choice === 'bandsintown'){
+                console.log('chose bandsintown')
+                description = `Link to my ${choicesDict[`${choice}`]['label']} Artist Page ${choicesDict[`${choice}`]['emoji']} `
+            }
+            if(choice === 'zelle'){
+                console.log('chose zelle')
+                referencingURL = `#`
+                description = `To support me on ${choicesDict[`${choice}`]['label']} ${choicesDict[`${choice}`]['emoji']}, Add me at ${username} `
+            }
             if(choice === 'spotifyartist'){
                 console.log('chose spotifyartist')
                 description = `Link to my ${choicesDict[`${choice}`]['label']} Artist Account ${choicesDict[`${choice}`]['emoji']}`
@@ -276,7 +285,10 @@ const EasyAddDash = () => {
         'kik':{label:'Kik', form:'Enter Your Kik Username Here: ', img:'https://imagizer.imageshack.com/img922/5820/HgFrU4.png', emoji:'🔒✉️', type:'text'},
         'whatsapp':{label:'WhatsApp', form:'Enter Your WhatsApp Number Here: ', img:'https://imagizer.imageshack.com/img924/4369/v8LUWb.png', emoji:'📱☎️', type:'tel'},
         'tidal':{label:'TIDAL', form:'tidal.com/', img:'https://imagizer.imageshack.com/img922/4056/eJz3yR.jpg', emoji:'🔉📹', type:'text'},
-        'parler':{label:'Parler', form:'parler.com/profile/', img:'https://imagizer.imageshack.com/img923/7476/LdQcTG.jpg', emoji:'🆓🗨️', type:'text'}
+        'parler':{label:'Parler', form:'parler.com/profile/', img:'https://imagizer.imageshack.com/img923/7476/LdQcTG.jpg', emoji:'🆓🗨️', type:'text'},
+        'bandsintown':{label:'Bandsintown', form:'bandsintown.com/a/', img:'https://imagizer.imageshack.com/img922/733/La7FSI.png', emoji:'🗺️🔉', type:'text'},
+        'mixcloud':{label:'MixCloud', form:'mixcloud.com/', img:'https://imagizer.imageshack.com/img923/5218/GmKv69.png', emoji:'🌐🔉', type:'text'},
+        'zelle':{label:'Zelle', form:'Enter Your Phone Number or Email (Zelle Username): ', img:'https://imagizer.imageshack.com/img924/2998/gYOvQh.jpg', emoji:'💸🌐', type:'text'}
     }
 
     return (
@@ -293,6 +305,7 @@ const EasyAddDash = () => {
                     <option value="amazonmusicpodcast">Amazon Music - Podcast</option>
                     <option value="applemusic">Apple Music</option>
                     <option value="bandcamp">Bandcamp</option>
+                    <option value="bandsintown">Bandsintown</option>
                     <option value="behance">Behance</option>
                     <option value="cashapp">Cash App</option>
                     <option value="deezerartist">Deezer - Artist</option>
@@ -315,6 +328,7 @@ const EasyAddDash = () => {
                     <option value="kickstarter">Kickstarter</option>
                     <option value="kik">Kik Messenger</option>
                     <option value="linkedin">LinkedIn</option>
+                    <option value="mixcloud">Mixcloud</option>
                     <option value="nintendo">Nintendo Friend Code</option>
                     <option value="nebula">Nebula</option>
                     <option value="onlyfans">OnlyFans</option>
@@ -345,6 +359,7 @@ const EasyAddDash = () => {
                     <option value="whatsapp">WhatsApp</option>
                     <option value="xbox">Xbox Live Gamertag</option>
                     <option value="youtube">YouTube</option>
+                    <option value="zelle">Zelle</option>
                 </select>
                 <br />
                 {choice == '' ? <p>Choose an Account Type To Add</p> : <form onSubmit={handleFormSubmit}>
