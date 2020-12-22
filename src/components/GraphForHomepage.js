@@ -37,7 +37,7 @@ const GraphForHomepage = () => {
                 console.log('mostp',mostPopular)
                 return (
                     <div key={mostPopular.listId}>
-                    <p><a alt={`https://link-in.bio/${mostPopular.listId}`} href={`https://link-in.bio/${mostPopular.listId}`}>{`https://link-in.bio/${mostPopular.listId}`}</a> - {`${mostPopular.count}`}</p>
+                    <p><a alt={`https://link-in.bio/${mostPopular.listId}`} href={`https://link-in.bio/${mostPopular.listId}`}>{`https://link-in.bio/${mostPopular.listId}`}</a> - <a alt={`${mostPopular.customURL}`} href={`${mostPopular.customURL}`}>{`${mostPopular.customURL}`}</a> - {`${mostPopular.count}`}</p>
                     </div>
                 )
             }))
