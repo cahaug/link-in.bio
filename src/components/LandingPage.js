@@ -24,14 +24,14 @@ const LandingPage = () => {
 
     useEffect(() => {
         if(loggedViewNoIP === false){
-            window.Intercom("boot", {
-                app_id: "ya321a09"
-              });
             const mt = navigator.maxTouchPoints
             axios.get(`https://link-in-bio.herokuapp.com/s/hpA1?mt=${mt}`)
             .then(res => {
                 console.log(res.data.message)
                 setLoggedViewNoIP(true)
+                window.Intercom("boot", {
+                    app_id: "ya321a09"
+                });
             })
             .catch(err => {
                 console.log('error', err)
