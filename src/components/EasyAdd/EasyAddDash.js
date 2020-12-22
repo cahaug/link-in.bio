@@ -125,7 +125,7 @@ const EasyAddDash = () => {
             }
             if(choice === 'zelle'){
                 console.log('chose zelle')
-                referencingURL = `#`
+                referencingURL = `https://www.zellepay.com/`
                 description = `To support me on ${choicesDict[`${choice}`]['label']} ${choicesDict[`${choice}`]['emoji']}, Add me at ${username} `
             }
             if(choice === 'spotifyartist'){
