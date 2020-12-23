@@ -288,7 +288,9 @@ const EasyAddDash = () => {
         'parler':{label:'Parler', form:'parler.com/profile/', img:'https://imagizer.imageshack.com/img923/7476/LdQcTG.jpg', emoji:'🆓🗨️', type:'text'},
         'bandsintown':{label:'Bandsintown', form:'bandsintown.com/a/', img:'https://imagizer.imageshack.com/img922/733/La7FSI.png', emoji:'🗺️🔉', type:'text'},
         'mixcloud':{label:'MixCloud', form:'mixcloud.com/', img:'https://imagizer.imageshack.com/img923/5218/GmKv69.png', emoji:'🌐🔉', type:'text'},
-        'zelle':{label:'Zelle', form:'Enter Your Phone Number or Email (Zelle Username): ', img:'https://imagizer.imageshack.com/img924/2998/gYOvQh.jpg', emoji:'💸🌐', type:'text'}
+        'zelle':{label:'Zelle', form:'Enter Your Phone Number or Email (Zelle Username): ', img:'https://imagizer.imageshack.com/img924/2998/gYOvQh.jpg', emoji:'💸🌐', type:'text'},
+        'toptal':{label:'Toptal', form:'toptal.com/resume/', img:'https://imagizer.imageshack.com/img922/9965/LFSZpa.png', emoji:'🔨🖨️', type:'text'},
+        'upwork':{label:'Upwork', form:'upwork.com/o/profiles/users/', img:'https://imagizer.imageshack.com/img922/4/Rg1Irf.png', emoji:'🔨🖨️', type:'text'}
     }
 
     return (
@@ -351,9 +353,11 @@ const EasyAddDash = () => {
                     <option value="telegram">Telegram</option>
                     <option value="tidal">TIDAL</option>
                     <option value="tiktok">TikTok</option>
+                    <option value="toptal">Toptal</option>
                     <option value="tumblr">Tumblr</option>
                     <option value="twitch">Twitch</option>
                     <option value="twitter">Twitter</option>
+                    <option value="upwork">Upwork</option>
                     <option value="venmo">Venmo</option>
                     <option value="vk">VK</option>
                     <option value="whatsapp">WhatsApp</option>
