@@ -63,7 +63,7 @@ const LandingPage = () => {
                         <p>Let's Begin - Register - </p>
                         {/* remove this later */}
                         <br />
-                        <p>--TEMPORARILY UNAVAILABLE--</p>
+                        <p>--ARRIVING  2021--</p>
                         {/* end */}
                     </div>
                 </Link>
