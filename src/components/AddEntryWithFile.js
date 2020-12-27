@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import axios from "axios"
 import loadingGif from "../files/loading.gif"
 import "../App.css"
+import toast from "react-hot-toast"
 
 function AddEntryWithFile(){
 
@@ -37,22 +38,22 @@ function AddEntryWithFile(){
                     if(addingStatView.data){
                         setBigData({referencingURL:'',description:'',linkTitle:''})
                         setIsLoading(false)
-                        alert('Upload Successful, Refresh this page to see the change.')
+                        toast.success('Upload Successful, Refresh this page to see the change.')
                     } else {
                         setIsLoading(false)
-                        alert('Error Adding StatView to Entry')
+                        toast.error('Error Adding StatView to Entry')
                     }
                 } else {
                     setIsLoading(false)
-                    alert('Error Adding Entry After Photo')
+                    toast.error('Error Adding Entry After Photo')
                 }
             } else {
                 setIsLoading(false)
-                alert('Error Uploading Photo')
+                toast.error('Error Uploading Photo')
             }
         } catch (err) {
             console.log('catcherror', err)
-            alert('Failed Adding Entry With Photo')
+            toast.error('Failed Adding Entry With Photo')
             setIsLoading(false)
         }
     }

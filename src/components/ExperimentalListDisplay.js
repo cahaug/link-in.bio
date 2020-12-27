@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import axios from "axios"
 import loadingGif from '../files/loading.gif'
 import '../App.css'
+import toast from "react-hot-toast"
 
 
 function ExperimentalListDisplay() {
@@ -280,7 +281,7 @@ function ExperimentalListDisplay() {
                 setDarkMode(true)
             }
         })
-        .catch(err => {console.log('err', err); alert('that site does not exist, yet. or check your connection.')})
+        .catch(err => {console.log('err', err); toast.error('that site does not exist, yet. or check your connection.')})
     }, [])
 
 

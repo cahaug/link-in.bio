@@ -3,6 +3,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { editEntry } from '../actions/index'
 import { Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 
 class EntryEditor extends React.Component {
@@ -96,9 +97,9 @@ class EntryEditor extends React.Component {
         if (deletedHostedImage.data.message==='Successfully Deleted ShackImage'){
             this.setState({imgURL2:''})
             this.setState({shackImageId:null})
-            alert('Photo Deleted Forever.')
+            toast.success('Photo Deleted Forever.')
         } else {
-            alert('There Was An Issue Deleting Your Photo')
+            toast.error('There Was An Issue Deleting Your Photo')
         }
     }
 

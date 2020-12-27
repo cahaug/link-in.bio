@@ -3,6 +3,7 @@ import axios from "axios"
 import loadingGif from '../files/loading.gif'
 import { Link } from 'react-router-dom'
 import ResetPassword from "./ResetPassword"
+import toast from "react-hot-toast"
 
 function ListEditor2(){
     const [isLoading, setIsLoading] = useState(true)
@@ -117,12 +118,14 @@ function ListEditor2(){
         const useThisURL = `https://link-in-bio.herokuapp.com/e/deleteEntry`
         return axios.post(useThisURL, {entryId: entryId, listId:listId, userId:userId}, {headers:{authorization:token}})
         .then(response => {
-            alert('Entry Successfully Deleted')
+            // alert('Entry Successfully Deleted')
+            toast.success('Entry Successfully Deleted')
             console.log('deleteEntryRes',response)
             window.location.reload()
         })
         .catch(err => {
             console.log('error deleting', err)
+            toast.error('Error Deleting Entry')
         })
     }
 

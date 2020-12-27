@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import axios from 'axios'
 import ReCAPTCHA from 'react-google-recaptcha'
+import toast from 'react-hot-toast'
 
 const HomepageAvailability = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -74,14 +75,17 @@ const HomepageAvailability = () => {
                     setIsAvailable(true)
                     setIsLoading(false)
                     // alert('Available')
+                    toast.success('Available')
                 } else {
                     setIsNotAvailable(true)
                     setIsLoading(false)
+                    toast.error('Already Taken')
                     // alert('Already Taken')
                 }
             })
         } else {
-            alert(`There are illegal characters in your input, please remove them and try again`)
+            // alert(`There are illegal characters in your input, please remove them and try again`)
+            toast.error(`There are illegal characters in your input, please remove them and try again`)
             setIsLoading(false)
             return false
         }

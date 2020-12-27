@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import '../App.css'
+import toast from 'react-hot-toast'
 
 const ChangeDisplayName = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -21,11 +22,11 @@ const ChangeDisplayName = () => {
             console.log('display Name change res', res)
             setDisplayName('')
             setIsLoading(false)
-            alert('Display Name Updated Successfully')
+            toast.success('Display Name Updated Successfully')
         })
         .catch(err => {
             console.log('change display name err',err)
-            alert('Error in Changing Display Name')
+            toast.error('Error in Changing Display Name')
         })
     }
 

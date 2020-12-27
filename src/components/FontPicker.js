@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../App.css';
+import toast from 'react-hot-toast';
 
 const FontPicker = () => {
 
@@ -55,11 +56,11 @@ const FontPicker = () => {
         return axios.put('https://link-in-bio.herokuapp.com/l/setText', {listId:listId, userId:userId, fontSelection:fontSelection}, { headers: { authorization:token }})
         .then(res => {
             console.log('fontSelectionRes', res)
-            alert('Font Changed Successfully')
+            toast.success('Font Changed Successfully')
         })
         .catch(err => {
             console.log('submit catcherror', err)
-            alert('Error in Changing Font')
+            toast.error('Error in Changing Font')
         })
     }
 

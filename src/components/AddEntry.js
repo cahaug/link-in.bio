@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { addEntry } from '../actions/index'
 import { withRouter, Link } from 'react-router-dom'
 import loadingGif from '../files/loading.gif'
+import toast from 'react-hot-toast'
 
 
 class AddEntry extends React.Component {
@@ -95,7 +96,7 @@ class AddEntry extends React.Component {
                 console.log('image error')
             }
         } catch (err){
-            alert(err.message)
+            toast.error(err.message)
         }
        
     }

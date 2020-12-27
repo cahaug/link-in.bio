@@ -19,6 +19,7 @@ import ResetPWCode from './components/ResetPWCode'
 import Dashboard2 from './components/Dashboard2'
 import SettingsPanel from './components/SettingsPanel';
 import ExperimentalListDisplay from './components/ExperimentalListDisplay';
+import { Toaster } from 'react-hot-toast';
 
 // import PaymentSuccess from './components/PaymentSuccess'
 // import PaymentPage from './components/PaymentPage'
@@ -35,6 +36,7 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
+        <Toaster position="top-center" />
         <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/robots.txt" onEnter={() =>{window.location.reload()}} />

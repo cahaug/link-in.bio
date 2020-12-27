@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 
 // to add new social media option add to choicesDict and then add option in select
 
@@ -95,7 +96,8 @@ const EasyAddDash = () => {
         } else if(choice === 'applemusic' && hasNoIllegalCharsAPL(didtrimUsername) === true){
             return {legal:true, trimmed:didtrimUsername}
         } else {
-            alert(`There are illegal characters in your input, please remove them and try again`)
+            // alert(`There are illegal characters in your input, please remove them and try again`)
+            toast.error(`There are illegal characters in your input, please remove them and try again`)
             return false
         }
     }
@@ -215,12 +217,14 @@ const EasyAddDash = () => {
                 const statForNewEntry = await axios.get(`https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`)
                 console.log('statForNewEntry',statForNewEntry)
                 setIsLoading(false)
-                alert(`Link To ${choicesDict[`${choice}`]['label']} Successfully Added to Account`)
+                // alert(`Link To ${choicesDict[`${choice}`]['label']} Successfully Added to Account`)
+                toast.success(`Link To ${choicesDict[`${choice}`]['label']} Successfully Added to Account`)
                 window.location.reload()
             })
             .catch((err) => {
                 console.log('error easyadd', err)
-                alert('Error EasyAdd Account')
+                // alert('Error EasyAdd Account')
+                toast.error('Error EasyAdding Account')
             })
         } else {
             setIsLoading(false)
@@ -295,6 +299,7 @@ const EasyAddDash = () => {
 
     return (
         <div>
+
             <hr />
             {isLoading? <p>Loading...</p> :
             <div>
