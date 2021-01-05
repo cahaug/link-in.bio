@@ -77,7 +77,8 @@ class EntryEditor extends React.Component {
         'mixcloud':'https://imagizer.imageshack.com/img923/5218/GmKv69.png',
         'zelle':'https://imagizer.imageshack.com/img924/2998/gYOvQh.jpg',
         'toptal':'https://imagizer.imageshack.com/img922/9965/LFSZpa.png',
-        'upwork':'https://imagizer.imageshack.com/img922/4/Rg1Irf.png'
+        'upwork':'https://imagizer.imageshack.com/img922/4/Rg1Irf.png',
+        'odysee':'https://imagizer.imageshack.com/img923/6384/JLvydT.png'
     }
 
     handleChange = (evt) => {

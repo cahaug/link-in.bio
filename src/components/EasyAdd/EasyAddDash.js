@@ -294,7 +294,8 @@ const EasyAddDash = () => {
         'mixcloud':{label:'MixCloud', form:'mixcloud.com/', img:'https://imagizer.imageshack.com/img923/5218/GmKv69.png', emoji:'🌐🔉', type:'text'},
         'zelle':{label:'Zelle', form:'Enter Your Phone Number or Email (Zelle Username): ', img:'https://imagizer.imageshack.com/img924/2998/gYOvQh.jpg', emoji:'💸🌐', type:'text'},
         'toptal':{label:'Toptal', form:'toptal.com/resume/', img:'https://imagizer.imageshack.com/img922/9965/LFSZpa.png', emoji:'🔨🖨️', type:'text'},
-        'upwork':{label:'Upwork', form:'upwork.com/o/profiles/users/', img:'https://imagizer.imageshack.com/img922/4/Rg1Irf.png', emoji:'🔨🖨️', type:'text'}
+        'upwork':{label:'Upwork', form:'upwork.com/o/profiles/users/', img:'https://imagizer.imageshack.com/img922/4/Rg1Irf.png', emoji:'🔨🖨️', type:'text'},
+        'odysee':{label:'Odysee', form:'odysee.com/@', img:'https://imagizer.imageshack.com/img923/6384/JLvydT.png', emoji:'📹🌐', type:'text'}
     }
 
     return (
@@ -338,6 +339,7 @@ const EasyAddDash = () => {
                     <option value="mixcloud">MixCloud</option>
                     <option value="nintendo">Nintendo Friend Code</option>
                     <option value="nebula">Nebula</option>
+                    <option value="odysee">Odysee</option>
                     <option value="onlyfans">OnlyFans</option>
                     <option value="parler">Parler</option>
                     <option value="patreon">Patreon</option>

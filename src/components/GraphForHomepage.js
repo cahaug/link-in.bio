@@ -23,6 +23,7 @@ const GraphForHomepage = () => {
         timeline:[],
     })
     const [mostPopular, setMostPopular] = useState([])
+    const [mostPopularToday, setMostPopularToday] = useState([])
     const [cloudData, setCloudData] = useState([])
     const [selectedDateRange, setSelectedDateRange] = useState(7)
     const [trimmedData, setTrimmedData] = useState([])
@@ -70,7 +71,19 @@ const GraphForHomepage = () => {
                     </div>
                 )
             }))
+            const testData2 = res.data.mostPopularToday
+            testData2.sort((a, b) => (parseInt(a.count,10) < parseInt(b.count,10)) ? 1 : -1)
+            const processedTop10Today = (testData2.map((mostPopularToday) => {
+                console.log('mostp',mostPopularToday)
+                return (
+                    <div key={mostPopularToday.listId}>
+                    <br />
+                    <p><a alt={`https://link-in.bio/${mostPopularToday.listId}`} href={`https://link-in.bio/${mostPopularToday.listId}`}>{`https://link-in.bio/${mostPopularToday.listId}`}</a> - <a alt={`${mostPopularToday.customURL}`} href={`${mostPopularToday.customURL}`}>{`${mostPopularToday.customURL}`}</a> - {`${mostPopularToday.count} views`}</p>
+                    </div>
+                )
+            }))
             setMostPopular(processedTop10)
+            setMostPopularToday(processedTop10Today)
             setIsLoading(false)
         })
         .catch(err => {
@@ -206,6 +219,11 @@ const GraphForHomepage = () => {
                 <div style={{ width: "98%", height: "98%", margin:"0 auto" }}>
                     <p>Most Popular Accounts:</p>
                     {mostPopular}
+                </div>
+                <br />
+                <div style={{ width: "98%", height: "98%", margin:"0 auto" }}>
+                    <p>Most Popular Today:</p>
+                    {mostPopularToday}
                 </div>
             </div>
         )
