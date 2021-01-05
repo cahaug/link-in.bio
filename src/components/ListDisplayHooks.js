@@ -3,6 +3,7 @@ import axios from "axios"
 import loadingGif from '../files/loading.gif'
 import '../App.css'
 import toast from "react-hot-toast"
+import {Helmet} from 'react-helmet'
 
 
 function ListDisplayHooks(match) {
@@ -331,7 +332,9 @@ function ListDisplayHooks(match) {
                 {/* <footer>
                     <h4>{darkMode ? <span onClick={applyDarkMode}>💡</span>:<span onClick={applyDarkMode}>🏮</span>} ©{new Date().getFullYear()} <a href="http://yhy.fi/"><span className="footerLink">YHY Oy:</span></a> <a href="http://link-in.bio/"><span className="footerLink">Link-in.Bio/</span></a></h4>
                 </footer> */}
-                
+                <Helmet>
+                    <meta name="description" content={`${window.location.host}${ourURL} - ${displayName===null?userFirstNameLastName:displayName}'s Link-In Bio Account`} />
+                </Helmet>
             </div>
 
         )
