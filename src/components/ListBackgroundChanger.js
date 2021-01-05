@@ -113,7 +113,9 @@ const ListBackgroundChanger = () => {
             <h2>This copy of that photo will be gone forever.</h2>
             <br />
             <button type="abutton" onClick={deleteBackgroundImage}>Delete Background Image</button>
-
+            <br /><br />
+            <hr />
+            <br />
         </div>
     )
 

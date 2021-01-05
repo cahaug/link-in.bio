@@ -196,7 +196,7 @@ function SettingsPanel(){
                 <ProfPicUpload />
             </div>
             <br/>
-            {uploadingBackground ? <span onClick={uploadingBackgroundDrawerToggle}>Upload a List Background ▲</span>:<span onClick={uploadingBackgroundDrawerToggle}>Upload a List Background ▼</span>}
+            {uploadingBackground ? <span onClick={uploadingBackgroundDrawerToggle}>Upload/Delete a List Background ▲</span>:<span onClick={uploadingBackgroundDrawerToggle}>Upload/Delete a List Background ▼</span>}
             <div className="bgPicUploadDiv">
                 <ListBackgroundChanger />
             </div>
