@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy } from 'react';
 // import './App.css';
 import { Route, Switch } from 'react-router-dom'
 import PrivateRoute from './components/PrivateRoute'
@@ -11,7 +11,7 @@ import FailedLogin from './components/FailedLogin'
 import AddEntry from './components/AddEntry'
 import EntryEditor from './components/EntryEditor'
 // import ListDisplay from './components/ListDisplay'
-import ListDisplayHooks from './components/ListDisplayHooks'
+
 import RegisterHooks from './components/RegisterHooks'
 import ResetPassword from './components/ResetPassword'
 import ResetPWCode from './components/ResetPWCode'
@@ -20,6 +20,10 @@ import Dashboard2 from './components/Dashboard2'
 import SettingsPanel from './components/SettingsPanel';
 import ExperimentalListDisplay from './components/ExperimentalListDisplay';
 import { Toaster } from 'react-hot-toast';
+
+// import ListDisplayHooks from './components/ListDisplayHooks'
+//code split listdiplayhooks into own chunk
+const ListDisplayHooks = lazy(() => import('./components/ListDisplayHooks'))
 
 // import PaymentSuccess from './components/PaymentSuccess'
 // import PaymentPage from './components/PaymentPage'
