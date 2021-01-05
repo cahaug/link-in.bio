@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../App.css'
-import { VictoryPie, VictoryChart, VictoryAxis, VictoryBar, VictoryLine, VictoryTheme, VictoryLabel } from 'victory'
+import { VictoryPie, VictoryChart, VictoryAxis, VictoryBar, VictoryLine, VictoryTheme, VictoryLabel, VictoryTooltip, VictoryVoronoiContainer } from 'victory'
 import ReactWordcloud from "react-wordcloud";
 import toast from 'react-hot-toast'
 
@@ -126,11 +126,11 @@ const GraphForEntry = () => {
                             <option value={0}>All Time</option>
                         </select>
                         <br />
-                        <VictoryChart theme={VictoryTheme.material} padding={{bottom:75, left:50,right:50}}>
+                        <VictoryChart theme={VictoryTheme.material} padding={{bottom:75, left:50,right:50, top:30}} containerComponent={<VictoryVoronoiContainer labels={({ datum }) => `${datum.y} Views`} />}>
                             <VictoryLine data={trimmedData} style={{
                                 data: { stroke: "#c43a31" ,}, 
                                 tickLabels:{angle:45,}, 
-                                parent: { border: "1px solid #ccc"}}} scale={{x:"time", y:"linear"}} />
+                                parent: { border: "1px solid #ccc"}}} scale={{x:"time", y:"linear"}} labelComponent={<VictoryTooltip constrainToVisibleArea />} />
                             <VictoryAxis dependentAxis />
                             <VictoryAxis tickFormat={(t) => {const out = t.toString().slice(0,10); return `${out}`}} style={{tickLabels:{angle:45, textAnchor:"start", }, labels:{padding:-20}}} />
                         </VictoryChart>
@@ -139,7 +139,7 @@ const GraphForEntry = () => {
                 <div className="entryChartHolder">
                     <div className="vicPie">
                         <h2>Viewer Device Category</h2>
-                        <VictoryPie animate={{duration:3000}} padding={40}  data={datasetBravo.deviceTypes} colorScale="qualitative" x='deviceType' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={40}  data={datasetBravo.deviceTypes} colorScale="qualitative" x='deviceType' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 25, fill: '#929292'
                               }
@@ -147,7 +147,7 @@ const GraphForEntry = () => {
                     </div>
                     <div className="vicPie">
                         <h2>Browsers Used By Viewers</h2>
-                        <VictoryPie animate={{duration:3000}} padding={40}  data={datasetBravo.browserNameCounts} colorScale="qualitative" x='browserName' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={40}  data={datasetBravo.browserNameCounts} colorScale="qualitative" x='browserName' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 25, fill: '#929292'
                               }
@@ -158,7 +158,7 @@ const GraphForEntry = () => {
                 <div className="entryChartHolder">
                     <div className="vicPie">
                         <h2>Do Your Viewers Have Touchscreen?</h2>
-                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.isTouchDevice} colorScale="qualitative" x='isMobileDevice' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.isTouchDevice} colorScale="qualitative" x='isMobileDevice' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 30, fill: '#929292'
                               }
@@ -166,7 +166,7 @@ const GraphForEntry = () => {
                     </div>
                     <div className="vicPie">
                         <h2>Operating System of Viewer</h2>
-                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.osFamilyCount} colorScale="qualitative" x='osFamily' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.osFamilyCount} colorScale="qualitative" x='osFamily' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 30, fill: '#929292'
                               }
@@ -177,7 +177,7 @@ const GraphForEntry = () => {
                 <div className="entryChartHolder">
                     <div className="vicPie">
                         <h2>Brand of Device</h2>
-                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.deviceBrandNamesCount} colorScale="qualitative" x='deviceBrandName' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.deviceBrandNamesCount} colorScale="qualitative" x='deviceBrandName' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 20, fill: '#929292'
                               }
@@ -185,7 +185,7 @@ const GraphForEntry = () => {
                     </div>
                     <div className="vicPie">
                         <h2>Name of Device</h2>
-                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.deviceOwnNamesCount} colorScale="qualitative" x='deviceOwnName' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.deviceOwnNamesCount} colorScale="qualitative" x='deviceOwnName' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 20, fill: '#929292'
                               }
@@ -196,7 +196,7 @@ const GraphForEntry = () => {
                 <div className="entryChartHolder">
                     <div className="vicPie">
                         <h2>Country Your Viewers Are From</h2>
-                        <VictoryPie animate={{duration:3000}} padding={45} data={datasetBravo.countries} colorScale="qualitative" x='countryOfOrigin' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={45} data={datasetBravo.countries} colorScale="qualitative" x='countryOfOrigin' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 30, fill: '#929292'
                               }
@@ -204,7 +204,7 @@ const GraphForEntry = () => {
                     </div>
                     <div className="vicPie">
                         <h2>Best Guess Location</h2>
-                        <VictoryPie animate={{duration:3000}} padding={45} data={datasetBravo.regions} colorScale="qualitative" x='province' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={45} data={datasetBravo.regions} colorScale="qualitative" x='province' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 20, fill: '#929292'
                               }
@@ -222,14 +222,14 @@ const GraphForEntry = () => {
                 <div className="entryChartHolder">
                     <div className="vicBar">
                         {/* <VictoryChart domainPadding={20}> */}
-                        <VictoryChart  theme={VictoryTheme.material}>
+                        <VictoryChart  theme={VictoryTheme.material} containerComponent={<VictoryVoronoiContainer activateData={true} labels={({ datum }) => `${datum._y} Views`} />}>
                             <VictoryBar animate={{duration:3000}} data={pieGraphData} x='linkTitle' y='count' style={{data:{fill:'tomato', fillOpacity: 1}}} />
                             <VictoryAxis dependentAxis />
                             <VictoryAxis style={{tickLabels:{angle:45, textAnchor:"start", }, labels:{padding:-20}}} />
                         </VictoryChart>
                     </div>
                     <div className="vicPie">
-                        <VictoryPie animate={{duration:3000}} padding={45} data={pieGraphData} colorScale="qualitative" x='linkTitle' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={45} data={pieGraphData} colorScale="qualitative" x='linkTitle' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 20, fill: '#929292'
                               }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../App.css'
-import { VictoryPie, VictoryChart, VictoryAxis, VictoryLine, VictoryTheme } from 'victory'
+import { VictoryPie, VictoryChart, VictoryAxis, VictoryLine, VictoryTheme, VictoryTooltip, VictoryVoronoiContainer } from 'victory'
 // import PopularityTracker from './PopularityTracker'
 import ReactWordcloud from "react-wordcloud";
 import toast from "react-hot-toast"
@@ -111,7 +111,7 @@ const GraphForHomepage = () => {
                             <option value={0}>All Time</option>
                         </select>
                         <br />
-                        <VictoryChart theme={VictoryTheme.material} padding={{bottom:75, left:50,right:50}}>
+                        <VictoryChart theme={VictoryTheme.material} padding={{bottom:75, left:50,right:50, top:30}} containerComponent={<VictoryVoronoiContainer labels={({ datum }) => `${datum.y} Views`} />}>
                             <VictoryLine data={trimmedData} style={{
                                 data: { stroke: "#c43a31" ,}, 
                                 tickLabels:{angle:45,}, 
@@ -124,7 +124,7 @@ const GraphForHomepage = () => {
                 <div className="entryChartHolder">
                     <div className="vicPie">
                         <h2>Link-in.Bio Homepage Viewers Device Category</h2>
-                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.deviceTypes} colorScale="qualitative" x='deviceType' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.deviceTypes} colorScale="qualitative" x='deviceType' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 25, fill: '#929292'
                               }
@@ -132,7 +132,7 @@ const GraphForHomepage = () => {
                     </div>
                     <div className="vicPie">
                         <h2>Browsers Used To Access Link-in.Bio Homepage</h2>
-                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.browserNameCounts} colorScale="qualitative" x='browserName' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.browserNameCounts} colorScale="qualitative" x='browserName' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 25, fill: '#929292'
                               }
@@ -143,7 +143,7 @@ const GraphForHomepage = () => {
                 <div className="entryChartHolder">
                     <div className="vicPie">
                         <h2>Do Link-in.Bio Homepage Viewers Have Touchscreen?</h2>
-                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.isTouchDevice} colorScale="qualitative" x='isMobileDevice' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.isTouchDevice} colorScale="qualitative" x='isMobileDevice' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 30, fill: '#929292'
                               }
@@ -151,7 +151,7 @@ const GraphForHomepage = () => {
                     </div>
                     <div className="vicPie">
                         <h2>Operating System of Link-in.Bio Homepage Viewers</h2>
-                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.osFamilyCount} colorScale="qualitative" x='osFamily' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.osFamilyCount} colorScale="qualitative" x='osFamily' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 30, fill: '#929292'
                               }
@@ -162,7 +162,7 @@ const GraphForHomepage = () => {
                 <div className="entryChartHolder">
                     <div className="vicPie">
                         <h2>Brand of Devices of Link-in.Bio Homepage Viewers</h2>
-                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.deviceBrandNamesCount} colorScale="qualitative" x='deviceBrandName' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.deviceBrandNamesCount} colorScale="qualitative" x='deviceBrandName' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 20, fill: '#929292'
                               }
@@ -170,7 +170,7 @@ const GraphForHomepage = () => {
                     </div>
                     <div className="vicPie">
                         <h2>Name of Device of Link-in.Bio Homepage Viewers</h2>
-                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.deviceOwnNamesCount} colorScale="qualitative" x='deviceOwnName' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={40} data={datasetBravo.deviceOwnNamesCount} colorScale="qualitative" x='deviceOwnName' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 20, fill: '#929292'
                               }
@@ -181,7 +181,7 @@ const GraphForHomepage = () => {
                 <div className="entryChartHolder">
                     <div className="vicPie">
                         <h2>Country Link-in.Bio Homepage Viewers Are From</h2>
-                        <VictoryPie animate={{duration:3000}} padding={45} data={datasetBravo.countries} colorScale="qualitative" x='countryOfOrigin' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={45} data={datasetBravo.countries} colorScale="qualitative" x='countryOfOrigin' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 30, fill: '#929292'
                               }
@@ -189,7 +189,7 @@ const GraphForHomepage = () => {
                     </div>
                     <div className="vicPie">
                         <h2>Region Location Approximation for Link-in.Bio Homepage Viewers</h2>
-                        <VictoryPie animate={{duration:3000}} padding={45} data={datasetBravo.regions} colorScale="qualitative" x='province' y='count' style={{
+                        <VictoryPie animate={{duration:3000}} padding={45} data={datasetBravo.regions} colorScale="qualitative" x='province' y='count' labelComponent={<VictoryTooltip constrainToVisibleArea />} style={{
                             labels: {
                                 fontSize: 20, fill: '#929292'
                               }
