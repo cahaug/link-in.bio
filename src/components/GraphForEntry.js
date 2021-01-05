@@ -117,7 +117,7 @@ const GraphForEntry = () => {
                 <br />
                 <div>
                     <div className="vicLine">
-                        <h2>{selectedDateRange == 0 ? <span>All-Time</span> :<span>Past {selectedDateRange} Days</span>} Link-in.Bio Homepage Viewers:</h2>
+                        <h2>{selectedDateRange == 0 ? <span>All-Time</span> :<span>Past {selectedDateRange} Days</span>} Your Link-in.Bio Views:</h2>
                         <br />
                         <select onChange={onChangeDataDisplay}>
                             <option value={7}>Past 7 Days</option>
