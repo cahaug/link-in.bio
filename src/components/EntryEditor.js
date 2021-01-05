@@ -23,7 +23,7 @@ class EntryEditor extends React.Component {
     }
 
     choicesDict = {
-        'instagram':'https://imagizer.imageshack.com/img922/6017/SGljDs.png',
+        'instagram':'https://imagizer.imageshack.com/img924/5446/9TX8ig.png',
         'youtube':'https://imagizer.imageshack.com/img922/8479/NdKJYa.png',
         'facebook':'https://imagizer.imageshack.com/img922/6720/SE3PxV.png',
         'twitter':'https://imagizer.imageshack.com/img923/4275/7EMI4o.png',

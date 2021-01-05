@@ -233,7 +233,7 @@ const EasyAddDash = () => {
     }
 
     const choicesDict = {
-        'instagram':{label:'Instagram', form:'instagram.com/', img:'https://imagizer.imageshack.com/img922/6017/SGljDs.png', emoji:'📸🌐', type:'text'},
+        'instagram':{label:'Instagram', form:'instagram.com/', img:'https://imagizer.imageshack.com/img924/5446/9TX8ig.png', emoji:'📸🌐', type:'text'},
         'youtube':{label:'YouTube', form:'youtube.com/', img:'https://imagizer.imageshack.com/img922/8479/NdKJYa.png', emoji:'📹📺', type:'text'},
         'facebook':{label:'Facebook', form:'facebook.com/', img:'https://imagizer.imageshack.com/img922/6720/SE3PxV.png', emoji:'🙂📖', type:'text'},
         'twitter':{label:'Twitter', form:'twitter.com/', img:'https://imagizer.imageshack.com/img923/4275/7EMI4o.png', emoji:'🐤🌐', type:'text'},
