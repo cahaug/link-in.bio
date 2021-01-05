@@ -4,6 +4,8 @@ import '../App.css'
 import { VictoryPie, VictoryChart, VictoryAxis, VictoryLine, VictoryTheme } from 'victory'
 // import PopularityTracker from './PopularityTracker'
 import ReactWordcloud from "react-wordcloud";
+import toast from "react-hot-toast"
+
 
 
 
@@ -22,7 +24,29 @@ const GraphForHomepage = () => {
     })
     const [mostPopular, setMostPopular] = useState([])
     const [cloudData, setCloudData] = useState([])
+    const [selectedDateRange, setSelectedDateRange] = useState(7)
+    const [trimmedData, setTrimmedData] = useState([])
 
+
+    const onChangeDataDisplay = event => {
+        event.preventDefault()
+        const ogData = datasetBravo.timeline
+        console.log('trimmeddata',trimmedData)
+        console.log('original', datasetBravo.timeline)
+        if(event.target.value > datasetBravo.timeline.length){
+            toast.error(`There isn't any data that old yet :)`)
+        } else if(event.target.value == 0){
+            console.log('is zero', ogData)
+            setTrimmedData(ogData)        
+            setSelectedDateRange(event.target.value)
+            // console.log('trimmeddata',trimmedData)
+            // console.log('original', datasetBravo.timeline)
+        } else if(event.target.value !== 0 && event.target.value < datasetBravo.timeline.length) {
+            // console.log('other behavior')
+            setSelectedDateRange(event.target.value)
+            setTrimmedData(datasetBravo.timeline.slice(datasetBravo.timeline.length - event.target.value - 1))
+        }
+    }
    
     const getDatasetBravo = () => {
         axios.get('https://link-in-bio.herokuapp.com/s/steakSauce')
@@ -33,6 +57,7 @@ const GraphForHomepage = () => {
             var rst = JSON.parse(wordCloudRaw.replace(/"province"/g, '"text"').replace(/"count"/g, '"value"'))
             console.log('rst', rst)
             setCloudData(rst)
+            setTrimmedData(res.data.timeline.slice(res.data.timeline.length - 8))
             console.log('top10', res.data.mostPopular)
             const testData = res.data.mostPopular
             testData.sort((a, b) => (parseInt(a.count,10) < parseInt(b.count,10)) ? 1 : -1)
@@ -52,6 +77,7 @@ const GraphForHomepage = () => {
             console.log('error in get dsb', err)
         })
     }
+
 
     useEffect(()=>{
         if(datasetBravo.browserNameCounts.length === 0){
@@ -76,9 +102,17 @@ const GraphForHomepage = () => {
                 <p>Here's a sample of the information we provide all our users about their own lists, only it's the live data for viewers of this very page!</p><br/>
                 <div>
                     <div className="vicLine">
-                        <h2>Daily Link-in.Bio Homepage Viewers:</h2>
+                        <h2>{selectedDateRange == 0 ? <span>All-Time</span> :<span>Past {selectedDateRange} Days</span>} Link-in.Bio Homepage Viewers:</h2>
+                        <br />
+                        <select onChange={onChangeDataDisplay}>
+                            <option value={7}>Past 7 Days</option>
+                            <option value={14}>Past 14 Days</option>
+                            <option value={30}>Past 30 Days</option>
+                            <option value={0}>All Time</option>
+                        </select>
+                        <br />
                         <VictoryChart theme={VictoryTheme.material} padding={{bottom:75, left:50,right:50}}>
-                            <VictoryLine data={datasetBravo.timeline} style={{
+                            <VictoryLine data={trimmedData} style={{
                                 data: { stroke: "#c43a31" ,}, 
                                 tickLabels:{angle:45,}, 
                                 parent: { border: "1px solid #ccc"}}} scale={{x:"time", y:"linear"}} />
