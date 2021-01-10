@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import '../App.css'
+import toast from 'react-hot-toast'
 
 const ProfilePictureChanger = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -20,12 +21,14 @@ const ProfilePictureChanger = () => {
             console.log('profPicChangeRes', res)
             setProfilePictureURL('')
             setIsLoading(false)
-            alert('Profile Picture Updated Successfully')
+            // alert('Profile Picture Updated Successfully')
+            toast.success('Profile Picture Updated Successfully')
         })
         .catch(err => {
             console.log('change profilepicURL err',err)
             setIsLoading(false)
-            alert('Error in Changing Profile Picture URL')
+            // alert('Error in Changing Profile Picture URL')
+            toast.error('Error in Changing Profile Picture URL')
         })
     }
     const deleteProfilePicture = (event) => {
@@ -39,12 +42,14 @@ const ProfilePictureChanger = () => {
         .then(res => {
             console.log('swapped prof to anon & deleted old res', res.data)
             setIsLoading(false)
-            alert('Deleted Profile Picture Successfully')
+            // alert('Deleted Profile Picture Successfully')
+            toast.success('Deleted Profile Picture Successfully')
         })
         .catch(err => {
             console.log('err deleting profile picture', err)
             setIsLoading(false)
-            alert('Unsuccessful Deleting Profile Picture')
+            // alert('Unsuccessful Deleting Profile Picture')
+            toast.error('Unsuccessful Deleting Profile Picture')
         })
     }
 

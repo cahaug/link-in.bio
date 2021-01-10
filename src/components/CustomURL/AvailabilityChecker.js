@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 
 const AvailabilityChecker = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -70,14 +71,17 @@ const AvailabilityChecker = () => {
                     setIsAvailable(true)
                     setIsLoading(false)
                     // alert('Available')
+                    toast.success('Available')
                 } else {
                     setIsNotAvailable(true)
                     setIsLoading(false)
+                    toast.error('Already Taken')
                     // alert('Already Taken')
                 }
             })
         }else {
-            alert(`There are illegal characters in your input, please remove them and try again`)
+            // alert(`There are illegal characters in your input, please remove them and try again`)
+            toast.error(`There are illegal characters in your input, please remove them and try again`)
             // return false
         }
     }
@@ -93,15 +97,18 @@ const AvailabilityChecker = () => {
             console.log('submit change res', res.data)
             if(res.data.resultant == 1){
                 console.log('success message',res.data.message)
-                alert(`Custom URL Updated Successfully to ${customURL}`)
+                // alert(`Custom URL Updated Successfully to ${customURL}`)
+                toast.success(`Custom URL Updated Successfully to ${customURL}`)
             } else {
                 console.log('partial failure')
-                alert('Check Console')
+                // alert('Check Console')
+                toast.error('Check Console')
             }
         })
         .catch(err => {
             console.log('error submit change custom', err)
-            alert('There was an issue updating your CustomURL')
+            // alert('There was an issue updating your CustomURL')
+            toast.error('There was an issue updating your CustomURL')
         })
 
     }
@@ -123,6 +130,8 @@ const AvailabilityChecker = () => {
                             <option value="https://link-in-description.co/">link-in-description.co/</option>
                             <option value="https://the-link.is/">the-link.is/</option>
                             <option value="https://this-links.to/">this-links.to/</option>
+                            <option value="https://pstd.at/">pstd.at/</option>
+                            <option value="https://7zz.ch/">7zz.ch/</option>
                             <option value="https://bio-link.me/">bio-link.me/</option>
                             <option value="https://for-my.art/">for-my.art/</option>
                             <option value="https://for-my.click/">for-my.click/</option>

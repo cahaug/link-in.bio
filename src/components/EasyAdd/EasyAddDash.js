@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 
 // to add new social media option add to choicesDict and then add option in select
 
@@ -95,7 +96,8 @@ const EasyAddDash = () => {
         } else if(choice === 'applemusic' && hasNoIllegalCharsAPL(didtrimUsername) === true){
             return {legal:true, trimmed:didtrimUsername}
         } else {
-            alert(`There are illegal characters in your input, please remove them and try again`)
+            // alert(`There are illegal characters in your input, please remove them and try again`)
+            toast.error(`There are illegal characters in your input, please remove them and try again`)
             return false
         }
     }
@@ -118,6 +120,15 @@ const EasyAddDash = () => {
             if(choice === 'tumblr'){
                 console.log('chose tumblr')
                 referencingURL = `https://${username}.tumblr.com/`
+            }
+            if(choice === 'bandsintown'){
+                console.log('chose bandsintown')
+                description = `Link to my ${choicesDict[`${choice}`]['label']} Artist Page ${choicesDict[`${choice}`]['emoji']} `
+            }
+            if(choice === 'zelle'){
+                console.log('chose zelle')
+                referencingURL = `https://www.zellepay.com/`
+                description = `To support me on ${choicesDict[`${choice}`]['label']} ${choicesDict[`${choice}`]['emoji']}, Add me at ${username} `
             }
             if(choice === 'spotifyartist'){
                 console.log('chose spotifyartist')
@@ -206,12 +217,14 @@ const EasyAddDash = () => {
                 const statForNewEntry = await axios.get(`https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`)
                 console.log('statForNewEntry',statForNewEntry)
                 setIsLoading(false)
-                alert(`Link To ${choicesDict[`${choice}`]['label']} Successfully Added to Account`)
+                // alert(`Link To ${choicesDict[`${choice}`]['label']} Successfully Added to Account`)
+                toast.success(`Link To ${choicesDict[`${choice}`]['label']} Successfully Added to Account`)
                 window.location.reload()
             })
             .catch((err) => {
                 console.log('error easyadd', err)
-                alert('Error EasyAdd Account')
+                // alert('Error EasyAdd Account')
+                toast.error('Error EasyAdding Account')
             })
         } else {
             setIsLoading(false)
@@ -220,7 +233,7 @@ const EasyAddDash = () => {
     }
 
     const choicesDict = {
-        'instagram':{label:'Instagram', form:'instagram.com/', img:'https://imagizer.imageshack.com/img922/6017/SGljDs.png', emoji:'📸🌐', type:'text'},
+        'instagram':{label:'Instagram', form:'instagram.com/', img:'https://imagizer.imageshack.com/img924/5446/9TX8ig.png', emoji:'📸🌐', type:'text'},
         'youtube':{label:'YouTube', form:'youtube.com/', img:'https://imagizer.imageshack.com/img922/8479/NdKJYa.png', emoji:'📹📺', type:'text'},
         'facebook':{label:'Facebook', form:'facebook.com/', img:'https://imagizer.imageshack.com/img922/6720/SE3PxV.png', emoji:'🙂📖', type:'text'},
         'twitter':{label:'Twitter', form:'twitter.com/', img:'https://imagizer.imageshack.com/img923/4275/7EMI4o.png', emoji:'🐤🌐', type:'text'},
@@ -276,11 +289,18 @@ const EasyAddDash = () => {
         'kik':{label:'Kik', form:'Enter Your Kik Username Here: ', img:'https://imagizer.imageshack.com/img922/5820/HgFrU4.png', emoji:'🔒✉️', type:'text'},
         'whatsapp':{label:'WhatsApp', form:'Enter Your WhatsApp Number Here: ', img:'https://imagizer.imageshack.com/img924/4369/v8LUWb.png', emoji:'📱☎️', type:'tel'},
         'tidal':{label:'TIDAL', form:'tidal.com/', img:'https://imagizer.imageshack.com/img922/4056/eJz3yR.jpg', emoji:'🔉📹', type:'text'},
-        'parler':{label:'Parler', form:'parler.com/profile/', img:'https://imagizer.imageshack.com/img923/7476/LdQcTG.jpg', emoji:'🆓🗨️', type:'text'}
+        'parler':{label:'Parler', form:'parler.com/profile/', img:'https://imagizer.imageshack.com/img923/7476/LdQcTG.jpg', emoji:'🆓🗨️', type:'text'},
+        'bandsintown':{label:'Bandsintown', form:'bandsintown.com/a/', img:'https://imagizer.imageshack.com/img922/733/La7FSI.png', emoji:'🗺️🔉', type:'text'},
+        'mixcloud':{label:'MixCloud', form:'mixcloud.com/', img:'https://imagizer.imageshack.com/img923/5218/GmKv69.png', emoji:'🌐🔉', type:'text'},
+        'zelle':{label:'Zelle', form:'Enter Your Phone Number or Email (Zelle Username): ', img:'https://imagizer.imageshack.com/img924/2998/gYOvQh.jpg', emoji:'💸🌐', type:'text'},
+        'toptal':{label:'Toptal', form:'toptal.com/resume/', img:'https://imagizer.imageshack.com/img922/9965/LFSZpa.png', emoji:'🔨🖨️', type:'text'},
+        'upwork':{label:'Upwork', form:'upwork.com/o/profiles/users/', img:'https://imagizer.imageshack.com/img922/4/Rg1Irf.png', emoji:'🔨🖨️', type:'text'},
+        'odysee':{label:'Odysee', form:'odysee.com/@', img:'https://imagizer.imageshack.com/img923/6384/JLvydT.png', emoji:'📹🌐', type:'text'}
     }
 
     return (
         <div>
+
             <hr />
             {isLoading? <p>Loading...</p> :
             <div>
@@ -293,6 +313,7 @@ const EasyAddDash = () => {
                     <option value="amazonmusicpodcast">Amazon Music - Podcast</option>
                     <option value="applemusic">Apple Music</option>
                     <option value="bandcamp">Bandcamp</option>
+                    <option value="bandsintown">Bandsintown</option>
                     <option value="behance">Behance</option>
                     <option value="cashapp">Cash App</option>
                     <option value="deezerartist">Deezer - Artist</option>
@@ -315,8 +336,10 @@ const EasyAddDash = () => {
                     <option value="kickstarter">Kickstarter</option>
                     <option value="kik">Kik Messenger</option>
                     <option value="linkedin">LinkedIn</option>
+                    <option value="mixcloud">MixCloud</option>
                     <option value="nintendo">Nintendo Friend Code</option>
                     <option value="nebula">Nebula</option>
+                    <option value="odysee">Odysee</option>
                     <option value="onlyfans">OnlyFans</option>
                     <option value="parler">Parler</option>
                     <option value="patreon">Patreon</option>
@@ -337,14 +360,17 @@ const EasyAddDash = () => {
                     <option value="telegram">Telegram</option>
                     <option value="tidal">TIDAL</option>
                     <option value="tiktok">TikTok</option>
+                    <option value="toptal">Toptal</option>
                     <option value="tumblr">Tumblr</option>
                     <option value="twitch">Twitch</option>
                     <option value="twitter">Twitter</option>
+                    <option value="upwork">Upwork</option>
                     <option value="venmo">Venmo</option>
                     <option value="vk">VK</option>
                     <option value="whatsapp">WhatsApp</option>
                     <option value="xbox">Xbox Live Gamertag</option>
                     <option value="youtube">YouTube</option>
+                    <option value="zelle">Zelle</option>
                 </select>
                 <br />
                 {choice == '' ? <p>Choose an Account Type To Add</p> : <form onSubmit={handleFormSubmit}>

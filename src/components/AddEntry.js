@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { addEntry } from '../actions/index'
 import { withRouter, Link } from 'react-router-dom'
 import loadingGif from '../files/loading.gif'
+import toast from 'react-hot-toast'
 
 
 class AddEntry extends React.Component {
@@ -82,18 +83,20 @@ class AddEntry extends React.Component {
                 console.log('imgurl set to null succ', imgURL)
                 this.setState({ userId: sessionStorage.getItem('userId'), referencingURL:'', description: '', linkTitle: '', imgURL:'', isLoading:true})
                 await this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token, shackImageId)
-                this.props.history.push('./dashboard2')
-                window.location.reload(false)
+                // this.props.history.push('./dashboard2')
+                // window.location.reload(false)
+                this.setState({isLoading:false})
             } else if (noImg === false && imgURL.length > 10){
                 this.setState({ userId: sessionStorage.getItem('userId'), referencingURL:'', description: '', linkTitle: '', imgURL:'', isLoading:true})
                 await this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token, shackImageId)
-                this.props.history.push('./dashboard2')
-                window.location.reload(false)
+                // this.props.history.push('../dashboard2')
+                // window.location.reload(false)
+                this.setState({isLoading:false})
             } else {
                 console.log('image error')
             }
         } catch (err){
-            alert(err.message)
+            toast.error(err.message)
         }
        
     }
@@ -119,6 +122,7 @@ class AddEntry extends React.Component {
                         <p className="addEntryText">Or in the form https://.../...bmp </p>
                         <p className="addEntryText">(starting with http or https)</p>
                         <p className="addEntryText">(and ending in the file extension of the linked image)</p>
+                        <p className="addEntryText">Put a single space in the description for no description</p>
                         <input type="text" name="referencingURL" maxLength="498" value={referencingURL} placeholder="Link URL" onChange={this.handleChangeURL} required /><br />
                         <input type="text" name="linkTitle" maxLength="498" value={linkTitle} placeholder="Link Title" onChange={this.handleChangeTitle} required /><br />
                         <input type="text" className="editLinkDescription" maxLength="498" name="description" value={description} placeholder="Link Description" onChange={this.handleChangeDescription} required /><br />

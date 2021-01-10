@@ -3,6 +3,7 @@ import axios from "axios"
 import loadingGif from '../files/loading.gif'
 import '../App.css';
 import { SketchPicker } from 'react-color'
+import toast from "react-hot-toast";
 
 const TextColorPicker = () => {
     const [color, setColor] = useState()
@@ -21,11 +22,13 @@ const TextColorPicker = () => {
         return axios.put('https://link-in-bio.herokuapp.com/l/setTcolor', {listId:listId, userId:userId, txtColor:txtColor},  { headers: {authorization: token} })
         .then(res => {
             console.log('txtChangeres', res)
-            alert('Text Color Updated Successfully')
+            // alert('Text Color Updated Successfully')
+            toast.success('Text Color Updated Successfully')
         })
         .catch(err => {
             console.log('submit catcherror', err)
-            alert('Error in Changing Text Color')
+            // alert('Error in Changing Text Color')
+            toast.error('Error in Changing Text Color')
         })
 
     }

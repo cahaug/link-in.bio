@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 // import './App.css';
 import { Route, Switch } from 'react-router-dom'
 import PrivateRoute from './components/PrivateRoute'
@@ -11,7 +11,6 @@ import FailedLogin from './components/FailedLogin'
 import AddEntry from './components/AddEntry'
 import EntryEditor from './components/EntryEditor'
 // import ListDisplay from './components/ListDisplay'
-import ListDisplayHooks from './components/ListDisplayHooks'
 import RegisterHooks from './components/RegisterHooks'
 import ResetPassword from './components/ResetPassword'
 import ResetPWCode from './components/ResetPWCode'
@@ -19,6 +18,14 @@ import ResetPWCode from './components/ResetPWCode'
 import Dashboard2 from './components/Dashboard2'
 import SettingsPanel from './components/SettingsPanel';
 import ExperimentalListDisplay from './components/ExperimentalListDisplay';
+import { Toaster } from 'react-hot-toast';
+import FinishRegistration from './components/FinishRegistration';
+
+// import ListDisplayHooks from './components/ListDisplayHooks'
+//code split listdiplayhooks into own chunk
+const ListDisplayHooks = lazy(() => import('./components/ListDisplayHooks'))
+
+const renderLoader = () => <p>Loading...</p>
 
 // import PaymentSuccess from './components/PaymentSuccess'
 // import PaymentPage from './components/PaymentPage'
@@ -35,6 +42,7 @@ class App extends React.Component {
   render(){
     return (
       <div className="App">
+        <Toaster position="top-center" />
         <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/robots.txt" onEnter={() =>{window.location.reload()}} />
@@ -45,6 +53,7 @@ class App extends React.Component {
         <Route exact path="/resetPassword" component={ResetPassword} />
         <Route exact path="/resetPWCode" component={ResetPWCode} />
         <Route exact path="/experimentalSh1t" component={ExperimentalListDisplay} />
+        <Route exact path="/finishMyRegistration" component={FinishRegistration} />
         {/* <Route exact path="/instaPicker" component={InstagramPicker} /> */}
         {/* <Route exact path="/paymentPage" component={PaymentPage} /> */}
         {/* <Route exact path="/listdisplay" component={ListDisplay}/> */}
@@ -57,7 +66,7 @@ class App extends React.Component {
         <PrivateRoute path={`/editEntry/:entryId`} component={props => <EntryEditor {...props} />} />
         {/* <PrivateRoute path={`/editEntry/:entryId`} render={({match}) => <EntryEditor match={match} />} /> */}
         {/* <Route path="/:id" render={props => <ListDisplay {...props}/>} /> */}
-        <Route path="/:id" render={({match}) => <ListDisplayHooks match={match}/>} />
+        <Suspense fallback={renderLoader()}><Route path="/:id" render={({match}) => <ListDisplayHooks match={match}/>} /></Suspense>
         {/* <PrivateRoute exact path="/editentry" component={EditEntry} /> */}
         </Switch>
       </div>

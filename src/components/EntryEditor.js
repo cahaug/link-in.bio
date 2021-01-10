@@ -3,6 +3,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { editEntry } from '../actions/index'
 import { Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 
 class EntryEditor extends React.Component {
@@ -22,7 +23,7 @@ class EntryEditor extends React.Component {
     }
 
     choicesDict = {
-        'instagram':'https://imagizer.imageshack.com/img922/6017/SGljDs.png',
+        'instagram':'https://imagizer.imageshack.com/img924/5446/9TX8ig.png',
         'youtube':'https://imagizer.imageshack.com/img922/8479/NdKJYa.png',
         'facebook':'https://imagizer.imageshack.com/img922/6720/SE3PxV.png',
         'twitter':'https://imagizer.imageshack.com/img923/4275/7EMI4o.png',
@@ -71,7 +72,13 @@ class EntryEditor extends React.Component {
         'kik':'https://imagizer.imageshack.com/img922/5820/HgFrU4.png',
         'whatsapp':'https://imagizer.imageshack.com/img924/4369/v8LUWb.png',
         'tidal':'https://imagizer.imageshack.com/img922/4056/eJz3yR.jpg',
-        'parler':'https://imagizer.imageshack.com/img923/7476/LdQcTG.jpg'
+        'parler':'https://imagizer.imageshack.com/img923/7476/LdQcTG.jpg',
+        'bandsintown':'https://imagizer.imageshack.com/img922/733/La7FSI.png',
+        'mixcloud':'https://imagizer.imageshack.com/img923/5218/GmKv69.png',
+        'zelle':'https://imagizer.imageshack.com/img924/2998/gYOvQh.jpg',
+        'toptal':'https://imagizer.imageshack.com/img922/9965/LFSZpa.png',
+        'upwork':'https://imagizer.imageshack.com/img922/4/Rg1Irf.png',
+        'odysee':'https://imagizer.imageshack.com/img923/6384/JLvydT.png'
     }
 
     handleChange = (evt) => {
@@ -91,9 +98,9 @@ class EntryEditor extends React.Component {
         if (deletedHostedImage.data.message==='Successfully Deleted ShackImage'){
             this.setState({imgURL2:''})
             this.setState({shackImageId:null})
-            alert('Photo Deleted Forever.')
+            toast.success('Photo Deleted Forever.')
         } else {
-            alert('There Was An Issue Deleting Your Photo')
+            toast.error('There Was An Issue Deleting Your Photo')
         }
     }
 
@@ -162,7 +169,7 @@ class EntryEditor extends React.Component {
                     {protectedInput === false ? <div><p>Link URL:</p><input type="url" name="referencingURL" value={referencingURL} placeholder="Link URL"  maxLength="498" onChange={this.handleChange} required /><br /></div>:null}
                     <p>Link Title:</p>
                     <input type="text" name="linkTitle" value={linkTitle} placeholder="Link Title"  maxLength="498" onChange={this.handleChange} required /><br />
-                    <p>Link Description:</p>
+                    <p>Link Description (put a single space for no description):</p>
                     <input className="editLinkDescription" type="text" name="description" value={description} placeholder="Link Description" maxLength="498" onChange={this.handleChange} required /><br />
                     {protectedInput === false ? <div><p>Link Image URL:</p>{shackImageId === null?<div><input type="text" name="imgURL2" value={imgURL2} placeholder="Link Image URL"  maxLength="498" onChange={this.handleChange} /><button onClick={this.noImg}>Click for No Image</button></div>:<div><p>Link-in.Bio administrates this photo for You.</p><br /><img id="imgPreview" src={imgURL2} alt={imgURL2} /><br /><button onClick={this.deleteHostedImage} type="button">Delete This Image</button></div>}<br /></div>:null}
                     <button type="submit" className="abutton2">Submit Changes to Link</button>

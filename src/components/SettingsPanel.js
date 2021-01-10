@@ -15,7 +15,7 @@ import ChangeDisplayName from '../components/ChangeDisplayName'
 import SettingsChangePassword from "./SettingsChangePassword"
 import ProfPicUpload from './ProfPicUpload'
 import ListBackgroundChanger from './ListBackgroundChanger'
-
+import UpdateCancelURLs from './UpdateCancelURLs'
 
 
 // thank you github.com/casesandberg for the lovely react color pickers
@@ -32,6 +32,7 @@ function SettingsPanel(){
     const [changingPassword, setChangingPassword] = useState(false)
     const [uploadingPhoto, setUploadingPhoto] = useState(false)
     const [uploadingBackground, setUploadingBackground] = useState(false)
+    const [showingURLs, setShowingURLs] = useState(false)
     
     const textColorDrawerToggle = () => {
         const textColorDrawer = document.getElementsByClassName('textColorPickerDiv')
@@ -41,6 +42,17 @@ function SettingsPanel(){
         } else {
             textColorDrawer[0].style.maxHeight = textColorDrawer[0].scrollHeight + "px";
             setModifyingTextColor(true)
+        }
+    }
+
+    const showingURLDrawerToggle = () => {
+        const showingURLdrawer = document.getElementsByClassName('showingURLDiv')
+        if (showingURLdrawer[0].style.maxHeight){
+            showingURLdrawer[0].style.maxHeight = null;
+            setShowingURLs(false)
+        } else {
+            showingURLdrawer[0].style.maxHeight = showingURLdrawer[0].scrollHeight + "px";
+            setShowingURLs(true)
         }
     }
 
@@ -196,9 +208,14 @@ function SettingsPanel(){
                 <ProfPicUpload />
             </div>
             <br/>
-            {uploadingBackground ? <span onClick={uploadingBackgroundDrawerToggle}>Upload a List Background ▲</span>:<span onClick={uploadingBackgroundDrawerToggle}>Upload a List Background ▼</span>}
+            {uploadingBackground ? <span onClick={uploadingBackgroundDrawerToggle}>Upload/Delete a List Background ▲</span>:<span onClick={uploadingBackgroundDrawerToggle}>Upload/Delete a List Background ▼</span>}
             <div className="bgPicUploadDiv">
                 <ListBackgroundChanger />
+            </div>
+            <br/>
+            {showingURLs ? <span onClick={showingURLDrawerToggle}>Update Payment/Cancel Account ▲</span>:<span onClick={showingURLDrawerToggle}>Update Payment/Cancel Account ▼</span>}
+            <div className="showingURLDiv">
+                <UpdateCancelURLs />
             </div>
             <br/>
             <br/>

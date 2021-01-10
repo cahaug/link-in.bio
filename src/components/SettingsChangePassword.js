@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import '../App.css'
+import toast from 'react-hot-toast'
 
 const SettingsChangePassword = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -90,19 +91,23 @@ const SettingsChangePassword = () => {
                         noNumber:false
                     })
                     setIsLoading(false)
-                    alert('Password Changed Successfully')
+                    // alert('Password Changed Successfully')
+                    toast.success('Password Changed Successfully')
                 } else {
                     setIsLoading(false)
-                    alert('Error Changing Password ')
+                    // alert('Error Changing Password ')
+                    toast.error('Error Changing Password ')
                 }
             } else {
                 // console.log('validationRes returned false', errors)
                 setIsLoading(false)
-                alert('Your new password does not fit the password requirements.')
+                // alert('Your new password does not fit the password requirements.')
+                toast.error('Your new password does not fit the password requirements.')
             }
         } catch(err){
             // console.log('err',err)
-            alert('There was a problem changing your password.')
+            // alert('There was a problem changing your password.')
+            toast.error('There was a problem changing your password.')
         }
 
     }

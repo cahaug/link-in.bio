@@ -3,6 +3,7 @@ import axios from "axios"
 import loadingGif from '../files/loading.gif'
 import '../App.css';
 import { SketchPicker } from 'react-color'
+import toast from "react-hot-toast";
 
 const BackgroundColorPicker = () => {
   
@@ -22,11 +23,11 @@ const BackgroundColorPicker = () => {
     return axios.put('https://link-in-bio.herokuapp.com/l/setBg', {listId:listId, userId:userId, backColor:backgroundColor},  { headers: {authorization: token} })
     .then(res => {
         console.log('bgChangeres', res)
-        alert('Background Color Updated Successfully')
+        toast.success('Background Color Updated Successfully')
     })
     .catch(err => {
         console.log('submit catcherror', err)
-        alert('Error in Changing Background Color')
+        toast.error('Error in Changing Background Color')
     })
 
 }

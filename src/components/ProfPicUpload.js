@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import '../App.css'
+import toast from 'react-hot-toast'
 
 const ProfPicUpload = () => {
     const [photoString, setPhotoString] = useState('')
@@ -21,15 +22,18 @@ const ProfPicUpload = () => {
             console.log('adding to profiel',addingToProfile)
             if(addingToProfile.data.message === 'Successfully Uploaded Profile Picture' || addingToProfile.data.message === 'Successfully Uploaded New Profile Picture No Delete'){
                 setIsLoading(false)
-                alert('Profile Picture Updated Successfully')
+                // alert('Profile Picture Updated Successfully')
+                toast.success('Profile Picture Updated Successfully')
             }else{
-                alert('Sorry, Something went Wrong')
+                // alert('Sorry, Something went Wrong')
+                toast.error('Sorry, Something went Wrong')
             }
         // }
         
         } catch(err){
             console.log(err)
-            alert('error uploading profile picture')
+            // alert('error uploading profile picture')
+            toast.error('error uploading profile picture')
             setIsLoading(false)
         }
     }

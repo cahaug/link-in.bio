@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import '../App.css'
+import toast from 'react-hot-toast'
 
 const ListBackgroundChanger = () => {
     const [photoString, setPhotoString] = useState('')
@@ -17,12 +18,13 @@ const ListBackgroundChanger = () => {
         .then(res => {
             console.log('swapped bg to null & deleted old res', res.data)
             setIsLoading(false)
-            alert('Deleted Background Image Successfully')
+            // alert('Deleted Background Image Successfully')
+            toast.success('Deleted Background Image Successfully')
         })
         .catch(err => {
             console.log('err background image', err)
             setIsLoading(false)
-            alert('Unsuccessful Deleting Background Image')
+            toast.error('Unsuccessful Deleting Background Image')
         })
     }
 
@@ -39,15 +41,18 @@ const ListBackgroundChanger = () => {
             console.log('adding to profiel',addingToProfile)
             if(addingToProfile.data.message === 'Successfully Uploaded Background Image' ){
                 setIsLoading(false)
-                alert('List Background Image Updated Successfully')
+                // alert('List Background Image Updated Successfully')
+                toast.success('List Background Image Updated Successfully')
             }else{
-                alert('Sorry, Something went Wrong')
+                // alert('Sorry, Something went Wrong')
+                toast.error('Sorry, Something went Wrong')
+
             }
         // }
         
         } catch(err){
             console.log(err)
-            alert('error uploading profile picture')
+            toast.error('error uploading profile picture')
             setIsLoading(false)
         }
     }
@@ -108,7 +113,9 @@ const ListBackgroundChanger = () => {
             <h2>This copy of that photo will be gone forever.</h2>
             <br />
             <button type="abutton" onClick={deleteBackgroundImage}>Delete Background Image</button>
-
+            <br /><br />
+            <hr />
+            <br />
         </div>
     )
 
