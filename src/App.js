@@ -11,7 +11,6 @@ import FailedLogin from './components/FailedLogin'
 import AddEntry from './components/AddEntry'
 import EntryEditor from './components/EntryEditor'
 // import ListDisplay from './components/ListDisplay'
-
 import RegisterHooks from './components/RegisterHooks'
 import ResetPassword from './components/ResetPassword'
 import ResetPWCode from './components/ResetPWCode'
@@ -20,6 +19,7 @@ import Dashboard2 from './components/Dashboard2'
 import SettingsPanel from './components/SettingsPanel';
 import ExperimentalListDisplay from './components/ExperimentalListDisplay';
 import { Toaster } from 'react-hot-toast';
+import FinishRegistration from './components/FinishRegistration';
 
 // import ListDisplayHooks from './components/ListDisplayHooks'
 //code split listdiplayhooks into own chunk
@@ -53,6 +53,7 @@ class App extends React.Component {
         <Route exact path="/resetPassword" component={ResetPassword} />
         <Route exact path="/resetPWCode" component={ResetPWCode} />
         <Route exact path="/experimentalSh1t" component={ExperimentalListDisplay} />
+        <Route exact path="/finishMyRegistration" component={FinishRegistration} />
         {/* <Route exact path="/instaPicker" component={InstagramPicker} /> */}
         {/* <Route exact path="/paymentPage" component={PaymentPage} /> */}
         {/* <Route exact path="/listdisplay" component={ListDisplay}/> */}
