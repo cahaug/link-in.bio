@@ -11,6 +11,7 @@ const FinishRegistration = () => {
     const [email, setEmail] = useState(parameteres.em || '')
     const [password, setPassword] = useState('')
     const [errors, setErrors] = useState('')
+    const [succesful, setSuccessful] = useState(false)
     const reRef = useRef()
 
     const handleChangeEmail = (event) => {
@@ -75,6 +76,7 @@ const FinishRegistration = () => {
             .then(res => {
                 console.log('setPasswordResData', res.data)
                 setPassword('')
+                setSuccessful(true)
                 setIsLoading(false)
                 toast.success('Password Successfully Set.')
                 toast.success('You can now log into your Account from the homepage.')
@@ -98,6 +100,7 @@ const FinishRegistration = () => {
                     <br />{errors.length>5?<p>{errors}</p>:null}<br />
                     <button type="submit">Set Password</button>
                 </form>
+                {succesful === true ? <a href='https://link-in.bio/login'>Go To Login</a>:null}
                 <br />
             </div>}</div>
         )
