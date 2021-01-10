@@ -71,7 +71,7 @@ const FinishRegistration = () => {
             reRef.current.reset()
             console.log('token', token)
             setIsLoading(true)
-            return axios.post('https://link-in-bio.com/numbers/finish', {password:password, tooken:tooken, email:email, token:token})
+            return axios.post('https://link-in-bio.herokuapp.com/numbers/finish', {password:password, tooken:tooken, email:email, token:token})
             .then(res => {
                 console.log('setPasswordResData', res.data)
                 setPassword('')
