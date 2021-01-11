@@ -83,17 +83,15 @@ function Dashboard2 () {
 
     useEffect(() => {
         const email = sessionStorage.getItem('email')
-        const firstName = sessionStorage.getItem('firstName')
-        const userId = sessionStorage.getItem('userId')
-        const listId = sessionStorage.getItem('listId')
-        const customURL = sessionStorage.getItem('customURL')
+        // const firstName = sessionStorage.getItem('firstName')
+        // const userId = sessionStorage.getItem('userId')
+        // const listId = sessionStorage.getItem('listId')
+        // const customURL = sessionStorage.getItem('customURL')
+        const user_hash = sessionStorage.getItem('user_hash')
         window.Intercom("boot", {
             app_id: "ya321a09",
             email: email,
-            firstName: firstName,
-            userId: userId,
-            listId: listId,
-            customURL: customURL,
+            user_hash:user_hash
         });
         const token = sessionStorage.getItem('token')
         const useThisURL = `https://link-in-bio.herokuapp.com/s/listViews/${sessionStorage.getItem('listId')}`

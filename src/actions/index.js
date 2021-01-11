@@ -95,6 +95,7 @@ export function login(email, password, token){
             // localStorage.setItem('userId', res.data.userId)
             // localStorage.setItem('email', res.data.email)
             // localStorage.setItem('firstName', res.data.firstName)
+            sessionStorage.setItem('user_hash', res.data.userHash)
             sessionStorage.setItem('token', res.data.token)
             sessionStorage.setItem('userId', res.data.userId)
             sessionStorage.setItem('email', res.data.email)
