@@ -28,9 +28,11 @@ function AddEntryWithFile(){
             formData.append('myImage', file)
             const addingToProfile = await axios.post(`https://www.link-in-bio.app/e/uploadPhoto/${userId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}}, {onUploadProgress:
             (progressEvent) => {
+                console.log('progress event', progressEvent)
                 const totalLength = progressEvent.lengthComputable ? progressEvent.total : progressEvent.target.getResponseHeader('content-length') || progressEvent.target.getResponseHeader('x-decompressed-content-length');
                 console.log("onUploadProgress", totalLength);
                 if (totalLength !== null) {
+                    console.log('setUploadProgress', progressEvent)
                     setUploadProgress(Math.round( (progressEvent.loaded * 100) / totalLength ));
                 }
             }})
@@ -99,6 +101,11 @@ function AddEntryWithFile(){
     if(isLoading === true){
         return (<div>
             <img src={loadingGif} alt="Loading" />
+            <br />
+            {uploadProgress!==0 && imagePreviewURL ? <p>Upload Progress: {uploadProgress}% </p>:null}
+            <br />
+            {uploadProgress===1? <p>Processing Image, Please Wait for Confirmation</p>:null}
+            <br />
         </div>)
     } else {
         return (<div>
@@ -133,10 +140,6 @@ function AddEntryWithFile(){
             <div>
                 {imagePreviewURL?<img id="imgPreview" src={imagePreviewURL} />:<div>Please Select an Image to Upload</div>}
             </div>
-            <br />
-            {uploadProgress!==0 && imagePreviewURL ? <p>Upload Progress: {uploadProgress}% </p>:null}
-            <br />
-            {uploadProgress===1? <p>Processing Image, Please Wait for Confirmation</p>:null}
             <br />
             <hr />
         </div>)
