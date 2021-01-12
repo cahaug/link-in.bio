@@ -11,6 +11,12 @@ const LandingPage = () => {
     const [isShowingStats, setIsShowingStats] = useState(false)
     const [loggedViewNoIP, setLoggedViewNoIP] = useState(false)
     
+    const launchIntercom = () => {
+        window.Intercom("boot", {
+            app_id: "ya321a09"
+        });
+    }
+
     const statsDrawerToggle = () => {
         const statDrawer = document.getElementsByClassName('statsDisplayDiv')
         if(statDrawer[0].style.maxHeight){
@@ -29,9 +35,6 @@ const LandingPage = () => {
             .then(res => {
                 console.log(res.data.message)
                 setLoggedViewNoIP(true)
-                window.Intercom("boot", {
-                    app_id: "ya321a09"
-                });
             })
             .catch(err => {
                 console.log('error', err)
@@ -74,6 +77,8 @@ const LandingPage = () => {
                     </div>
                 </Link>
             </div>
+            <br />
+            <button className="abutton" onClick={launchIntercom}>Click for Customer Service</button>
             <br />
             <h2>Link-in.Bio Ltd purchases Carbon Offsets to Stay Carbon Neutral. 🍀🍃</h2>
             <br />
