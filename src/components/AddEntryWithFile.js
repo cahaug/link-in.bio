@@ -15,6 +15,7 @@ function AddEntryWithFile(){
         linkTitle:'',
         
     })
+    const [uploadProgress, setUploadProgress] = useState(0)
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -25,7 +26,14 @@ function AddEntryWithFile(){
         try{
             const formData = new FormData()
             formData.append('myImage', file)
-            const addingToProfile = await axios.post(`https://www.link-in-bio.app/e/uploadPhoto/${userId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}})
+            const addingToProfile = await axios.post(`https://www.link-in-bio.app/e/uploadPhoto/${userId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}}, {onUploadProgress:
+            (progressEvent) => {
+                const totalLength = progressEvent.lengthComputable ? progressEvent.total : progressEvent.target.getResponseHeader('content-length') || progressEvent.target.getResponseHeader('x-decompressed-content-length');
+                console.log("onUploadProgress", totalLength);
+                if (totalLength !== null) {
+                    setUploadProgress(Math.round( (progressEvent.loaded * 100) / totalLength ));
+                }
+            }})
             console.log('addingtoProfile', addingToProfile)
             if(addingToProfile.data.message === 'Successfully Uploaded Picture'){
                 const imgURL = addingToProfile.data.pictureURL
@@ -38,6 +46,7 @@ function AddEntryWithFile(){
                     if(addingStatView.data){
                         setBigData({referencingURL:'',description:'',linkTitle:''})
                         setIsLoading(false)
+                        setUploadProgress(0)
                         toast.success('Upload Successful, Refresh this page to see the change.')
                     } else {
                         setIsLoading(false)
@@ -124,6 +133,10 @@ function AddEntryWithFile(){
             <div>
                 {imagePreviewURL?<img id="imgPreview" src={imagePreviewURL} />:<div>Please Select an Image to Upload</div>}
             </div>
+            <br />
+            {uploadProgress!==0 && imagePreviewURL ? <p>Upload Progress: {uploadProgress}% </p>:null}
+            <br />
+            {uploadProgress===1? <p>Processing Image, Please Wait for Confirmation</p>:null}
             <br />
             <hr />
         </div>)
