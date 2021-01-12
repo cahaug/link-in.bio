@@ -163,7 +163,7 @@ function ListDisplayHooks(match) {
                 setBackgroundURL(backgroundImageURL)
             }
             const mt = navigator.maxTouchPoints
-            const incrementedListViews = axios.get(`https://link-in-bio.herokuapp.com/s/ili/${res.data[0].listId}?mt=${mt}`)
+            const incrementedListViews = axios.get(`https://www.link-in-bio.app/s/ili/${res.data[0].listId}?mt=${mt}`)
             // console.log(incrementedListViews)
             setIsLoading(false);
             document.title = `${window.location.host}${ourURL} - ${displayName}`
@@ -181,8 +181,8 @@ function ListDisplayHooks(match) {
                             {link.referencingURL === ' '?<a className='linkTitle' href='#' onClick={async (e)=>{
                                 e.preventDefault()
                                 console.log('fired', link.referencingURL, link.entryId, mt)
-                                const trashRequest = axios.get(`https://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
-                                // const trashRequest = await axios.get(`https://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
+                                const trashRequest = axios.get(`https://www.link-in-bio.app/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
+                                // const trashRequest = await axios.get(`https://www.link-in-bio.app/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                 console.log('trashRequest', trashRequest)
                             }}>
                                 {link.imgURL?<img className='image' src={link.imgURL} alt={link.linkTitle} /> : null }
@@ -192,8 +192,8 @@ function ListDisplayHooks(match) {
                                 e.preventDefault()
                                 setIsLoading(true) 
                                 console.log('fired', link.referencingURL, link.entryId, mt)
-                                const trashRequest = axios.get(`https://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
-                                // const trashRequest = await axios.get(`https://link-in-bio.herokuapp.com/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
+                                const trashRequest = axios.get(`https://www.link-in-bio.app/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
+                                // const trashRequest = await axios.get(`https://www.link-in-bio.app/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                 console.log('trashRequest', trashRequest)
                                 setIsLoading(false)
                                 window.location.href = link.referencingURL

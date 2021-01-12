@@ -115,7 +115,7 @@ function ListEditor2(){
         const userId = sessionStorage.getItem('userId')
         const listId = sessionStorage.getItem('listId')
         const token = sessionStorage.getItem('token')
-        const useThisURL = `https://link-in-bio.herokuapp.com/e/deleteEntry`
+        const useThisURL = `https://www.link-in-bio.app/e/deleteEntry`
         return axios.post(useThisURL, {entryId: entryId, listId:listId, userId:userId}, {headers:{authorization:token}})
         .then(response => {
             // alert('Entry Successfully Deleted')
@@ -142,11 +142,11 @@ function ListEditor2(){
     }
 
     useEffect(() => {
-        const useThisURL = `https://link-in-bio.herokuapp.com/s/aio/${sessionStorage.getItem('userId')}`
+        const useThisURL = `https://www.link-in-bio.app/s/aio/${sessionStorage.getItem('userId')}`
         axios.get(useThisURL, { headers: {authorization: sessionStorage.getItem('token')} })
         .then(async res => {
             console.log('backend res', res)
-            const normalList = await axios.get(`https://link-in-bio.herokuapp.com/${sessionStorage.getItem('listId')}`)
+            const normalList = await axios.get(`https://www.link-in-bio.app/${sessionStorage.getItem('listId')}`)
             console.log('normal list', normalList)
             const userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
             const displayName = res.data[0].displayName
@@ -160,7 +160,7 @@ function ListEditor2(){
                 setBackgroundURL(backgroundImageURL)
             }
             // setDisplayingUserInfo(displayingUserInfo)
-            // const incrementedListViews = axios.get(`https://link-in-bio.herokuapp.com/s/ili/${res.data[0].listId}`)
+            // const incrementedListViews = axios.get(`https://www.link-in-bio.app/s/ili/${res.data[0].listId}`)
             // console.log(incrementedListViews)
             setIsLoading(false);
             const mt = navigator.maxTouchPoints

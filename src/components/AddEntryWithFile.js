@@ -25,15 +25,15 @@ function AddEntryWithFile(){
         try{
             const formData = new FormData()
             formData.append('myImage', file)
-            const addingToProfile = await axios.post(`https://link-in-bio.herokuapp.com/e/uploadPhoto/${userId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}})
+            const addingToProfile = await axios.post(`https://www.link-in-bio.app/e/uploadPhoto/${userId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}})
             console.log('addingtoProfile', addingToProfile)
             if(addingToProfile.data.message === 'Successfully Uploaded Picture'){
                 const imgURL = addingToProfile.data.pictureURL
                 const shackImageId = addingToProfile.data.shackImageId
-                const addingEntry = await axios.post('https://link-in-bio.herokuapp.com/e/new', { userId:userId, listId:listId, referencingURL:bigdata.referencingURL, description:bigdata.description, linkTitle:bigdata.linkTitle, imgURL:imgURL, shackImageId:shackImageId }, { headers: {authorization: token} })
+                const addingEntry = await axios.post('https://www.link-in-bio.app/e/new', { userId:userId, listId:listId, referencingURL:bigdata.referencingURL, description:bigdata.description, linkTitle:bigdata.linkTitle, imgURL:imgURL, shackImageId:shackImageId }, { headers: {authorization: token} })
                 console.log('addingEntry', addingEntry)
                 if(addingEntry.data.result[0].entryId && addingEntry.data.result[0].referencingURL){
-                    const addingStatView = await axios.get(`https://link-in-bio.herokuapp.com/s/?eid=${addingEntry.data.result[0].entryId}&ref=${addingEntry.data.result[0].referencingURL}&red=f`)
+                    const addingStatView = await axios.get(`https://www.link-in-bio.app/s/?eid=${addingEntry.data.result[0].entryId}&ref=${addingEntry.data.result[0].referencingURL}&red=f`)
                     console.log('addingstatview', addingStatView)
                     if(addingStatView.data){
                         setBigData({referencingURL:'',description:'',linkTitle:''})

@@ -1,6 +1,6 @@
 [[redirects]]
   from = "https://link-in-bio.netlify.com/*"
-  to = "https://link-in-bio.herokuapp.com/:splat"
+  to = "https://www.link-in-bio.app/:splat"
   status = 301
   force = true
 

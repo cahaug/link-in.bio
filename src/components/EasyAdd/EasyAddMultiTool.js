@@ -29,10 +29,10 @@ const EasyAddMultiTool = () => {
         console.log('description', description)
         console.log('linktitle', linkTitle)
         console.log('referencingURL', referencingURL)
-        return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId:userId, listId:listId, referencingURL:referencingURL, description:description, linkTitle:linkTitle, imgURL:imgURL }, { headers: {authorization: token} })
+        return axios.post('https://www.link-in-bio.app/e/new', { userId:userId, listId:listId, referencingURL:referencingURL, description:description, linkTitle:linkTitle, imgURL:imgURL }, { headers: {authorization: token} })
         .then(async (res) => {
             console.log('successful res',res)
-            const statForNewEntry = await axios.get(`https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`)
+            const statForNewEntry = await axios.get(`https://www.link-in-bio.app/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`)
             console.log('statForNewEntry',statForNewEntry)
             setIsLoading(false)
             alert(`Link To ${choicesDict[`${choice}`]['label']} Successfully Added to Account`)
