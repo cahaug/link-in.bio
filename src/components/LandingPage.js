@@ -12,7 +12,6 @@ const LandingPage = () => {
     const [loggedViewNoIP, setLoggedViewNoIP] = useState(false)
     
     const launchIntercom = () => {
-        document.title = 'Customer Service Dashboard'
         window.Intercom("boot", {
             app_id: "ya321a09"
         });
