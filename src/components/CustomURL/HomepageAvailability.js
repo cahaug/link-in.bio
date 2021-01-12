@@ -113,6 +113,7 @@ const HomepageAvailability = () => {
                             <option value="https://the-link.is/">the-link.is/</option>
                             <option value="https://this-links.to/">this-links.to/</option>
                             <option value="https://pstd.at/">pstd.at/</option>
+                            <option value="https://down.af/">down.af/</option>
                             <option value="https://7zz.ch/">7zz.ch/</option>
                             <option value="https://bio-link.me/">bio-link.me/</option>
                             <option value="https://for-my.art/">for-my.art/</option>

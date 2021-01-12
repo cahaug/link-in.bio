@@ -125,6 +125,12 @@ const EasyAddDash = () => {
                 console.log('chose bandsintown')
                 description = `Link to my ${choicesDict[`${choice}`]['label']} Artist Page ${choicesDict[`${choice}`]['emoji']} `
             }
+            if(choice === 'textEntry'){
+                console.log('chose textEntry')
+                description = `${username}`
+                referencingURL = ' '
+                linkTitle = `${choicesDict[`${choice}`]['emoji']} Please Read:`
+            }
             if(choice === 'zelle'){
                 console.log('chose zelle')
                 referencingURL = `https://www.zellepay.com/`
@@ -295,7 +301,8 @@ const EasyAddDash = () => {
         'zelle':{label:'Zelle', form:'Enter Your Phone Number or Email (Zelle Username): ', img:'https://imagizer.imageshack.com/img924/2998/gYOvQh.jpg', emoji:'💸🌐', type:'text'},
         'toptal':{label:'Toptal', form:'toptal.com/resume/', img:'https://imagizer.imageshack.com/img922/9965/LFSZpa.png', emoji:'🔨🖨️', type:'text'},
         'upwork':{label:'Upwork', form:'upwork.com/o/profiles/users/', img:'https://imagizer.imageshack.com/img922/4/Rg1Irf.png', emoji:'🔨🖨️', type:'text'},
-        'odysee':{label:'Odysee', form:'odysee.com/@', img:'https://imagizer.imageshack.com/img923/6384/JLvydT.png', emoji:'📹🌐', type:'text'}
+        'odysee':{label:'Odysee', form:'odysee.com/@', img:'https://imagizer.imageshack.com/img923/6384/JLvydT.png', emoji:'📹🌐', type:'text'},
+        'textEntry':{label:'Text Entry', form:'Enter nonviolent speech here.', img:'https://imagizer.imageshack.com/img922/1971/ZoevxG.jpg', emoji:'🆓🗨️', type:'text'}
     }
 
     return (
@@ -358,6 +365,7 @@ const EasyAddDash = () => {
                     <option value="startengine">StartEngine</option>
                     <option value="steam">Steam</option>
                     <option value="telegram">Telegram</option>
+                    <option value="textEntry">Text Entry (no link, just words)</option>
                     <option value="tidal">TIDAL</option>
                     <option value="tiktok">TikTok</option>
                     <option value="toptal">Toptal</option>
