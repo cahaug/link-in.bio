@@ -90,8 +90,8 @@ function Dashboard2 () {
         const user_hash = sessionStorage.getItem('user_hash')
         window.Intercom("boot", {
             app_id: "ya321a09",
-            email: email,
-            user_hash:user_hash
+            email: `${email}`,
+            user_hash:`${user_hash}`
         });
         const token = sessionStorage.getItem('token')
         const useThisURL = `https://link-in-bio.herokuapp.com/s/listViews/${sessionStorage.getItem('listId')}`
