@@ -11,21 +11,6 @@ const LandingPage = () => {
     const [isShowingStats, setIsShowingStats] = useState(false)
     const [loggedViewNoIP, setLoggedViewNoIP] = useState(false)
     
-    const launchIntercom = () => {
-        const scriptsrc = (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/ya321a09';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
-        //Firefox, Safari, Chrome, and Opera
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = scriptsrc;
-        script.onload = function(){
-            alert("Script is ready!");
-            window.Intercom("boot", {
-                app_id: "ya321a09"
-            });
-        };
-        document.body.appendChild(script);
-    }
-
     const statsDrawerToggle = () => {
         const statDrawer = document.getElementsByClassName('statsDisplayDiv')
         if(statDrawer[0].style.maxHeight){
@@ -44,6 +29,9 @@ const LandingPage = () => {
             .then(res => {
                 console.log(res.data.message)
                 setLoggedViewNoIP(true)
+                window.Intercom("boot", {
+                    app_id: "ya321a09"
+                });
             })
             .catch(err => {
                 console.log('error', err)
@@ -86,8 +74,6 @@ const LandingPage = () => {
                     </div>
                 </Link>
             </div>
-            <br />
-            <button className="abutton" onClick={launchIntercom}>Click for Customer Service</button>
             <br />
             <h2>Link-in.Bio Ltd purchases Carbon Offsets to Stay Carbon Neutral. 🍀🍃</h2>
             <br />
