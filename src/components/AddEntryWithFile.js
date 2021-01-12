@@ -26,7 +26,7 @@ function AddEntryWithFile(){
         try{
             const formData = new FormData()
             formData.append('myImage', file)
-            const addingToProfile = await axios.post(`https://www.link-in-bio.app/e/uploadPhoto/${userId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}}, {onUploadProgress:
+            const addingToProfile = await axios.post(`https://www.link-in-bio.app/e/uploadPhoto/${userId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}, onUploadProgress:
             (progressEvent) => {
                 console.log('progress event', progressEvent)
                 const totalLength = progressEvent.lengthComputable ? progressEvent.total : progressEvent.target.getResponseHeader('content-length') || progressEvent.target.getResponseHeader('x-decompressed-content-length');
