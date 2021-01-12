@@ -88,7 +88,7 @@ const ListBackgroundChanger = () => {
             <br />
             <form onSubmit={handleSubmit} >
                 <label>
-                    Add Your Background Image Here: <br /> <br />
+                    Add Your Background Image (jpg,png,gif,bmp,tiff) Here: <br /> <br />
                     <input type="file" name='myImage' accept="image/*" onChange={handleImageChange} />
                 </label>
                 {imagePreviewURL?<button type="submit">Upload Background Image</button>:null}

@@ -114,7 +114,7 @@ function AddEntryWithFile(){
                 <br />
                 <br />
                 <label>
-                Add Your Image Here: <br /> <br />
+                Add Your Image (jpg,png,gif,bmp,tiff) Here: <br /> <br />
                 <input type="file" name='myImage' accept="image/*" onChange={handleImageChange} />
                 </label>
 
