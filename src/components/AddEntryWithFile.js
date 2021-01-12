@@ -104,7 +104,7 @@ function AddEntryWithFile(){
             <br />
             {uploadProgress!==0 && imagePreviewURL ? <p>Upload Progress: {uploadProgress}% </p>:null}
             <br />
-            {uploadProgress===1? <p>Processing Image, Please Wait for Confirmation</p>:null}
+            {uploadProgress===100? <p>Processing Image, Please Wait for Confirmation</p>:null}
             <br />
         </div>)
     } else {
