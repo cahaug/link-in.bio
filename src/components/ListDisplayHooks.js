@@ -178,17 +178,18 @@ function ListDisplayHooks(match) {
                 return (
 
                         <div className='linkSquare' key={link.entryId}>
-                            {link.referencingURL === ' '?<a className='linkTitle' href='#' onClick={async (e)=>{
-                                e.preventDefault()
-                                console.log('fired', link.referencingURL, link.entryId, mt)
-                                const trashRequest = axios.get(`https://www.link-in-bio.app/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
-                                // const trashRequest = await axios.get(`https://www.link-in-bio.app/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
-                                console.log('trashRequest', trashRequest)
-                            }}>
+                            {
+                                link.referencingURL === ' '?<a className='linkTitle' href='#' onClick={async (e)=>{
+                                    e.preventDefault()
+                                    console.log('fired', link.referencingURL, link.entryId, mt)
+                                    const trashRequest = axios.get(`https://www.link-in-bio.app/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
+                                    // const trashRequest = await axios.get(`https://www.link-in-bio.app/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
+                                    console.log('trashRequest', trashRequest)
+                                }}>
                                 {link.imgURL?<img className='image' src={link.imgURL} alt={link.linkTitle} /> : null }
                                 {/* <img className='image' src={link.imgURL} alt={link.linkTitle} />  */}
                                 <h3>{link.linkTitle}</h3>
-                            </a>:<a className='linkTitle' href={link.referencingURL} onClick={async (e)=>{
+                                </a>:<a className='linkTitle' href={link.referencingURL} onClick={async (e)=>{
                                 e.preventDefault()
                                 setIsLoading(true) 
                                 console.log('fired', link.referencingURL, link.entryId, mt)
@@ -197,7 +198,7 @@ function ListDisplayHooks(match) {
                                 console.log('trashRequest', trashRequest)
                                 setIsLoading(false)
                                 window.location.href = link.referencingURL
-                            }}>
+                                }}>
                                 {link.imgURL?<img className='image' src={link.imgURL} alt={link.linkTitle} /> : null }
                                 {/* <img className='image' src={link.imgURL} alt={link.linkTitle} />  */}
                                 <h3>{link.linkTitle}</h3>
