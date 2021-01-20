@@ -18,7 +18,7 @@ const ProfPicUpload = () => {
             setImagePreviewURL()
             const token = sessionStorage.getItem('token')
             const userId = sessionStorage.getItem('userId')
-            const addingToProfile = await axios.put(`https://link-in-bio.herokuapp.com/l/uploadProfilePicture/${userId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}})
+            const addingToProfile = await axios.put(`https://www.link-in-bio.app/l/uploadProfilePicture/${userId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}})
             console.log('adding to profiel',addingToProfile)
             if(addingToProfile.data.message === 'Successfully Uploaded Profile Picture' || addingToProfile.data.message === 'Successfully Uploaded New Profile Picture No Delete'){
                 setIsLoading(false)
@@ -65,7 +65,7 @@ const ProfPicUpload = () => {
             <br/>
             <form onSubmit={handleSubmit} >
                 <label>
-                    Add Your Image Here: <br /> <br />
+                    Add Your Image (jpg,png,gif,bmp,tiff) Here: <br /> <br />
                     <input type="file" name='myImage' accept="image/*" onChange={handleImageChange} />
                 </label>
                 {imagePreviewURL?<button type="submit">Upload Profile Picture</button>:null}

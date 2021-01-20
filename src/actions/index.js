@@ -37,7 +37,7 @@ export const GET_LIST_ID_FAILED = 'GET_LIST_ID_FAILED'
 export function register(email, password, firstName, lastName, profilePictureURL, referredBy){
     return (dispatch) => {
         dispatch({type: REGISTER_USER_START})
-        return axios.post('https://link-in-bio.herokuapp.com/auth/register', { email, password, firstName, lastName, profilePictureURL, referredBy} )
+        return axios.post('https://www.link-in-bio.app/auth/register', { email, password, firstName, lastName, profilePictureURL, referredBy} )
         .then((res) => {
             const payload = res.data
             // localStorage.setItem('token', res.data.token)
@@ -51,7 +51,7 @@ export function register(email, password, firstName, lastName, profilePictureURL
             sessionStorage.setItem('email', res.data.email)
             sessionStorage.setItem('firstName', res.data.firstName)
             sessionStorage.setItem('profilePictureURL', res.data.profilePictureURL)
-            return axios.post('https://link-in-bio.herokuapp.com/l/new', {'userId':res.data.userId, 'backColor':'#ffffff','txtColor':'#000000', 'fontSelection':'Roboto',}, { headers: {authorization: res.data.token} })
+            return axios.post('https://www.link-in-bio.app/l/new', {'userId':res.data.userId, 'backColor':'#ffffff','txtColor':'#000000', 'fontSelection':'Roboto',}, { headers: {authorization: res.data.token} })
             .then((res) => {
                 // localStorage.setItem('listId', res.data[res.data.length - 1].listId)
                 sessionStorage.setItem('listId', res.data[res.data.length - 1].listId)
@@ -64,10 +64,10 @@ export function register(email, password, firstName, lastName, profilePictureURL
                     imgURL:null,
                 }
                 const { userId, listId, referencingURL, description, linkTitle, imgURL } = standardEntry
-                return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL }, { headers: {authorization: token} })
+                return axios.post('https://www.link-in-bio.app/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL }, { headers: {authorization: token} })
                 .then((res) => {
                     console.log('create newList Std Entry', res.data)
-                    const useThisURL = `https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
+                    const useThisURL = `https://www.link-in-bio.app/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
                     return axios.get(useThisURL)
                     .then((res) => {
                         alert('User Registration Complete, Try Logging in now!')
@@ -88,19 +88,20 @@ export function register(email, password, firstName, lastName, profilePictureURL
 export function login(email, password, token){
     return (dispatch) => {
         dispatch({type: LOGIN_USER_START})
-        return axios.post('https://link-in-bio.herokuapp.com/auth/login', { email, password, token })
+        return axios.post('https://www.link-in-bio.app/auth/login', { email, password, token })
         .then(async (res) => {
             const payload = res.data
             // localStorage.setItem('token', res.data.token)
             // localStorage.setItem('userId', res.data.userId)
             // localStorage.setItem('email', res.data.email)
             // localStorage.setItem('firstName', res.data.firstName)
+            sessionStorage.setItem('user_hash', res.data.userHash)
             sessionStorage.setItem('token', res.data.token)
             sessionStorage.setItem('userId', res.data.userId)
             sessionStorage.setItem('email', res.data.email)
             sessionStorage.setItem('firstName', res.data.firstName)
             sessionStorage.setItem('customURL', res.data.customURL)
-            const listIdHolder = await axios.get(`https://link-in-bio.herokuapp.com/l/list4user/${res.data.userId}`)
+            const listIdHolder = await axios.get(`https://www.link-in-bio.app/l/list4user/${res.data.userId}`)
             sessionStorage.setItem('listId', listIdHolder.data[0].listId)
             dispatch({type: LOGIN_USER_SUCCESS, payload})
         })
@@ -114,7 +115,7 @@ export function login(email, password, token){
 export function createList(userId, backColor, txtColor, fontSelection, token){
     return (dispatch) => {
         dispatch({type: CREATE_LIST_START})
-        return axios.post('https://link-in-bio.herokuapp.com/l/new', { userId, backColor, txtColor, fontSelection }, { headers: {authorization: token} })
+        return axios.post('https://www.link-in-bio.app/l/new', { userId, backColor, txtColor, fontSelection }, { headers: {authorization: token} })
         .then((res) => {
             const savedReturnList = res.data
             // localStorage.setItem('listId', res.data[res.data.length - 1].listId)
@@ -128,9 +129,9 @@ export function createList(userId, backColor, txtColor, fontSelection, token){
                 imgURL:null,
             }
             const { userId, listId, referencingURL, description, linkTitle, imgURL } = standardEntry
-            return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL }, { headers: {authorization: token}})
+            return axios.post('https://www.link-in-bio.app/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL }, { headers: {authorization: token}})
             .then((res) => {
-                const useThisURL = `https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
+                const useThisURL = `https://www.link-in-bio.app/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
                 return axios.get(useThisURL)
                 .then((res) => {
                     alert('List Created Successfully, Try Returning to Your Dashboard and Refreshing the Page')
@@ -148,9 +149,9 @@ export function createList(userId, backColor, txtColor, fontSelection, token){
 export function addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token, shackImageId){
     return (dispatch) => {
         dispatch({type: ADD_ENTRY_START})
-        return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL, shackImageId }, { headers: {authorization: token} })
+        return axios.post('https://www.link-in-bio.app/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL, shackImageId }, { headers: {authorization: token} })
         .then((res) => {
-            const useThisURL = `https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
+            const useThisURL = `https://www.link-in-bio.app/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
             return axios.get(useThisURL)
             .then((res) => {
                 alert('Entry added successfully, Try Returning to Your Dashboard and Refreshing the Page')
@@ -166,7 +167,7 @@ export function addEntry(userId, listId, referencingURL, description, linkTitle,
 export function editEntry(entryId, referencingURL, description, linkTitle, imgURL, token, listId){
     return (dispatch) => {
         dispatch({type: EDIT_ENTRY_START})
-        return axios.put('https://link-in-bio.herokuapp.com/e/replaceEntry', {entryId, referencingURL, description, linkTitle, imgURL, listId}, { headers: {authorization: token}})
+        return axios.put('https://www.link-in-bio.app/e/replaceEntry', {entryId, referencingURL, description, linkTitle, imgURL, listId}, { headers: {authorization: token}})
         .then((res) => {
             alert('Entry Edited Successfully')
             dispatch({type: EDIT_ENTRY_SUCCESS, payload:res.data})
@@ -180,7 +181,7 @@ export function editEntry(entryId, referencingURL, description, linkTitle, imgUR
 export function getListId(userId){
     return (dispatch) => {
         dispatch({type: GET_LIST_ID_START})
-        return axios.get(`https://link-in-bio.herokuapp.com/l/${userId}`)
+        return axios.get(`https://www.link-in-bio.app/l/${userId}`)
         .then((res) => {
             dispatch({type:GET_LIST_ID_SUCCESS, payload: res.data})
         })

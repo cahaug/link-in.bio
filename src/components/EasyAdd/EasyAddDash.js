@@ -109,74 +109,81 @@ const EasyAddDash = () => {
         console.log('isvalidated',isValidated)
         username = isValidated.trimmed 
         if(isValidated.legal === true){
-            let description = `${username} - Link to my ${choicesDict[`${choice}`]['label']} Account ${choicesDict[`${choice}`]['emoji']}`
+            let description = `${username} - My ${choicesDict[`${choice}`]['label']} Account ${choicesDict[`${choice}`]['emoji']}`
             let linkTitle = `${choicesDict[`${choice}`]['label']}`
             let referencingURL = `https://${choicesDict[`${choice}`]['form']}${username}`
             //because needs appending to front of url
             if(choice === 'bandcamp'){
-                console.log('chose bandcamp')
                 referencingURL = `https://${username}.bandcamp.com/`
             }
             if(choice === 'tumblr'){
-                console.log('chose tumblr')
                 referencingURL = `https://${username}.tumblr.com/`
             }
             if(choice === 'bandsintown'){
-                console.log('chose bandsintown')
                 description = `Link to my ${choicesDict[`${choice}`]['label']} Artist Page ${choicesDict[`${choice}`]['emoji']} `
             }
+            if(choice === 'bitcoin'){
+                description = `My Bitcoin Public Key ${choicesDict[`${choice}`]['emoji']}: ${username} `
+                referencingURL = ' '
+            }
+            if(choice === 'dogecoin'){
+                description = `My Dogecoin Public Key ${choicesDict[`${choice}`]['emoji']}: ${username} `
+                referencingURL = ' '
+            }
+            if(choice === 'ethereum'){
+                description = `My Ethereum Public Key ${choicesDict[`${choice}`]['emoji']}: ${username} `
+                referencingURL = ' '
+            }
+            if(choice === 'monero'){
+                description = `My Monero Public Key ${choicesDict[`${choice}`]['emoji']}: ${username} `
+                referencingURL = ' '
+            }
+            if(choice === 'textEntry'){
+                description = `${username}`
+                referencingURL = ' '
+                linkTitle = `${choicesDict[`${choice}`]['emoji']} Please Read:`
+            }
             if(choice === 'zelle'){
-                console.log('chose zelle')
                 referencingURL = `https://www.zellepay.com/`
                 description = `To support me on ${choicesDict[`${choice}`]['label']} ${choicesDict[`${choice}`]['emoji']}, Add me at ${username} `
             }
             if(choice === 'spotifyartist'){
-                console.log('chose spotifyartist')
                 description = `Link to my ${choicesDict[`${choice}`]['label']} Artist Account ${choicesDict[`${choice}`]['emoji']}`
             }
             if(choice === 'spotifyalbum'){
-                console.log('chose spotifyalbum')
                 description = `Link to my ${choicesDict[`${choice}`]['label']} Album ${choicesDict[`${choice}`]['emoji']}`
             }
             if(choice === 'spotifypodcast'){
-                console.log('chose spotifypodcast')
                 description = `Link to my ${choicesDict[`${choice}`]['label']} Podcast ${choicesDict[`${choice}`]['emoji']}`
             }
             if(choice === 'spotifyplaylist'){
-                console.log('chose spotifyplaylist')
                 description = `Link to my ${choicesDict[`${choice}`]['label']} Playlist ${choicesDict[`${choice}`]['emoji']}`
             }
             if(choice === 'applemusic'){
-                console.log('chose applemusic')
                 referencingURL = `https://music.apple.com/${username}`
                 description = `Link to my ${choicesDict[`${choice}`]['label']} Account ${choicesDict[`${choice}`]['emoji']}`
             }
             if(choice === 'kik'){
-                console.log('chose kik')
                 referencingURL = `https://kik.com/`
                 description = `Add me on Kik, ${choicesDict[`${choice}`]['emoji']}: ${username}`
                 linkTitle = `${choicesDict[`${choice}`]['label']} - ${username}`
             }
             if(choice === 'whatsapp'){
-                console.log('chose whatsapp')
                 referencingURL = `https://api.whatsapp.com/send?phone="${username}"`
                 description = `Call me with WhatsApp, ${choicesDict[`${choice}`]['emoji']}: ${username}`
                 linkTitle = `Click to Call Me with WhatsApp`
             }
             if(choice === 'xbox'){
-                console.log('chose xbox')
                 referencingURL = `https://live.xbox.com/en-US/Profile?Gamertag=${username}`
                 description = `Link to my Xbox Live, ${choicesDict[`${choice}`]['emoji']}: ${username}`
                 linkTitle = `${choicesDict[`${choice}`]['label']} - ${username}`
             }
             if(choice === 'playstation'){
-                console.log('chose playstation')
                 referencingURL = `https://my.playstation.com/profile/${username}`
                 description = `Link to my Playstation Network, ${choicesDict[`${choice}`]['emoji']}: ${username}`
                 linkTitle = `${choicesDict[`${choice}`]['label']} - ${username}`
             }
             if(choice === 'nintendo'){
-                console.log('chose nintendo')
                 referencingURL = `https://en-americas-support.nintendo.com/app/answers/detail/a_id/22326`
                 description = `Add me at my Friend Code: SW-${username.slice(0,4)}-${username.slice(4,8)}-${username.slice(8,12)}`
                 linkTitle = `My Nintendo Friend Code`
@@ -186,19 +193,16 @@ const EasyAddDash = () => {
                 description = `Check out what I'm selling at depop.com/{username}`
             }
             if(choice === 'venmo'){
-                console.log('chose venmo')
                 referencingURL = `https://venmo.com/account/sign-in`
                 description = `Venmo me at ${username}  ${choicesDict[`${choice}`]['emoji']}`
                 linkTitle = `${choicesDict[`${choice}`]['label']} - ${username}`
             }
             if(choice === 'email'){
-                console.log('chose email')
                 referencingURL = `mailto:${username}?subject=Found%20You%20On%20Link-in.Bio/&body=Your%20Message%20Here`
                 description = `For inquiries, please send an email to: ${username}`
                 linkTitle = `Contact Email ${choicesDict[`${choice}`]['emoji']}`
             }
             if(choice === 'phone'){
-                console.log('chose phone')
                 referencingURL = `tel:${username}`
                 description = `Call Us at: ${username} `
                 linkTitle = `${choicesDict[`${choice}`]['label']} ${choicesDict[`${choice}`]['emoji']}`
@@ -211,10 +215,10 @@ const EasyAddDash = () => {
             console.log('description', description)
             console.log('linktitle', linkTitle)
             console.log('referencingURL', referencingURL)
-            return axios.post('https://link-in-bio.herokuapp.com/e/new', { userId:userId, listId:listId, referencingURL:referencingURL, description:description, linkTitle:linkTitle, imgURL:imgURL }, { headers: {authorization: token} })
+            return axios.post('https://www.link-in-bio.app/e/new', { userId:userId, listId:listId, referencingURL:referencingURL, description:description, linkTitle:linkTitle, imgURL:imgURL }, { headers: {authorization: token} })
             .then(async (res) => {
                 console.log('successful res',res)
-                const statForNewEntry = await axios.get(`https://link-in-bio.herokuapp.com/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`)
+                const statForNewEntry = await axios.get(`https://www.link-in-bio.app/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`)
                 console.log('statForNewEntry',statForNewEntry)
                 setIsLoading(false)
                 // alert(`Link To ${choicesDict[`${choice}`]['label']} Successfully Added to Account`)
@@ -295,7 +299,12 @@ const EasyAddDash = () => {
         'zelle':{label:'Zelle', form:'Enter Your Phone Number or Email (Zelle Username): ', img:'https://imagizer.imageshack.com/img924/2998/gYOvQh.jpg', emoji:'💸🌐', type:'text'},
         'toptal':{label:'Toptal', form:'toptal.com/resume/', img:'https://imagizer.imageshack.com/img922/9965/LFSZpa.png', emoji:'🔨🖨️', type:'text'},
         'upwork':{label:'Upwork', form:'upwork.com/o/profiles/users/', img:'https://imagizer.imageshack.com/img922/4/Rg1Irf.png', emoji:'🔨🖨️', type:'text'},
-        'odysee':{label:'Odysee', form:'odysee.com/@', img:'https://imagizer.imageshack.com/img923/6384/JLvydT.png', emoji:'📹🌐', type:'text'}
+        'odysee':{label:'Odysee', form:'odysee.com/@', img:'https://imagizer.imageshack.com/img923/6384/JLvydT.png', emoji:'📹🌐', type:'text'},
+        'textEntry':{label:'Text Entry', form:'Enter nonviolent speech here.', img:'https://imagizer.imageshack.com/img922/1971/ZoevxG.jpg', emoji:'🆓🗨️', type:'text'},
+        'bitcoin':{label:'Bitcoin', form:'Your Bitcoin Public Key:', img:'https://imagizer.imageshack.com/img922/893/M2YC8X.png', emoji:'💻💸', type:'text'},
+        'ethereum':{label:'Ethereum', form:'Your Ethereum Public Key:', img:'https://imagizer.imageshack.com/img923/2998/c27O4p.jpg', emoji:'💻💸', type:'text'},
+        'dogecoin':{label:'Dogecoin', form:'Your Dogecoin Public Key:', img:'https://imagizer.imageshack.com/img923/7307/efzU3u.png', emoji:'💻💸', type:'text'},
+        'monero':{label:'Monero', form:'Your Monero Public Key:', img:'https://imagizer.imageshack.com/img924/4135/U0zNc4.png', emoji:'💻💸', type:'text'}
     }
 
     return (
@@ -315,15 +324,18 @@ const EasyAddDash = () => {
                     <option value="bandcamp">Bandcamp</option>
                     <option value="bandsintown">Bandsintown</option>
                     <option value="behance">Behance</option>
+                    <option value="bitcoin">Bitcoin Public Key</option>
                     <option value="cashapp">Cash App</option>
                     <option value="deezerartist">Deezer - Artist</option>
                     <option value="deezeralbum">Deezer - Album</option>
                     <option value="deezerpodcast">Deezer - Podcast</option>
                     <option value="depop">Depop</option>
                     <option value="discord">Discord</option>
+                    <option value="dogecoin">Dogecoin Public Key</option>
                     <option value="ebay">Ebay</option>
                     <option value="email">Email Address</option>
                     <option value="etsy">Etsy</option>
+                    <option value="ethereum">Ethereum Public Key</option>
                     <option value="facebook">Facebook</option>
                     <option value="flickr">Flickr</option>
                     <option value="github">GitHub</option>
@@ -337,6 +349,7 @@ const EasyAddDash = () => {
                     <option value="kik">Kik Messenger</option>
                     <option value="linkedin">LinkedIn</option>
                     <option value="mixcloud">MixCloud</option>
+                    <option value="monero">Monero Public Key</option>
                     <option value="nintendo">Nintendo Friend Code</option>
                     <option value="nebula">Nebula</option>
                     <option value="odysee">Odysee</option>
@@ -358,6 +371,7 @@ const EasyAddDash = () => {
                     <option value="startengine">StartEngine</option>
                     <option value="steam">Steam</option>
                     <option value="telegram">Telegram</option>
+                    <option value="textEntry">Text Entry (no link, just words)</option>
                     <option value="tidal">TIDAL</option>
                     <option value="tiktok">TikTok</option>
                     <option value="toptal">Toptal</option>

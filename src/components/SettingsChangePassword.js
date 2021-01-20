@@ -78,7 +78,7 @@ const SettingsChangePassword = () => {
                 // console.log('validationRes true')
                 const token = sessionStorage.getItem('token')
                 const email = sessionStorage.getItem('email')
-                const changePwResolved = await axios.put('https://link-in-bio.herokuapp.com/auth/SettingsCPW', { email:email, password:password, newPassword:newPassword }, {headers:{authorization:token}})
+                const changePwResolved = await axios.put('https://www.link-in-bio.app/auth/SettingsCPW', { email:email, password:password, newPassword:newPassword }, {headers:{authorization:token}})
                 // console.log('changepwResolved',changePwResolved)
                 if(changePwResolved.data.updatedPassword === 1){
                     setPassword('')

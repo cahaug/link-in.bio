@@ -70,7 +70,7 @@ function ResetPassword(){
             if(valid===true){
                 console.log('valid formdata good to send '+ formData.email)
                 try {
-                    const requestResponse = await axios.post('https://link-in-bio.herokuapp.com/mailer/resetPW', {email:formData.email})
+                    const requestResponse = await axios.post('https://www.link-in-bio.app/mailer/resetPW', {email:formData.email})
                     console.log('requestResponse',requestResponse)
                     if (requestResponse.data.hasOwnProperty('infoResponse')){
                         setMessageBack({message:`All Good: ${requestResponse.data.message}`})

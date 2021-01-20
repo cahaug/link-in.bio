@@ -14,7 +14,7 @@ const ListBackgroundChanger = () => {
         setIsLoading(true)
         const token = sessionStorage.getItem('token')
         const listId = sessionStorage.getItem('listId')
-        return axios.put('https://link-in-bio.herokuapp.com/l/deleteListBackground', {listId:listId}, {headers:{authorization:token}})
+        return axios.put('https://www.link-in-bio.app/l/deleteListBackground', {listId:listId}, {headers:{authorization:token}})
         .then(res => {
             console.log('swapped bg to null & deleted old res', res.data)
             setIsLoading(false)
@@ -37,7 +37,7 @@ const ListBackgroundChanger = () => {
             setImagePreviewURL()
             const token = sessionStorage.getItem('token')
             const listId = sessionStorage.getItem('listId')
-            const addingToProfile = await axios.put(`https://link-in-bio.herokuapp.com/l/uploadListBackgroundPhoto/${listId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}})
+            const addingToProfile = await axios.put(`https://www.link-in-bio.app/l/uploadListBackgroundPhoto/${listId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}})
             console.log('adding to profiel',addingToProfile)
             if(addingToProfile.data.message === 'Successfully Uploaded Background Image' ){
                 setIsLoading(false)
@@ -88,7 +88,7 @@ const ListBackgroundChanger = () => {
             <br />
             <form onSubmit={handleSubmit} >
                 <label>
-                    Add Your Background Image Here: <br /> <br />
+                    Add Your Background Image (jpg,png,gif,bmp,tiff) Here: <br /> <br />
                     <input type="file" name='myImage' accept="image/*" onChange={handleImageChange} />
                 </label>
                 {imagePreviewURL?<button type="submit">Upload Background Image</button>:null}

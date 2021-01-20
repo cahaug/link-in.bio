@@ -64,7 +64,7 @@ const AvailabilityChecker = () => {
             setLastCheckedCURL(`${secondaryIntermediate.slice(8)}`)
             console.log('secondaryIntermediate', secondaryIntermediate)
             const token = sessionStorage.getItem('token')
-            return axios.post('https://link-in-bio.herokuapp.com/l/checkCustom', {customURL:secondaryIntermediate}, {headers:{authorization:token}})
+            return axios.post('https://www.link-in-bio.app/l/checkCustom', {customURL:secondaryIntermediate}, {headers:{authorization:token}})
             .then(res => {
                 console.log('res.data chosenCustom', res.data)
                 if(res.data.length === 0){
@@ -92,7 +92,7 @@ const AvailabilityChecker = () => {
         const listId = sessionStorage.getItem('listId')
         const token = sessionStorage.getItem('token')
         const customURL = `https://${lastCheckedCURL}`
-        return axios.put('https://link-in-bio.herokuapp.com/l/putCustom', { userId: userId, listId: listId, customURL:customURL }, { headers: {authorization:token} })
+        return axios.put('https://www.link-in-bio.app/l/putCustom', { userId: userId, listId: listId, customURL:customURL }, { headers: {authorization:token} })
         .then((res) => {
             console.log('submit change res', res.data)
             if(res.data.resultant == 1){
@@ -131,6 +131,8 @@ const AvailabilityChecker = () => {
                             <option value="https://the-link.is/">the-link.is/</option>
                             <option value="https://this-links.to/">this-links.to/</option>
                             <option value="https://pstd.at/">pstd.at/</option>
+                            <option value="https://down.af/">down.af/</option>
+                            <option value="https://this.af/">this.af/</option>
                             <option value="https://7zz.ch/">7zz.ch/</option>
                             <option value="https://bio-link.me/">bio-link.me/</option>
                             <option value="https://for-my.art/">for-my.art/</option>
