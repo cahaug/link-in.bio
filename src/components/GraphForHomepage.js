@@ -219,7 +219,7 @@ const GraphForHomepage = () => {
                 <br />
                 <div className="wMap">
                     <div style={{ width: "98%", height: "98%", margin:"0 auto" }}>
-                        <WorldMap color="red" title="Your Views are from:" value-suffix="viewers" size="lg"  data={datasetBravo.mapCountries} />
+                        <WorldMap color="red" title="Known Around the World:" value-suffix="viewers" size="lg"  data={datasetBravo.mapCountries} />
                     </div>
                 </div>
                 <br />
