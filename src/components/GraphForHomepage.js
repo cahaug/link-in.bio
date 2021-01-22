@@ -5,7 +5,7 @@ import { VictoryPie, VictoryChart, VictoryAxis, VictoryLine, VictoryTheme, Victo
 // import PopularityTracker from './PopularityTracker'
 import ReactWordcloud from "react-wordcloud";
 import toast from "react-hot-toast"
-
+import { WorldMap } from 'react-svg-worldmap'
 
 
 
@@ -21,6 +21,7 @@ const GraphForHomepage = () => {
         deviceOwnNamesCount:[],
         deviceBrandNamesCount:[],
         timeline:[],
+        mapCountries:[]
     })
     const [mostPopular, setMostPopular] = useState([])
     const [mostPopularToday, setMostPopularToday] = useState([])
@@ -213,6 +214,12 @@ const GraphForHomepage = () => {
                 <div className="wCloud">
                     <div style={{ width: "100%", height: "100%", margin:"0 auto" }}>
                         <ReactWordcloud words={cloudData} />
+                    </div>
+                </div>
+                <br />
+                <div className="wMap">
+                    <div style={{ width: "98%", height: "98%", margin:"0 auto" }}>
+                        <WorldMap color="red" title="Your Views are from:" value-suffix="viewers" size="lg"  data={datasetBravo.mapCountries} />
                     </div>
                 </div>
                 <br />
