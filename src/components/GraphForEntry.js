@@ -4,6 +4,7 @@ import '../App.css'
 import { VictoryPie, VictoryChart, VictoryAxis, VictoryBar, VictoryLine, VictoryTheme, VictoryLabel, VictoryTooltip, VictoryVoronoiContainer } from 'victory'
 import ReactWordcloud from "react-wordcloud";
 import toast from 'react-hot-toast'
+import { WorldMap } from 'react-svg-worldmap'
 
 
 const GraphForEntry = () => {
@@ -21,7 +22,8 @@ const GraphForEntry = () => {
         osFamilyCount:[],
         deviceOwnNamesCount:[],
         deviceBrandNamesCount:[],
-        timeline:[]
+        timeline:[],
+        mapCountries:[]
     })
     const [selectedDateRange, setSelectedDateRange] = useState(7)
     const [trimmedData, setTrimmedData] = useState([])
@@ -215,6 +217,12 @@ const GraphForEntry = () => {
                 <div className="wCloud">
                     <div style={{ width: "98%", height: "98%", margin:"0 auto" }}>
                         <ReactWordcloud words={cloudData} />
+                    </div>
+                </div>
+                <br />
+                <div className="wMap">
+                    <div style={{ width: "98%", height: "98%", margin:"0 auto" }}>
+                        <WorldMap color="red" title="Your Views are from:" value-suffix="viewers" size="lg"  data={datasetBravo.mapCountries} />
                     </div>
                 </div>
                 <br />
