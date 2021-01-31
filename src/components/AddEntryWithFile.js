@@ -70,6 +70,7 @@ function AddEntryWithFile(){
         } catch (err) {
             console.log('catcherror', err)
             toast.error('Failed Adding Entry With Photo')
+            toast.error('Please Try Again with a Smaller Photo, under 2Mb')
             setIsLoading(false)
         }
     }
