@@ -124,6 +124,7 @@ const AvailabilityChecker = () => {
                             <option value="https://link-in.bio/">link-in.bio/</option>
                             <option value="https://linkinbio.us/">linkinbio.us/</option>
                             <option value="https://link-in-bio.us/">link-in-bio.us/</option>
+                            <option value="https://what-i.lv/">what-i.lv/</option>
                             <option value="https://link-m.ee/">link-m.ee/</option>
                             <option value="https://link-me.ee/">link-me.ee/</option>
                             <option value="https://link-in-profile.co/">link-in-profile.co/</option>
