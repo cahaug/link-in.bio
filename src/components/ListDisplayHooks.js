@@ -146,7 +146,7 @@ function ListDisplayHooks(match) {
         // window.Intercom("boot", {
         //     app_id: "ya321a09"
         //   });
-        const useThisURL = `https://link-in-bio.herokuapp.com${ourURL}`
+        const useThisURL = `https://link-in-bio.limited${ourURL}`
         axios.get(useThisURL)
         .then(async res => {
             console.log('backend res', res)
