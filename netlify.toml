@@ -1,6 +1,6 @@
 [[redirects]]
   from = "https://link-in-bio.netlify.com/*"
-  to = "http://link-in-bio.limited/:splat"
+  to = "https://link-in-bio.limited/:splat"
   status = 301
   force = true
 

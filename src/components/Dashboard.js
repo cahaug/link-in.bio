@@ -37,7 +37,7 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount(props) {
-        const useThisURL = `http://link-in-bio.limited/l/list4user/${sessionStorage.getItem('userId')}`
+        const useThisURL = `https://link-in-bio.limited/l/list4user/${sessionStorage.getItem('userId')}`
         return axios.get(useThisURL)
             .then(response => {
                 console.log('dashboard cdm', response.data)
@@ -50,7 +50,7 @@ class Dashboard extends React.Component {
                 console.log('stuff', stuff)
                 const listId = sessionStorage.getItem('listId')
                 // console.log('listid', listId)
-                const useThisURL = `http://link-in-bio.limited/s/listViews/${listId}`
+                const useThisURL = `https://link-in-bio.limited/s/listViews/${listId}`
                 return axios.get(useThisURL, { headers: {authorization: sessionStorage.getItem('token')} })
                 .then(response => {
                     console.log('successfully viewing listViews')

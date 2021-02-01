@@ -17,7 +17,7 @@ const ChangeDisplayName = () => {
         const token = sessionStorage.getItem('token')
         const userId = sessionStorage.getItem('userId')
         const listId = sessionStorage.getItem('listId')
-        return axios.put('http://link-in-bio.limited/l/setDisplayName', {userId:userId, listId:listId, displayName:displayName}, {headers:{authorization:token}})
+        return axios.put('https://link-in-bio.limited/l/setDisplayName', {userId:userId, listId:listId, displayName:displayName}, {headers:{authorization:token}})
         .then(res => {
             console.log('display Name change res', res)
             setDisplayName('')

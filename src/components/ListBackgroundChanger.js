@@ -14,7 +14,7 @@ const ListBackgroundChanger = () => {
         setIsLoading(true)
         const token = sessionStorage.getItem('token')
         const listId = sessionStorage.getItem('listId')
-        return axios.put('http://link-in-bio.limited/l/deleteListBackground', {listId:listId}, {headers:{authorization:token}})
+        return axios.put('https://link-in-bio.limited/l/deleteListBackground', {listId:listId}, {headers:{authorization:token}})
         .then(res => {
             console.log('swapped bg to null & deleted old res', res.data)
             setIsLoading(false)
@@ -37,7 +37,7 @@ const ListBackgroundChanger = () => {
             setImagePreviewURL()
             const token = sessionStorage.getItem('token')
             const listId = sessionStorage.getItem('listId')
-            const addingToProfile = await axios.put(`http://link-in-bio.limited/l/uploadListBackgroundPhoto/${listId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}})
+            const addingToProfile = await axios.put(`https://link-in-bio.limited/l/uploadListBackgroundPhoto/${listId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}})
             console.log('adding to profiel',addingToProfile)
             if(addingToProfile.data.message === 'Successfully Uploaded Background Image' ){
                 setIsLoading(false)

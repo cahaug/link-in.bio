@@ -99,7 +99,7 @@ class EntryEditor extends React.Component {
         const token = sessionStorage.getItem('token')
         const listId = sessionStorage.getItem('listId')
         const userId = sessionStorage.getItem('userId')
-        const deletedHostedImage = await axios.post('http://link-in-bio.limited/e/deleteImage', {userId:userId, listId:listId, shackImageId:shackImageId, entryId:entryId}, {headers:{authorization:token}})
+        const deletedHostedImage = await axios.post('https://link-in-bio.limited/e/deleteImage', {userId:userId, listId:listId, shackImageId:shackImageId, entryId:entryId}, {headers:{authorization:token}})
         if (deletedHostedImage.data.message==='Successfully Deleted ShackImage'){
             this.setState({imgURL2:''})
             this.setState({shackImageId:null})
@@ -143,7 +143,7 @@ class EntryEditor extends React.Component {
         const token = sessionStorage.getItem('token')
         const listId = sessionStorage.getItem('listId')
         // console.log('token, listId', token, listId)
-        const useThisURL = `http://link-in-bio.limited/e${this.props.match.url}`
+        const useThisURL = `https://link-in-bio.limited/e${this.props.match.url}`
         return axios.post(useThisURL, {listId:listId}, {headers:{authorization:token}})
         .then(response => {
             if(Object.values(this.choicesDict).indexOf(response.data[0].imgURL) > -1){

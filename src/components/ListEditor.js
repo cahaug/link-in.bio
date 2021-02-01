@@ -17,7 +17,7 @@ class ListDisplay extends React.Component {
     }
 
     deleteEntry(entryId){
-        const useThisURL = `http://link-in-bio.limited/e/deleteEntry/`
+        const useThisURL = `https://link-in-bio.limited/e/deleteEntry/`
         return axios.post(useThisURL, {entryId: entryId})
         .then(response => {
             alert('Entry successfully deleted')
@@ -27,7 +27,7 @@ class ListDisplay extends React.Component {
     }
 
     UNSAFE_componentWillMount(props) {
-        const useThisURL = `http://link-in-bio.limited/s/aio/${sessionStorage.getItem('userId')}`
+        const useThisURL = `https://link-in-bio.limited/s/aio/${sessionStorage.getItem('userId')}`
         return axios.get(useThisURL)
             .then(response => {
                 return response;

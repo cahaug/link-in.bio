@@ -51,7 +51,7 @@ const GraphForHomepage = () => {
     }
    
     const getDatasetBravo = () => {
-        axios.get('http://link-in-bio.limited/s/steakSauce')
+        axios.get('https://link-in-bio.limited/s/steakSauce')
         .then(res => {
             console.log('res.data bravo', res.data)
             setDatasetBravo(res.data)

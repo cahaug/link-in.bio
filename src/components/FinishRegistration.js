@@ -72,7 +72,7 @@ const FinishRegistration = () => {
             reRef.current.reset()
             console.log('token', token)
             setIsLoading(true)
-            return axios.post('http://link-in-bio.limited/numbers/finish', {password:password, tooken:tooken, email:email, token:token})
+            return axios.post('https://link-in-bio.limited/numbers/finish', {password:password, tooken:tooken, email:email, token:token})
             .then(res => {
                 console.log('setPasswordResData', res.data)
                 setPassword('')
