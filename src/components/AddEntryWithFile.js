@@ -30,7 +30,7 @@ function AddEntryWithFile(){
             formData.append('myImage', file)
             // formData.append('myImage', fs.createReadStream(object))
             console.log('formData', formData)
-            const addingToProfile = await axios.post(`https://www.link-in-bio.app/e/uploadPhoto/${userId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}, onUploadProgress:
+            const addingToProfile = await axios.post(`http://link-in-bio.limited/e/uploadPhoto/${userId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}, onUploadProgress:
             (progressEvent) => {
                 console.log('progress event', progressEvent)
                 const totalLength = progressEvent.lengthComputable ? progressEvent.total : progressEvent.target.getResponseHeader('content-length') || progressEvent.target.getResponseHeader('x-decompressed-content-length');
@@ -44,10 +44,10 @@ function AddEntryWithFile(){
             if(addingToProfile.data.message === 'Successfully Uploaded Picture'){
                 const imgURL = addingToProfile.data.pictureURL
                 const shackImageId = addingToProfile.data.shackImageId
-                const addingEntry = await axios.post('https://www.link-in-bio.app/e/new', { userId:userId, listId:listId, referencingURL:bigdata.referencingURL, description:bigdata.description, linkTitle:bigdata.linkTitle, imgURL:imgURL, shackImageId:shackImageId }, { headers: {authorization: token} })
+                const addingEntry = await axios.post('http://link-in-bio.limited/e/new', { userId:userId, listId:listId, referencingURL:bigdata.referencingURL, description:bigdata.description, linkTitle:bigdata.linkTitle, imgURL:imgURL, shackImageId:shackImageId }, { headers: {authorization: token} })
                 console.log('addingEntry', addingEntry)
                 if(addingEntry.data.result[0].entryId && addingEntry.data.result[0].referencingURL){
-                    const addingStatView = await axios.get(`https://www.link-in-bio.app/s/?eid=${addingEntry.data.result[0].entryId}&ref=${addingEntry.data.result[0].referencingURL}&red=f`)
+                    const addingStatView = await axios.get(`http://link-in-bio.limited/s/?eid=${addingEntry.data.result[0].entryId}&ref=${addingEntry.data.result[0].referencingURL}&red=f`)
                     console.log('addingstatview', addingStatView)
                     if(addingStatView.data){
                         setBigData({referencingURL:'',description:'',linkTitle:''})
@@ -70,7 +70,7 @@ function AddEntryWithFile(){
         } catch (err) {
             console.log('catcherror', err)
             toast.error('Failed Adding Entry With Photo')
-            toast.error('Please Try Again with a Smaller Photo, under 2Mb')
+            toast.error('Please Try Again with a Smaller Photo, under 15Mb')
             setIsLoading(false)
         }
     }
@@ -112,7 +112,7 @@ function AddEntryWithFile(){
             <br />
             {uploadProgress!==0 && imagePreviewURL ? <p>Upload Progress: {uploadProgress}% </p>:null}
             <br />
-            {uploadProgress===100? <p>Processing Image, Please Wait for Confirmation<p>This may take a minute</p></p>:null}
+            {uploadProgress===100? <p>Processing Image, Please Wait for Confirmation<p>This may take a minute<p>Wait until the loading indicator disappears</p></p></p>:null}
             <br />
         </div>)
     } else {

@@ -16,7 +16,7 @@ const ProfilePictureChanger = () => {
         const token = sessionStorage.getItem('token')
         const userId = sessionStorage.getItem('userId')
         const shackImageId = null
-        return axios.put('https://www.link-in-bio.app/l/changeProfilePicture', {userId:userId, profilePictureURL:profilePictureURL, shackImageId:shackImageId}, {headers:{authorization:token}})
+        return axios.put('http://link-in-bio.limited/l/changeProfilePicture', {userId:userId, profilePictureURL:profilePictureURL, shackImageId:shackImageId}, {headers:{authorization:token}})
         .then(res => {
             console.log('profPicChangeRes', res)
             setProfilePictureURL('')
@@ -38,7 +38,7 @@ const ProfilePictureChanger = () => {
         const userId = sessionStorage.getItem('userId')
         const profilePictureURL = 'https://imagizer.imageshack.com/img924/128/aacWe9.jpg'
         const shackImageId = null
-        return axios.put('https://www.link-in-bio.app/l/changeProfilePicture', {userId:userId, profilePictureURL:profilePictureURL, shackImageId:shackImageId}, {headers:{authorization:token}})
+        return axios.put('http://link-in-bio.limited/l/changeProfilePicture', {userId:userId, profilePictureURL:profilePictureURL, shackImageId:shackImageId}, {headers:{authorization:token}})
         .then(res => {
             console.log('swapped prof to anon & deleted old res', res.data)
             setIsLoading(false)

@@ -94,7 +94,7 @@ function Dashboard2 () {
             user_hash:`${user_hash}`
         });
         const token = sessionStorage.getItem('token')
-        const useThisURL = `https://www.link-in-bio.app/s/listViews/${sessionStorage.getItem('listId')}`
+        const useThisURL = `http://link-in-bio.limited/s/listViews/${sessionStorage.getItem('listId')}`
         axios.get(useThisURL, { headers: {authorization: token} })
         .then(response => {
             setListViews(response.data['listViews'])

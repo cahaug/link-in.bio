@@ -115,7 +115,7 @@ function ListEditor2(){
         const userId = sessionStorage.getItem('userId')
         const listId = sessionStorage.getItem('listId')
         const token = sessionStorage.getItem('token')
-        const useThisURL = `https://www.link-in-bio.app/e/deleteEntry`
+        const useThisURL = `http://link-in-bio.limited/e/deleteEntry`
         return axios.post(useThisURL, {entryId: entryId, listId:listId, userId:userId}, {headers:{authorization:token}})
         .then(response => {
             // alert('Entry Successfully Deleted')
@@ -142,11 +142,11 @@ function ListEditor2(){
     }
 
     useEffect(() => {
-        const useThisURL = `https://www.link-in-bio.app/s/aio/${sessionStorage.getItem('userId')}`
+        const useThisURL = `http://link-in-bio.limited/s/aio/${sessionStorage.getItem('userId')}`
         axios.get(useThisURL, { headers: {authorization: sessionStorage.getItem('token')} })
         .then(async res => {
             console.log('backend res', res)
-            const normalList = await axios.get(`https://www.link-in-bio.app/${sessionStorage.getItem('listId')}`)
+            const normalList = await axios.get(`http://link-in-bio.limited/${sessionStorage.getItem('listId')}`)
             console.log('normal list', normalList)
             const userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
             const displayName = res.data[0].displayName
@@ -160,7 +160,7 @@ function ListEditor2(){
                 setBackgroundURL(backgroundImageURL)
             }
             // setDisplayingUserInfo(displayingUserInfo)
-            // const incrementedListViews = axios.get(`https://www.link-in-bio.app/s/ili/${res.data[0].listId}`)
+            // const incrementedListViews = axios.get(`http://link-in-bio.limited/s/ili/${res.data[0].listId}`)
             // console.log(incrementedListViews)
             setIsLoading(false);
             const mt = navigator.maxTouchPoints
@@ -173,8 +173,8 @@ function ListEditor2(){
                                 {link.referencingURL === ' '?<a className='linkTitle' href='#' onClick={async (e)=>{
                                         e.preventDefault()
                                         console.log('fired', link.referencingURL, link.entryId, mt)
-                                        const trashRequest = axios.get(`https://www.link-in-bio.app/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
-                                        // const trashRequest = await axios.get(`https://www.link-in-bio.app/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
+                                        const trashRequest = axios.get(`http://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
+                                        // const trashRequest = await axios.get(`http://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                         console.log('trashRequest', trashRequest)
                                     }}>
                                     {link.imgURL?<img className='image' src={link.imgURL} alt={link.linkTitle} /> : null }
@@ -184,8 +184,8 @@ function ListEditor2(){
                                         e.preventDefault()
                                         setIsLoading(true) 
                                         console.log('fired', link.referencingURL, link.entryId, mt)
-                                        const trashRequest = axios.get(`https://www.link-in-bio.app/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
-                                        // const trashRequest = await axios.get(`https://www.link-in-bio.app/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
+                                        const trashRequest = axios.get(`http://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
+                                        // const trashRequest = await axios.get(`http://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                         console.log('trashRequest', trashRequest)
                                         setIsLoading(false)
                                         window.location.href = link.referencingURL

@@ -52,7 +52,7 @@ const GraphForEntry = () => {
     const getData = () => {
         const userId = sessionStorage.getItem('userId')
         const token = sessionStorage.getItem('token')
-        axios.post('https://www.link-in-bio.app/s/pieGraph', {userId:userId}, {headers: {authorization: token}})
+        axios.post('http://link-in-bio.limited/s/pieGraph', {userId:userId}, {headers: {authorization: token}})
         .then(res => {
             console.log('res.data', res.data)
             setPieGraphData(res.data)
@@ -75,7 +75,7 @@ const GraphForEntry = () => {
     const getDatasetBravo = () => {
         const listId = sessionStorage.getItem('listId')
         const token = sessionStorage.getItem('token')
-        axios.get(`https://www.link-in-bio.app/s/elv/${listId}`, {headers: {authorization: token}})
+        axios.get(`http://link-in-bio.limited/s/elv/${listId}`, {headers: {authorization: token}})
         .then(res => {
             console.log('res.data bravo', res.data)
             setDatasetBravo(res.data)

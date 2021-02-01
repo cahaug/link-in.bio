@@ -53,7 +53,7 @@ const FontPicker = () => {
         const token = sessionStorage.getItem('token')
         const listId = sessionStorage.getItem('listId')
         const userId = sessionStorage.getItem('userId')
-        return axios.put('https://www.link-in-bio.app/l/setText', {listId:listId, userId:userId, fontSelection:fontSelection}, { headers: { authorization:token }})
+        return axios.put('http://link-in-bio.limited/l/setText', {listId:listId, userId:userId, fontSelection:fontSelection}, { headers: { authorization:token }})
         .then(res => {
             console.log('fontSelectionRes', res)
             toast.success('Font Changed Successfully')

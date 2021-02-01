@@ -19,7 +19,7 @@ const TextColorPicker = () => {
         const listId = sessionStorage.getItem('listId')
         const userId = sessionStorage.getItem('userId')
         console.log(listId, userId, txtColor)
-        return axios.put('https://www.link-in-bio.app/l/setTcolor', {listId:listId, userId:userId, txtColor:txtColor},  { headers: {authorization: token} })
+        return axios.put('http://link-in-bio.limited/l/setTcolor', {listId:listId, userId:userId, txtColor:txtColor},  { headers: {authorization: token} })
         .then(res => {
             console.log('txtChangeres', res)
             // alert('Text Color Updated Successfully')

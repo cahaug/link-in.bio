@@ -85,7 +85,7 @@ function ResetPWCode(){
             if(valid===true){
                 console.log('valid formdata good to send '+ formData.email)
                 try {
-                    const requestResponse = await axios.post('https://www.link-in-bio.app/mailer/checkCode', {email:formData.email, newPassword:formData.newPassword, resetCode:formData.resetCode})
+                    const requestResponse = await axios.post('http://link-in-bio.limited/mailer/checkCode', {email:formData.email, newPassword:formData.newPassword, resetCode:formData.resetCode})
                     console.log('requestResponse', requestResponse)
                     if (requestResponse.data.successfulDeletion === 1){
                         setIsWaiting(false)
