@@ -78,7 +78,7 @@ function Maksaa(){
                 console.log('token', token)
                 const validEmail = await axios.post('https://link-in-bio.limited/mailer/checkValid', {email:emailAddress, token:token})
                 console.log('validEmail', validEmail)
-                if(validEmail.data.length > 0 && validEmail.data[0].message === 'valid'){
+                if(validEmail.status === 200 && validEmail.data.message === 'valid'){
                     const passthroughObj = {firstName:firstName.trim(), lastName:lastName.trim(), referredBy:referredBy}
                     const passthroughString = JSON.stringify(passthroughObj)
                     const trimmedEmail = emailAddress.trim()
