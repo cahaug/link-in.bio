@@ -34,7 +34,8 @@ function Maksaa(){
     const [lastName, setLastName] = useState('')
     const [referredBy, setReferredBy] = useState('organic')
     const [agreed, setAgreed] = useState(false)
-    const reRef = useRef()
+    const recapRef = useRef()
+    const rpk = '6LcdDdoZAAAAAH8I2TC1gEREIep33Me2lEzwijhv'
     const hasNoIllegalChars = (value) => {
         // const stringHasSpaces = value.indexOf(' ')
         const stringHasIllegalSlash1 = value.indexOf(`\\`)
@@ -71,20 +72,21 @@ function Maksaa(){
             setIsLoading(true)
             //verify valid email
             console.log('haschars', hasNoIllegalChars(emailAddress))
-            if(hasNoIllegalChars(emailAddress) === true && hasNoIllegalChars(firstName) === true && hasNoIllegalChars(lastName) === true && hasNoIllegalChars(referredBy) === true){
-                const token = await reRef.current.executeAsync()
-                reRef.current.reset()
+            if(hasNoIllegalChars(emailAddress) == true && hasNoIllegalChars(firstName) == true && hasNoIllegalChars(lastName) == true){
+                const token = await recapRef.current.executeAsync()
+                recapRef.current.reset()
                 console.log('token', token)
-                const validEmail = await axios.post('https://link-in-bio.limited/mailer/checkValid', {email:validEmail, token:token})
+                const validEmail = await axios.post('https://link-in-bio.limited/mailer/checkValid', {email:emailAddress, token:token})
                 console.log('validEmail', validEmail)
                 if(validEmail.data.length > 0 && validEmail.data[0].message === 'valid'){
-                    const passthroughObj = {firstName:firstName, lastName:lastName, referredBy:referredBy}
+                    const passthroughObj = {firstName:firstName.trim(), lastName:lastName.trim(), referredBy:referredBy}
                     const passthroughString = JSON.stringify(passthroughObj)
-                    console.log('passed through', passthroughString)
+                    const trimmedEmail = emailAddress.trim()
+                    console.log('passed through', passthroughString, trimmedEmail)
                     //activate paddle
                     // return Paddle.Checkout.open({
                     //     product: 631279,
-                    //     email: emailAddress,
+                    //     email: trimmedEmail,
                     //     passthrough:passthroughString
                     // });
                 }
@@ -118,50 +120,44 @@ function Maksaa(){
         setLastName(evt.target.value)
     }
     
-    if(isLoading===true){
-        return (<div>
-            <img src={loadingGif} alt="Loading" />
-        </div>)
-    } else {
-        return (<div>
-            <br /><label>
-            Software License Agreement: <br /> <br />
-            <textarea disabled rows="20" cols="50" value={softwareLicense}>
-            </textarea>
+    return (<div>
+        <br /><label>
+        Software License Agreement: <br /> <br />
+        {isLoading===true?<div><br/><img src={loadingGif} alt="Loading" /><br /></div>:<textarea disabled rows="20" cols="50" value={softwareLicense}></textarea>}
+        </label>
+        <br />
+        <form onSubmit={handleSubmit}>
+            <label>
+                I read and agree to the terms : <input value={agreed} type="checkbox" onChange={handleCheckbox}/>
             </label>
             <br />
-            <ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHAPUBLIC} size="invisible" ref={reRef} />
-            <form onSubmit={handleSubmit}>
-                <label>
-                    I read and agree to the terms : <input value={agreed} type="checkbox" onChange={handleCheckbox}/>
-                </label>
-                <br />
-                <label>
-                    Your Email Address: <input value={emailAddress} type="text" name="email" onChange={handleChangeEmail} required maxLength="125" placeholder="Email Address" />
-                </label>
-                <br />
-                <label>
-                    Legal First Name: <input value={firstName} name="firstName" type="text" onChange={handleChangeFirstName} required maxLength="125" placeholder="First Name" />
-                </label>
-                <br />
-                <label>
-                    Legal Last Name: <input value={lastName} name="lastName" type="text" onChange={handleChangeLastName} required maxLength="125" placeholder="Last Name"/>
-                </label>
-                <br />
-                <label>
-                    How Did You Hear About Us? <br />
-                    <select onChange={handleOptionChange}>
-                        <option value="organic">Organically</option>
-                        <option value="influencer">Influencer</option>
-                        <option value="media">News/Media</option>
-                        <option value="meme">Meme</option>
-                    </select>
-                </label>
-                <br />
-                {agreed === true ? <button type="submit">Subscribe for $5/mo</button> :null}
-            </form>
-        </div>)
-    }
+            <label>
+                Your Email Address: <input value={emailAddress} type="email" name="email" onChange={handleChangeEmail} required maxLength="125" placeholder="Email Address" />
+            </label>
+            <br />
+            <label>
+                Legal First Name: <input value={firstName} name="firstName" type="text" onChange={handleChangeFirstName} required maxLength="125" placeholder="First Name" />
+            </label>
+            <br />
+            <label>
+                Legal Last Name: <input value={lastName} name="lastName" type="text" onChange={handleChangeLastName} required maxLength="125" placeholder="Last Name"/>
+            </label>
+            <br />
+            <label>
+                How Did You Hear About Us? <br />
+                <select onChange={handleOptionChange}>
+                    <option value="organic">Organically</option>
+                    <option value="influencer">Influencer</option>
+                    <option value="media">News/Media</option>
+                    <option value="meme">Meme</option>
+                </select>
+            </label>
+            <br />
+            {agreed === true ? <button type="submit">Subscribe for $5/mo</button> :null}
+        </form>
+        <ReCAPTCHA sitekey={rpk} size="invisible" ref={recapRef} />
+    </div>)
+    
 }
 
 export default Maksaa
