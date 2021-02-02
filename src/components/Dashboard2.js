@@ -31,7 +31,7 @@ function Dashboard2 () {
             statDrawer[0].style.maxHeight = null;
             setIsShowingStats(false)
         } else {
-            statDrawer[0].style.maxHeight = statDrawer[0].scrollHeight + 100 + "px";
+            statDrawer[0].style.maxHeight = statDrawer[0].scrollHeight + 480 + "px";
             setIsShowingStats(true)
         }
     }
@@ -94,7 +94,7 @@ function Dashboard2 () {
             user_hash:`${user_hash}`
         });
         const token = sessionStorage.getItem('token')
-        const useThisURL = `https://www.link-in-bio.app/s/listViews/${sessionStorage.getItem('listId')}`
+        const useThisURL = `https://link-in-bio.limited/s/listViews/${sessionStorage.getItem('listId')}`
         axios.get(useThisURL, { headers: {authorization: token} })
         .then(response => {
             setListViews(response.data['listViews'])

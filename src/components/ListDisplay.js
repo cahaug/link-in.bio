@@ -58,7 +58,7 @@ class ListDisplay extends React.Component {
                 // console.log('state', this.state)
                 // console.log('links', links)
                 this.setState({links: links})
-                const useThisURL = `https://www.link-in-bio.app/s/ili/${this.state.listId}`
+                const useThisURL = `https://link-in-bio.limited/s/ili/${this.state.listId}`
                 return axios.get(useThisURL)
                 .then(response => {
                     console.log('response', response)

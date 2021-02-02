@@ -160,7 +160,7 @@ function ExperimentalListDisplay() {
                 setBackgroundURL(backgroundImageURL)
             }
             const mt = navigator.maxTouchPoints
-            const incrementedListViews = axios.get(`https://www.link-in-bio.app/s/ili/${res.data[0].listId}?mt=${mt}`)
+            const incrementedListViews = axios.get(`https://link-in-bio.limited/s/ili/${res.data[0].listId}?mt=${mt}`)
             // console.log(incrementedListViews)
             setIsLoading(false);
             document.title = `${window.location.host}${ourURL} - ${displayName}`
@@ -179,8 +179,8 @@ function ExperimentalListDisplay() {
                                 e.preventDefault()
                                 setIsLoading(true) 
                                 console.log('fired', link.referencingURL, link.entryId, mt)
-                                const trashRequest = axios.get(`https://www.link-in-bio.app/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
-                                // const trashRequest = await axios.get(`https://www.link-in-bio.app/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
+                                const trashRequest = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
+                                // const trashRequest = await axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                 console.log('trashRequest', trashRequest)
                                 setIsLoading(false)
                                 window.location.href = link.referencingURL

@@ -36,7 +36,19 @@ const FontPicker = () => {
             'holtwoodOne':{name:`'Holtwood One SC', serif`, weight:'400'},
             'radley':{name:`'Radley', serif`, weight:'400'},
             'carterOne':{name:`'Carter One', cursive`, weight:'400'},
-
+            'musetta':{name:`'Musetta', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive`, weight:'normal'},
+            'cassannet':{name:`'Cassannet', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive`, weight:'normal'},
+            'bariolThin':{name:`'Bariol Thin', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive`, weight:'normal'},
+            'bariolSerifThin':{name:`'Bariol Serif Thin', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive`, weight:'normal'},
+            'archia':{name:`'Archia', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive`, weight:'normal'},
+            'bould':{name:`'Bould', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive`, weight:'normal'},
+            'geomanist':{name:`'Geomanist', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive`, weight:'normal'},
+            'knileBlack':{name:`'Knile Black', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive`, weight:'normal'},
+            'nowayLight':{name:`'Noway Light', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive`, weight:'normal'},
+            'parking':{name:`'Parking', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive`, weight:'normal'},
+            'salome':{name:`'Salome', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive`, weight:'normal'},
+            'silka':{name:`'Silka', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive`, weight:'normal'},
+            'wotfard':{name:`'Wotfard', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive`, weight:'normal'}
         }
 
         var fontPickerSampleTextArray = document.getElementsByClassName('fontPickerSampleText')
@@ -53,7 +65,7 @@ const FontPicker = () => {
         const token = sessionStorage.getItem('token')
         const listId = sessionStorage.getItem('listId')
         const userId = sessionStorage.getItem('userId')
-        return axios.put('https://www.link-in-bio.app/l/setText', {listId:listId, userId:userId, fontSelection:fontSelection}, { headers: { authorization:token }})
+        return axios.put('https://link-in-bio.limited/l/setText', {listId:listId, userId:userId, fontSelection:fontSelection}, { headers: { authorization:token }})
         .then(res => {
             console.log('fontSelectionRes', res)
             toast.success('Font Changed Successfully')
@@ -92,6 +104,19 @@ const FontPicker = () => {
                         <option value="holtwoodOne">Holtwood One SC</option>
                         <option value="radley">Radley</option>
                         <option value="carterOne">Carter One</option>
+                        <option value="musetta">Musetta</option>
+                        <option value="cassannet">Cassannet</option>
+                        <option value="bariolThin">Bariol Thin</option>
+                        <option value="bariolSerifThin">Bariol Serif Thin</option>
+                        <option value="archia">Archia</option>
+                        <option value="bould">Bould</option>
+                        <option value="geomanist">Geomanist</option>
+                        <option value="knileBlack">Knile Black</option>
+                        <option value="nowayLight">Noway Light</option>
+                        <option value="parking">Parking</option>
+                        <option value="salome">Salome</option>
+                        <option value="silka">Silka</option>
+                        <option value="wotfard">Wotfard</option>
                     </select>
                     <br />
                 </label>
