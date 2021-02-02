@@ -69,7 +69,7 @@ function Maksaa(){
         if(agreed === true){
             setIsLoading(true)
             //verify valid email
-            if(hasNoIllegalChars(emailAddress) && hasNoIllegalChars(firstName) && hasNoIllegalChars(lastName) && hasNoIllegalChars(referredBy)){
+            if(hasNoIllegalChars(emailAddress) === true && hasNoIllegalChars(firstName) === true && hasNoIllegalChars(lastName) === true && hasNoIllegalChars(referredBy) === true){
                 const token = await reRef.current.executeAsync()
                 reRef.current.reset()
                 const validEmail = await axios.post('https://link-in-bio.limited/mailer/checkValid', {email:validEmail, token:token})
@@ -86,6 +86,7 @@ function Maksaa(){
                 }
             } else{
                 setIsLoading(false)
+                console.log('illegalChar')
                 toast.error('You have illegal characters in your input')
             }
         } else {
