@@ -18,6 +18,7 @@ import ResetPWCode from './components/ResetPWCode'
 import Dashboard2 from './components/Dashboard2'
 import SettingsPanel from './components/SettingsPanel';
 import ExperimentalListDisplay from './components/ExperimentalListDisplay';
+import Maksaa from './components/Maksaa'
 import { Toaster } from 'react-hot-toast';
 import FinishRegistration from './components/FinishRegistration';
 
@@ -48,6 +49,7 @@ class App extends React.Component {
         <Route exact path="/robots.txt" onEnter={() =>{window.location.reload()}} />
         <Route exact path="/register" render={props => <Register {...props} history={this.props.history}/>} />
         <Route exact path="/registerHooks" component={RegisterHooks} />
+        <Route exact path='/maksaa' component={Maksaa} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/failedlogin" component={FailedLogin} />
         <Route exact path="/resetPassword" component={ResetPassword} />
