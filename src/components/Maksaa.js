@@ -84,11 +84,11 @@ function Maksaa(){
                     const trimmedEmail = emailAddress.trim()
                     console.log('passed through', passthroughString, trimmedEmail)
                     //activate paddle
-                    // return Paddle.Checkout.open({
-                    //     product: 631279,
-                    //     email: trimmedEmail,
-                    //     passthrough:passthroughString
-                    // });
+                    return Paddle.Checkout.open({
+                        product: 631279,
+                        email: trimmedEmail,
+                        passthrough:passthroughString
+                    });
                 }
             } else{
                 setIsLoading(false)
