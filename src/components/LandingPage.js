@@ -77,6 +77,8 @@ const LandingPage = () => {
             <br />
             <h2>Link-in.Bio Ltd purchases Carbon Offsets to Stay Carbon Neutral. 🍀🍃</h2>
             <br />
+            <a alt="Help Center" href="https://intercom.help/link-in-bio-ltd/en/collections/2685643-quick-questions">Help Center - FAQ</a>
+            <br /><br />
             {/* <a href="#!" class="paddle_button" data-product="631279">Subscribe Now!</a> */}
         </div>
     )
