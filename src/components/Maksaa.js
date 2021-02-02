@@ -71,19 +71,24 @@ function Maksaa(){
         if(agreed === true){
             setIsLoading(true)
             //verify valid email
-            console.log('haschars', hasNoIllegalChars(emailAddress))
+            // console.log('haschars', hasNoIllegalChars(emailAddress))
             if(hasNoIllegalChars(emailAddress) == true && hasNoIllegalChars(firstName) == true && hasNoIllegalChars(lastName) == true){
                 const token = await recapRef.current.executeAsync()
                 recapRef.current.reset()
-                console.log('token', token)
+                // console.log('token', token)
                 const validEmail = await axios.post('https://link-in-bio.limited/mailer/checkValid', {email:emailAddress, token:token})
-                console.log('validEmail', validEmail)
+                // console.log('validEmail', validEmail)
                 if(validEmail.status === 200 && validEmail.data.message === 'valid'){
                     const passthroughObj = {firstName:firstName.trim(), lastName:lastName.trim(), referredBy:referredBy}
                     const passthroughString = JSON.stringify(passthroughObj)
                     const trimmedEmail = emailAddress.trim()
-                    console.log('passed through', passthroughString, trimmedEmail)
+                    // console.log('passed through', passthroughString, trimmedEmail)
                     //activate paddle
+                    setLastName('')
+                    setFirstName('')
+                    setEmailAddress('')
+                    setReferredBy('organic')
+                    setIsLoading(false)
                     return Paddle.Checkout.open({
                         product: 631279,
                         email: trimmedEmail,
