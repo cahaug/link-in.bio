@@ -4,36 +4,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 import loadingGif from '../files/loading.gif'
 import toast from 'react-hot-toast'
 
-const hasNoIllegalChars = (value) => {
-    // const stringHasSpaces = value.indexOf(' ')
-    const stringHasIllegalSlash1 = value.indexOf(`\\`)
-    const stringHasIllegalSlash2 = value.indexOf(`/`)
-    const stringHasIllegalQuote1 = value.indexOf(`'`)
-    const stringHasIllegalQuote2 = value.indexOf(`"`)
-    const stringHasIllegalSemicolon = value.indexOf(`;`)
-    const stringHasIllegalColon = value.indexOf(`:`) 
-    const stringHasIllegalCaret = value.indexOf(`^`)
-    const stringHasIllegalStar = value.indexOf(`*`)
-    const stringHasIllegalHTML = value.indexOf(`<`)
-    const stringHasIllegalPercent = value.indexOf('%')
-    if(
-        stringHasIllegalSlash1 === -1 &&
-        stringHasIllegalSlash2 === -1 &&
-        stringHasIllegalQuote1 === -1 &&
-        stringHasIllegalQuote2 === -1 &&
-        stringHasIllegalSemicolon === -1 &&
-        stringHasIllegalColon === -1 &&
-        stringHasIllegalCaret === -1 &&
-        stringHasIllegalHTML === -1 &&
-        stringHasIllegalStar === -1 &&
-        stringHasIllegalPercent === -1
-        // stringHasSpaces === -1 && 
-    ){
-        return true
-    } else {
-        return false
-    }
-}
+
 
 const softwareLicense = `To use Link-In Bio’s hardware & software:
 
@@ -64,25 +35,58 @@ function Maksaa(){
     const [referredBy, setReferredBy] = useState('organic')
     const [agreed, setAgreed] = useState(false)
     const reRef = useRef()
+    const hasNoIllegalChars = (value) => {
+        // const stringHasSpaces = value.indexOf(' ')
+        const stringHasIllegalSlash1 = value.indexOf(`\\`)
+        const stringHasIllegalSlash2 = value.indexOf(`/`)
+        const stringHasIllegalQuote1 = value.indexOf(`'`)
+        const stringHasIllegalQuote2 = value.indexOf(`"`)
+        const stringHasIllegalSemicolon = value.indexOf(`;`)
+        const stringHasIllegalColon = value.indexOf(`:`) 
+        const stringHasIllegalCaret = value.indexOf(`^`)
+        const stringHasIllegalStar = value.indexOf(`*`)
+        const stringHasIllegalHTML = value.indexOf(`<`)
+        const stringHasIllegalPercent = value.indexOf('%')
+        if(
+            stringHasIllegalSlash1 === -1 &&
+            stringHasIllegalSlash2 === -1 &&
+            stringHasIllegalQuote1 === -1 &&
+            stringHasIllegalQuote2 === -1 &&
+            stringHasIllegalSemicolon === -1 &&
+            stringHasIllegalColon === -1 &&
+            stringHasIllegalCaret === -1 &&
+            stringHasIllegalHTML === -1 &&
+            stringHasIllegalStar === -1 &&
+            stringHasIllegalPercent === -1
+            // stringHasSpaces === -1 && 
+        ){
+            return true
+        } else {
+            return false
+        }
+    }
     const handleSubmit = async (event) => {
         event.preventDefault()
         if(agreed === true){
             setIsLoading(true)
             //verify valid email
+            console.log('haschars', hasNoIllegalChars(emailAddress))
             if(hasNoIllegalChars(emailAddress) === true && hasNoIllegalChars(firstName) === true && hasNoIllegalChars(lastName) === true && hasNoIllegalChars(referredBy) === true){
                 const token = await reRef.current.executeAsync()
                 reRef.current.reset()
+                console.log('token', token)
                 const validEmail = await axios.post('https://link-in-bio.limited/mailer/checkValid', {email:validEmail, token:token})
                 console.log('validEmail', validEmail)
                 if(validEmail.data.length > 0 && validEmail.data[0].message === 'valid'){
                     const passthroughObj = {firstName:firstName, lastName:lastName, referredBy:referredBy}
                     const passthroughString = JSON.stringify(passthroughObj)
+                    console.log('passed through', passthroughString)
                     //activate paddle
-                    Paddle.Checkout.open({
-                        product: 631279,
-                        email: emailAddress,
-                        passthrough:passthroughString
-                    });
+                    // return Paddle.Checkout.open({
+                    //     product: 631279,
+                    //     email: emailAddress,
+                    //     passthrough:passthroughString
+                    // });
                 }
             } else{
                 setIsLoading(false)
@@ -129,7 +133,7 @@ function Maksaa(){
             <ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHAPUBLIC} size="invisible" ref={reRef} />
             <form onSubmit={handleSubmit}>
                 <label>
-                    I agree to the terms : <input value={agreed} type="checkbox" onChange={handleCheckbox}/>
+                    I read and agree to the terms : <input value={agreed} type="checkbox" onChange={handleCheckbox}/>
                 </label>
                 <br />
                 <label>
