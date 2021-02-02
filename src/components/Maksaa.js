@@ -158,7 +158,7 @@ function Maksaa(){
                 </select>
             </label>
             <br />
-            {agreed === true ? <button type="submit">Subscribe for $5/mo</button> :null}
+            {agreed === true ? <button type="submit">Subscribe for <span className="paddle-gross" data-product="631279">$5</span>/mo</button> :null}
         </form>
         <ReCAPTCHA sitekey={rpk} size="invisible" ref={recapRef} />
     </div>)
