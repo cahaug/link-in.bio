@@ -17,7 +17,7 @@ const LandingPage = () => {
             statDrawer[0].style.maxHeight = null;
             setIsShowingStats(false)
         } else {
-            statDrawer[0].style.maxHeight = statDrawer[0].scrollHeight + 100 + "px";
+            statDrawer[0].style.maxHeight = statDrawer[0].scrollHeight + 480 + "px";
             setIsShowingStats(true)
         }
     }
@@ -25,7 +25,7 @@ const LandingPage = () => {
     useEffect(() => {
         if(loggedViewNoIP === false){
             const mt = navigator.maxTouchPoints
-            axios.get(`https://www.link-in-bio.app/s/hpA1?mt=${mt}`)
+            axios.get(`https://link-in-bio.limited/s/hpA1?mt=${mt}`)
             .then(res => {
                 console.log(res.data.message)
                 setLoggedViewNoIP(true)
@@ -77,6 +77,8 @@ const LandingPage = () => {
             <br />
             <h2>Link-in.Bio Ltd purchases Carbon Offsets to Stay Carbon Neutral. 🍀🍃</h2>
             <br />
+            <a alt="Help Center" href="https://intercom.help/link-in-bio-ltd/en/collections/2685643-quick-questions">Help Center - FAQ</a>
+            <br /><br />
             {/* <a href="#!" class="paddle_button" data-product="631279">Subscribe Now!</a> */}
         </div>
     )

@@ -68,7 +68,7 @@ const HomepageAvailability = () => {
             const secondaryIntermediate = `${prefixHost}${intermediate}`
             setLastCheckedCURL(`${secondaryIntermediate.slice(8)}`)
             console.log('secondaryIntermediate', secondaryIntermediate)
-            return axios.post('https://www.link-in-bio.app/l/checkCHomepage', {customURL:secondaryIntermediate, token:token})
+            return axios.post('https://link-in-bio.limited/l/checkCHomepage', {customURL:secondaryIntermediate, token:token})
             .then(res => {
                 console.log('res.data chosenCustom', res.data)
                 if(res.data.length === 0){
@@ -114,6 +114,7 @@ const HomepageAvailability = () => {
                             <option value="https://this-links.to/">this-links.to/</option>
                             <option value="https://pstd.at/">pstd.at/</option>
                             <option value="https://down.af/">down.af/</option>
+                            <option value="https://what-i.lv/">what-i.lv/</option>
                             <option value="https://this.af/">this.af/</option>
                             <option value="https://7zz.ch/">7zz.ch/</option>
                             <option value="https://bio-link.me/">bio-link.me/</option>

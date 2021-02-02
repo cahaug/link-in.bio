@@ -134,7 +134,7 @@ function RegisterHooks(){
                 try {
                     // register the user
                     const { email, password, firstName, lastName, profilePictureURL, referredBy} = cast
-                    const registrationReturn = await axios.post('https://www.link-in-bio.app/auth/register', { email, password, firstName, lastName, profilePictureURL, referredBy} )
+                    const registrationReturn = await axios.post('https://link-in-bio.limited/auth/register', { email, password, firstName, lastName, profilePictureURL, referredBy} )
                     console.log('registration return', registrationReturn)
                     sessionStorage.setItem('token', registrationReturn.data.token)
                     const token = registrationReturn.data.token
@@ -143,7 +143,7 @@ function RegisterHooks(){
                     sessionStorage.setItem('firstName', registrationReturn.data.firstName)
                     sessionStorage.setItem('profilePictureURL', registrationReturn.data.profilePictureURL)
                     // create their first list
-                    const userListCreation = await axios.post('https://www.link-in-bio.app/l/new', {'userId':registrationReturn.data.userId, 'backColor':'#ffffff','txtColor':'#000000', 'fontSelection':'Roboto',}, { headers: {authorization: registrationReturn.data.token} })
+                    const userListCreation = await axios.post('https://link-in-bio.limited/l/new', {'userId':registrationReturn.data.userId, 'backColor':'#ffffff','txtColor':'#000000', 'fontSelection':'Roboto',}, { headers: {authorization: registrationReturn.data.token} })
                     console.log('userListCreation return', userListCreation)
                     sessionStorage.setItem('listId', userListCreation.data[userListCreation.data.length - 1].listId)
                     // standard first entry data
@@ -157,10 +157,10 @@ function RegisterHooks(){
                     }
                     const { userId, listId, referencingURL, description, linkTitle, imgURL } = standardEntry
                     // add the first entry to their list
-                    const entryCreationReturnData = await axios.post('https://www.link-in-bio.app/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL }, { headers: {authorization: token} })
+                    const entryCreationReturnData = await axios.post('https://link-in-bio.limited/e/new', { userId, listId, referencingURL, description, linkTitle, imgURL }, { headers: {authorization: token} })
                     console.log('entryCreationReturnData', entryCreationReturnData)
                     // give the link its entry its first view
-                    const useThisURL = `https://www.link-in-bio.app/s/?eid=${entryCreationReturnData.data.result[0].entryId}&ref=${entryCreationReturnData.data.result[0].referencingURL}&red=f`
+                    const useThisURL = `https://link-in-bio.limited/s/?eid=${entryCreationReturnData.data.result[0].entryId}&ref=${entryCreationReturnData.data.result[0].referencingURL}&red=f`
                     const entryViewReturnData = await axios.get(useThisURL)
                     console.log('entryViewReturnData', entryViewReturnData)
                     

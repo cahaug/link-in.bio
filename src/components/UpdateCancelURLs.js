@@ -11,7 +11,7 @@ const UpdateCancelURLs = () => {
         const token = sessionStorage.getItem('token')
         const userId = sessionStorage.getItem('userId')
         console.log('token, userId', token, userId)
-        return axios.post('https://www.link-in-bio.app/numbers/out', {userId:userId}, {headers:{authorization:token}})
+        return axios.post('https://link-in-bio.limited/numbers/out', {userId:userId}, {headers:{authorization:token}})
         .then(res => {
             console.log('res.data', res.data)
             setUpdateURL(res.data[0].updateURL)
@@ -30,9 +30,9 @@ const UpdateCancelURLs = () => {
     return (
         <div>
             <br />
-            <p>{updateURL === ''? 'Loading Your Update URL':<a href={updateURL||'#'}>Click Here to Edit Your Payment Information</a>}</p>
+            <p>{updateURL === ''? 'Loading Your Update URL':<p><button onClick={(evt)=>{evt.preventDefault(); Paddle.Checkout.open({ override: updateURL, success: 'https://link-in.bio/settingsPanel'});}}>Click Here to Edit Your Payment Information</button></p>}</p>
             <br />
-            <p>{cancelURL === ''? 'Loading Your Cancel URL':<a href={cancelURL||'#'}>(Warning: cannot be undone) <br /> Click Here to Permanently Delete Your Account</a>}</p>
+            <p>{cancelURL === ''? 'Loading Your Cancel URL':<p>(Warning: cannot be undone) <br /> <button onClick={(evt)=>{evt.preventDefault(); Paddle.Checkout.open({override: cancelURL, success:'https://link-in.bio/failedLogin'});}}>Click Here to Permanently Delete Your Account</button></p>}</p>
         </div>
     )
 }
