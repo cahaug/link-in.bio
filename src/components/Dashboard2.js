@@ -9,7 +9,7 @@ import CUPicker from '../components/CustomURL/CUPicker'
 import EasyAddDash from '../components/EasyAdd/EasyAddDash'
 import GraphForEntry from "../components/GraphForEntry"
 import AddEntryWithFile from '../components/AddEntryWithFile'
-
+import {logoImageURL} from '../components/LogoDataURL'
 
 
 
@@ -121,9 +121,9 @@ function Dashboard2 () {
                     <div className="qrcode">
                         <div>
                             {sessionStorage.getItem('customURL')==null?
-                            <QRCode value={`https://link-in.bio/${sessionStorage.getItem('listId')}`} />
+                            <QRCode value={`https://link-in.bio/${sessionStorage.getItem('listId')}`} imageSettings={{ src:logoImageURL }} />
                             :
-                            <QRCode value={sessionStorage.getItem('customURL')} />
+                            <QRCode value={sessionStorage.getItem('customURL')} imageSettings={{ src:logoImageURL }} />
                             }
                         </div>
                     </div>
