@@ -17,7 +17,7 @@ const LandingPage = () => {
             statDrawer[0].style.maxHeight = null;
             setIsShowingStats(false)
         } else {
-            statDrawer[0].style.maxHeight = statDrawer[0].scrollHeight + 480 + "px";
+            statDrawer[0].style.maxHeight = statDrawer[0].scrollHeight + 1280 + "px";
             setIsShowingStats(true)
         }
     }
