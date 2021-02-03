@@ -49,17 +49,18 @@ const LandingPage = () => {
             <br />
             <HomepageAvailability />
             <br />
-            {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Homepage Stats  ▼</span>}
+            {isShowingStats ? <span style={{ "cursor": "pointer" }} onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span style={{ "cursor": "pointer" }} onClick={statsDrawerToggle}>Homepage Stats  ▼</span>}
             <div className="statsDisplayDiv">
                 <GraphForHomepage /> <br />
-                {isShowingStats ? <span onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span onClick={statsDrawerToggle}>Homepage Stats  ▼</span>}
+                {isShowingStats ? <span style={{ "cursor": "pointer" }} onClick={statsDrawerToggle}>Hide Statistics  ▲</span>:<span style={{ "cursor": "pointer" }} onClick={statsDrawerToggle}>Homepage Stats  ▼</span>}
 
             </div>
             <br />
             <div className='signupcards'>
+                <div className="signupspcdiv">
                 <Link to='/register' style={{ textDecoration: 'none', color: 'black' }}>
                     <div className='signup'>
-                        <h3>I'm here for my own LinkList</h3>
+                        <h3>I'm here for my own Link-In Bio Account</h3>
                         <p>Let's Begin - Register - </p>
                         {/* remove this later */}
                         <br />
@@ -67,12 +68,15 @@ const LandingPage = () => {
                         {/* end */}
                     </div>
                 </Link>
+                </div>
+                <div className='signupspcdiv'>
                 <Link to='/login' style={{ textDecoration: 'none', color: 'black' }}>
                     <div className='signup'>
                         <h3>I already have an account</h3>
                         <p>I want to modify my LinkList</p>
                     </div>
                 </Link>
+                </div>
             </div>
             <br />
             <h2>Link-in.Bio Ltd purchases Carbon Offsets to Stay Carbon Neutral. 🍀🍃</h2>

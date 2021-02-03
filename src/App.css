@@ -56,6 +56,15 @@ body {
   min-height: 100vh;
   min-height: -webkit-fill-available;
 }
+body a {
+  cursor: pointer;
+}
+body button {
+  cursor: pointer;
+}
+body select {
+  cursor: pointer;
+}
 body input {
   font-size: 16px;
 }
@@ -282,7 +291,7 @@ main p {
   white-space: pre-wrap;
 }
 main img {
-  padding: 1.5vh;
+  padding: 1.5%;
   max-height: 165px;
   max-width: 165px;
 }
@@ -418,6 +427,12 @@ footer span {
   cursor: pointer;
 }
 .settingsPanel span {
+  cursor: pointer;
+}
+.settingsPanel button {
+  cursor: pointer;
+}
+.settingsPanel a {
   cursor: pointer;
 }
 .dashboardInfoSection {

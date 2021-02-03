@@ -34,17 +34,24 @@
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    align-content: space-between;
     width: 100%;
-    margin: 10% auto;
+    /* padding: 1%; */
+    margin: 3% auto;
   }
   
   .signup {
     border: 1px solid gray;
     border-radius: 10%;
-    margin: 2.5% auto;
+    margin: 10px auto;
     padding: 7.5% 10%;
-    width: 50%;
+    /* width: 100%; */
+  }
 
+  .signupspcdiv {
+    width:50%;
+    max-width: 472px;
+    margin: 0 auto;
   }
   
   .signup img {

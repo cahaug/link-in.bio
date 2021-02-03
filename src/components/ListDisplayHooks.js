@@ -170,6 +170,7 @@ function ListDisplayHooks(match) {
             if(displayName===null){
                 document.title = `${window.location.host}${ourURL} - ${userFirstLastName}`
             }
+            let mql = window.matchMedia('(prefers-color-scheme: dark)')
             // initialize in dark mode
             // var element0 = document.getElementsByClassName('App')
             // element0[0].classList.toggle("darkMode")
@@ -248,47 +249,46 @@ function ListDisplayHooks(match) {
                     e.preventDefault(); 
                 }, false);
                 // allTrackedLinks[i].addEventListener('oncontextmenu', e => {
-                //     e.preventDefault();
-                // });
-            }
-
-            // initialize in custom color mode
-            var txtColorElement0 = document.getElementsByClassName('linkDescription')
-            var k
-            for (k=0; k< txtColorElement0.length; k++){
-                txtColorElement0[k].style.color = `${res.data[0].txtColor}`
-                // txtColorElement[j].style.color = `${res.data[0].backColor}`
-            }
-            var borderElement0 = document.getElementsByClassName('linkSquare')
-            var arrowChangeColor = document.getElementsByClassName('linkDescriptionTag')
-            var n
-            for (n=0; n< borderElement0.length; n++){
-                borderElement0[n].style.border = `2px solid ${res.data[0].txtColor}`
-                // arrowChangeColor[n].style.color = `${res.data[0].txtColor}`
-                // borderElement0[n].style.backgroundColor = `${backgroundColor}`
-            }
-            for(n=0;n<arrowChangeColor.length;n++){
-                arrowChangeColor[n].style.color = `${res.data[0].txtColor}`
-            }
-            var headerDividerBar = document.getElementsByClassName('linkListDisplayHeader')
-            headerDividerBar[0].style.borderBottom = `0.25vh solid ${res.data[0].txtColor}`
-            // headerDividerBar[0].style.backgroundColor = `${backgroundColor}`
-            var headerTextElement = document.getElementById('headerName')
-            headerTextElement.style.color = `${res.data[0].txtColor}`
-            var mainBackgroundElement = document.getElementsByClassName('theMain')
-            console.log(mainBackgroundElement[0].style.backgroundColor)
-            if(res.data[0].listBackgroundURL !== null){
-                mainBackgroundElement[0].style.backgroundImage = `url("${res.data[0].listBackgroundURL}")`
-            } else {
-                mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
-            }
-            let mql = window.matchMedia('(prefers-color-scheme: dark)')
-            console.log('mql', mql)            
-            if(mql.matches === true ){
-                headerTextElement.style.color = ColorLuminance(`${res.data[0].txtColor}`, 2)
-                // initialize in dark mode
-                if(`${res.data[0].txtColor}`==='#000000'){
-                    headerTextElement.style.color = '#FFFFFF'    
+                    //     e.preventDefault();
+                    // });
+                }
+                
+                // initialize in custom color mode
+                if(mql===false){var txtColorElement0 = document.getElementsByClassName('linkDescription')
+                var k
+                for (k=0; k< txtColorElement0.length; k++){
+                    txtColorElement0[k].style.color = `${res.data[0].txtColor}`
+                    // txtColorElement[j].style.color = `${res.data[0].backColor}`
+                }}
+                var borderElement0 = document.getElementsByClassName('linkSquare')
+                var arrowChangeColor = document.getElementsByClassName('linkDescriptionTag')
+                var n
+                for (n=0; n< borderElement0.length; n++){
+                    borderElement0[n].style.border = `2px solid ${res.data[0].txtColor}`
+                    // arrowChangeColor[n].style.color = `${res.data[0].txtColor}`
+                    // borderElement0[n].style.backgroundColor = `${backgroundColor}`
+                }
+                for(n=0;n<arrowChangeColor.length;n++){
+                    arrowChangeColor[n].style.color = `${res.data[0].txtColor}`
+                }
+                var headerDividerBar = document.getElementsByClassName('linkListDisplayHeader')
+                headerDividerBar[0].style.borderBottom = `0.25vh solid ${res.data[0].txtColor}`
+                // headerDividerBar[0].style.backgroundColor = `${backgroundColor}`
+                var headerTextElement = document.getElementById('headerName')
+                headerTextElement.style.color = `${res.data[0].txtColor}`
+                var mainBackgroundElement = document.getElementsByClassName('theMain')
+                console.log(mainBackgroundElement[0].style.backgroundColor)
+                if(res.data[0].listBackgroundURL !== null){
+                    mainBackgroundElement[0].style.backgroundImage = `url("${res.data[0].listBackgroundURL}")`
+                } else {
+                    mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
+                }
+                console.log('mql', mql)            
+                if(mql.matches === true ){
+                    headerTextElement.style.color = ColorLuminance(`${res.data[0].txtColor}`, 2)
+                    // initialize in dark mode
+                    if(`${res.data[0].txtColor}`==='#000000'){
+                        headerTextElement.style.color = '#FFFFFF'    
                 }
                 var element0 = document.getElementsByClassName('App')
                 element0[0].classList.toggle("darkMode")
