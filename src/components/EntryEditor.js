@@ -83,7 +83,9 @@ class EntryEditor extends React.Component {
         'bitcoin':'https://imagizer.imageshack.com/img922/893/M2YC8X.png',
         'ethereum':'https://imagizer.imageshack.com/img923/2998/c27O4p.jpg',
         'dogecoin':'https://imagizer.imageshack.com/img923/7307/efzU3u.png',
-        'monero':'https://imagizer.imageshack.com/img924/4135/U0zNc4.png'
+        'monero':'https://imagizer.imageshack.com/img924/4135/U0zNc4.png',
+        'sponsus':'https://imagizer.imageshack.com/img922/1434/8gkFop.png',
+        'floatplane':'https://imagizer.imageshack.com/img923/2084/0e51nC.png'
     }
 
     handleChange = (evt) => {

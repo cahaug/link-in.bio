@@ -304,7 +304,9 @@ const EasyAddDash = () => {
         'bitcoin':{label:'Bitcoin', form:'Your Bitcoin Public Key:', img:'https://imagizer.imageshack.com/img922/893/M2YC8X.png', emoji:'💻💸', type:'text'},
         'ethereum':{label:'Ethereum', form:'Your Ethereum Public Key:', img:'https://imagizer.imageshack.com/img923/2998/c27O4p.jpg', emoji:'💻💸', type:'text'},
         'dogecoin':{label:'Dogecoin', form:'Your Dogecoin Public Key:', img:'https://imagizer.imageshack.com/img923/7307/efzU3u.png', emoji:'💻💸', type:'text'},
-        'monero':{label:'Monero', form:'Your Monero Public Key:', img:'https://imagizer.imageshack.com/img924/4135/U0zNc4.png', emoji:'💻💸', type:'text'}
+        'monero':{label:'Monero', form:'Your Monero Public Key:', img:'https://imagizer.imageshack.com/img924/4135/U0zNc4.png', emoji:'💻💸', type:'text'},
+        'sponsus':{label:'Sponsus', form:'sponsus.org/u/', img:'https://imagizer.imageshack.com/img922/1434/8gkFop.png', emoji:'🌐💸', type:'text'},
+        'floatplane':{label:'Floatplane', form:'floatplane.com/', img:'https://imagizer.imageshack.com/img923/2084/0e51nC.png', emoji:'🎥💻', type:'text'}
     }
 
     return (
@@ -338,6 +340,7 @@ const EasyAddDash = () => {
                     <option value="ethereum">Ethereum Public Key</option>
                     <option value="facebook">Facebook</option>
                     <option value="flickr">Flickr</option>
+                    <option value="floatplane">Floatplane</option>
                     <option value="github">GitHub</option>
                     <option value="gofundme">GoFundMe</option>
                     <option value="imageshack">ImageShack</option>
@@ -364,6 +367,7 @@ const EasyAddDash = () => {
                     <option value="reddit">Reddit</option>
                     <option value="snapchat">SnapChat</option>
                     <option value="soundcloud">SoundCloud</option>
+                    <option value="sponsus">Sponsus</option>
                     <option value="spotifyartist">Spotify - Artist</option>
                     <option value="spotifyalbum">Spotify - Album</option>
                     <option value="spotifyplaylist">Spotify - Playlist</option>
