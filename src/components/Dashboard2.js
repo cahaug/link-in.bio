@@ -121,9 +121,9 @@ function Dashboard2 () {
                     <div className="qrcode">
                         <div>
                             {sessionStorage.getItem('customURL')==null?
-                            <QRCode value={`https://link-in.bio/${sessionStorage.getItem('listId')}`} imageSettings={{ src:logoImageURL }} />
+                            <div><QRCode value={`https://link-in.bio/${sessionStorage.getItem('listId')}`} level="H" imageSettings={{ src:logoImageURL, width:25, height:25 }} /><br /><p>Links to https://link-in.bio/{sessionStorage.getItem('listId')}</p></div>
                             :
-                            <QRCode value={sessionStorage.getItem('customURL')} imageSettings={{ src:logoImageURL }} />
+                            <div><QRCode value={sessionStorage.getItem('customURL')} level="H" imageSettings={{ src:logoImageURL, width:45, height:45 }} /><br /><p>Links to: {sessionStorage.getItem('customURL')}</p></div>
                             }
                         </div>
                     </div>
