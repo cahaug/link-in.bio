@@ -215,7 +215,7 @@ const GraphForHomepage = () => {
                 <br />
                 <div className="vMap">
                     <p>Last 100 Viewers Locations:</p><br />
-                    <div style={{ width:"100%", height:"100%", margin:"0 auto" }}>
+                    <div style={{ width:"80%", height:"80%", backgroundColor:"white" , margin:"0 auto" }}>
                     <ComposableMap>
                         <Geographies geography={mapJson}>
                             {({ geographies }) =>
