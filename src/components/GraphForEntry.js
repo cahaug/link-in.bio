@@ -5,7 +5,8 @@ import { VictoryPie, VictoryChart, VictoryAxis, VictoryBar, VictoryLine, Victory
 import ReactWordcloud from "react-wordcloud";
 import toast from 'react-hot-toast'
 import { WorldMap } from 'react-svg-worldmap'
-
+import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
+import {mapJson} from './MapJson'
 
 const GraphForEntry = () => {
     const [isLoading, setIsLoading] = useState(true)
@@ -23,7 +24,8 @@ const GraphForEntry = () => {
         deviceOwnNamesCount:[],
         deviceBrandNamesCount:[],
         timeline:[],
-        mapCountries:[]
+        mapCountries:[],
+        mapPoints:[]
     })
     const [selectedDateRange, setSelectedDateRange] = useState(7)
     const [trimmedData, setTrimmedData] = useState([])
@@ -211,6 +213,25 @@ const GraphForEntry = () => {
                                 fontSize: 20, fill: '#929292'
                               }
                         }} />
+                    </div>
+                </div>
+                <br />
+                <div className="vMap">
+                    <p>Last 100 Viewers Locations:</p><br />
+                    <div style={{ width:"100%", height:"100%", margin:"0 auto" }}>
+                    <ComposableMap>
+                        <Geographies geography={mapJson}>
+                            {({ geographies }) =>
+                            geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
+                            }
+                        </Geographies>
+                        {datasetBravo.mapPoints.map(({ name, coordinates, markerOffset }) => (
+                            <Marker key={name} coordinates={coordinates}>
+                                <circle r={5} fill="#F00" stroke="#fff" strokeWidth={2} />
+                                <text textAnchor="middle" y={markerOffset} style={{ fontFamily: "Bariol Serif Thin", fill: "#5D5A6D" }} >{name}</text>
+                            </Marker>
+                        ))}
+                    </ComposableMap>
                     </div>
                 </div>
                 <br />
