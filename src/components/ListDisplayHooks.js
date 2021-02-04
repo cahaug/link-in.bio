@@ -149,7 +149,7 @@ function ListDisplayHooks(match) {
         const useThisURL = `https://link-in-bio.limited${ourURL}`
         axios.get(useThisURL)
         .then(async res => {
-            // console.log('backend res', res)
+            console.log('backend res', res.data)
             const userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
             const displayName = res.data[0].displayName
             const profilePictureURL = `${res.data[0].profilePictureURL}`
@@ -211,6 +211,7 @@ function ListDisplayHooks(match) {
                 )
             }))
             setLinks(thelinks)
+            console.log('res.data', res.data.length)
             if(res.data.length == 0){
                 const emptyList = {0:true}
                 const emptiedList = emptyList.map((x) => {
