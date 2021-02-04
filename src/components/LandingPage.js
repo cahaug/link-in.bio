@@ -58,7 +58,7 @@ const LandingPage = () => {
             <br />
             <div className='signupcards'>
                 <div className="signupspcdiv">
-                <Link to='/register' style={{ textDecoration: 'none', color: 'black' }}>
+                <Link to='/maksaa' style={{ textDecoration: 'none', color: 'black' }}>
                     <div className='signup'>
                         <h3> I'm here for my own Link-In Bio Account </h3>
                         <p> Let's Begin - Register - </p>
