@@ -22,7 +22,7 @@ const SettingsChangePassword = () => {
 
     const validate = () => {
         let currentRunErrors = 0
-        if(newPassword.length<7){
+        if(newPassword.length<8){
             currentRunErrors += 1
             setErrors({...errors, notLongEnough:true})
         } 
@@ -140,7 +140,7 @@ const SettingsChangePassword = () => {
                     </label>
                     <br />
                     {errors.notTheSame?<p>❌ New Password and Confirm New Password Must Match</p>:null}
-                    {errors.notLongEnough?<p>❌ Password Must Be Longer than Six Characters</p>:null}
+                    {errors.notLongEnough?<p>❌ Password Must Be Longer than Eight Characters</p>:null}
                     {errors.noSymbol?<p>❌ New Password Must Contain A Symbol</p>:null}
                     {errors.noNumber?<p>❌ New Password Must Contain a Number</p>:null}
                     <br />
