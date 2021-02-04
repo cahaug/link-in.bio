@@ -1,5 +1,7 @@
 const softwareLicense = `To use Link-In Bio’s hardware & software:
 
+I am older than twelve years old (13+). Humans under the age of thirteen are prohibited from registering with Link-In Bio Ltd.
+
 I agree to respect Link-In Bio Ltd and its online software & hardware. 
 
 I agree to not attempt to hack, deface, or otherwise reverse engineer the hardware or software.
