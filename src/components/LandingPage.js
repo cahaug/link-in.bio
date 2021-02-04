@@ -60,11 +60,10 @@ const LandingPage = () => {
                 <div className="signupspcdiv">
                 <Link to='/register' style={{ textDecoration: 'none', color: 'black' }}>
                     <div className='signup'>
-                        <h3>I'm here for my own Link-In Bio Account</h3>
-                        <p>Let's Begin - Register - </p>
+                        <h3> I'm here for my own Link-In Bio Account </h3>
+                        <p> Let's Begin - Register - </p>
                         {/* remove this later */}
                         <br />
-                        <p>--ARRIVING  2021--</p>
                         {/* end */}
                     </div>
                 </Link>
@@ -72,8 +71,8 @@ const LandingPage = () => {
                 <div className='signupspcdiv'>
                 <Link to='/login' style={{ textDecoration: 'none', color: 'black' }}>
                     <div className='signup'>
-                        <h3>I already have an account</h3>
-                        <p>I want to modify my LinkList</p>
+                        <h3> I already have an account </h3>
+                        <p> Welcome Back - Log In - </p>
                     </div>
                 </Link>
                 </div>
