@@ -213,6 +213,24 @@ function ListEditor2(){
                 }
             }))
             setLinks(thelinks)
+            if(res.data.length == 0){
+                const emptyList = {0:true}
+                const emptiedList = emptyList.map((x) => {
+                    console.log('x', "\n[Object object]", x)
+                    return (
+                        <div className='linkSquare'>
+                            <a className='linkTitle' href='#' onClick={(e)=>{e.preventDefault()}}>
+                                <h3>This List Is Empty</h3>
+                            </a>
+                            <br />
+                            <div className="linkSquareButtonHolder"><br /></div>
+                            <p className="linkDescriptionTag">▼</p>
+                            <p className='linkDescription'><br />This entry automatically disappears once an entry is added to this list.<br /></p>
+                        </div>
+                    )
+                })
+                setLinks(emptiedList)
+            }
             // console.log('thelinks',thelinks)
             if(res.data[0].backColor){
                 // console.log('backColor Changed Bruh!')
@@ -281,7 +299,7 @@ function ListEditor2(){
                 setDarkMode(true)
             }
         })
-        .catch(err => {console.log('err', err); alert('Please close this tab and log back in.')})
+        .catch(err => {console.log('err', err)})
     }, [])
 
     if(isLoading===true){
