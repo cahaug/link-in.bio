@@ -149,7 +149,7 @@ function ListDisplayHooks(match) {
         const useThisURL = `https://link-in-bio.limited${ourURL}`
         axios.get(useThisURL)
         .then(async res => {
-            console.log('backend res', res.data)
+            // console.log('backend res', res.data)
             if(res.data != []){
                 const userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
                 const displayName = res.data[0].displayName
