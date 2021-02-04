@@ -148,9 +148,9 @@ function ListEditor2(){
             // console.log('backend res', res)
             const normalList = await axios.get(`https://link-in-bio.limited/${sessionStorage.getItem('listId')}`)
             // console.log('normal list', normalList)
-            const userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
-            const displayName = res.data[0].displayName
-            const profilePictureURL = `${res.data[0].profilePictureURL}`
+            const userFirstLastName = `${res.data[0].firstName || " "} ${res.data[0].lastName || " "}`
+            const displayName = res.data[0].displayName || " "
+            const profilePictureURL = `${res.data[0].profilePictureURL || " "}`
             // const displayingUserInfo = `${res.data[0].displayUserInfo}`
             setDisplayName(displayName)
             setProfilePictureURL(profilePictureURL)

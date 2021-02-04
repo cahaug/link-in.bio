@@ -150,10 +150,10 @@ function ListDisplayHooks(match) {
         axios.get(useThisURL)
         .then(async res => {
             console.log('backend res', res.data)
-            const userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
-            const displayName = res.data[0].displayName
-            const profilePictureURL = `${res.data[0].profilePictureURL}`
-            const displayingUserInfo = `${res.data[0].displayUserInfo}`
+            const userFirstLastName = `${res.data[0].firstName || " "} ${res.data[0].lastName || " "}`
+            const displayName = res.data[0].displayName || " "
+            const profilePictureURL = `${res.data[0].profilePictureURL || " "}`
+            const displayingUserInfo = `${res.data[0].displayUserInfo || " "}`
             setDisplayName(displayName)
             setProfilePictureURL(profilePictureURL)
             setUserFirstNameLastName(userFirstLastName)
