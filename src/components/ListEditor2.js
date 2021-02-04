@@ -171,6 +171,7 @@ function ListEditor2(){
             // console.log(incrementedListViews)
             setIsLoading(false);
             const mt = navigator.maxTouchPoints
+            if(res.data.length>0){
             const thelinks = (res.data.map((link) => {
                 // console.log('link.keys.length', link)
                 if(link.hasOwnProperty('entryId')){
@@ -220,7 +221,7 @@ function ListEditor2(){
                 }
             }))
             setLinks(thelinks)
-            if(res.data.length == 0){
+            }else{
                 const emptyList = {0:true}
                 const emptiedList = emptyList.map((x) => {
                     console.log('x', "\n[Object object]", x)
@@ -239,15 +240,15 @@ function ListEditor2(){
                 setLinks(emptiedList)
             }
             // console.log('thelinks',thelinks)
-            if(res.data[0].backColor){
+            if(res.data.length>0&&res.data[0].backColor){
                 // console.log('backColor Changed Bruh!')
                 setBackgroundColor(`${res.data[0].backColor}`)
             }
-            if(res.data[0].txtColor){
+            if(res.data.length>0&&res.data[0].txtColor){
                 // console.log('textColor Changed Bruh!')
                setTextColor(`${res.data[0].txtColor}`)
             }
-            if(res.data[0].fontSelection){
+            if(res.data.length>0&&res.data[0].fontSelection){
                 setChosenFont(`${res.data[0].fontSelection}`)
                 updateTextFont(`${res.data[0].fontSelection}`)
             }
@@ -267,6 +268,7 @@ function ListEditor2(){
             }
 
             // initialize in custom color mode
+            if(res.data.length>0){
             var txtColorElement0 = document.getElementsByClassName('linkDescription')
             var k
             for (k=0; k< txtColorElement0.length; k++){
@@ -304,7 +306,7 @@ function ListEditor2(){
                 var element0 = document.getElementsByClassName('App')
                 element0[0].classList.toggle("darkMode")
                 setDarkMode(true)
-            }
+            }}
         })
         .catch(err => {console.log('err', err)})
     }, [])

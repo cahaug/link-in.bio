@@ -246,15 +246,15 @@ function ListDisplayHooks(match) {
             // console.log('thelinks',thelinks)
             // if 
             // console.log(res.data[0])
-            if(res.data[0].backColor){
+            if(res.data.length>0&&res.data[0].backColor){
                 // console.log('backColor Changed Bruh!')
                 setBackgroundColor(`${res.data[0].backColor}`)
             }
-            if(res.data[0].txtColor){
+            if(res.data.length>0&&res.data[0].txtColor){
                 // console.log('textColor Changed Bruh!')
                setTextColor(`${res.data[0].txtColor}`)
             }
-            if(res.data[0].fontSelection){
+            if(res.data.length>0&&res.data[0].fontSelection){
                 setChosenFont(`${res.data[0].fontSelection}`)
                 updateTextFont(`${res.data[0].fontSelection}`)
             }
@@ -286,23 +286,26 @@ function ListDisplayHooks(match) {
                 }
                 
                 // initialize in custom color mode
-                if(mql===false){var txtColorElement0 = document.getElementsByClassName('linkDescription')
+                if(res.data.length>0&&mql===false){var txtColorElement0 = document.getElementsByClassName('linkDescription')
                 var k
                 for (k=0; k< txtColorElement0.length; k++){
                     txtColorElement0[k].style.color = `${res.data[0].txtColor}`
                     // txtColorElement[j].style.color = `${res.data[0].backColor}`
                 }}
-                var borderElement0 = document.getElementsByClassName('linkSquare')
-                var arrowChangeColor = document.getElementsByClassName('linkDescriptionTag')
-                var n
-                for (n=0; n< borderElement0.length; n++){
-                    borderElement0[n].style.border = `2px solid ${res.data[0].txtColor}`
-                    // arrowChangeColor[n].style.color = `${res.data[0].txtColor}`
-                    // borderElement0[n].style.backgroundColor = `${backgroundColor}`
+                if(res.data.length>0){
+                    var borderElement0 = document.getElementsByClassName('linkSquare')
+                    var arrowChangeColor = document.getElementsByClassName('linkDescriptionTag')
+                    var n
+                    for (n=0; n< borderElement0.length; n++){
+                        borderElement0[n].style.border = `2px solid ${res.data[0].txtColor}`
+                        // arrowChangeColor[n].style.color = `${res.data[0].txtColor}`
+                        // borderElement0[n].style.backgroundColor = `${backgroundColor}`
+                    }
+                    for(n=0;n<arrowChangeColor.length;n++){
+                        arrowChangeColor[n].style.color = `${res.data[0].txtColor}`
+                    }
                 }
-                for(n=0;n<arrowChangeColor.length;n++){
-                    arrowChangeColor[n].style.color = `${res.data[0].txtColor}`
-                }
+                if(res.data.length>0){
                 var headerDividerBar = document.getElementsByClassName('linkListDisplayHeader')
                 headerDividerBar[0].style.borderBottom = `0.25vh solid ${res.data[0].txtColor}`
                 // headerDividerBar[0].style.backgroundColor = `${backgroundColor}`
@@ -310,13 +313,13 @@ function ListDisplayHooks(match) {
                 headerTextElement.style.color = `${res.data[0].txtColor}`
                 var mainBackgroundElement = document.getElementsByClassName('theMain')
                 // console.log(mainBackgroundElement[0].style.backgroundColor)
-                if(res.data[0].listBackgroundURL !== null){
+                if(res.data.length>0&&res.data[0].listBackgroundURL !== null){
                     mainBackgroundElement[0].style.backgroundImage = `url("${res.data[0].listBackgroundURL}")`
                 } else {
                     mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
-                }
+                }}
                 // console.log('mql', mql)            
-                if(mql.matches === true ){
+                if(mql.matches === true && res.data.length>0 ){
                     headerTextElement.style.color = ColorLuminance(`${res.data[0].txtColor}`, 2)
                     // initialize in dark mode
                     if(`${res.data[0].txtColor}`==='#000000'){
