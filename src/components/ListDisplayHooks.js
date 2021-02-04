@@ -150,14 +150,25 @@ function ListDisplayHooks(match) {
         axios.get(useThisURL)
         .then(async res => {
             console.log('backend res', res.data)
-            const userFirstLastName = `${res.data[0].firstName || " "} ${res.data[0].lastName || " "}`
-            const displayName = res.data[0].displayName || " "
-            const profilePictureURL = `${res.data[0].profilePictureURL || " "}`
-            const displayingUserInfo = `${res.data[0].displayUserInfo || " "}`
-            setDisplayName(displayName)
-            setProfilePictureURL(profilePictureURL)
-            setUserFirstNameLastName(userFirstLastName)
-            setDisplayingUserInfo(displayingUserInfo)
+            if(res.data != []){
+                const userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
+                const displayName = res.data[0].displayName
+                const profilePictureURL = `${res.data[0].profilePictureURL}`
+                const displayingUserInfo = `${res.data[0].displayUserInfo}`
+                setDisplayName(displayName)
+                setProfilePictureURL(profilePictureURL)
+                setUserFirstNameLastName(userFirstLastName)
+                setDisplayingUserInfo(displayingUserInfo)
+            } else {
+                const userFirstLastName = `Empty Link-In Bio`
+                const displayName = `Empty Link-In Bio`
+                const profilePictureURL = ` `
+                const displayingUserInfo = ` `
+                setDisplayName(displayName)
+                setProfilePictureURL(profilePictureURL)
+                setUserFirstNameLastName(userFirstLastName)
+                setDisplayingUserInfo(displayingUserInfo)
+            }
             if(res.data[0].listBackgroundURL !== null){
                 const backgroundImageURL = `${res.data[0].listBackgroundURL}`
                 setBackgroundURL(backgroundImageURL)

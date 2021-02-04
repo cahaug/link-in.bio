@@ -30,9 +30,9 @@ const UpdateCancelURLs = () => {
     return (
         <div>
             <br />
-            <p>{updateURL === ''? 'Loading Your Update URL':<p><button onClick={(evt)=>{evt.preventDefault(); Paddle.Checkout.open({ override: updateURL, success: 'https://link-in.bio/settingsPanel'});}}>Click Here to Edit Your Payment Information</button></p>}</p>
+            <p>{updateURL === ''? 'Loading Your Update URL':<p><button onClick={(evt)=>{evt.preventDefault(); return Paddle.Checkout.open({ override: updateURL });}}>Click Here to Edit Your Payment Information</button></p>}</p>
             <br />
-            <p>{cancelURL === ''? 'Loading Your Cancel URL':<p>(Warning: cannot be undone) <br /> <button onClick={(evt)=>{evt.preventDefault(); Paddle.Checkout.open({override: cancelURL, success:'https://link-in.bio/failedLogin'});}}>Click Here to Permanently Delete Your Account</button></p>}</p>
+            <p>{cancelURL === ''? 'Loading Your Cancel URL':<p>(Warning: cannot be undone) <br /> <button onClick={(evt)=>{evt.preventDefault(); return Paddle.Checkout.open({override: cancelURL, success:'https://link-in.bio/failedLogin'});}}>Click Here to Permanently Delete Your Account</button></p>}</p>
         </div>
     )
 }
