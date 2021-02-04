@@ -14,7 +14,7 @@ I understand Link-In Bio Ltd strives to keep the software online and available 1
 
 I understand Link-In Bio Ltd is a small and growing business, and I promise to keep my payment information current, and fulfill my agreed-upon payment obligations.  Should I wish to discontinue my account, I acknowledge I can do so myself through the Link-In Bio website. If at any point in a calendar month pay period I decide to cancel, I agree to be only refunded the payment of the most recent calendar month.
 
-I acknowledge that the geolocation information Link-In Bio Ltd provides may be imprecise.
+I acknowledge that the geolocation information Link-In Bio Ltd provides may be imprecise for a percentage of locations.
 
 I understand that my monthly subscription payment pays for an exclusive, transferable, assignable right and license to use the software for one calendar month.  I understand that if my subscription payment fails, the account will be deleted.  
 
