@@ -156,7 +156,7 @@ function ListEditor2(){
             }else{
                 userFirstLastName = `Empty Link-In Bio`
                 displayName = `Empty Link-In Bio`
-                profilePictureURL = ` `
+                profilePictureURL = `https://imagizer.imageshack.com/img924/128/aacWe9.jpg`
             }
             // const displayingUserInfo = `${res.data[0].displayUserInfo}`
             setDisplayName(displayName)
@@ -290,10 +290,14 @@ function ListEditor2(){
             headerTextElement.style.color = `${res.data[0].txtColor}`
             var mainBackgroundElement = document.getElementsByClassName('theMain')
             // console.log(mainBackgroundElement[0].style.backgroundColor)
-            if(normalList.data[0].listBackgroundURL !== null){
+            if(normalList.data.length>0&&normalList.data[0].listBackgroundURL !== null){
                 mainBackgroundElement[0].style.backgroundImage = `url("${normalList.data[0].listBackgroundURL}")`
             } else {
-                mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
+                if(normalList.data.length>0){
+                    mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
+                }else{
+                    mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, #FFFFFF, #000000)`
+                }
             }
             let mql = window.matchMedia('(prefers-color-scheme: dark)')
             // console.log('mql', mql)            

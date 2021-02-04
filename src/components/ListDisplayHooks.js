@@ -163,7 +163,7 @@ function ListDisplayHooks(match) {
             } else {
                 userFirstLastName = `Empty Link-In Bio`
                 displayName = `Empty Link-In Bio`
-                profilePictureURL = ` `
+                profilePictureURL = `https://imagizer.imageshack.com/img924/128/aacWe9.jpg`
                 displayingUserInfo = ` `
                 setDisplayName(displayName)
                 setProfilePictureURL(profilePictureURL)
@@ -188,7 +188,7 @@ function ListDisplayHooks(match) {
             // var element0 = document.getElementsByClassName('App')
             // element0[0].classList.toggle("darkMode")
            
-            const thelinks = (res.data.map((link) => {
+            if(res.data.length>0){const thelinks = (res.data.map((link) => {
                 return (
 
                         <div className='linkSquare' key={link.entryId}>
@@ -223,7 +223,7 @@ function ListDisplayHooks(match) {
 
                 )
             }))
-            setLinks(thelinks)
+            setLinks(thelinks)}
             console.log('res.data', res.data.length)
             if(res.data.length == 0){
                 const emptyList = {0:true}
@@ -316,7 +316,11 @@ function ListDisplayHooks(match) {
                 if(res.data.length>0&&res.data[0].listBackgroundURL !== null){
                     mainBackgroundElement[0].style.backgroundImage = `url("${res.data[0].listBackgroundURL}")`
                 } else {
-                    mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
+                    if(res.data.legth>0){
+                        mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
+                    } else{
+                        mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, #FFFFFF, #000000)`
+                    }
                 }}
                 // console.log('mql', mql)            
                 if(mql.matches === true && res.data.length>0 ){
