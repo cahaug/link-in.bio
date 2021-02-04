@@ -50,14 +50,14 @@ function ResetPWCode(){
         .reach(formSchema, event.target.name)
         .validate(event.target.value)
         .then(valid => {
-            console.log('valid',valid)
+            // console.log('valid',valid)
             setErrors({
                 ...errors,
                 [event.target.name]:''
             })
         })
         .catch(err => {
-            console.log('err',err)
+            // console.log('err',err)
             setErrors({
                 ...errors,
                 [event.target.name]:err.errors[0]
@@ -79,14 +79,14 @@ function ResetPWCode(){
         event.preventDefault()
         setIsWaiting(true)
         const cast = formSchema.cast(formData)
-        console.log('cast',cast)
+        // console.log('cast',cast)
         await formSchema.isValid(cast)
         .then(async function(valid) {
             if(valid===true){
-                console.log('valid formdata good to send '+ formData.email)
+                // console.log('valid formdata good to send '+ formData.email)
                 try {
                     const requestResponse = await axios.post('https://link-in-bio.limited/mailer/checkCode', {email:formData.email, newPassword:formData.newPassword, resetCode:formData.resetCode})
-                    console.log('requestResponse', requestResponse)
+                    // console.log('requestResponse', requestResponse)
                     if (requestResponse.data.successfulDeletion === 1){
                         setIsWaiting(false)
                         setFormData({ email:'', newPassword:'', resetCode:''})
@@ -97,7 +97,7 @@ function ResetPWCode(){
                     }
                 } catch (err) {
                     setIsWaiting(false)
-                    console.log('inner err', err)
+                    // console.log('inner err', err)
                 }
             } else {
                 setIsWaiting(false)
@@ -105,7 +105,7 @@ function ResetPWCode(){
             }
         })
         .catch(err => {
-            console.log('err', err)
+            // console.log('err', err)
             setIsWaiting(false)
             alert('shit fucked up', err)
         })

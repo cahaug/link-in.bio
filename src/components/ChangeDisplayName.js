@@ -19,13 +19,13 @@ const ChangeDisplayName = () => {
         const listId = sessionStorage.getItem('listId')
         return axios.put('https://link-in-bio.limited/l/setDisplayName', {userId:userId, listId:listId, displayName:displayName}, {headers:{authorization:token}})
         .then(res => {
-            console.log('display Name change res', res)
+            // console.log('display Name change res', res)
             setDisplayName('')
             setIsLoading(false)
             toast.success('Display Name Updated Successfully')
         })
         .catch(err => {
-            console.log('change display name err',err)
+            // console.log('change display name err',err)
             toast.error('Error in Changing Display Name')
         })
     }

@@ -18,15 +18,15 @@ const TextColorPicker = () => {
         const token = sessionStorage.getItem('token')
         const listId = sessionStorage.getItem('listId')
         const userId = sessionStorage.getItem('userId')
-        console.log(listId, userId, txtColor)
+        // console.log(listId, userId, txtColor)
         return axios.put('https://link-in-bio.limited/l/setTcolor', {listId:listId, userId:userId, txtColor:txtColor},  { headers: {authorization: token} })
         .then(res => {
-            console.log('txtChangeres', res)
+            // console.log('txtChangeres', res)
             // alert('Text Color Updated Successfully')
             toast.success('Text Color Updated Successfully')
         })
         .catch(err => {
-            console.log('submit catcherror', err)
+            // console.log('submit catcherror', err)
             // alert('Error in Changing Text Color')
             toast.error('Error in Changing Text Color')
         })

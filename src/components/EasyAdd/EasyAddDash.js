@@ -90,7 +90,7 @@ const EasyAddDash = () => {
     const validateForm = (fromForm) => {
         const didtrimUsername =  trimUsername(fromForm)
         setUsername(didtrimUsername)
-        console.log('trimmed',didtrimUsername)
+        // console.log('trimmed',didtrimUsername)
         if(hasNoIllegalChars(didtrimUsername) === true){
             return {legal:true, trimmed:didtrimUsername}
         } else if(choice === 'applemusic' && hasNoIllegalCharsAPL(didtrimUsername) === true){
@@ -106,7 +106,7 @@ const EasyAddDash = () => {
         event.preventDefault()
         setIsLoading(true)
         const isValidated = await validateForm(username)
-        console.log('isvalidated',isValidated)
+        // console.log('isvalidated',isValidated)
         username = isValidated.trimmed 
         if(isValidated.legal === true){
             let description = `${username} - My ${choicesDict[`${choice}`]['label']} Account ${choicesDict[`${choice}`]['emoji']}`
@@ -207,26 +207,26 @@ const EasyAddDash = () => {
                 description = `Call Us at: ${username} `
                 linkTitle = `${choicesDict[`${choice}`]['label']} ${choicesDict[`${choice}`]['emoji']}`
             }
-            console.log('refurl', referencingURL)
+            // console.log('refurl', referencingURL)
             const imgURL = `${choicesDict[`${choice}`]['img']}`
             const token = sessionStorage.getItem('token')
             const userId = sessionStorage.getItem('userId')
             const listId = sessionStorage.getItem('listId')
-            console.log('description', description)
-            console.log('linktitle', linkTitle)
-            console.log('referencingURL', referencingURL)
+            // console.log('description', description)
+            // console.log('linktitle', linkTitle)
+            // console.log('referencingURL', referencingURL)
             return axios.post('https://link-in-bio.limited/e/new', { userId:userId, listId:listId, referencingURL:referencingURL, description:description, linkTitle:linkTitle, imgURL:imgURL }, { headers: {authorization: token} })
             .then(async (res) => {
-                console.log('successful res',res)
+                // console.log('successful res',res)
                 const statForNewEntry = await axios.get(`https://link-in-bio.limited/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`)
-                console.log('statForNewEntry',statForNewEntry)
+                // console.log('statForNewEntry',statForNewEntry)
                 setIsLoading(false)
                 // alert(`Link To ${choicesDict[`${choice}`]['label']} Successfully Added to Account`)
                 toast.success(`Link To ${choicesDict[`${choice}`]['label']} Successfully Added to Account`)
                 window.location.reload()
             })
             .catch((err) => {
-                console.log('error easyadd', err)
+                // console.log('error easyadd', err)
                 // alert('Error EasyAdd Account')
                 toast.error('Error EasyAdding Account')
             })

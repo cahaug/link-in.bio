@@ -128,12 +128,12 @@ class EntryEditor extends React.Component {
         // console.log(linkTitle, description, referencingURL, entryId, imgURL2)
         if(imgURL2===""){
             const imgURL = null
-            console.log(imgURL)
+            // console.log(imgURL)
             this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL, token, listId)
             this.setState({ referencingURL:'', description: '', linkTitle: '', imgURL2:''})
         } else {
             const imgURL = imgURL2
-            console.log(imgURL)
+            // console.log(imgURL)
             this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL, token, listId)
             this.setState({ referencingURL:'', description: '', linkTitle: '', imgURL2:''})
         }

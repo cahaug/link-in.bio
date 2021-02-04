@@ -21,9 +21,9 @@ function InstagramPicker(){
         const instagramPageDocument = await axios.get(`https://instagram.com/${formData.accountName}`)
         const parsedDocument = domparser.parseFromString(instagramPageDocument.data, 'application/xhtml+xml')
         const imageTagFromDocument = parsedDocument.querySelector('img.FFVAD')
-        console.log('instagramPageDocument',instagramPageDocument.data)
-        console.log('parsedDocument', parsedDocument)
-        console.log('imageTagFromDocument', imageTagFromDocument)
+        // console.log('instagramPageDocument',instagramPageDocument.data)
+        // console.log('parsedDocument', parsedDocument)
+        // console.log('imageTagFromDocument', imageTagFromDocument)
     }
 
     const onInputChange = event => {

@@ -34,12 +34,12 @@ const GraphForEntry = () => {
     const onChangeDataDisplay = event => {
         event.preventDefault()
         const ogData = datasetBravo.timeline
-        console.log('trimmeddata',trimmedData)
-        console.log('original', datasetBravo.timeline)
+        // console.log('trimmeddata',trimmedData)
+        // console.log('original', datasetBravo.timeline)
         if(event.target.value > datasetBravo.timeline.length){
             toast.error(`There isn't any data that old yet :)`)
         } else if(event.target.value == 0){
-            console.log('is zero', ogData)
+            // console.log('is zero', ogData)
             setTrimmedData(ogData)        
             setSelectedDateRange(event.target.value)
             // console.log('trimmeddata',trimmedData)
@@ -56,13 +56,13 @@ const GraphForEntry = () => {
         const token = sessionStorage.getItem('token')
         axios.post('https://link-in-bio.limited/s/pieGraph', {userId:userId}, {headers: {authorization: token}})
         .then(res => {
-            console.log('res.data', res.data)
+            // console.log('res.data', res.data)
             setPieGraphData(res.data)
             var localMax = 0
             res.data.forEach(value => {
-                console.log('value', value)
+                // console.log('value', value)
                 if(value.count>localMax){
-                    console.log('newLocalMax', localMax)
+                    // console.log('newLocalMax', localMax)
                     localMax = value.count
                 }
             })
@@ -79,18 +79,18 @@ const GraphForEntry = () => {
         const token = sessionStorage.getItem('token')
         axios.get(`https://link-in-bio.limited/s/elv/${listId}`, {headers: {authorization: token}})
         .then(res => {
-            console.log('res.data bravo', res.data)
+            // console.log('res.data bravo', res.data)
             setDatasetBravo(res.data)
             setDiscreteViewers(res.data.distinctViewersCount)
             const wordCloudRaw =  JSON.stringify(res.data.regions)
             var rst = JSON.parse(wordCloudRaw.replace(/"province"/g, '"text"').replace(/"count"/g, '"value"'))
-            console.log('rst', rst)
+            // console.log('rst', rst)
             setCloudData(rst)
             setTrimmedData(res.data.timeline.slice(res.data.timeline.length - 8))
             setIsLoading(false)
         })
         .catch(err => {
-            console.log('error in get piegraph', err)
+            console.log('error in get rdb', err)
         })
     }
 

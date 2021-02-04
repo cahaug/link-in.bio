@@ -75,11 +75,11 @@ function Maksaa(){
                 }
             } else{
                 setIsLoading(false)
-                console.log('illegalChar')
-                toast.error('You have illegal characters in your input')
+                // console.log('illegalChar')
+                return toast.error('You have illegal characters in your input')
             }
         } else {
-            toast.error('You must endorse the agreement to continue.')
+            return toast.error('You must endorse the agreement to continue.')
         }
     }
     const handleChangeEmail = (evt) => {

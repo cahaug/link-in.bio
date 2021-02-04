@@ -70,11 +70,11 @@ const FinishRegistration = () => {
             //recaptcha code
             const token = await reRef.current.executeAsync()
             reRef.current.reset()
-            console.log('token', token)
+            // console.log('token', token)
             setIsLoading(true)
             return axios.post('https://link-in-bio.limited/numbers/finish', {password:password, tooken:tooken, email:email, token:token})
             .then(res => {
-                console.log('setPasswordResData', res.data)
+                // console.log('setPasswordResData', res.data)
                 setPassword('')
                 setSuccessful(true)
                 setIsLoading(false)

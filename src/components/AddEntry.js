@@ -57,7 +57,7 @@ class AddEntry extends React.Component {
 
     handleChangeNoImg = (evt) => {
         evt.preventDefault()
-        console.log("this.state", this.state)
+        // console.log("this.state", this.state)
         this.setState({
             noImg:!this.state.noImg
         })
@@ -76,11 +76,11 @@ class AddEntry extends React.Component {
         const { userId, listId, referencingURL, description, linkTitle, noImg } = this.state
         var { imgURL } = this.state
         const token = sessionStorage.getItem('token')
-        console.log(userId, listId, referencingURL, description, linkTitle, imgURL, noImg)
+        // console.log(userId, listId, referencingURL, description, linkTitle, imgURL, noImg)
         try {
             if(noImg === true){
                 imgURL = null
-                console.log('imgurl set to null succ', imgURL)
+                // console.log('imgurl set to null succ', imgURL)
                 this.setState({ userId: sessionStorage.getItem('userId'), referencingURL:'', description: '', linkTitle: '', imgURL:'', isLoading:true})
                 await this.props.addEntry(userId, listId, referencingURL, description, linkTitle, imgURL, token, shackImageId)
                 // this.props.history.push('./dashboard2')
@@ -93,7 +93,7 @@ class AddEntry extends React.Component {
                 // window.location.reload(false)
                 this.setState({isLoading:false})
             } else {
-                console.log('image error')
+                // console.log('image error')
             }
         } catch (err){
             toast.error(err.message)
@@ -109,8 +109,8 @@ class AddEntry extends React.Component {
         } else {
             return (
                 <div>
-                    {console.log('this.props', this.props)}
-                    {console.log('this.state', this.state)}
+                    {/* {console.log('this.props', this.props)} */}
+                    {/* {console.log('this.state', this.state)} */}
                     <h1 className="newpickupheader">Add a Link to Your List</h1>
                     <form onSubmit={this.handleSubmit}>
                         {/* <input type="text" name="userId" value={userId} placeholder="Your User Id" onChange={this.handleChange} required /><br /> */}

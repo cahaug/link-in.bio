@@ -14,7 +14,7 @@ const EasyAddInstagram = () => {
     const handleFormSubmit = async (event) => {
         event.preventDefault()
         setIsLoading(true)
-        console.log()
+        // console.log()
         const linkTitle = `${username} - ${sessionStorage.getItem('firstName')}'s Instagram`
         const description = `My Instagram Profile 📸`
         const referencingURL = `https://instagram.com/${username}`
@@ -24,14 +24,14 @@ const EasyAddInstagram = () => {
         const listId = sessionStorage.getItem('listId')
         return axios.post('https://link-in-bio.limited/e/new', { userId:userId, listId:listId, referencingURL:referencingURL, description:description, linkTitle:linkTitle, imgURL:imgURL }, { headers: {authorization: token} })
         .then(async (res) => {
-            console.log('successful res',res)
+            // console.log('successful res',res)
             const statForNewEntry = await axios.get(`https://link-in-bio.limited/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`)
-            console.log('statForNewEntry',statForNewEntry)
+            // console.log('statForNewEntry',statForNewEntry)
             setIsLoading(false)
             alert('Link To Instagram Successfully Added to Account')
         })
         .catch((err) => {
-            console.log('error easyadd', err)
+            // console.log('error easyadd', err)
             alert('Error EasyAdd Instagram Account')
         })
     }

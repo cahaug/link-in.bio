@@ -149,7 +149,7 @@ function ListDisplayHooks(match) {
         const useThisURL = `https://link-in-bio.limited${ourURL}`
         axios.get(useThisURL)
         .then(async res => {
-            console.log('backend res', res)
+            // console.log('backend res', res)
             const userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
             const displayName = res.data[0].displayName
             const profilePictureURL = `${res.data[0].profilePictureURL}`
@@ -182,10 +182,10 @@ function ListDisplayHooks(match) {
                             {
                                 link.referencingURL === ' '?<a className='linkTitle' href='#' onClick={async (e)=>{
                                     e.preventDefault()
-                                    console.log('fired', link.referencingURL, link.entryId, mt)
+                                    // console.log('fired', link.referencingURL, link.entryId, mt)
                                     const trashRequest = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                     // const trashRequest = await axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
-                                    console.log('trashRequest', trashRequest)
+                                    // console.log('trashRequest', trashRequest)
                                 }}>
                                 {link.imgURL?<img className='image' src={link.imgURL} alt={link.linkTitle} /> : null }
                                 {/* <img className='image' src={link.imgURL} alt={link.linkTitle} />  */}
@@ -193,10 +193,10 @@ function ListDisplayHooks(match) {
                                 </a>:<a className='linkTitle' href={link.referencingURL} onClick={async (e)=>{
                                 e.preventDefault()
                                 setIsLoading(true) 
-                                console.log('fired', link.referencingURL, link.entryId, mt)
+                                // console.log('fired', link.referencingURL, link.entryId, mt)
                                 const trashRequest = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                 // const trashRequest = await axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
-                                console.log('trashRequest', trashRequest)
+                                // console.log('trashRequest', trashRequest)
                                 setIsLoading(false)
                                 window.location.href = link.referencingURL
                                 }}>
@@ -211,15 +211,15 @@ function ListDisplayHooks(match) {
                 )
             }))
             setLinks(thelinks)
-            console.log('thelinks',thelinks)
+            // console.log('thelinks',thelinks)
             // if 
-            console.log(res.data[0])
+            // console.log(res.data[0])
             if(res.data[0].backColor){
-                console.log('backColor Changed Bruh!')
+                // console.log('backColor Changed Bruh!')
                 setBackgroundColor(`${res.data[0].backColor}`)
             }
             if(res.data[0].txtColor){
-                console.log('textColor Changed Bruh!')
+                // console.log('textColor Changed Bruh!')
                setTextColor(`${res.data[0].txtColor}`)
             }
             if(res.data[0].fontSelection){
@@ -277,13 +277,13 @@ function ListDisplayHooks(match) {
                 var headerTextElement = document.getElementById('headerName')
                 headerTextElement.style.color = `${res.data[0].txtColor}`
                 var mainBackgroundElement = document.getElementsByClassName('theMain')
-                console.log(mainBackgroundElement[0].style.backgroundColor)
+                // console.log(mainBackgroundElement[0].style.backgroundColor)
                 if(res.data[0].listBackgroundURL !== null){
                     mainBackgroundElement[0].style.backgroundImage = `url("${res.data[0].listBackgroundURL}")`
                 } else {
                     mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
                 }
-                console.log('mql', mql)            
+                // console.log('mql', mql)            
                 if(mql.matches === true ){
                     headerTextElement.style.color = ColorLuminance(`${res.data[0].txtColor}`, 2)
                     // initialize in dark mode

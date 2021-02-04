@@ -58,7 +58,7 @@ const HomepageAvailability = () => {
         //recaptcha code
         const token = await reRef.current.executeAsync()
         reRef.current.reset()
-        console.log('token', token)
+        // console.log('token', token)
         setIsAvailable(false)
         setIsNotAvailable(false)
         setIsLoading(true)
@@ -67,10 +67,10 @@ const HomepageAvailability = () => {
             setChosenCustom('')
             const secondaryIntermediate = `${prefixHost}${intermediate}`
             setLastCheckedCURL(`${secondaryIntermediate.slice(8)}`)
-            console.log('secondaryIntermediate', secondaryIntermediate)
+            // console.log('secondaryIntermediate', secondaryIntermediate)
             return axios.post('https://link-in-bio.limited/l/checkCHomepage', {customURL:secondaryIntermediate, token:token})
             .then(res => {
-                console.log('res.data chosenCustom', res.data)
+                // console.log('res.data chosenCustom', res.data)
                 if(res.data.length === 0){
                     setIsAvailable(true)
                     setIsLoading(false)

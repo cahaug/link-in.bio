@@ -66,7 +66,7 @@ function ListEditor2(){
             var headerTextElement = document.getElementById('headerName')
             headerTextElement.style.color = `${textColor}`
             var mainBackgroundElement = document.getElementsByClassName('theMain')
-            console.log(mainBackgroundElement[0].style.backgroundColor)
+            // console.log(mainBackgroundElement[0].style.backgroundColor)
             if(backgroundURL.length<8){
                 mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${textColor}, ${backgroundColor})`
             }
@@ -91,7 +91,7 @@ function ListEditor2(){
             var headerTextElement = document.getElementById('headerName')
             headerTextElement.style.color = 'white'
             var mainBackgroundElement = document.getElementsByClassName('theMain')
-            console.log(mainBackgroundElement[0].style.backgroundColor)
+            // console.log(mainBackgroundElement[0].style.backgroundColor)
             // mainBackgroundElement[0].style.backgroundColor = '#000000'
             if(backgroundURL.length<8){
                 mainBackgroundElement[0].style.backgroundImage = 'linear-gradient(70deg, #151515, black)'
@@ -120,11 +120,11 @@ function ListEditor2(){
         .then(response => {
             // alert('Entry Successfully Deleted')
             toast.success('Entry Successfully Deleted')
-            console.log('deleteEntryRes',response)
+            // console.log('deleteEntryRes',response)
             window.location.reload()
         })
         .catch(err => {
-            console.log('error deleting', err)
+            // console.log('error deleting', err)
             toast.error('Error Deleting Entry')
         })
     }
@@ -145,9 +145,9 @@ function ListEditor2(){
         const useThisURL = `https://link-in-bio.limited/s/aio/${sessionStorage.getItem('userId')}`
         axios.get(useThisURL, { headers: {authorization: sessionStorage.getItem('token')} })
         .then(async res => {
-            console.log('backend res', res)
+            // console.log('backend res', res)
             const normalList = await axios.get(`https://link-in-bio.limited/${sessionStorage.getItem('listId')}`)
-            console.log('normal list', normalList)
+            // console.log('normal list', normalList)
             const userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
             const displayName = res.data[0].displayName
             const profilePictureURL = `${res.data[0].profilePictureURL}`
@@ -165,17 +165,17 @@ function ListEditor2(){
             setIsLoading(false);
             const mt = navigator.maxTouchPoints
             const thelinks = (res.data.map((link) => {
-                console.log('link.keys.length', link)
+                // console.log('link.keys.length', link)
                 if(link.hasOwnProperty('entryId')){
                     return (
     
                             <div className='linkSquare' key={link.entryId}>
                                 {link.referencingURL === ' '?<a className='linkTitle' href='#' onClick={async (e)=>{
                                         e.preventDefault()
-                                        console.log('fired', link.referencingURL, link.entryId, mt)
+                                        // console.log('fired', link.referencingURL, link.entryId, mt)
                                         const trashRequest = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                         // const trashRequest = await axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
-                                        console.log('trashRequest', trashRequest)
+                                        // console.log('trashRequest', trashRequest)
                                     }}>
                                     {link.imgURL?<img className='image' src={link.imgURL} alt={link.linkTitle} /> : null }
                                     {/* <img className='image' src={link.imgURL} alt={link.linkTitle} />  */}
@@ -183,10 +183,10 @@ function ListEditor2(){
                                     </a>:<a className='linkTitle' href={link.referencingURL} onClick={async (e)=>{
                                         e.preventDefault()
                                         setIsLoading(true) 
-                                        console.log('fired', link.referencingURL, link.entryId, mt)
+                                        // console.log('fired', link.referencingURL, link.entryId, mt)
                                         const trashRequest = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                         // const trashRequest = await axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
-                                        console.log('trashRequest', trashRequest)
+                                        // console.log('trashRequest', trashRequest)
                                         setIsLoading(false)
                                         window.location.href = link.referencingURL
                                     }}>
@@ -213,13 +213,13 @@ function ListEditor2(){
                 }
             }))
             setLinks(thelinks)
-            console.log('thelinks',thelinks)
+            // console.log('thelinks',thelinks)
             if(res.data[0].backColor){
-                console.log('backColor Changed Bruh!')
+                // console.log('backColor Changed Bruh!')
                 setBackgroundColor(`${res.data[0].backColor}`)
             }
             if(res.data[0].txtColor){
-                console.log('textColor Changed Bruh!')
+                // console.log('textColor Changed Bruh!')
                setTextColor(`${res.data[0].txtColor}`)
             }
             if(res.data[0].fontSelection){
@@ -262,14 +262,14 @@ function ListEditor2(){
             var headerTextElement = document.getElementById('headerName')
             headerTextElement.style.color = `${res.data[0].txtColor}`
             var mainBackgroundElement = document.getElementsByClassName('theMain')
-            console.log(mainBackgroundElement[0].style.backgroundColor)
+            // console.log(mainBackgroundElement[0].style.backgroundColor)
             if(normalList.data[0].listBackgroundURL !== null){
                 mainBackgroundElement[0].style.backgroundImage = `url("${normalList.data[0].listBackgroundURL}")`
             } else {
                 mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
             }
             let mql = window.matchMedia('(prefers-color-scheme: dark)')
-            console.log('mql', mql)            
+            // console.log('mql', mql)            
             if(mql.matches === true ){
                 headerTextElement.style.color = ColorLuminance(`${res.data[0].txtColor}`, 2)
                 // initialize in dark mode
