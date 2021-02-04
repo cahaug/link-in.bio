@@ -170,7 +170,7 @@ function ListDisplayHooks(match) {
                 setUserFirstNameLastName(userFirstLastName)
                 setDisplayingUserInfo(displayingUserInfo)
             }
-            if(res.data[0].listBackgroundURL !== null){
+            if(res.data.length>0&&res.data[0].listBackgroundURL !== null){
                 const backgroundImageURL = `${res.data[0].listBackgroundURL}`
                 setBackgroundURL(backgroundImageURL)
             }
