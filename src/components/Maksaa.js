@@ -70,7 +70,8 @@ function Maksaa(){
                     return Paddle.Checkout.open({
                         product: 631279,
                         email: trimmedEmail,
-                        passthrough:passthroughString
+                        passthrough:passthroughString,
+                        success:'https://link-in.bio/'
                     });
                 }
             } else{
@@ -136,7 +137,7 @@ function Maksaa(){
                 </select>
             </label>
             <br />
-            {agreed === true ? <button type="submit">Subscribe for <span className="paddle-gross" data-product="631279">$5</span>/mo</button> :null}
+            {agreed === true ?<div><p>After completing signup, Please check your Email.</p><br /><button type="submit">Subscribe for <span className="paddle-gross" data-product="631279">$5</span>/mo</button></div> :null}
         </form>
         <ReCAPTCHA sitekey={rpk} size="invisible" ref={recapRef} />
     </div>)
