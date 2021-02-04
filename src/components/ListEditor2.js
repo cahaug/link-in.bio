@@ -162,7 +162,7 @@ function ListEditor2(){
             setDisplayName(displayName)
             setProfilePictureURL(profilePictureURL)
             setUserFirstNameLastName(userFirstLastName)
-            if(normalListdata.length>0&&normalList.data[0].listBackgroundURL !== null){
+            if(normalList.data.length>0&&normalList.data[0].listBackgroundURL !== null){
                 const backgroundImageURL = `${normalList.data[0].listBackgroundURL}`
                 setBackgroundURL(backgroundImageURL)
             }
