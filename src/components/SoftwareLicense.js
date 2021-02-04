@@ -8,11 +8,19 @@ I understand that usage of this software is a privilege and can be revoked under
 
 I understand that Link-In Bio Ltd makes no warranties or claims to warranty for this product at the current time.
 
+I understand Link-In Bio Ltd strives to keep the software online and available 100%, 24/7/365.  I understand the software may not be available, 100%, 24/7/365.
+
 I understand Link-In Bio Ltd is a small and growing business, and I promise to keep my payment information current, and fulfill my agreed-upon payment obligations.  Should I wish to discontinue my account, I acknowledge I can do so myself through the Link-In Bio website. If at any point in a calendar month pay period I decide to cancel, I agree to be only refunded the payment of the most recent calendar month.
 
-I understand that my monthly subscription payment pays for an exclusive, transferable, assignable right and license to use the software for one calendar month.  I understand that if my subscription payment fails, the account will be deleted.  I may access the website from any internet-connected device which can support it.
+I acknowledge that the geolocation information Link-In Bio Ltd provides may be imprecise.
 
-I agree to indemnify Link-In Bio Ltd and its direct affiliates of any damages which may arise from use of the software.
+I understand that my monthly subscription payment pays for an exclusive, transferable, assignable right and license to use the software for one calendar month.  I understand that if my subscription payment fails, the account will be deleted.  
+
+I may access the websites from any modern, javascript-enabled, internet browser.
+
+I acknowledge that I understand that use of the Link-In Bio software is only possible with an internet connection.
+
+I agree to indemnify Link-In Bio Ltd and its direct affiliates of any damages which may arise from use of the software, or the discontinuation thereof.
 
 I agree that Link-In Bio Ltd reserves the right to amend this agreement, and will notify me by email if something changes.
 
