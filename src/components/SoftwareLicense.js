@@ -4,6 +4,8 @@ I am older than twelve years old (13+). Humans under the age of thirteen are pro
 
 I agree to respect Link-In Bio Ltd and its online software & hardware. 
 
+Link-In Bio Ltd does not, and will not, give away, or sell any data related to its subscribers. 
+
 I agree to not attempt to hack, deface, or otherwise reverse engineer the hardware or software.
 
 I understand that usage of this software is a privilege and can be revoked under the provisions outlined in our help center.  If my Link-In Bio account is deleted for abuse, I agree that I will not receive a refund.
