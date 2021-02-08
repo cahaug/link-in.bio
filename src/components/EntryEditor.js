@@ -173,7 +173,7 @@ class EntryEditor extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     {/* <input type="text" name="userId" value={userId} placeholder="Your User Id" onChange={this.handleChange} required /><br /> */}
                     {/* <input type="text" name="entryId" value={entryId} placeholder="Your Entry Id" onChange={this.handleChange} required /><br /> */}
-                    {protectedInput === false ? <div><p>Link URL:</p><input type="url" name="referencingURL" value={referencingURL} placeholder="Link URL"  maxLength="498" onChange={this.handleChange} required /><br /></div>:null}
+                    {protectedInput === false ? <div><p>Link URL:</p><input type="url" name="referencingURL" value={referencingURL} placeholder="Link URL"  maxLength="498" onChange={this.handleChange} required /><br /></div>:<div><br /><p>Linked URL:</p><p>{referencingURL}</p><br /></div>}
                     <p>Link Title:</p>
                     <input type="text" name="linkTitle" value={linkTitle} placeholder="Link Title"  maxLength="498" onChange={this.handleChange} required /><br />
                     <p>Link Description (put a single space for no description):</p>
