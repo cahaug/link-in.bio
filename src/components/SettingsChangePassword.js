@@ -126,17 +126,17 @@ const SettingsChangePassword = () => {
                 <form onSubmit={submitChange}>
                     <label>
                         Enter Your Current Password:<br />
-                        <input onChange={handlePasswordChange} value={password} name="Password" type="password" required placeholder="Current Password" /><br />
+                        <input onChange={handlePasswordChange} value={password} name="Password" type="password" required placeholder="Current Password" autocomplete="current-password" /><br />
                     </label>
                     <br />
                     <label>
                         Enter Your New Password:<br />
-                        <input onChange={handleNewPassChange} value={newPassword} name="New Password" type="password" required placeholder="New Password" /><br />
+                        <input onChange={handleNewPassChange} value={newPassword} name="New Password" type="password" required placeholder="New Password" autocomplete="new-password" /><br />
                     </label>
                     <br />
                     <label>
                         Confirm Your New Password:<br />
-                        <input onChange={handleNewPass2Change} value={newPassword2} name="Confirm New Password" type="password" required placeholder="Confirm New Password" /><br />
+                        <input onChange={handleNewPass2Change} value={newPassword2} name="Confirm New Password" type="password" required placeholder="Confirm New Password" autocomplete="new-password" /><br />
                     </label>
                     <br />
                     {errors.notTheSame?<p>❌ New Password and Confirm New Password Must Match</p>:null}

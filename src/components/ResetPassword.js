@@ -109,7 +109,7 @@ function ResetPassword(){
             <div>
                 <form id="passwordResetForm" onSubmit={onFormSubmit}>
                     <label>
-                        Email: <input onChange={onInputChange} value={formData.email} name="email" type="text" />
+                        Email: <input onChange={onInputChange} value={formData.email} name="email" type="text" autocomplete="username" />
                         {errors.email.length>0 ? <p className='error'>{errors.email}</p>:null}
                     </label>
                     <br />

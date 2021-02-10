@@ -34,7 +34,7 @@ function ResetPWCode(){
         .min(6, "An Email is at Least 6 Chars Long"),
         newPassword: Yup
         .string()
-        .min(6, "Passwords must be at least six (6) characters long.")
+        .min(8, "Passwords must be at least eight (8) characters long.")
         .required("A New Password is Required"),
         resetCode: Yup
         .string()
@@ -124,12 +124,12 @@ function ResetPWCode(){
             <div>
                 <form id="passwordResetForm" onSubmit={onFormSubmit}>
                     <label>
-                        Email: <input onChange={onInputChange} value={formData.email} name="email" type="text" />
+                        Email: <input onChange={onInputChange} value={formData.email} name="email" type="text" autocomplete="username" />
                         {errors.email.length>0 ? <p className='error'>{errors.email}</p>:null}
                     </label>
                     <br />
                     <label>
-                        New Password: <input onChange={onInputChange} value={formData.newPassword} name="newPassword" type="password" />
+                        New Password: <input onChange={onInputChange} value={formData.newPassword} name="newPassword" type="password" autocomplete="new-password" />
                         {errors.newPassword.length>0 ? <p className='error'>{errors.newPassword}</p>:null}
                     </label>
                     <br />
