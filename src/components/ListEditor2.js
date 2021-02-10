@@ -217,7 +217,7 @@ function ListEditor2(){
                     )
 
                 } else {
-                    console.log('there was an empty')
+                    console.log(' ')
                 }
             }))
             setLinks(thelinks)
@@ -312,7 +312,7 @@ function ListEditor2(){
                 setDarkMode(true)
             }}
         })
-        .catch(err => {console.log('err', err)})
+        .catch(err => {console.log('err')})
     }, [])
 
     if(isLoading===true){
