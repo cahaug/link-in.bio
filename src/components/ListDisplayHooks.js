@@ -224,7 +224,7 @@ function ListDisplayHooks(match) {
                 )
             }))
             setLinks(thelinks)}
-            console.log('res.data', res.data.length)
+            // console.log('res.data', res.data.length)
             if(res.data.length == 0){
                 const emptyList = {0:true}
                 const emptiedList = emptyList.map((x) => {
