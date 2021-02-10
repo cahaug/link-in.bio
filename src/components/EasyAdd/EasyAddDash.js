@@ -90,7 +90,7 @@ const EasyAddDash = () => {
     const validateForm = (fromForm) => {
         const didtrimUsername =  trimUsername(fromForm)
         setUsername(didtrimUsername)
-        console.log('trimmed',didtrimUsername)
+        // console.log('trimmed',didtrimUsername)
         if(hasNoIllegalChars(didtrimUsername) === true){
             return {legal:true, trimmed:didtrimUsername}
         } else if(choice === 'applemusic' && hasNoIllegalCharsAPL(didtrimUsername) === true){
@@ -106,7 +106,7 @@ const EasyAddDash = () => {
         event.preventDefault()
         setIsLoading(true)
         const isValidated = await validateForm(username)
-        console.log('isvalidated',isValidated)
+        // console.log('isvalidated',isValidated)
         username = isValidated.trimmed 
         if(isValidated.legal === true){
             let description = `${username} - My ${choicesDict[`${choice}`]['label']} Account ${choicesDict[`${choice}`]['emoji']}`
@@ -207,26 +207,26 @@ const EasyAddDash = () => {
                 description = `Call Us at: ${username} `
                 linkTitle = `${choicesDict[`${choice}`]['label']} ${choicesDict[`${choice}`]['emoji']}`
             }
-            console.log('refurl', referencingURL)
+            // console.log('refurl', referencingURL)
             const imgURL = `${choicesDict[`${choice}`]['img']}`
             const token = sessionStorage.getItem('token')
             const userId = sessionStorage.getItem('userId')
             const listId = sessionStorage.getItem('listId')
-            console.log('description', description)
-            console.log('linktitle', linkTitle)
-            console.log('referencingURL', referencingURL)
+            // console.log('description', description)
+            // console.log('linktitle', linkTitle)
+            // console.log('referencingURL', referencingURL)
             return axios.post('https://link-in-bio.limited/e/new', { userId:userId, listId:listId, referencingURL:referencingURL, description:description, linkTitle:linkTitle, imgURL:imgURL }, { headers: {authorization: token} })
             .then(async (res) => {
-                console.log('successful res',res)
+                // console.log('successful res',res)
                 const statForNewEntry = await axios.get(`https://link-in-bio.limited/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`)
-                console.log('statForNewEntry',statForNewEntry)
+                // console.log('statForNewEntry',statForNewEntry)
                 setIsLoading(false)
                 // alert(`Link To ${choicesDict[`${choice}`]['label']} Successfully Added to Account`)
                 toast.success(`Link To ${choicesDict[`${choice}`]['label']} Successfully Added to Account`)
                 window.location.reload()
             })
             .catch((err) => {
-                console.log('error easyadd', err)
+                // console.log('error easyadd', err)
                 // alert('Error EasyAdd Account')
                 toast.error('Error EasyAdding Account')
             })
@@ -304,7 +304,9 @@ const EasyAddDash = () => {
         'bitcoin':{label:'Bitcoin', form:'Your Bitcoin Public Key:', img:'https://imagizer.imageshack.com/img922/893/M2YC8X.png', emoji:'💻💸', type:'text'},
         'ethereum':{label:'Ethereum', form:'Your Ethereum Public Key:', img:'https://imagizer.imageshack.com/img923/2998/c27O4p.jpg', emoji:'💻💸', type:'text'},
         'dogecoin':{label:'Dogecoin', form:'Your Dogecoin Public Key:', img:'https://imagizer.imageshack.com/img923/7307/efzU3u.png', emoji:'💻💸', type:'text'},
-        'monero':{label:'Monero', form:'Your Monero Public Key:', img:'https://imagizer.imageshack.com/img924/4135/U0zNc4.png', emoji:'💻💸', type:'text'}
+        'monero':{label:'Monero', form:'Your Monero Public Key:', img:'https://imagizer.imageshack.com/img924/4135/U0zNc4.png', emoji:'💻💸', type:'text'},
+        'sponsus':{label:'Sponsus', form:'sponsus.org/u/', img:'https://imagizer.imageshack.com/img922/1434/8gkFop.png', emoji:'🌐💸', type:'text'},
+        'floatplane':{label:'Floatplane', form:'floatplane.com/', img:'https://imagizer.imageshack.com/img923/2084/0e51nC.png', emoji:'🎥💻', type:'text'}
     }
 
     return (
@@ -338,6 +340,7 @@ const EasyAddDash = () => {
                     <option value="ethereum">Ethereum Public Key</option>
                     <option value="facebook">Facebook</option>
                     <option value="flickr">Flickr</option>
+                    <option value="floatplane">Floatplane</option>
                     <option value="github">GitHub</option>
                     <option value="gofundme">GoFundMe</option>
                     <option value="imageshack">ImageShack</option>
@@ -364,6 +367,7 @@ const EasyAddDash = () => {
                     <option value="reddit">Reddit</option>
                     <option value="snapchat">SnapChat</option>
                     <option value="soundcloud">SoundCloud</option>
+                    <option value="sponsus">Sponsus</option>
                     <option value="spotifyartist">Spotify - Artist</option>
                     <option value="spotifyalbum">Spotify - Album</option>
                     <option value="spotifyplaylist">Spotify - Playlist</option>

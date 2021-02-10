@@ -18,14 +18,14 @@ const ProfilePictureChanger = () => {
         const shackImageId = null
         return axios.put('https://link-in-bio.limited/l/changeProfilePicture', {userId:userId, profilePictureURL:profilePictureURL, shackImageId:shackImageId}, {headers:{authorization:token}})
         .then(res => {
-            console.log('profPicChangeRes', res)
+            // console.log('profPicChangeRes', res)
             setProfilePictureURL('')
             setIsLoading(false)
             // alert('Profile Picture Updated Successfully')
             toast.success('Profile Picture Updated Successfully')
         })
         .catch(err => {
-            console.log('change profilepicURL err',err)
+            // console.log('change profilepicURL err',err)
             setIsLoading(false)
             // alert('Error in Changing Profile Picture URL')
             toast.error('Error in Changing Profile Picture URL')
@@ -40,13 +40,13 @@ const ProfilePictureChanger = () => {
         const shackImageId = null
         return axios.put('https://link-in-bio.limited/l/changeProfilePicture', {userId:userId, profilePictureURL:profilePictureURL, shackImageId:shackImageId}, {headers:{authorization:token}})
         .then(res => {
-            console.log('swapped prof to anon & deleted old res', res.data)
+            // console.log('swapped prof to anon & deleted old res', res.data)
             setIsLoading(false)
             // alert('Deleted Profile Picture Successfully')
             toast.success('Deleted Profile Picture Successfully')
         })
         .catch(err => {
-            console.log('err deleting profile picture', err)
+            // console.log('err deleting profile picture', err)
             setIsLoading(false)
             // alert('Unsuccessful Deleting Profile Picture')
             toast.error('Unsuccessful Deleting Profile Picture')

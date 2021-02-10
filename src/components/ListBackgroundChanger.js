@@ -16,13 +16,13 @@ const ListBackgroundChanger = () => {
         const listId = sessionStorage.getItem('listId')
         return axios.put('https://link-in-bio.limited/l/deleteListBackground', {listId:listId}, {headers:{authorization:token}})
         .then(res => {
-            console.log('swapped bg to null & deleted old res', res.data)
+            // console.log('swapped bg to null & deleted old res', res.data)
             setIsLoading(false)
             // alert('Deleted Background Image Successfully')
             toast.success('Deleted Background Image Successfully')
         })
         .catch(err => {
-            console.log('err background image', err)
+            // console.log('err background image', err)
             setIsLoading(false)
             toast.error('Unsuccessful Deleting Background Image')
         })
@@ -38,7 +38,7 @@ const ListBackgroundChanger = () => {
             const token = sessionStorage.getItem('token')
             const listId = sessionStorage.getItem('listId')
             const addingToProfile = await axios.put(`https://link-in-bio.limited/l/uploadListBackgroundPhoto/${listId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}})
-            console.log('adding to profiel',addingToProfile)
+            // console.log('adding to profiel',addingToProfile)
             if(addingToProfile.data.message === 'Successfully Uploaded Background Image' ){
                 setIsLoading(false)
                 // alert('List Background Image Updated Successfully')
@@ -51,7 +51,7 @@ const ListBackgroundChanger = () => {
         // }
         
         } catch(err){
-            console.log(err)
+            console.log('err',err)
             toast.error('error uploading profile picture')
             setIsLoading(false)
         }
@@ -59,7 +59,7 @@ const ListBackgroundChanger = () => {
 
     const handleImageChange = (event) => {
         event.preventDefault()
-        console.log('event target',event.target)
+        // console.log('event target',event.target)
         if(event.target.files.length>0){
             let reader = new FileReader()
             let file = event.target.files[0]

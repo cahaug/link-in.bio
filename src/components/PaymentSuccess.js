@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 function PaymentSuccess( props){
     const fullSessionID =  props.location.search
     const sessionID = fullSessionID.slice(12, fullSessionID.length)
-    console.log('this.props.location', props)
+    // console.log('this.props.location', props)
     
     return (
         <div>

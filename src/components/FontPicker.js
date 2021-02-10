@@ -11,14 +11,14 @@ const FontPicker = () => {
         event.preventDefault()
         // remove old, set new
         if(fontSelection==''){
-            console.log('setting first time')
+            // console.log('setting first time')
             setFontSelection(event.target.value)
             updateSampleText(event.target.value)    
         } else if(fontSelection==event.target.value){
-            console.log('same')
+            // console.log('same')
             setFontSelection(event.target.value)
         } else {
-            console.log('heterozygous change')
+            // console.log('heterozygous change')
             //toggle off old css
             updateSampleText(fontSelection)
             setFontSelection(event.target.value)
@@ -67,11 +67,11 @@ const FontPicker = () => {
         const userId = sessionStorage.getItem('userId')
         return axios.put('https://link-in-bio.limited/l/setText', {listId:listId, userId:userId, fontSelection:fontSelection}, { headers: { authorization:token }})
         .then(res => {
-            console.log('fontSelectionRes', res)
+            // console.log('fontSelectionRes', res)
             toast.success('Font Changed Successfully')
         })
         .catch(err => {
-            console.log('submit catcherror', err)
+            // console.log('submit catcherror', err)
             toast.error('Error in Changing Font')
         })
     }

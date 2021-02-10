@@ -10,10 +10,10 @@ const UpdateCancelURLs = () => {
     const getThoseURLs = () => {
         const token = sessionStorage.getItem('token')
         const userId = sessionStorage.getItem('userId')
-        console.log('token, userId', token, userId)
+        // console.log('token, userId', token, userId)
         return axios.post('https://link-in-bio.limited/numbers/out', {userId:userId}, {headers:{authorization:token}})
         .then(res => {
-            console.log('res.data', res.data)
+            // console.log('res.data', res.data)
             setUpdateURL(res.data[0].updateURL)
             setCancelURL(res.data[0].cancelURL)
         })

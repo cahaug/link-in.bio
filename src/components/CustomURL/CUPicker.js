@@ -16,7 +16,7 @@ const CUPicker = () => {
             setIsLoading(false)
 
         } catch(err){
-            console.log('err',err)
+            // console.log('err',err)
         }
     }
 

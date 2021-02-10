@@ -35,14 +35,14 @@ function ResetPassword(){
         .reach(formSchema, event.target.name)
         .validate(event.target.value)
         .then(valid => {
-            console.log('valid',valid)
+            // console.log('valid',valid)
             setErrors({
                 ...errors,
                 [event.target.name]:''
             })
         })
         .catch(err => {
-            console.log('err',err)
+            // console.log('err',err)
             setErrors({
                 ...errors,
                 [event.target.name]:err.errors[0]
@@ -64,14 +64,14 @@ function ResetPassword(){
         event.preventDefault()
         setIsWaiting(true)
         const cast = formSchema.cast(formData)
-        console.log('cast',cast)
+        // console.log('cast',cast)
         await formSchema.isValid(cast)
         .then(async function(valid) {
             if(valid===true){
-                console.log('valid formdata good to send '+ formData.email)
+                // console.log('valid formdata good to send '+ formData.email)
                 try {
                     const requestResponse = await axios.post('https://link-in-bio.limited/mailer/resetPW', {email:formData.email})
-                    console.log('requestResponse',requestResponse)
+                    // console.log('requestResponse',requestResponse)
                     if (requestResponse.data.hasOwnProperty('infoResponse')){
                         setMessageBack({message:`All Good: ${requestResponse.data.message}`})
                         setIsWaiting(false)
@@ -82,7 +82,7 @@ function ResetPassword(){
                 } catch (err) {
                     setIsWaiting(false)
                     setMessageBack({message:`Double Check that you Entered Your Email Correctly.`})
-                    console.log('inner err', err)
+                    // console.log('inner err', err)
                 }
             } else {
                 setIsWaiting(false)
@@ -90,7 +90,7 @@ function ResetPassword(){
             }
         })
         .catch(err => {
-            console.log('err', err)
+            // console.log('err', err)
             setIsWaiting(false)
             alert('shit fucked up', err)
         })
@@ -109,7 +109,7 @@ function ResetPassword(){
             <div>
                 <form id="passwordResetForm" onSubmit={onFormSubmit}>
                     <label>
-                        Email: <input onChange={onInputChange} value={formData.email} name="email" type="text" />
+                        Email: <input onChange={onInputChange} value={formData.email} name="email" type="text" autocomplete="username" />
                         {errors.email.length>0 ? <p className='error'>{errors.email}</p>:null}
                     </label>
                     <br />

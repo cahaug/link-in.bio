@@ -149,42 +149,56 @@ function ListDisplayHooks(match) {
         const useThisURL = `https://link-in-bio.limited${ourURL}`
         axios.get(useThisURL)
         .then(async res => {
-            console.log('backend res', res)
-            const userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
-            const displayName = res.data[0].displayName
-            const profilePictureURL = `${res.data[0].profilePictureURL}`
-            const displayingUserInfo = `${res.data[0].displayUserInfo}`
-            setDisplayName(displayName)
-            setProfilePictureURL(profilePictureURL)
-            setUserFirstNameLastName(userFirstLastName)
-            setDisplayingUserInfo(displayingUserInfo)
-            if(res.data[0].listBackgroundURL !== null){
+            // console.log('backend res', res.data)
+            let userFirstLastName; let displayName; let profilePictureURL; let displayingUserInfo;
+            if(res.data.length !== 0){
+                userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
+                displayName = res.data[0].displayName
+                profilePictureURL = `${res.data[0].profilePictureURL}`
+                displayingUserInfo = `${res.data[0].displayUserInfo}`
+                setDisplayName(displayName)
+                setProfilePictureURL(profilePictureURL)
+                setUserFirstNameLastName(userFirstLastName)
+                setDisplayingUserInfo(displayingUserInfo)
+            } else {
+                userFirstLastName = `Empty Link-In Bio`
+                displayName = `Empty Link-In Bio`
+                profilePictureURL = `https://imagizer.imageshack.com/img924/128/aacWe9.jpg`
+                displayingUserInfo = ` `
+                setDisplayName(displayName)
+                setProfilePictureURL(profilePictureURL)
+                setUserFirstNameLastName(userFirstLastName)
+                setDisplayingUserInfo(displayingUserInfo)
+            }
+            if(res.data.length>0&&res.data[0].listBackgroundURL !== null){
                 const backgroundImageURL = `${res.data[0].listBackgroundURL}`
                 setBackgroundURL(backgroundImageURL)
             }
             const mt = navigator.maxTouchPoints
-            const incrementedListViews = axios.get(`https://link-in-bio.limited/s/ili/${res.data[0].listId}?mt=${mt}`)
+            let incrementedListViews
+            if(res.data.length>0){incrementedListViews = axios.get(`https://link-in-bio.limited/s/ili/${res.data[0].listId}?mt=${mt}`)}
             // console.log(incrementedListViews)
             setIsLoading(false);
             document.title = `${window.location.host}${ourURL} - ${displayName}`
             if(displayName===null){
                 document.title = `${window.location.host}${ourURL} - ${userFirstLastName}`
             }
+            let mql = window.matchMedia('(prefers-color-scheme: dark)')
             // initialize in dark mode
             // var element0 = document.getElementsByClassName('App')
             // element0[0].classList.toggle("darkMode")
            
-            const thelinks = (res.data.map((link) => {
+            if(res.data.length>0){const thelinks = (res.data.map((link) => {
                 return (
 
                         <div className='linkSquare' key={link.entryId}>
                             {
                                 link.referencingURL === ' '?<a className='linkTitle' href='#' onClick={async (e)=>{
                                     e.preventDefault()
-                                    console.log('fired', link.referencingURL, link.entryId, mt)
+                                    // console.log('fired', link.referencingURL, link.entryId, mt)
                                     const trashRequest = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                     // const trashRequest = await axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
-                                    console.log('trashRequest', trashRequest)
+                                    // console.log('trashRequest', trashRequest)
                                 }}>
                                 {link.imgURL?<img className='image' src={link.imgURL} alt={link.linkTitle} /> : null }
                                 {/* <img className='image' src={link.imgURL} alt={link.linkTitle} />  */}
@@ -192,10 +206,10 @@ function ListDisplayHooks(match) {
                                 </a>:<a className='linkTitle' href={link.referencingURL} onClick={async (e)=>{
                                 e.preventDefault()
                                 setIsLoading(true) 
-                                console.log('fired', link.referencingURL, link.entryId, mt)
+                                // console.log('fired', link.referencingURL, link.entryId, mt)
                                 const trashRequest = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                 // const trashRequest = await axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
-                                console.log('trashRequest', trashRequest)
+                                // console.log('trashRequest', trashRequest)
                                 setIsLoading(false)
                                 window.location.href = link.referencingURL
                                 }}>
@@ -209,19 +223,38 @@ function ListDisplayHooks(match) {
 
                 )
             }))
-            setLinks(thelinks)
-            console.log('thelinks',thelinks)
+            setLinks(thelinks)}
+            // console.log('res.data', res.data.length)
+            if(res.data.length == 0){
+                const emptyList = {0:true}
+                const emptiedList = emptyList.map((x) => {
+                    console.log('x', "\n[Object object]", x)
+                    return (
+                        <div className='linkSquare'>
+                            <a className='linkTitle' href='#' onClick={(e)=>{e.preventDefault()}}>
+                                <h3>This List Is Empty</h3>
+                            </a>
+                            <br />
+                            <div className="linkSquareButtonHolder"><br /></div>
+                            <p className="linkDescriptionTag">▼</p>
+                            <p className='linkDescription'><br />This entry automatically disappears once an entry is added to this list.<br /></p>
+                        </div>
+                    )
+                })
+                setLinks(emptiedList)
+            }
+            // console.log('thelinks',thelinks)
             // if 
-            console.log(res.data[0])
-            if(res.data[0].backColor){
-                console.log('backColor Changed Bruh!')
+            // console.log(res.data[0])
+            if(res.data.length>0&&res.data[0].backColor){
+                // console.log('backColor Changed Bruh!')
                 setBackgroundColor(`${res.data[0].backColor}`)
             }
-            if(res.data[0].txtColor){
-                console.log('textColor Changed Bruh!')
+            if(res.data.length>0&&res.data[0].txtColor){
+                // console.log('textColor Changed Bruh!')
                setTextColor(`${res.data[0].txtColor}`)
             }
-            if(res.data[0].fontSelection){
+            if(res.data.length>0&&res.data[0].fontSelection){
                 setChosenFont(`${res.data[0].fontSelection}`)
                 updateTextFont(`${res.data[0].fontSelection}`)
             }
@@ -248,47 +281,53 @@ function ListDisplayHooks(match) {
                     e.preventDefault(); 
                 }, false);
                 // allTrackedLinks[i].addEventListener('oncontextmenu', e => {
-                //     e.preventDefault();
-                // });
-            }
-
-            // initialize in custom color mode
-            var txtColorElement0 = document.getElementsByClassName('linkDescription')
-            var k
-            for (k=0; k< txtColorElement0.length; k++){
-                txtColorElement0[k].style.color = `${res.data[0].txtColor}`
-                // txtColorElement[j].style.color = `${res.data[0].backColor}`
-            }
-            var borderElement0 = document.getElementsByClassName('linkSquare')
-            var arrowChangeColor = document.getElementsByClassName('linkDescriptionTag')
-            var n
-            for (n=0; n< borderElement0.length; n++){
-                borderElement0[n].style.border = `2px solid ${res.data[0].txtColor}`
-                // arrowChangeColor[n].style.color = `${res.data[0].txtColor}`
-                // borderElement0[n].style.backgroundColor = `${backgroundColor}`
-            }
-            for(n=0;n<arrowChangeColor.length;n++){
-                arrowChangeColor[n].style.color = `${res.data[0].txtColor}`
-            }
-            var headerDividerBar = document.getElementsByClassName('linkListDisplayHeader')
-            headerDividerBar[0].style.borderBottom = `0.25vh solid ${res.data[0].txtColor}`
-            // headerDividerBar[0].style.backgroundColor = `${backgroundColor}`
-            var headerTextElement = document.getElementById('headerName')
-            headerTextElement.style.color = `${res.data[0].txtColor}`
-            var mainBackgroundElement = document.getElementsByClassName('theMain')
-            console.log(mainBackgroundElement[0].style.backgroundColor)
-            if(res.data[0].listBackgroundURL !== null){
-                mainBackgroundElement[0].style.backgroundImage = `url("${res.data[0].listBackgroundURL}")`
-            } else {
-                mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
-            }
-            let mql = window.matchMedia('(prefers-color-scheme: dark)')
-            console.log('mql', mql)            
-            if(mql.matches === true ){
-                headerTextElement.style.color = ColorLuminance(`${res.data[0].txtColor}`, 2)
-                // initialize in dark mode
-                if(`${res.data[0].txtColor}`==='#000000'){
-                    headerTextElement.style.color = '#FFFFFF'    
+                    //     e.preventDefault();
+                    // });
+                }
+                
+                // initialize in custom color mode
+                if(res.data.length>0&&mql===false){var txtColorElement0 = document.getElementsByClassName('linkDescription')
+                var k
+                for (k=0; k< txtColorElement0.length; k++){
+                    txtColorElement0[k].style.color = `${res.data[0].txtColor}`
+                    // txtColorElement[j].style.color = `${res.data[0].backColor}`
+                }}
+                if(res.data.length>0){
+                    var borderElement0 = document.getElementsByClassName('linkSquare')
+                    var arrowChangeColor = document.getElementsByClassName('linkDescriptionTag')
+                    var n
+                    for (n=0; n< borderElement0.length; n++){
+                        borderElement0[n].style.border = `2px solid ${res.data[0].txtColor}`
+                        // arrowChangeColor[n].style.color = `${res.data[0].txtColor}`
+                        // borderElement0[n].style.backgroundColor = `${backgroundColor}`
+                    }
+                    for(n=0;n<arrowChangeColor.length;n++){
+                        arrowChangeColor[n].style.color = `${res.data[0].txtColor}`
+                    }
+                }
+                if(res.data.length>0){
+                var headerDividerBar = document.getElementsByClassName('linkListDisplayHeader')
+                headerDividerBar[0].style.borderBottom = `0.25vh solid ${res.data[0].txtColor}`
+                // headerDividerBar[0].style.backgroundColor = `${backgroundColor}`
+                var headerTextElement = document.getElementById('headerName')
+                headerTextElement.style.color = `${res.data[0].txtColor}`
+                var mainBackgroundElement = document.getElementsByClassName('theMain')
+                // console.log(mainBackgroundElement[0].style.backgroundColor)
+                if(res.data.length>0&&res.data[0].listBackgroundURL !== null){
+                    mainBackgroundElement[0].style.backgroundImage = `url("${res.data[0].listBackgroundURL}")`
+                } else {
+                    if(res.data.legth>0){
+                        mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, ${res.data[0].txtColor}, ${res.data[0].backColor})`
+                    } else{
+                        mainBackgroundElement[0].style.backgroundImage = `linear-gradient(70deg, #FFFFFF, #000000)`
+                    }
+                }}
+                // console.log('mql', mql)            
+                if(mql.matches === true && res.data.length>0 ){
+                    headerTextElement.style.color = ColorLuminance(`${res.data[0].txtColor}`, 2)
+                    // initialize in dark mode
+                    if(`${res.data[0].txtColor}`==='#000000'){
+                        headerTextElement.style.color = '#FFFFFF'    
                 }
                 var element0 = document.getElementsByClassName('App')
                 element0[0].classList.toggle("darkMode")

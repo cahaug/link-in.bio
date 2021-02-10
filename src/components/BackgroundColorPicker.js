@@ -19,14 +19,14 @@ const BackgroundColorPicker = () => {
     const token = sessionStorage.getItem('token')
     const listId = sessionStorage.getItem('listId')
     const userId = sessionStorage.getItem('userId')
-    console.log(listId, userId, backgroundColor)
+    // console.log(listId, userId, backgroundColor)
     return axios.put('https://link-in-bio.limited/l/setBg', {listId:listId, userId:userId, backColor:backgroundColor},  { headers: {authorization: token} })
     .then(res => {
-        console.log('bgChangeres', res)
+        // console.log('bgChangeres', res)
         toast.success('Background Color Updated Successfully')
     })
     .catch(err => {
-        console.log('submit catcherror', err)
+        // console.log('submit catcherror', err)
         toast.error('Error in Changing Background Color')
     })
 

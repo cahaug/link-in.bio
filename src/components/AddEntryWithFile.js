@@ -26,29 +26,29 @@ function AddEntryWithFile(){
         const listId = sessionStorage.getItem('listId')
         try{
             const formData = new FormData()
-            console.log('wtf is file', typeof file, file)
+            // console.log('wtf is file', typeof file, file)
             formData.append('myImage', file)
             // formData.append('myImage', fs.createReadStream(object))
-            console.log('formData', formData)
+            // console.log('formData', formData)
             const addingToProfile = await axios.post(`https://link-in-bio.limited/e/uploadPhoto/${userId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}, onUploadProgress:
             (progressEvent) => {
-                console.log('progress event', progressEvent)
+                // console.log('progress event', progressEvent)
                 const totalLength = progressEvent.lengthComputable ? progressEvent.total : progressEvent.target.getResponseHeader('content-length') || progressEvent.target.getResponseHeader('x-decompressed-content-length');
-                console.log("onUploadProgress", totalLength);
+                // console.log("onUploadProgress", totalLength);
                 if (totalLength !== null) {
-                    console.log('setUploadProgress', progressEvent)
+                    // console.log('setUploadProgress', progressEvent)
                     setUploadProgress(Math.round( (progressEvent.loaded * 100) / totalLength ));
                 }
             }})
-            console.log('addingtoProfile', addingToProfile)
+            // console.log('addingtoProfile', addingToProfile)
             if(addingToProfile.data.message === 'Successfully Uploaded Picture'){
                 const imgURL = addingToProfile.data.pictureURL
                 const shackImageId = addingToProfile.data.shackImageId
                 const addingEntry = await axios.post('https://link-in-bio.limited/e/new', { userId:userId, listId:listId, referencingURL:bigdata.referencingURL, description:bigdata.description, linkTitle:bigdata.linkTitle, imgURL:imgURL, shackImageId:shackImageId }, { headers: {authorization: token} })
-                console.log('addingEntry', addingEntry)
+                // console.log('addingEntry', addingEntry)
                 if(addingEntry.data.result[0].entryId && addingEntry.data.result[0].referencingURL){
                     const addingStatView = await axios.get(`https://link-in-bio.limited/s/?eid=${addingEntry.data.result[0].entryId}&ref=${addingEntry.data.result[0].referencingURL}&red=f`)
-                    console.log('addingstatview', addingStatView)
+                    // console.log('addingstatview', addingStatView)
                     if(addingStatView.data){
                         setBigData({referencingURL:'',description:'',linkTitle:''})
                         setImagePreviewURL()
@@ -68,7 +68,7 @@ function AddEntryWithFile(){
                 toast.error('Error Uploading Photo')
             }
         } catch (err) {
-            console.log('catcherror', err)
+            // console.log('catcherror', err)
             toast.error('Failed Adding Entry With Photo')
             toast.error('Please Try Again with a Smaller Photo, under 15Mb')
             setIsLoading(false)
@@ -85,7 +85,7 @@ function AddEntryWithFile(){
 
     const handleImageChange = (event) => {
         event.preventDefault()
-        console.log('event target',event.target)
+        // console.log('event target',event.target)
         if(event.target.files.length>0){
             let reader = new FileReader()
             let file = event.target.files[0]

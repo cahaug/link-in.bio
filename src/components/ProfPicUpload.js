@@ -19,7 +19,7 @@ const ProfPicUpload = () => {
             const token = sessionStorage.getItem('token')
             const userId = sessionStorage.getItem('userId')
             const addingToProfile = await axios.put(`https://link-in-bio.limited/l/uploadProfilePicture/${userId}`, formData, {headers:{'Content-Type': 'multipart/form-data', authorization:token}})
-            console.log('adding to profiel',addingToProfile)
+            // console.log('adding to profiel',addingToProfile)
             if(addingToProfile.data.message === 'Successfully Uploaded Profile Picture' || addingToProfile.data.message === 'Successfully Uploaded New Profile Picture No Delete'){
                 setIsLoading(false)
                 // alert('Profile Picture Updated Successfully')
@@ -31,7 +31,7 @@ const ProfPicUpload = () => {
         // }
         
         } catch(err){
-            console.log(err)
+            // console.log(err)
             // alert('error uploading profile picture')
             toast.error('error uploading profile picture')
             setIsLoading(false)
@@ -40,7 +40,7 @@ const ProfPicUpload = () => {
 
     const handleImageChange = (event) => {
         event.preventDefault()
-        console.log('event target',event.target)
+        // console.log('event target',event.target)
         if(event.target.files.length>0){
             let reader = new FileReader()
             let file = event.target.files[0]

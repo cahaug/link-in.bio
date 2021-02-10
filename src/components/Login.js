@@ -44,8 +44,8 @@ class Login extends React.Component {
                 <ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHAPUBLIC} size="invisible" ref={this.reCap} />
                 <form onSubmit={this.handleSubmit}>
                     {/* {errorMessage && <p className="error">{errorMessage}</p>} */}
-                    <input type="text" name="email" placeholder="email" value={email} onChange={this.handleChange} /><br />
-                    <input type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange} /><br />
+                    <input type="text" name="email" placeholder="email" value={email} onChange={this.handleChange} autocomplete="username" /><br />
+                    <input type="password" name="password" placeholder="Password" value={password} onChange={this.handleChange} autocomplete="current-password" /><br />
                     {isLoading
                         ? <p>Logging in...</p>
                         : <button className="abutton" type="submit">Log In</button>}

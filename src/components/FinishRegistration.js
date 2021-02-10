@@ -70,11 +70,11 @@ const FinishRegistration = () => {
             //recaptcha code
             const token = await reRef.current.executeAsync()
             reRef.current.reset()
-            console.log('token', token)
+            // console.log('token', token)
             setIsLoading(true)
             return axios.post('https://link-in-bio.limited/numbers/finish', {password:password, tooken:tooken, email:email, token:token})
             .then(res => {
-                console.log('setPasswordResData', res.data)
+                // console.log('setPasswordResData', res.data)
                 setPassword('')
                 setSuccessful(true)
                 setIsLoading(false)
@@ -96,7 +96,7 @@ const FinishRegistration = () => {
                 <form onSubmit={handleSubmit}>
                     <p>Your Password Must Be 8 characters long with both at least one capital letter and at least one number.</p>
                     <br />
-                    <label>Set Password: <input onChange={handleChangePassword} type="password" name="password" placeholder="Set New Password" required/></label> 
+                    <label>Set Password: <input onChange={handleChangePassword} type="password" name="password" placeholder="Set New Password" required autocomplete="new-password"/></label> 
                     <br />{errors.length>5?<p>{errors}</p>:null}<br />
                     <button type="submit">Set Password</button>
                 </form>

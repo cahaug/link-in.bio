@@ -9,7 +9,7 @@ import CUPicker from '../components/CustomURL/CUPicker'
 import EasyAddDash from '../components/EasyAdd/EasyAddDash'
 import GraphForEntry from "../components/GraphForEntry"
 import AddEntryWithFile from '../components/AddEntryWithFile'
-
+import {logoImageURL} from '../components/LogoDataURL'
 
 
 
@@ -31,7 +31,7 @@ function Dashboard2 () {
             statDrawer[0].style.maxHeight = null;
             setIsShowingStats(false)
         } else {
-            statDrawer[0].style.maxHeight = statDrawer[0].scrollHeight + 480 + "px";
+            statDrawer[0].style.maxHeight = statDrawer[0].scrollHeight + 1280 + "px";
             setIsShowingStats(true)
         }
     }
@@ -121,9 +121,9 @@ function Dashboard2 () {
                     <div className="qrcode">
                         <div>
                             {sessionStorage.getItem('customURL')==null?
-                            <QRCode value={`https://link-in.bio/${sessionStorage.getItem('listId')}`} />
+                            <div><QRCode value={`https://link-in.bio/${sessionStorage.getItem('listId')}`} level="H" imageSettings={{ src:logoImageURL, width:45, height:45 }} /><br /><p>https://link-in.bio/{sessionStorage.getItem('listId')}</p></div>
                             :
-                            <QRCode value={sessionStorage.getItem('customURL')} />
+                            <div><QRCode value={sessionStorage.getItem('customURL')} level="H" imageSettings={{ src:logoImageURL, width:45, height:45 }} /><br /><p>{sessionStorage.getItem('customURL')}</p></div>
                             }
                         </div>
                     </div>

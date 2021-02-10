@@ -58,7 +58,7 @@ const HomepageAvailability = () => {
         //recaptcha code
         const token = await reRef.current.executeAsync()
         reRef.current.reset()
-        console.log('token', token)
+        // console.log('token', token)
         setIsAvailable(false)
         setIsNotAvailable(false)
         setIsLoading(true)
@@ -67,10 +67,10 @@ const HomepageAvailability = () => {
             setChosenCustom('')
             const secondaryIntermediate = `${prefixHost}${intermediate}`
             setLastCheckedCURL(`${secondaryIntermediate.slice(8)}`)
-            console.log('secondaryIntermediate', secondaryIntermediate)
+            // console.log('secondaryIntermediate', secondaryIntermediate)
             return axios.post('https://link-in-bio.limited/l/checkCHomepage', {customURL:secondaryIntermediate, token:token})
             .then(res => {
-                console.log('res.data chosenCustom', res.data)
+                // console.log('res.data chosenCustom', res.data)
                 if(res.data.length === 0){
                     setIsAvailable(true)
                     setIsLoading(false)
@@ -102,7 +102,7 @@ const HomepageAvailability = () => {
                 <form onSubmit={submitCheckChosenCustom}>
                     <label>
                         Is The URL You Want Available? Check Here:<br />
-                        <select onChange={setPrefix}>
+                        <select style={{ "cursor": "pointer" }} onChange={setPrefix}>
                             <option value="https://link-in.bio/">link-in.bio/</option>
                             <option value="https://linkinbio.us/">linkinbio.us/</option>
                             <option value="https://link-in-bio.us/">link-in-bio.us/</option>
@@ -144,9 +144,9 @@ const HomepageAvailability = () => {
                             <option value="https://watch-he.re/">watch-he.re/</option>
                         </select>
                     </label>
-                    <input onChange={handleChange} value={chosenCustom} name="CustomURL" type="text" required maxLength="127" placeholder="YourNameHere"  />
+                    <input style={{ "cursor": "pointer" }} onChange={handleChange} value={chosenCustom} name="CustomURL" type="text" required maxLength="127" placeholder="YourNameHere"  />
                     <br />
-                    {isLoading? <p>Searching Database...</p>:<button type="submit">Check CustomURL Availability</button>}
+                    {isLoading? <p>Searching Database...</p>:<button style={{ "cursor": "pointer" }} type="submit">Check CustomURL Availability</button>}
                 </form>
                 <br />
                 {isAvailable ? <div><p>✔️ {lastCheckedCURL} is Available!</p><br /></div> : null}

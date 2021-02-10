@@ -3,7 +3,7 @@ import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import PrivateRoute from './components/PrivateRoute'
 import LandingPage from './components/LandingPage'
-import Register from './components/Register'
+// import Register from './components/Register'
 import Login from './components/Login'
 import FailedLogin from './components/FailedLogin'
 // import Dashboard from './components/Dashboard'
@@ -11,13 +11,13 @@ import FailedLogin from './components/FailedLogin'
 import AddEntry from './components/AddEntry'
 import EntryEditor from './components/EntryEditor'
 // import ListDisplay from './components/ListDisplay'
-import RegisterHooks from './components/RegisterHooks'
+// import RegisterHooks from './components/RegisterHooks'
 import ResetPassword from './components/ResetPassword'
 import ResetPWCode from './components/ResetPWCode'
 // import InstagramPicker from './components/InstagramPicker'
 import Dashboard2 from './components/Dashboard2'
 import SettingsPanel from './components/SettingsPanel';
-import ExperimentalListDisplay from './components/ExperimentalListDisplay';
+// import ExperimentalListDisplay from './components/ExperimentalListDisplay';
 import Maksaa from './components/Maksaa'
 import { Toaster } from 'react-hot-toast';
 import FinishRegistration from './components/FinishRegistration';
@@ -47,14 +47,14 @@ class App extends React.Component {
         <Switch>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/robots.txt" onEnter={() =>{window.location.reload()}} />
-        <Route exact path="/register" render={props => <Register {...props} history={this.props.history}/>} />
-        <Route exact path="/registerHooks" component={RegisterHooks} />
+        {/* <Route exact path="/register" render={props => <Register {...props} history={this.props.history}/>} /> */}
+        {/* <Route exact path="/registerHooks" component={RegisterHooks} /> */}
         <Route exact path='/maksaa' component={Maksaa} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/failedlogin" component={FailedLogin} />
         <Route exact path="/resetPassword" component={ResetPassword} />
         <Route exact path="/resetPWCode" component={ResetPWCode} />
-        <Route exact path="/experimentalSh1t" component={ExperimentalListDisplay} />
+        {/* <Route exact path="/experimentalSh1t" component={ExperimentalListDisplay} /> */}
         <Route exact path="/finishMyRegistration" component={FinishRegistration} />
         {/* <Route exact path="/instaPicker" component={InstagramPicker} /> */}
         {/* <Route exact path="/paymentPage" component={PaymentPage} /> */}

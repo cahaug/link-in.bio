@@ -83,7 +83,9 @@ class EntryEditor extends React.Component {
         'bitcoin':'https://imagizer.imageshack.com/img922/893/M2YC8X.png',
         'ethereum':'https://imagizer.imageshack.com/img923/2998/c27O4p.jpg',
         'dogecoin':'https://imagizer.imageshack.com/img923/7307/efzU3u.png',
-        'monero':'https://imagizer.imageshack.com/img924/4135/U0zNc4.png'
+        'monero':'https://imagizer.imageshack.com/img924/4135/U0zNc4.png',
+        'sponsus':'https://imagizer.imageshack.com/img922/1434/8gkFop.png',
+        'floatplane':'https://imagizer.imageshack.com/img923/2084/0e51nC.png'
     }
 
     handleChange = (evt) => {
@@ -126,12 +128,12 @@ class EntryEditor extends React.Component {
         // console.log(linkTitle, description, referencingURL, entryId, imgURL2)
         if(imgURL2===""){
             const imgURL = null
-            console.log(imgURL)
+            // console.log(imgURL)
             this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL, token, listId)
             this.setState({ referencingURL:'', description: '', linkTitle: '', imgURL2:''})
         } else {
             const imgURL = imgURL2
-            console.log(imgURL)
+            // console.log(imgURL)
             this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL, token, listId)
             this.setState({ referencingURL:'', description: '', linkTitle: '', imgURL2:''})
         }
@@ -171,7 +173,7 @@ class EntryEditor extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     {/* <input type="text" name="userId" value={userId} placeholder="Your User Id" onChange={this.handleChange} required /><br /> */}
                     {/* <input type="text" name="entryId" value={entryId} placeholder="Your Entry Id" onChange={this.handleChange} required /><br /> */}
-                    {protectedInput === false ? <div><p>Link URL:</p><input type="url" name="referencingURL" value={referencingURL} placeholder="Link URL"  maxLength="498" onChange={this.handleChange} required /><br /></div>:null}
+                    {protectedInput === false ? <div><p>Link URL:</p><input type="url" name="referencingURL" value={referencingURL} placeholder="Link URL"  maxLength="498" onChange={this.handleChange} required /><br /></div>:<div><br /><p>Linked URL:</p><p>{referencingURL}</p><br /></div>}
                     <p>Link Title:</p>
                     <input type="text" name="linkTitle" value={linkTitle} placeholder="Link Title"  maxLength="498" onChange={this.handleChange} required /><br />
                     <p>Link Description (put a single space for no description):</p>

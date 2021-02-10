@@ -6,7 +6,8 @@ import { VictoryPie, VictoryChart, VictoryAxis, VictoryLine, VictoryTheme, Victo
 import ReactWordcloud from "react-wordcloud";
 import toast from "react-hot-toast"
 import { WorldMap } from 'react-svg-worldmap'
-
+import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
+import {mapJson} from './MapJson'
 
 
 const GraphForHomepage = () => {
@@ -21,7 +22,8 @@ const GraphForHomepage = () => {
         deviceOwnNamesCount:[],
         deviceBrandNamesCount:[],
         timeline:[],
-        mapCountries:[]
+        mapCountries:[],
+        mapPoints:[]
     })
     const [mostPopular, setMostPopular] = useState([])
     const [mostPopularToday, setMostPopularToday] = useState([])
@@ -33,12 +35,12 @@ const GraphForHomepage = () => {
     const onChangeDataDisplay = event => {
         event.preventDefault()
         const ogData = datasetBravo.timeline
-        console.log('trimmeddata',trimmedData)
-        console.log('original', datasetBravo.timeline)
+        // console.log('trimmeddata',trimmedData)
+        // console.log('original', datasetBravo.timeline)
         if(event.target.value > datasetBravo.timeline.length){
             toast.error(`There isn't any data that old yet :)`)
         } else if(event.target.value == 0){
-            console.log('is zero', ogData)
+            // console.log('is zero', ogData)
             setTrimmedData(ogData)        
             setSelectedDateRange(event.target.value)
             // console.log('trimmeddata',trimmedData)
@@ -53,18 +55,18 @@ const GraphForHomepage = () => {
     const getDatasetBravo = () => {
         axios.get('https://link-in-bio.limited/s/steakSauce')
         .then(res => {
-            console.log('res.data bravo', res.data)
+            // console.log('res.data bravo', res.data)
             setDatasetBravo(res.data)
             const wordCloudRaw =  JSON.stringify(res.data.regions)
             var rst = JSON.parse(wordCloudRaw.replace(/"province"/g, '"text"').replace(/"count"/g, '"value"'))
-            console.log('rst', rst)
+            // console.log('rst', rst)
             setCloudData(rst)
             setTrimmedData(res.data.timeline.slice(res.data.timeline.length - 8))
-            console.log('top10', res.data.mostPopular)
+            // console.log('top10', res.data.mostPopular)
             const testData = res.data.mostPopular
             testData.sort((a, b) => (parseInt(a.count,10) < parseInt(b.count,10)) ? 1 : -1)
             const processedTop10 = (testData.map((mostPopular) => {
-                console.log('mostp',mostPopular)
+                // console.log('mostp',mostPopular)
                 return (
                     <div key={mostPopular.listId}>
                     <br />
@@ -75,7 +77,7 @@ const GraphForHomepage = () => {
             const testData2 = res.data.mostPopularToday
             testData2.sort((a, b) => (parseInt(a.count,10) < parseInt(b.count,10)) ? 1 : -1)
             const processedTop10Today = (testData2.map((mostPopularToday) => {
-                console.log('mostp',mostPopularToday)
+                // console.log('mostp',mostPopularToday)
                 return (
                     <div key={mostPopularToday.listId}>
                     <br />
@@ -208,6 +210,25 @@ const GraphForHomepage = () => {
                                 fontSize: 20, fill: '#929292'
                               }
                         }} />
+                    </div>
+                </div>
+                <br />
+                <div className="vMap">
+                    <p>Last 100 Viewers Locations:</p><br />
+                    <div style={{ width:"80%", height:"80%", backgroundColor:"white" , margin:"0 auto" }}>
+                    <ComposableMap>
+                        <Geographies geography={mapJson}>
+                            {({ geographies }) =>
+                            geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
+                            }
+                        </Geographies>
+                        {datasetBravo.mapPoints.map(({ name, coordinates, markerOffset }) => (
+                            <Marker key={name} coordinates={coordinates}>
+                                <circle r={5} fill="#F00" stroke="#fff" strokeWidth={2} />
+                                <text textAnchor="middle" y={markerOffset} style={{ fontFamily: "Bariol Serif Thin", fill: "#5D5A6D" }} >{name}</text>
+                            </Marker>
+                        ))}
+                    </ComposableMap>
                     </div>
                 </div>
                 <br />

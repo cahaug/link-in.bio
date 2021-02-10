@@ -57,16 +57,16 @@ const AvailabilityChecker = () => {
         setIsNotAvailable(false)
         setIsLoading(true)
         let intermediate = chosenCustom.split(" ").join("").toLowerCase()
-        console.log('intermediate', intermediate)
+        // console.log('intermediate', intermediate)
         if(hasNoIllegalChars(intermediate) === true){
             setChosenCustom('')
             const secondaryIntermediate = `${prefixHost}${intermediate}`
             setLastCheckedCURL(`${secondaryIntermediate.slice(8)}`)
-            console.log('secondaryIntermediate', secondaryIntermediate)
+            // console.log('secondaryIntermediate', secondaryIntermediate)
             const token = sessionStorage.getItem('token')
             return axios.post('https://link-in-bio.limited/l/checkCustom', {customURL:secondaryIntermediate}, {headers:{authorization:token}})
             .then(res => {
-                console.log('res.data chosenCustom', res.data)
+                // console.log('res.data chosenCustom', res.data)
                 if(res.data.length === 0){
                     setIsAvailable(true)
                     setIsLoading(false)
@@ -94,19 +94,19 @@ const AvailabilityChecker = () => {
         const customURL = `https://${lastCheckedCURL}`
         return axios.put('https://link-in-bio.limited/l/putCustom', { userId: userId, listId: listId, customURL:customURL }, { headers: {authorization:token} })
         .then((res) => {
-            console.log('submit change res', res.data)
+            // console.log('submit change res', res.data)
             if(res.data.resultant == 1){
-                console.log('success message',res.data.message)
+                // console.log('success message',res.data.message)
                 // alert(`Custom URL Updated Successfully to ${customURL}`)
                 toast.success(`Custom URL Updated Successfully to ${customURL}`)
             } else {
-                console.log('partial failure')
+                // console.log('partial failure')
                 // alert('Check Console')
                 toast.error('Check Console')
             }
         })
         .catch(err => {
-            console.log('error submit change custom', err)
+            // console.log('error submit change custom', err)
             // alert('There was an issue updating your CustomURL')
             toast.error('There was an issue updating your CustomURL')
         })
