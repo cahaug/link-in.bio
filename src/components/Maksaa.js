@@ -116,15 +116,15 @@ function Maksaa(){
             </label>
             <br />
             <label>
-                Your Email Address: <input value={emailAddress} type="email" name="email" onChange={handleChangeEmail} required maxLength="125" placeholder="Email Address" />
+                Your Email Address: <input value={emailAddress} type="email" name="email" onChange={handleChangeEmail} required maxLength="125" placeholder="Email Address" autocomplete="email" />
             </label>
             <br />
             <label>
-                Legal First Name: <input value={firstName} name="firstName" type="text" onChange={handleChangeFirstName} required maxLength="125" placeholder="First Name" />
+                Legal First Name: <input value={firstName} name="firstName" type="text" onChange={handleChangeFirstName} required maxLength="125" placeholder="First Name" autocomplete="given-name" />
             </label>
             <br />
             <label>
-                Legal Last Name: <input value={lastName} name="lastName" type="text" onChange={handleChangeLastName} required maxLength="125" placeholder="Last Name"/>
+                Legal Last Name: <input value={lastName} name="lastName" type="text" onChange={handleChangeLastName} required maxLength="125" placeholder="Last Name" autocomplete="family-name"/>
             </label>
             <br />
             <label>
