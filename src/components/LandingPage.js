@@ -4,6 +4,7 @@ import axios from 'axios'
 import libIMG from '../files/libIMG.png'
 import HomepageAvailability from './CustomURL/HomepageAvailability'
 import GraphForHomepage from './GraphForHomepage'
+import {Helmet} from 'react-helmet'
 // import '../App2.css';
 
 
@@ -82,6 +83,9 @@ const LandingPage = () => {
             <br />
             <a alt="Help Center" href="https://intercom.help/link-in-bio-ltd/en/collections/2685643-quick-questions">Help Center - FAQ</a>
             <br /><br />
+            <Helmet>
+                <meta name="description" content={`${window.location.host} - Welcome - Link-In Bio Ltd`} />
+            </Helmet>
             {/* <a href="#!" class="paddle_button" data-product="631279">Subscribe Now!</a> */}
         </div>
     )

@@ -84,11 +84,11 @@ class Dashboard extends React.Component {
                 <p>Your List Id is {sessionStorage.getItem('listId')}</p>
                 <p>Your List Views is {this.state.isLoadingListViews ? <span> Loading...</span> : this.state.listViews}</p>
                 <p>To get started, create a list, then add your entries!</p>
-                <p>Your LinkList will be hosted at: <a alt="Your LinkList" href={`http://link-in.bio/${sessionStorage.getItem('listId')}`}>http://link-in.bio/{sessionStorage.getItem('listId')}</a></p>
+                <p>Your LinkList will be hosted at: <a alt="Your LinkList" href={`https://link-in.bio/${sessionStorage.getItem('listId')}`}>http://link-in.bio/{sessionStorage.getItem('listId')}</a></p>
                 <br />
                 <p>Your QRCode is:</p>
                 <br />
-                <QRCode value={`http://link-in.bio/${sessionStorage.getItem('listId')}`} />
+                <QRCode value={`https://link-in.bio/${sessionStorage.getItem('listId')}`} />
                 <br />
                 
                 {/* <a href="#neworder" className="abutton" role="button">Create a New List</a>
