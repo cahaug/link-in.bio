@@ -335,7 +335,7 @@ function ListEditor2(){
                         </div>
                         {/* <img src={profilePictureURL} alt={profilePictureURL} style={{width:"200px"}}/>  */}
                         <div className="drawer">
-                            <h4> ©{new Date().getFullYear()}  <a href="http://link-in.bio/"><span className="footerLink"> Link-in.Bio Ltd</span></a></h4>
+                            <h4> ©{new Date().getFullYear()}  <a href="https://link-in.bio/"><span className="footerLink"> Link-in.Bio Ltd</span></a></h4>
                         </div>
                     </div>
                 {/* <hr /> */}
