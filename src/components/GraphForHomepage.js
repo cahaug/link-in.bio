@@ -109,12 +109,6 @@ const GraphForHomepage = () => {
         return(
             <div>
                 <br />
-                <p>We're tracking this page! (Anonymously and Legally, of course.)</p> <br/>
-                <p>Link-in.Bio logs anonymous information for you about your page viewers, so you can better know your audience.</p><br/>
-                <p>Link-in.Bio is PCI, CCPA and GDPR Compliant, and is based in Scottsdale, Arizona.</p><br/>
-                <p>Link-in.Bio uses industry-leading practices to safeguard your data and reCAPTCHA to protect against robot attack.</p><br/>
-                <p>We will never give or sell any of your information to anyone.</p><br/>
-                <p>You won't ever see a cookie disclaimer on our website ❌🍪❌,<br />because we only use legitimate interest cookies for registration and replying to customer messages, <br />not our core functionalities. 👍 </p><br/>
                 <p>Here's a sample of the information we provide all our users about their own lists, only it's the live data for viewers of this very page!</p><br/>
                 <div>
                     <div className="vicLine">

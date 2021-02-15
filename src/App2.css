@@ -33,7 +33,7 @@
   .signupcards {
     display: flex;
     justify-content: space-around;
-    flex-direction: column;
+    flex-direction: row;
     align-content: space-between;
     width: 100%;
     /* padding: 1%; */

@@ -99,10 +99,19 @@ a:visited {
   color: lightslategray;
   text-decoration: underline;
 }
+.homepageImageHolder {
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+.homepageImagePhoto {
+  width: 100%;
+  max-width: 1000px;
+}
 .signupcards {
   display: flex;
   justify-content: space-around;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   margin: 0 auto;
 }
@@ -164,6 +173,21 @@ header .drawer h2 {
   padding-bottom: 2vh;
   padding-top: 3vh;
 }
+.specialText {
+  font-family: 'Salome', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive;
+  font-size: 2.2em;
+  margin: 1em;
+}
+.semiSpecialText {
+  font-family: 'Wotfard', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive;
+  font-size: 0.7em;
+  color: grey;
+  display: none;
+}
+.normalText {
+  font-family: 'Wotfard', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive;
+  font-size: 1.1em;
+}
 .backColorPickerDiv {
   max-height: 0;
   overflow: hidden;
@@ -189,10 +213,43 @@ header .drawer h2 {
   overflow: hidden;
   transition: max-height 0.3s ease-out;
 }
+.infoDisplayDiv {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  font-family: 'Wotfard', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive;
+  font-size: 1.1em;
+}
+.availabilityDisplayDiv {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  font-family: 'Wotfard', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive;
+  font-size: 1.1em;
+}
 .statsDisplayDiv {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.6s ease-out;
+}
+.statsHPDisplayDiv {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.6s ease-out;
+  font-family: 'Wotfard', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive;
+  font-size: 1.1em;
+}
+.landingPanel {
+  font-family: 'Wotfard', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive;
+  font-size: 1.3em;
+  color: grey;
+}
+.carbonDisplayDiv {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  font-family: 'Wotfard', 'Oswald', 'ZCOOL KuaiLe', 'Namun Gothic', 'Yusei Magic', 'Almarai', 'Assistant', 'Source Sans Pro', 'Kanit', 'Inter', cursive;
+  font-size: 1.1em;
 }
 .profPicChangerDiv {
   max-height: 0;
@@ -941,6 +998,11 @@ footer span {
   }
   .entryChartHolder {
     flex-direction: column;
+  }
+  .homepageImageHolder {
+    flex-direction: column;
+    width: 100%;
+    flex-wrap: wrap;
   }
   .vicLine {
     width: 275px;
