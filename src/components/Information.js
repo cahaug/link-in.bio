@@ -15,7 +15,7 @@ const Information = () => {
             <br />
             <p>Your Link-In Bio is versatile, and can be used for anything from linking up your socials with your gamertags,<br/> to launching an online business from nothing.</p><br />
             <p>$5 a Month, 5 Minutes to Set Up</p><br />
-            <p>Easily add 55+ commonly used social networks and online services with our EasyAdd Link Feature</p><br />
+            <p>Easily add 60+ commonly used social networks and online services with our EasyAdd Link Feature</p><br />
             <p>Add Links and Images already on the Internet with our Manual Entry Feature.</p><br />
             <p>Upload Your Own Photos with our Add Link with Photo Feature.</p><br />
             <p>Link-In Bio provides you with a QR Code for sharing your Link-In Bio.</p>
