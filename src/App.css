@@ -275,6 +275,9 @@ header .drawer h2 {
   max-width: 250px;
   max-height: 250px;
 }
+#headerName {
+  word-break: break-word;
+}
 #thecanvas {
   max-width: 250px;
   max-height: 250px;
