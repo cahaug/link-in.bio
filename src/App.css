@@ -472,6 +472,10 @@ footer span {
   display: flex;
   flex-direction: row;
   margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  overflow: hidden;
 }
 .linkListDashboardHeader .dashboardToggleHolder p {
   border: 1px solid black;
@@ -1002,9 +1006,6 @@ footer span {
     overscroll-behavior: contain;
     -webkit-overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
-  }
-  .dashboardToggleHolder {
-    flex-direction: column;
   }
   .entryChartHolder {
     flex-direction: column;
