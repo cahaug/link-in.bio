@@ -499,6 +499,7 @@ footer span {
   justify-content: center;
   padding: 2em;
   text-align: center;
+  word-break: break-all;
 }
 .dashboardInfoSection span {
   cursor: pointer;
@@ -572,6 +573,11 @@ footer span {
 .darkMode .dashboard2 tspan {
   fill: #ffffff;
   color: #ffffff;
+}
+.darkMode .linkListDashboardHeader .dashboardToggleHolder {
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 .darkMode .linkListDashboardHeader .dashboardToggleHolder p {
   border: 1px solid white;
