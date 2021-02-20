@@ -524,6 +524,7 @@ footer span {
 .dashboardInfoSection table td {
   border: 1px solid black;
   padding: 1em;
+  word-break: break-word;
 }
 .darkMode {
   background-color: black;
