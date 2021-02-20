@@ -1003,6 +1003,9 @@ footer span {
     -webkit-overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
   }
+  .dashboardToggleHolder {
+    flex-direction: column;
+  }
   .entryChartHolder {
     flex-direction: column;
   }
