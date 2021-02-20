@@ -154,7 +154,7 @@ export function addEntry(userId, listId, referencingURL, description, linkTitle,
             const useThisURL = `https://link-in-bio.limited/s/?eid=${res.data.result[0].entryId}&ref=${res.data.result[0].referencingURL}&red=f`
             return axios.get(useThisURL)
             .then((res) => {
-                alert('Entry added successfully, Try Returning to Your Dashboard and Refreshing the Page')
+                alert('Success')
                 dispatch({type: ADD_ENTRY_SUCCESS, payload:res.data})
             })
         })
@@ -169,7 +169,7 @@ export function editEntry(entryId, referencingURL, description, linkTitle, imgUR
         dispatch({type: EDIT_ENTRY_START})
         return axios.put('https://link-in-bio.limited/e/replaceEntry', {entryId, referencingURL, description, linkTitle, imgURL, listId}, { headers: {authorization: token}})
         .then((res) => {
-            alert('Entry Edited Successfully')
+            alert('Success')
             dispatch({type: EDIT_ENTRY_SUCCESS, payload:res.data})
         })
         .catch((err) => {
