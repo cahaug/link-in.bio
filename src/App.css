@@ -578,6 +578,7 @@ footer span {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 .darkMode .linkListDashboardHeader .dashboardToggleHolder p {
   border: 1px solid white;
