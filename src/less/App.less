@@ -347,6 +347,10 @@ header .drawer {
     max-height: 250px;
 }
 
+#headerName {
+    word-break: break-word;
+}
+
 #thecanvas {
     max-width: 250px;
     max-height: 250px;
@@ -608,6 +612,10 @@ footer {
         display:flex;
         flex-direction:row;
         margin:0 auto;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        overflow: hidden;
         
         p {
             border: 1px solid black;
@@ -644,6 +652,7 @@ footer {
     justify-content: center;
     padding:2em;
     text-align:center;
+    word-break: break-all;
 
     span{
         cursor: pointer;
@@ -663,6 +672,7 @@ footer {
         td {
             border:1px solid black;
             padding:1em;
+            word-break: break-word;
         }
     }
 }
@@ -745,6 +755,10 @@ footer {
     .linkListDashboardHeader {
 
         .dashboardToggleHolder{
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            overflow: hidden;
 
             p {
                 border: 1px solid white;
