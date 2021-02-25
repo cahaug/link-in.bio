@@ -92,8 +92,8 @@ const LandingPage = () => {
             <h1 className="semiSpecialText">Link-In Bio Ltd</h1>
             <br />
             {['1','2','3'].includes(currentTime[currentTime.length - 1])? <h2 className="specialText">Your Links.<br />Your Bio.<br/> Your Way.</h2>:null}
-            {['4','5','6'].includes(currentTime[currentTime.length - 1])? <h2 className="specialText">Social Networking, Reinvented</h2>:null}
-            {['7','8','9','0'].includes(currentTime[currentTime.length - 1])? <h2 className="specialText">Big Data with a Small Price</h2>:null}
+            {['4','5','6'].includes(currentTime[currentTime.length - 1])? <h2 className="specialText">Social Networking, Reinvented<br/></h2>:null}
+            {['7','8','9','0'].includes(currentTime[currentTime.length - 1])? <h2 className="specialText">Big Data with a Small Price<br/></h2>:null}
             <br />
             {isShowingInfo ? <span className="landingPanel" style={{ "cursor": "pointer" }} onClick={infoDrawerToggle}>{maxTouchPts===0?<span>Click - </span>:<span>Tap - </span>} What's Link-In.Bio?  ▲</span>:<span className="landingPanel" style={{ "cursor": "pointer" }} onClick={infoDrawerToggle}>{maxTouchPts===0?<span>Click - </span>:<span>Tap - </span>} What's Link-In.Bio?  ▼</span>}
             <div className="infoDisplayDiv">
