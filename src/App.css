@@ -508,6 +508,9 @@ footer span {
   text-align: center;
   word-break: break-all;
 }
+.dashboardInfoSection .sqaureButton {
+  word-break: break-word;
+}
 .dashboardInfoSection span {
   cursor: pointer;
 }
