@@ -56,8 +56,7 @@ const HomepageAvailability = () => {
     const submitCheckChosenCustom = async (event) => {
         event.preventDefault()
         //recaptcha code
-        const token = await reRef.current.executeAsync()
-        reRef.current.reset()
+        const token = reRef.current.execute()
         // console.log('token', token)
         setIsAvailable(false)
         setIsNotAvailable(false)
@@ -76,10 +75,12 @@ const HomepageAvailability = () => {
                     setIsLoading(false)
                     // alert('Available')
                     toast.success('Available')
+                    reRef.current.reset()
                 } else {
                     setIsNotAvailable(true)
                     setIsLoading(false)
                     toast.error('Already Taken')
+                    reRef.current.reset()
                     // alert('Already Taken')
                 }
             })
