@@ -119,6 +119,10 @@ a:visited {
   max-width: 800px;
   width: 50%;
 }
+.unionBug {
+  max-width: 450px;
+  width: 33%;
+}
 .App {
   min-height: 100vh;
   height: 100%;

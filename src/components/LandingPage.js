@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import libIMG from '../files/libIMG.png'
+import unionLabel from '../files/union_label.png'
 import Information from './Information'
 import HomepageAvailability from './CustomURL/HomepageAvailability'
 import GraphForHomepage from './GraphForHomepage'
@@ -9,6 +10,7 @@ import CarbonAgree from './CarbonAgree'
 import {Helmet} from 'react-helmet'
 // import '../App2.css';
 
+console.log('the union bug on this page contains an icon made by flaticon.com')
 
 const LandingPage = () => {
     const [loggedViewNoIP, setLoggedViewNoIP] = useState(false)
@@ -137,6 +139,8 @@ const LandingPage = () => {
             </div>
             <a alt="Help Center" href="https://intercom.help/link-in-bio-ltd/en/collections/2685643-quick-questions">Frequently Asked Questions - FAQ</a>
             <br /><br />
+            <img src={unionLabel} alt="Union Bug" className="unionBug"/>
+            <br />
             <div><h4> ©{new Date().getFullYear()}  Link-In.Bio Ltd</h4></div>
             <br />
             <Helmet>
