@@ -56,7 +56,7 @@ const HomepageAvailability = () => {
     const submitCheckChosenCustom = async (event) => {
         event.preventDefault()
         //recaptcha code
-        const token = reRef.current.execute()
+        const token = reRef.current.executeAsync()
         // console.log('token', token)
         setIsAvailable(false)
         setIsNotAvailable(false)
