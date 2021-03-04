@@ -10,7 +10,7 @@ const HomepageAvailability = () => {
     const [isNotAvailable, setIsNotAvailable] = useState(false)
     const [lastCheckedCURL, setLastCheckedCURL] = useState('')
     const [prefixHost, setPrefixHost] = useState('https://link-in.bio/')
-    const reRef = useRef()
+    const reRef = useRef(null)
 
     const handleChange = (event) => {
         event.preventDefault()
@@ -61,6 +61,7 @@ const HomepageAvailability = () => {
         event.preventDefault()
         //recaptcha code
         const token = await reRef.current.executeAsync()
+        reRef.current.reset()
         // console.log('token', token)
         setIsAvailable(false)
         setIsNotAvailable(false)
