@@ -103,7 +103,7 @@ const HomepageAvailability = () => {
                 <h3>Choose the URL that Best fits your style:</h3>
                 <br />
                 <form onSubmit={submitCheckChosenCustom}>
-                <ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHAPUBLIC} size="invisible" ref={reRef} onChange={onChange} />
+                <ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHAPUBLIC} size="invisible" ref={reRef} />
                     <label>
                         Is The URL You Want Available? Check Here:<br />
                         <select style={{ "cursor": "pointer" }} onChange={setPrefix}>
