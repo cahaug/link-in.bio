@@ -56,7 +56,7 @@ const HomepageAvailability = () => {
     const submitCheckChosenCustom = async (event) => {
         event.preventDefault()
         //recaptcha code
-        const token = reRef.current.executeAsync()
+        const token = await reRef.current.executeAsync()
         // console.log('token', token)
         setIsAvailable(false)
         setIsNotAvailable(false)
@@ -97,8 +97,8 @@ const HomepageAvailability = () => {
                 <br />
                 <h3>Choose the URL that Best fits your style:</h3>
                 <br />
-                <ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHAPUBLIC} size="invisible" ref={reRef} />
                 <form onSubmit={submitCheckChosenCustom}>
+                <ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHAPUBLIC} size="invisible" ref={reRef} />
                     <label>
                         Is The URL You Want Available? Check Here:<br />
                         <select style={{ "cursor": "pointer" }} onChange={setPrefix}>
