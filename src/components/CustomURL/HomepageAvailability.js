@@ -22,6 +22,10 @@ const HomepageAvailability = () => {
         setPrefixHost(event.target.value)
     }
 
+    function onChange(value) {
+        console.log("Captcha value:", value);
+    }
+
     const hasNoIllegalChars = (value) => {
         // const stringHasSpaces = value.indexOf(' ')
         const stringHasIllegalSlash1 = value.indexOf(`\\`)
@@ -75,12 +79,12 @@ const HomepageAvailability = () => {
                     setIsLoading(false)
                     // alert('Available')
                     toast.success('Available')
-                    reRef.current.reset()
+                    // reRef.current.reset()
                 } else {
                     setIsNotAvailable(true)
                     setIsLoading(false)
                     toast.error('Already Taken')
-                    reRef.current.reset()
+                    // reRef.current.reset()
                     // alert('Already Taken')
                 }
             })
@@ -98,7 +102,7 @@ const HomepageAvailability = () => {
                 <h3>Choose the URL that Best fits your style:</h3>
                 <br />
                 <form onSubmit={submitCheckChosenCustom}>
-                <ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHAPUBLIC} size="invisible" ref={reRef} />
+                <ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHAPUBLIC} size="invisible" ref={reRef} onChange={onChange} />
                     <label>
                         Is The URL You Want Available? Check Here:<br />
                         <select style={{ "cursor": "pointer" }} onChange={setPrefix}>
