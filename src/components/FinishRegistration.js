@@ -3,7 +3,7 @@ import axios from 'axios'
 import ReCAPTCHA from 'react-google-recaptcha'
 import toast from 'react-hot-toast'
 const queryString = require('query-string');
-const parameteres = queryString.parse(window.location.search)
+const parameteres = (typeof document === 'undefined') ? {} : queryString.parse(window.location.search)
 
 const FinishRegistration = () => {
     const [isLoading, setIsLoading] = useState(false)

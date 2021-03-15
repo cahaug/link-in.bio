@@ -3,14 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev:build-server": "NODE_ENV=development webpack --config webpack.server.js --mode=development -w",
+    "dev:start": "nodemon ./server-build/index.js",
+    "dev": "npm-run-all --parallel build dev:*",
+    "build": "react-scripts build",
     "start": "react-scripts start",
-    "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "dependencies": {
     "@stripe/stripe-js": "^1.13.0",
     "axios": "^0.21.1",
+    "core-util-is": "^1.0.2",
     "qrcode.react": "^1.0.1",
     "query-string": "^6.14.0",
     "react": "^16.14.0",
@@ -43,5 +47,22 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-syntax-class-properties": "^7.12.13",
+    "@babel/preset-env": "^7.13.10",
+    "@babel/preset-react": "^7.12.13",
+    "css-loader": "^5.1.2",
+    "file-loader": "^6.2.0",
+    "less": "^4.1.1",
+    "less-loader": "^7.3.0",
+    "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
+    "webpack-cli": "^4.5.0",
+    "webpack-node-externals": "^2.5.2"
   }
 }

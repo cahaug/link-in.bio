@@ -14,7 +14,7 @@ import { reducer } from './reducers'
 const store = createStore(reducer, applyMiddleware(thunk))
 
 
-ReactDOM.render(
+ReactDOM.hydrate(
   <Provider store={store}>
     <BrowserRouter>
       <Switch>
