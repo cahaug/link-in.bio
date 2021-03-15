@@ -1,27 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.853094d1.chunk.css",
-    "main.js": "/static/js/main.d15ab666.chunk.js",
-    "main.js.map": "/static/js/main.d15ab666.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.801db5d4.js",
-    "runtime-main.js.map": "/static/js/runtime-main.801db5d4.js.map",
-    "static/js/2.e34dc150.chunk.js": "/static/js/2.e34dc150.chunk.js",
-    "static/js/2.e34dc150.chunk.js.map": "/static/js/2.e34dc150.chunk.js.map",
-    "static/js/3.71bce5c8.chunk.js": "/static/js/3.71bce5c8.chunk.js",
-    "static/js/3.71bce5c8.chunk.js.map": "/static/js/3.71bce5c8.chunk.js.map",
+    "main.css": "/static/css/main.08f859ff.chunk.css",
+    "main.js": "/static/js/main.11b3e279.chunk.js",
+    "main.js.map": "/static/js/main.11b3e279.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.13f4342f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.13f4342f.js.map",
+    "static/js/2.17c82b9a.chunk.js": "/static/js/2.17c82b9a.chunk.js",
+    "static/js/2.17c82b9a.chunk.js.map": "/static/js/2.17c82b9a.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.853094d1.chunk.css.map": "/static/css/main.853094d1.chunk.css.map",
-    "static/js/2.e34dc150.chunk.js.LICENSE.txt": "/static/js/2.e34dc150.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/static/media/wotfard-bold-webfont.5712af5b.woff2",
-    "static/media/dark.141e02f0.png": "/static/media/dark.141e02f0.png",
-    "static/media/libIMG.a7779405.png": "/static/media/libIMG.a7779405.png",
-    "static/media/litemode.8500eaeb.png": "/static/media/litemode.8500eaeb.png",
-    "static/media/loading.gif": "/static/media/loading.4df761c8.gif"
+    "precache-manifest.eb1138fe24a505d267b50ff44d1443d2.js": "/precache-manifest.eb1138fe24a505d267b50ff44d1443d2.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.08f859ff.chunk.css.map": "/static/css/main.08f859ff.chunk.css.map",
+    "static/js/2.17c82b9a.chunk.js.LICENSE.txt": "/static/js/2.17c82b9a.chunk.js.LICENSE.txt",
+    "static/media/loading.gif": "/static/media/loading.ef474d09.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.801db5d4.js",
-    "static/js/2.e34dc150.chunk.js",
-    "static/css/main.853094d1.chunk.css",
-    "static/js/main.d15ab666.chunk.js"
+    "static/js/runtime-main.13f4342f.js",
+    "static/js/2.17c82b9a.chunk.js",
+    "static/css/main.08f859ff.chunk.css",
+    "static/js/main.11b3e279.chunk.js"
   ]
 }
