@@ -105,7 +105,7 @@ const GraphForHomepage = () => {
             let replacementMapPoints = []
             let i
             for(i=0;i<res.data.mapPoints.length-1;i++){
-                if(distinctCoordinates.keys().includes(res.data.mapPoints[i].coordinates[0]) === false && distinctCoordinates[res.data.mapPoints[i].coordinates[0]] !== res.data.mapPoints[i].coordinates[1]){
+                if(Object.keys(distinctCoordinates).includes(res.data.mapPoints[i].coordinates[0]) === false && distinctCoordinates[res.data.mapPoints[i].coordinates[0]] !== res.data.mapPoints[i].coordinates[1]){
                     distinctCoordinates[res.data.mapPoints[i].coordinates[0]] = res.data.mapPoints[i].coordinates[1]
                     replacementMapPoints.push(res.data.mapPoints[i])
                     console.log('pushed orign', res.data.mapPoints[i].name)
