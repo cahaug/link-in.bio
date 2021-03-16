@@ -38,7 +38,7 @@ const GraphForHomepage = () => {
     const [trimmedData, setTrimmedData] = useState([])
     const [activeMapRegion, setActiveMapRegion] = useState('World')
 
-    const mapValuesDict = {'World':{mapData:mapJson, rotation:[0,0,0], scaling:110, projectionAppearance:'geoMercator'}, 'Africa':{mapData:mapAfrica, rotation:[-15, 360, 0], scaling:450, projectionAppearance:'geoAzimuthalEqualArea'}, 'Asia':{mapData:mapAsia, rotation:[180, 20, 0], scaling:400, projectionAppearance:'geoAzimuthalEqualArea'}, 'Europe':{mapData:mapEurope, rotation:[-10, 300, 0], scaling:600, projectionAppearance:'geoAzimuthalEqualArea'}, 'North America':{mapData:mapNA, rotation:[105, -50, 0], scaling:450, projectionAppearance:'geoAzimuthalEqualArea'}, 'South America':{mapData:mapSA, rotation:[65, 25, 0], scaling:450, projectionAppearance:'geoAzimuthalEqualArea'}, 'Oceania':{mapData:mapOceania, rotation:[205, 25, 0], scaling:350, projectionAppearance:'geoAzimuthalEqualArea'}}
+    const mapValuesDict = {'World':{mapData:mapJson, rotation:[0,0,0], scaling:110, projectionAppearance:'geoMercator'}, 'Africa':{mapData:mapAfrica, rotation:[-15, 358, 0], scaling:450, projectionAppearance:'geoAzimuthalEqualArea'}, 'Asia':{mapData:mapAsia, rotation:[-98, -30, -25], scaling:350, projectionAppearance:'geoAzimuthalEqualArea'}, 'Europe':{mapData:mapEurope, rotation:[-10, 300, 0], scaling:600, projectionAppearance:'geoAzimuthalEqualArea'}, 'North America':{mapData:mapNA, rotation:[105, -50, 0], scaling:450, projectionAppearance:'geoAzimuthalEqualArea'}, 'South America':{mapData:mapSA, rotation:[65, 22, 0], scaling:450, projectionAppearance:'geoAzimuthalEqualArea'}, 'Oceania':{mapData:mapOceania, rotation:[205, 25, 0], scaling:350, projectionAppearance:'geoAzimuthalEqualArea'}}
 
     const onChangeDataDisplay = event => {
         event.preventDefault()
@@ -238,13 +238,13 @@ const GraphForHomepage = () => {
                     <ComposableMap projection={mapValuesDict[activeMapRegion].projectionAppearance} projectionConfig={{rotate:mapValuesDict[activeMapRegion].rotation,scale:mapValuesDict[activeMapRegion].scaling}}>
                         <Geographies geography={mapValuesDict[activeMapRegion].mapData}>
                             {({ geographies }) =>
-                            geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
+                            geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} fill="#EAEAEC" stroke="#D6D6DA"/>)
                             }
                         </Geographies>
                         {datasetBravo.mapPoints.map(({ name, coordinates, markerOffset }) => (
                             <Marker key={name} coordinates={coordinates}>
                                 <circle r={5} fill="#F00" stroke="#fff" strokeWidth={2} />
-                                <text textAnchor="middle" y={markerOffset} style={{ fontFamily: "Bariol Serif Thin", fill: "#5D5A6D" }} >{name}</text>
+                                <text textAnchor="middle" y={markerOffset} style={{ fontFamily: "Bariol Serif Thin", fill: "#000" }} >{name}</text>
                             </Marker>
                         ))}
                     </ComposableMap>
