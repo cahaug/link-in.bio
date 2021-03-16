@@ -1029,7 +1029,7 @@ footer span {
   .vicLine {
     width: 275px;
     height: 300px;
-    margin: 0 auto 25px;
+    margin: 0 auto 30px;
   }
 }
 @media screen and (max-width: 199px) {
