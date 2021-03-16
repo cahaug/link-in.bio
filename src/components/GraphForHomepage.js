@@ -101,6 +101,18 @@ const GraphForHomepage = () => {
             setMostPopular(processedTop10)
             setMostPopularToday(processedTop10Today)
             setIsLoading(false)
+            let distinctXCoordinates = []
+            let distinctYCoordinates = []
+            let replacementMapPoints = []
+            let i
+            for(i=0;i<datasetBravo.mapPoints.length-1;i++){
+                if(distinctXCoordinates.includes(datasetBravo.mapPoints[i].coordinates[0]) === false && distinctYCoordinates.includes(datasetBravo.mapPoints[i].coordinates[1]) === false){
+                    distinctXCoordinates.append(datasetBravo.mapPoints[i].coordinates[0])
+                    distinctYCoordinates.append(datasetBravo.mapPoints[i].coordinates[1])
+                    replacementMapPoints.append(datasetBravo.mapPoints[i])
+                }
+            }
+            setDatasetBravo({...datasetBravo, mapPoints:replacementMapPoints})
         })
         .catch(err => {
             console.log('error in get dsb', err)
