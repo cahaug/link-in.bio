@@ -33,6 +33,7 @@ const GraphForEntry = () => {
         mapCountries:[],
         mapPoints:[]
     })
+    const [pointsToMap, setPointsToMap] = useState([])
     const [selectedDateRange, setSelectedDateRange] = useState(7)
     const [trimmedData, setTrimmedData] = useState([])
     const [activeMapRegion, setActiveMapRegion] = useState('World')
@@ -100,6 +101,20 @@ const GraphForEntry = () => {
             // console.log('rst', rst)
             setCloudData(rst)
             setTrimmedData(res.data.timeline.slice(res.data.timeline.length - 8))
+            let distinctCoordinates = {}
+            let replacementMapPoints = []
+            let i
+            for(i=0;i<res.data.mapPoints.length-1;i++){
+                if(Object.keys(distinctCoordinates).includes(res.data.mapPoints[i].coordinates[0]) === false && distinctCoordinates[res.data.mapPoints[i].coordinates[0]] !== res.data.mapPoints[i].coordinates[1]){
+                    distinctCoordinates[res.data.mapPoints[i].coordinates[0]] = res.data.mapPoints[i].coordinates[1]
+                    replacementMapPoints.push(res.data.mapPoints[i])
+                    console.log('pushed orign', res.data.mapPoints[i].name)
+                }
+                else{
+                    console.log('duplicate map point', res.data.mapPoints[i].name)
+                }
+            }
+            setPointsToMap(replacementMapPoints)
             setIsLoading(false)
         })
         .catch(err => {
@@ -250,7 +265,7 @@ const GraphForEntry = () => {
                             geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} fill="#EAEAEC" stroke="#D6D6DA"/>)
                             }
                         </Geographies>
-                        {datasetBravo.mapPoints.map(({ name, coordinates, markerOffset }) => (
+                        {pointsToMap.map(({ name, coordinates, markerOffset }) => (
                             <Marker key={name} coordinates={coordinates}>
                                 <circle r={5} fill="#F00" stroke="#fff" strokeWidth={2} />
                                 <text textAnchor="middle" y={markerOffset} style={{ fontFamily: "Bariol Serif Thin", fill: "#000" }} >{name}</text>
