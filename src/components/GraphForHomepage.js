@@ -8,6 +8,12 @@ import toast from "react-hot-toast"
 import { WorldMap } from 'react-svg-worldmap'
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
 import {mapJson} from './MapJson'
+import {mapAfrica} from './MapAfrica'
+import {mapAsia} from './MapAsia'
+import {mapEurope} from './MapEurope'
+import {mapNA} from './MapNA'
+import {mapSA} from './MapSA'
+import {mapOceania} from './MapOceania'
 
 
 const GraphForHomepage = () => {
@@ -30,7 +36,9 @@ const GraphForHomepage = () => {
     const [cloudData, setCloudData] = useState([])
     const [selectedDateRange, setSelectedDateRange] = useState(7)
     const [trimmedData, setTrimmedData] = useState([])
+    const [activeMapRegion, setActiveMapRegion] = useState('World')
 
+    const mapValuesDict = {'World':mapJson, 'Africa':mapAfrica, 'Asia':mapAsia, 'Europe':mapEurope, 'North America':mapNA, 'South America':mapSA, 'Oceania':mapOceania}
 
     const onChangeDataDisplay = event => {
         event.preventDefault()
@@ -50,6 +58,11 @@ const GraphForHomepage = () => {
             setSelectedDateRange(event.target.value)
             setTrimmedData(datasetBravo.timeline.slice(datasetBravo.timeline.length - event.target.value - 1))
         }
+    }
+
+    const onChangeMapSelection = event => {
+        event.preventDefault()
+        setActiveMapRegion(event.target.value)
     }
    
     const getDatasetBravo = () => {
@@ -209,9 +222,21 @@ const GraphForHomepage = () => {
                 <br />
                 <div className="vMap">
                     <p>Last 100 Viewers Locations:</p><br />
+                    <h2>Viewers in {activeMapRegion == 'World' ?<span>the World</span>:<span>{activeMapRegion}</span>}:</h2>
+                        <br />
+                        <select onChange={onChangeMapSelection}>
+                            <option value={'World'}>World</option>
+                            <option value={'Africa'}>Africa</option>
+                            <option value={'Asia'}>Asia</option>
+                            <option value={'Europe'}>Europe</option>
+                            <option value={'North America'}>North America</option>
+                            <option value={'Oceania'}>Oceania</option>
+                            <option value={'South America'}>South America</option>
+                        </select>
+                        <br />
                     <div style={{ width:"80%", height:"80%", backgroundColor:"white" , margin:"0 auto" }}>
                     <ComposableMap>
-                        <Geographies geography={mapJson}>
+                        <Geographies geography={mapValuesDict[activeMapRegion]}>
                             {({ geographies }) =>
                             geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
                             }
