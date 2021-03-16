@@ -106,9 +106,9 @@ const GraphForHomepage = () => {
             let i
             for(i=0;i<res.data.mapPoints.length-1;i++){
                 if(dstinctXCoordinates.includes(res.data.mapPoints[i].coordinates[0]) === false && dstinctYCoordinates.includes(res.data.mapPoints[i].coordinates[1]) === false){
-                    dstinctXCoordinates.append(res.data.mapPoints[i].coordinates[0])
-                    dstinctYCoordinates.append(res.data.mapPoints[i].coordinates[1])
-                    replacementMapPoints.append(res.data.mapPoints[i])
+                    dstinctXCoordinates.push(res.data.mapPoints[i].coordinates[0])
+                    dstinctYCoordinates.push(res.data.mapPoints[i].coordinates[1])
+                    replacementMapPoints.push(res.data.mapPoints[i])
                 }
             }
             setDatasetBravo({...datasetBravo, mapPoints:replacementMapPoints})
