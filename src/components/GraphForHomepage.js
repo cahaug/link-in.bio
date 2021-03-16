@@ -38,7 +38,7 @@ const GraphForHomepage = () => {
     const [trimmedData, setTrimmedData] = useState([])
     const [activeMapRegion, setActiveMapRegion] = useState('World')
 
-    const mapValuesDict = {'World':mapJson, 'Africa':mapAfrica, 'Asia':mapAsia, 'Europe':mapEurope, 'North America':mapNA, 'South America':mapSA, 'Oceania':mapOceania}
+    const mapValuesDict = {'World':{mapData:mapJson, rotation:[0,0,0], scaling:110, projectionAppearance:'geoMercator'}, 'Africa':{mapData:mapAfrica, rotation:[-15, 360, 0], scaling:450, projectionAppearance:'geoAzimuthalEqualArea'}, 'Asia':{mapData:mapAsia, rotation:[180, 20, 0], scaling:400, projectionAppearance:'geoAzimuthalEqualArea'}, 'Europe':{mapData:mapEurope, rotation:[-10, 300, 0], scaling:600, projectionAppearance:'geoAzimuthalEqualArea'}, 'North America':{mapData:mapNA, rotation:[105, -50, 0], scaling:450, projectionAppearance:'geoAzimuthalEqualArea'}, 'South America':{mapData:mapSA, rotation:[65, 25, 0], scaling:450, projectionAppearance:'geoAzimuthalEqualArea'}, 'Oceania':{mapData:mapOceania, rotation:[205, 25, 0], scaling:350, projectionAppearance:'geoAzimuthalEqualArea'}}
 
     const onChangeDataDisplay = event => {
         event.preventDefault()
@@ -235,8 +235,8 @@ const GraphForHomepage = () => {
                         </select>
                         <br />
                     <div style={{ width:"80%", height:"80%", backgroundColor:"white" , margin:"0 auto" }}>
-                    <ComposableMap>
-                        <Geographies geography={mapValuesDict[activeMapRegion]}>
+                    <ComposableMap projection={mapValuesDict[activeMapRegion].projectionAppearance} projectionConfig={{rotate:mapValuesDict[activeMapRegion].rotation,scale:mapValuesDict[activeMapRegion].scaling}}>
+                        <Geographies geography={mapValuesDict[activeMapRegion].mapData}>
                             {({ geographies }) =>
                             geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
                             }
