@@ -119,6 +119,10 @@ a:visited {
   max-width: 800px;
   width: 50%;
 }
+.unionBug {
+  max-width: 450px;
+  width: 33%;
+}
 .App {
   min-height: 100vh;
   height: 100%;
@@ -507,6 +511,9 @@ footer span {
   padding: 2em;
   text-align: center;
   word-break: break-all;
+}
+.dashboardInfoSection .sqaureButton {
+  word-break: break-word;
 }
 .dashboardInfoSection span {
   cursor: pointer;
@@ -1022,7 +1029,7 @@ footer span {
   .vicLine {
     width: 275px;
     height: 300px;
-    margin: 0 auto;
+    margin: 0 auto 30px;
   }
 }
 @media screen and (max-width: 199px) {

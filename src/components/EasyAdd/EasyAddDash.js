@@ -28,7 +28,7 @@ const EasyAddDash = () => {
     const hasNoIllegalChars = (value) => {
         // const stringHasSpaces = value.indexOf(' ')
         const stringHasIllegalSlash1 = value.indexOf(`\\`)
-        const stringHasIllegalSlash2 = value.indexOf(`/`)
+        // const stringHasIllegalSlash2 = value.indexOf(`/`)
         const stringHasIllegalQuote1 = value.indexOf(`'`)
         const stringHasIllegalQuote2 = value.indexOf(`"`)
         const stringHasIllegalSemicolon = value.indexOf(`;`)
@@ -39,7 +39,7 @@ const EasyAddDash = () => {
         const stringHasIllegalPercent = value.indexOf('%')
         if(
             stringHasIllegalSlash1 === -1 &&
-            stringHasIllegalSlash2 === -1 &&
+            // stringHasIllegalSlash2 === -1 &&
             stringHasIllegalQuote1 === -1 &&
             stringHasIllegalQuote2 === -1 &&
             stringHasIllegalSemicolon === -1 &&

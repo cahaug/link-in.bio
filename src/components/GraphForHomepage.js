@@ -8,6 +8,12 @@ import toast from "react-hot-toast"
 import { WorldMap } from 'react-svg-worldmap'
 import { ComposableMap, Geographies, Geography, Marker } from "react-simple-maps";
 import {mapJson} from './MapJson'
+import {mapAfrica} from './MapAfrica'
+import {mapAsia} from './MapAsia'
+import {mapEurope} from './MapEurope'
+import {mapNA} from './MapNA'
+import {mapSA} from './MapSA'
+import {mapOceania} from './MapOceania'
 
 
 const GraphForHomepage = () => {
@@ -25,12 +31,15 @@ const GraphForHomepage = () => {
         mapCountries:[],
         mapPoints:[]
     })
+    const [pointsToMap, setPointsToMap] = useState([])
     const [mostPopular, setMostPopular] = useState([])
     const [mostPopularToday, setMostPopularToday] = useState([])
     const [cloudData, setCloudData] = useState([])
     const [selectedDateRange, setSelectedDateRange] = useState(7)
     const [trimmedData, setTrimmedData] = useState([])
+    const [activeMapRegion, setActiveMapRegion] = useState('World')
 
+    const mapValuesDict = {'World':{mapData:mapJson, rotation:[0,0,0], scaling:110, projectionAppearance:'geoMercator'}, 'Africa':{mapData:mapAfrica, rotation:[-15, 358, 0], scaling:450, projectionAppearance:'geoAzimuthalEqualArea'}, 'Asia':{mapData:mapAsia, rotation:[-98, -30, -25], scaling:350, projectionAppearance:'geoAzimuthalEqualArea'}, 'Europe':{mapData:mapEurope, rotation:[-10, 300, 0], scaling:600, projectionAppearance:'geoAzimuthalEqualArea'}, 'North America':{mapData:mapNA, rotation:[105, -50, 0], scaling:450, projectionAppearance:'geoAzimuthalEqualArea'}, 'South America':{mapData:mapSA, rotation:[65, 22, 0], scaling:450, projectionAppearance:'geoAzimuthalEqualArea'}, 'Oceania':{mapData:mapOceania, rotation:[205, 25, 0], scaling:350, projectionAppearance:'geoAzimuthalEqualArea'}}
 
     const onChangeDataDisplay = event => {
         event.preventDefault()
@@ -50,6 +59,11 @@ const GraphForHomepage = () => {
             setSelectedDateRange(event.target.value)
             setTrimmedData(datasetBravo.timeline.slice(datasetBravo.timeline.length - event.target.value - 1))
         }
+    }
+
+    const onChangeMapSelection = event => {
+        event.preventDefault()
+        setActiveMapRegion(event.target.value)
     }
    
     const getDatasetBravo = () => {
@@ -87,6 +101,20 @@ const GraphForHomepage = () => {
             }))
             setMostPopular(processedTop10)
             setMostPopularToday(processedTop10Today)
+            let distinctCoordinates = {}
+            let replacementMapPoints = []
+            let i
+            for(i=0;i<res.data.mapPoints.length-1;i++){
+                if(Object.keys(distinctCoordinates).includes(res.data.mapPoints[i].coordinates[0]) === false && distinctCoordinates[res.data.mapPoints[i].coordinates[0]] !== res.data.mapPoints[i].coordinates[1]){
+                    distinctCoordinates[res.data.mapPoints[i].coordinates[0]] = res.data.mapPoints[i].coordinates[1]
+                    replacementMapPoints.push(res.data.mapPoints[i])
+                    console.log('pushed orign', res.data.mapPoints[i].name)
+                }
+                else{
+                    console.log('duplicate map point', res.data.mapPoints[i].name)
+                }
+            }
+            setPointsToMap(replacementMapPoints)
             setIsLoading(false)
         })
         .catch(err => {
@@ -209,17 +237,29 @@ const GraphForHomepage = () => {
                 <br />
                 <div className="vMap">
                     <p>Last 100 Viewers Locations:</p><br />
+                    <h2>Viewers in {activeMapRegion == 'World' ?<span>the World</span>:<span>{activeMapRegion}</span>}:</h2>
+                        <br />
+                        <select onChange={onChangeMapSelection}>
+                            <option value={'World'}>World</option>
+                            <option value={'Africa'}>Africa</option>
+                            <option value={'Asia'}>Asia</option>
+                            <option value={'Europe'}>Europe</option>
+                            <option value={'North America'}>North America</option>
+                            <option value={'Oceania'}>Oceania</option>
+                            <option value={'South America'}>South America</option>
+                        </select>
+                        <br />
                     <div style={{ width:"80%", height:"80%", backgroundColor:"white" , margin:"0 auto" }}>
-                    <ComposableMap>
-                        <Geographies geography={mapJson}>
+                    <ComposableMap projection={mapValuesDict[activeMapRegion].projectionAppearance} projectionConfig={{rotate:mapValuesDict[activeMapRegion].rotation,scale:mapValuesDict[activeMapRegion].scaling}}>
+                        <Geographies geography={mapValuesDict[activeMapRegion].mapData}>
                             {({ geographies }) =>
-                            geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
+                            geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} fill="#EAEAEC" stroke="#D6D6DA"/>)
                             }
                         </Geographies>
-                        {datasetBravo.mapPoints.map(({ name, coordinates, markerOffset }) => (
+                        {pointsToMap.map(({ name, coordinates, markerOffset }) => (
                             <Marker key={name} coordinates={coordinates}>
                                 <circle r={5} fill="#F00" stroke="#fff" strokeWidth={2} />
-                                <text textAnchor="middle" y={markerOffset} style={{ fontFamily: "Bariol Serif Thin", fill: "#5D5A6D" }} >{name}</text>
+                                <text textAnchor="middle" y={markerOffset} style={{ fontFamily: "Bariol Serif Thin", fill: "#000" }} >{name}</text>
                             </Marker>
                         ))}
                     </ComposableMap>

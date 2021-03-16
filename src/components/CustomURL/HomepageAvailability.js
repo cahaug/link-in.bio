@@ -10,7 +10,7 @@ const HomepageAvailability = () => {
     const [isNotAvailable, setIsNotAvailable] = useState(false)
     const [lastCheckedCURL, setLastCheckedCURL] = useState('')
     const [prefixHost, setPrefixHost] = useState('https://link-in.bio/')
-    const reRef = useRef()
+    const reRef = useRef(null)
 
     const handleChange = (event) => {
         event.preventDefault()
@@ -20,6 +20,10 @@ const HomepageAvailability = () => {
     const setPrefix = (event) => {
         event.preventDefault()
         setPrefixHost(event.target.value)
+    }
+
+    function onChange(value) {
+        console.log("Captcha value:", value);
     }
 
     const hasNoIllegalChars = (value) => {
@@ -76,10 +80,12 @@ const HomepageAvailability = () => {
                     setIsLoading(false)
                     // alert('Available')
                     toast.success('Available')
+                    // reRef.current.reset()
                 } else {
                     setIsNotAvailable(true)
                     setIsLoading(false)
                     toast.error('Already Taken')
+                    // reRef.current.reset()
                     // alert('Already Taken')
                 }
             })
@@ -96,8 +102,8 @@ const HomepageAvailability = () => {
                 <br />
                 <h3>Choose the URL that Best fits your style:</h3>
                 <br />
-                <ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHAPUBLIC} size="invisible" ref={reRef} />
                 <form onSubmit={submitCheckChosenCustom}>
+                <ReCAPTCHA sitekey={process.env.REACT_APP_RECAPTCHAPUBLIC} size="invisible" ref={reRef} />
                     <label>
                         Is The URL You Want Available? Check Here:<br />
                         <select style={{ "cursor": "pointer" }} onChange={setPrefix}>
