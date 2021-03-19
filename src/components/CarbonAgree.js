@@ -9,7 +9,7 @@ const CarbonAgree = () => {
             <p>Link-In Bio pledges to be a Carbon-Negative Corporation, meaning:</p><p>By subscribing to Link-In Bio, your money will be used to make a positive impact on the environment.</p><br />
             <p>Don't let your digital life be the weakest link in your sustainable business or lifestyle.</p><p>Subscribe to Link-In Bio, and help build a Greener Future for Everyone.</p><br />
             <br />
-            <p>Link-In.Bio Ltd intends to be fully transparent as well as open to subscriber input in its environmental action,</p><p>and will show progress through official company Social Media accounts, links coming soon.</p><br />
+            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/r3U1cvPOc5w" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     )
 }
