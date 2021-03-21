@@ -300,7 +300,7 @@ function ListDisplayHooks(match) {
             const thePics = imagesArray.map((daimage) => {
                 return (
                     <div className="imageSlide">
-                        <img src={daimage} style="width:100%"/>
+                        <img src={daimage} style={{width:"100%"}}/>
                     </div>
                 )
             })
