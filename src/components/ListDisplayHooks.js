@@ -39,11 +39,11 @@ function ListDisplayHooks(match) {
     var slideIndex = 1
 
     function openModal(){
-        document.getElementById("theBox").style.display = "block";
+        // document.getElementById("theBox").style.display = "block";
     }
 
     function closeModal(){
-        document.getElementById("theBox").style.display = "none";
+        // document.getElementById("theBox").style.display = "none";
     }
 
     function plusSlides(n) {
