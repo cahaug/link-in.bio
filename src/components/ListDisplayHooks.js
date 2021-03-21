@@ -200,6 +200,7 @@ function ListDisplayHooks(match) {
                 const backgroundImageURL = `${res.data[0].listBackgroundURL}`
                 setBackgroundURL(backgroundImageURL)
             }
+            if(res.data.length>0&&res.data[0].listBackgroundURL !== null){imagesArray.push(res.data[0].listBackgroundURL)}
             const mt = navigator.maxTouchPoints
             let incrementedListViews
             if(res.data.length>0){incrementedListViews = axios.get(`https://link-in-bio.limited/s/ili/${res.data[0].listId}?mt=${mt}`)}
