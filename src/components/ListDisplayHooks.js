@@ -38,44 +38,7 @@ function ListDisplayHooks(match) {
     var imagesArray = []
     var slideIndex = 1
 
-    const openModal = () => {
-        const dabox = document.getElementById("theBox")
-        if(dabox){
-            dabox.style.display = "block";
-        }
-    }
-
-    const closeModal = () => {
-        // document.getElementById("theBox").style.display = "none";
-        const dabox = document.getElementById("theBox")
-        if(dabox){
-            dabox.style.display = "none";
-        }
-    }
-
-    const plusSlides = (n) => {
-        showSlides(slideIndex += n);
-    }
-
-    const currentSlide = (n) => {
-        showSlides(slideIndex = n);
-    }
-
-    const showSlides = (n) => {
-        var i;
-        var slides = document.getElementsByClassName("imageSlide");
-        var dots = document.getElementsByClassName("thumb");
-        if (n > slides.length) {slideIndex = 1}
-        if (n < 1) {slideIndex = slides.length}
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-        }
-        for (i = 0; i < dots.length; i++) {
-          dots[i].className = dots[i].className.replace(" active", "");
-        }
-        slides[slideIndex-1].style.display = "block";
-        dots[slideIndex-1].className += " active";
-    }
+    
 
     function ColorLuminance(hex, lum) {
 
@@ -457,8 +420,26 @@ function ListDisplayHooks(match) {
                         {thumbs}
                     </div>
                 </div>
+                <script>{function openModal(){document.getElementById("theBox").style.display = "block";}}</script>
+                <script>{function closeModal(){document.getElementById("theBox").style.display = "none";}}</script>
+                <script>{function plusSlides(n) {showSlides(slideIndex += n);}}</script>
+                <script>{function currentSlide(n) {showSlides(slideIndex = n);}}</script>
+                <script>{function showSlides(n) {
+                    var i;
+                    var slides = document.getElementsByClassName("imageSlide");
+                    var dots = document.getElementsByClassName("thumb");
+                    if (n > slides.length) {slideIndex = 1}
+                    if (n < 1) {slideIndex = slides.length}
+                    for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                    }
+                    for (i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                    slides[slideIndex-1].style.display = "block";
+                    dots[slideIndex-1].className += " active";
+                }}</script>
             </div>
-
         )
     }
 }
