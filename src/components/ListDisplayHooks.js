@@ -54,6 +54,8 @@ function ListDisplayHooks(match) {
         dots[slideIndex-1].className += " active";}
     }
 
+    function currentSlide(n) {showSlides(slideIndex = n);}
+
     function ColorLuminance(hex, lum) {
 
         // validate hex string
@@ -434,23 +436,6 @@ function ListDisplayHooks(match) {
                         {thumbs}
                     </div>
                 </div>
-                
-                <script>{function currentSlide(n) {showSlides(slideIndex = n);}}</script>
-                <script>{function showSlides(n) {
-                    var i;
-                    var slides = document.getElementsByClassName("imageSlide");
-                    var dots = document.getElementsByClassName("thumb");
-                    if (n > slides.length) {slideIndex = 1}
-                    if (n < 1) {slideIndex = slides.length}
-                    for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
-                    }
-                    for (i = 0; i < dots.length; i++) {
-                    dots[i].className = dots[i].className.replace(" active", "");
-                    }
-                    slides[slideIndex-1].style.display = "block";
-                    dots[slideIndex-1].className += " active";
-                }}</script>
             </div>
         )
     }
