@@ -21,6 +21,8 @@ function ListDisplayHooks(match) {
     const [textColor, setTextColor] = useState('#000000')
     const [backgroundURL, setBackgroundURL] = useState('')
     const [chosenFont, setChosenFont] = useState()
+    const [lightbox, setLightbox] = useState([])
+    const [thumbs, setThumbs] = useState([])
 
     // const browserInfoSifter = () => {
     //     // console.log('this navigator', navigator)
@@ -33,6 +35,40 @@ function ListDisplayHooks(match) {
     // }
 
     var urlShower;
+    var imagesArray = []
+    var slideIndex = 1
+
+    function openModal(){
+        document.getElementById("theBox").style.display = "block";
+    }
+
+    function closeModal(){
+        document.getElementById("theBox").style.display = "none";
+    }
+
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("imageSlide");
+        var dots = document.getElementsByClassName("thumb");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+    }
 
     function ColorLuminance(hex, lum) {
 
@@ -191,6 +227,7 @@ function ListDisplayHooks(match) {
             // element0[0].classList.toggle("darkMode")
            
             if(res.data.length>0){const thelinks = (res.data.map((link) => {
+                if(link.imgURL){imagesArray.push(link.imgURL)}
                 return (
 
                         <div className='linkSquare' key={link.entryId}>
@@ -275,7 +312,23 @@ function ListDisplayHooks(match) {
                     }
                 })
             }
-
+            // for each imgURL string in the array map out a corresponding lightbox component 
+            const thePics = imagesArray.map((daimage) => {
+                return (
+                    <div className="imageSlide">
+                        <img src={daimage} style="width:100%"/>
+                    </div>
+                )
+            })
+            const theThumbs = imagesArray.map((daimage) => {
+                return (
+                    <div className="imgcolumn">
+                        <img src={daimage} className="thumb"/>
+                    </div>
+                )
+            })
+            setLightbox(thePics)
+            setThumbs(theThumbs)
             // ban right click
             const allTrackedLinks = document.getElementsByClassName('linkTitle')
             for(i=0; i < allTrackedLinks.length; i++){
@@ -370,7 +423,7 @@ function ListDisplayHooks(match) {
                             <br />
                             <h1 id="headerName">{displayName===null?userFirstNameLastName:displayName}</h1>
                             <br /> 
-                            <img src={profilePictureURL} alt={profilePictureURL} />
+                            <img src={profilePictureURL} class="hover-shadow" alt={profilePictureURL} onClick={()=>{openModal();currentSlide(1)}} />
                         </div>
                         {/* <img src={profilePictureURL} alt={profilePictureURL} style={{width:"200px"}}/>  */}
                         <div className="drawer">
@@ -388,6 +441,15 @@ function ListDisplayHooks(match) {
                 <Helmet>
                     <meta name="description" content={`${window.location.host}${ourURL} - ${displayName===null?userFirstNameLastName:displayName}'s Link-In Bio Account`} />
                 </Helmet>
+                <div id="theBox" className="modal">
+                    <span className="close cursor" onClick={closeModal()}>&times;</span>
+                    <div className="modal-content">
+                        {lightbox}
+                        <a className="prev" onClick={plusSlides(-1)}>&#10094;</a>
+                        <a className="next" onClick={plusSlides(1)}>&#10095;</a>
+                        {thumbs}
+                    </div>
+                </div>
             </div>
 
         )
