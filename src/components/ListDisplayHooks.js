@@ -32,6 +32,8 @@ function ListDisplayHooks(match) {
         
     // }
 
+    var urlShower;
+
     function ColorLuminance(hex, lum) {
 
         // validate hex string
@@ -211,7 +213,8 @@ function ListDisplayHooks(match) {
                                 // const trashRequest = await axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                 // console.log('trashRequest', trashRequest)
                                 setIsLoading(false)
-                                window.location.href = link.referencingURL
+                                toast((t)=>(<span>Directing You To:<br /><b>{link.referencingURL}</b><br /><button onClick={() => {clearTimeout(urlShower); toast.dismiss(t.id)}}>Cancel/Stay Here</button></span>))
+                                urlShower = setTimeout(function(){clearTimeout(urlShower);window.location.href = link.referencingURL}, 3000)
                                 }}>
                                 {link.imgURL?<img className='image' src={link.imgURL} alt={link.linkTitle} /> : null }
                                 {/* <img className='image' src={link.imgURL} alt={link.linkTitle} />  */}
