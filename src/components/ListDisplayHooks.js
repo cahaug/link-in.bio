@@ -180,6 +180,7 @@ function ListDisplayHooks(match) {
                 displayName = res.data[0].displayName
                 profilePictureURL = `${res.data[0].profilePictureURL}`
                 displayingUserInfo = `${res.data[0].displayUserInfo}`
+                imagesArray.push(profilePictureURL)
                 setDisplayName(displayName)
                 setProfilePictureURL(profilePictureURL)
                 setUserFirstNameLastName(userFirstLastName)
@@ -189,6 +190,7 @@ function ListDisplayHooks(match) {
                 displayName = `Empty Link-In Bio`
                 profilePictureURL = `https://imagizer.imageshack.com/img924/128/aacWe9.jpg`
                 displayingUserInfo = ` `
+                imagesArray.push(profilePictureURL)
                 setDisplayName(displayName)
                 setProfilePictureURL(profilePictureURL)
                 setUserFirstNameLastName(userFirstLastName)
