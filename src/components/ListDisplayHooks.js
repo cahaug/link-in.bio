@@ -393,7 +393,7 @@ function ListDisplayHooks(match) {
                             <br />
                             <h1 id="headerName">{displayName===null?userFirstNameLastName:displayName}</h1>
                             <br /> 
-                            <img src={profilePictureURL} class="hover-shadow" alt={profilePictureURL} onClick={()=>{openModal();currentSlide(1)}} />
+                            <img src={profilePictureURL} class="hover-shadow" alt={profilePictureURL} onClick={()=>{document.getElementById("theBox").style.display = "block";currentSlide(1)}} />
                         </div>
                         {/* <img src={profilePictureURL} alt={profilePictureURL} style={{width:"200px"}}/>  */}
                         <div className="drawer">
@@ -412,7 +412,7 @@ function ListDisplayHooks(match) {
                     <meta name="description" content={`${window.location.host}${ourURL} - ${displayName===null?userFirstNameLastName:displayName}'s Link-In Bio Account`} />
                 </Helmet>
                 <div id="theBox" className="modal">
-                    <span className="close cursor" onClick={closeModal()}>&times;</span>
+                    <span className="close cursor" onClick={()=>{document.getElementById("theBox").style.display = "none";}}>&times;</span>
                     <div className="modal-content">
                         {lightbox}
                         <a className="prev" onClick={plusSlides(-1)}>&#10094;</a>
@@ -420,8 +420,7 @@ function ListDisplayHooks(match) {
                         {thumbs}
                     </div>
                 </div>
-                <script>{function openModal(){document.getElementById("theBox").style.display = "block";}}</script>
-                <script>{function closeModal(){document.getElementById("theBox").style.display = "none";}}</script>
+                
                 <script>{function plusSlides(n) {showSlides(slideIndex += n);}}</script>
                 <script>{function currentSlide(n) {showSlides(slideIndex = n);}}</script>
                 <script>{function showSlides(n) {
