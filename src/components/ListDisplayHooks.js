@@ -309,9 +309,10 @@ function ListDisplayHooks(match) {
                 )
             })
             const theThumbs = imagesArray.map((daimage) => {
+                const idx = imagesArray.indexOf(daimage)
                 return (
                     <div className="imgcolumn">
-                        <img src={daimage} className="thumb"/>
+                        <img src={daimage} className="thumb" onClick={()=>{showSlides(idx);}}/>
                     </div>
                 )
             })
@@ -411,7 +412,7 @@ function ListDisplayHooks(match) {
                             <br />
                             <h1 id="headerName">{displayName===null?userFirstNameLastName:displayName}</h1>
                             <br /> 
-                            <img src={profilePictureURL} class="hover-shadow" alt={profilePictureURL} onClick={()=>{document.getElementById("theBox").style.display = "block";currentSlide(1)}} />
+                            <img src={profilePictureURL} className="hover-shadow" alt={profilePictureURL} onClick={()=>{document.getElementById("theBox").style.display = "block";currentSlide(1)}} />
                         </div>
                         {/* <img src={profilePictureURL} alt={profilePictureURL} style={{width:"200px"}}/>  */}
                         <div className="drawer">
