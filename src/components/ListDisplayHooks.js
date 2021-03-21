@@ -38,23 +38,30 @@ function ListDisplayHooks(match) {
     var imagesArray = []
     var slideIndex = 1
 
-    function openModal(){
-        // document.getElementById("theBox").style.display = "block";
+    const openModal = () => {
+        const dabox = document.getElementById("theBox")
+        if(dabox){
+            dabox.style.display = "block";
+        }
     }
 
-    function closeModal(){
+    const closeModal = () => {
         // document.getElementById("theBox").style.display = "none";
+        const dabox = document.getElementById("theBox")
+        if(dabox){
+            dabox.style.display = "none";
+        }
     }
 
-    function plusSlides(n) {
+    const plusSlides = (n) => {
         showSlides(slideIndex += n);
     }
 
-    function currentSlide(n) {
+    const currentSlide = (n) => {
         showSlides(slideIndex = n);
     }
 
-    function showSlides(n) {
+    const showSlides = (n) => {
         var i;
         var slides = document.getElementsByClassName("imageSlide");
         var dots = document.getElementsByClassName("thumb");
