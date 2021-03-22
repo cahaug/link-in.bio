@@ -9,7 +9,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "@stripe/stripe-js": "^1.13.0",
+    "@stripe/stripe-js": "^1.13.1",
     "axios": "^0.21.1",
     "qrcode.react": "^1.0.1",
     "query-string": "^6.14.0",
