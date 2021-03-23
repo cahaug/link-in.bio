@@ -42,6 +42,7 @@ function ListDisplayHooks(match) {
         var i;
         if(isLoading==false){var slides = document.getElementsByClassName("imageSlide");
         var dots = document.getElementsByClassName("thumb");
+        var captionText = document.getElementById("caption");
         if (n > slides.length) {slideIndex = 1}
         if (n < 1) {slideIndex = slides.length}
         for (i = 0; i < slides.length; i++) {
