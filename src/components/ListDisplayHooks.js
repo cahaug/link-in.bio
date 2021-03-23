@@ -313,10 +313,9 @@ function ListDisplayHooks(match) {
                 )
             })
             const theThumbs = imagesArray.map((daimage, index) => {
-                var daindex = index
                 return (
-                    <div className="imgcolumn" onClick={()=>{showSlides(index);}}>
-                        <img src={daimage.imgurl} alt={daimage.tit} className="thumb" onClick={()=>{console.log('click img', index, daindex);showSlides(daindex);}}/>
+                    <div className="imgcolumn">
+                        <img src={daimage.imgurl} alt={daimage.tit} className="thumb" onClick={()=>{showSlides(slideIndex = index);}}/>
                     </div>
                 )
             })
