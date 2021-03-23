@@ -52,6 +52,7 @@ function ListDisplayHooks(match) {
         }
         slides[slideIndex-1].style.display = "block";
         dots[slideIndex-1].className += " active";}
+        captionText.innerHTML = dots[slideIndex-1].alt;
     }
 
     function currentSlide(n) {showSlides(slideIndex = n);}
@@ -180,7 +181,7 @@ function ListDisplayHooks(match) {
                 displayName = res.data[0].displayName
                 profilePictureURL = `${res.data[0].profilePictureURL}`
                 displayingUserInfo = `${res.data[0].displayUserInfo}`
-                imagesArray.push(profilePictureURL)
+                imagesArray.push({imgurl:profilePictureURL,tit:'Profile Picture'})
                 setDisplayName(displayName)
                 setProfilePictureURL(profilePictureURL)
                 setUserFirstNameLastName(userFirstLastName)
@@ -190,7 +191,7 @@ function ListDisplayHooks(match) {
                 displayName = `Empty Link-In Bio`
                 profilePictureURL = `https://imagizer.imageshack.com/img924/128/aacWe9.jpg`
                 displayingUserInfo = ` `
-                imagesArray.push(profilePictureURL)
+                imagesArray.push({imgurl:profilePictureURL,tit:'Profile Picture'})
                 setDisplayName(displayName)
                 setProfilePictureURL(profilePictureURL)
                 setUserFirstNameLastName(userFirstLastName)
@@ -200,7 +201,7 @@ function ListDisplayHooks(match) {
                 const backgroundImageURL = `${res.data[0].listBackgroundURL}`
                 setBackgroundURL(backgroundImageURL)
             }
-            if(res.data.length>0&&res.data[0].listBackgroundURL !== null){imagesArray.push(res.data[0].listBackgroundURL)}
+            if(res.data.length>0&&res.data[0].listBackgroundURL !== null){imagesArray.push({imgurl:res.data[0].listBackgroundURL, tit:'Background Image'})}
             const mt = navigator.maxTouchPoints
             let incrementedListViews
             if(res.data.length>0){incrementedListViews = axios.get(`https://link-in-bio.limited/s/ili/${res.data[0].listId}?mt=${mt}`)}
@@ -216,7 +217,7 @@ function ListDisplayHooks(match) {
             // element0[0].classList.toggle("darkMode")
            
             if(res.data.length>0){const thelinks = (res.data.map((link) => {
-                if(link.imgURL){imagesArray.push(link.imgURL)}
+                if(link.imgURL){imagesArray.push({imgurl:link.imgURL, tit:link.linkTitle})}
                 return (
 
                         <div className='linkSquare' key={link.entryId}>
@@ -305,7 +306,7 @@ function ListDisplayHooks(match) {
             const thePics = imagesArray.map((daimage) => {
                 return (
                     <div className="imageSlide">
-                        <img src={daimage} style={{width:"100%"}}/>
+                        <img src={daimage.imgurl} alt={daimage.tit} style={{width:"100%"}}/>
                     </div>
                 )
             })
@@ -313,7 +314,7 @@ function ListDisplayHooks(match) {
                 const idx = imagesArray.indexOf(daimage)
                 return (
                     <div className="imgcolumn" onClick={()=>{showSlides(idx);}}>
-                        <img src={daimage} className="thumb" onClick={()=>{showSlides(idx);}}/>
+                        <img src={daimage.imgurl} className="thumb" onClick={()=>{showSlides(idx);}}/>
                     </div>
                 )
             })
@@ -437,6 +438,9 @@ function ListDisplayHooks(match) {
                         {lightbox}
                         <a className="prev" onClick={()=>{showSlides(slideIndex += -1);}}>&#10094;</a>
                         <a className="next" onClick={()=>{showSlides(slideIndex += 1);}}>&#10095;</a>
+                        <div class="caption-container">
+                            <p id="caption"></p>
+                        </div>
                         {thumbs}
                     </div>
                 </div>
