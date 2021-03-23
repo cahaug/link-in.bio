@@ -1062,9 +1062,9 @@ footer span {
 }
 img.thumb {
   opacity: 0.6;
-  max-width: 350px;
+  max-width: 150px;
 }
-.active,
+.active2,
 .thumb:hover {
   opacity: 1;
 }
@@ -1116,6 +1116,10 @@ img.hover-shadow {
     width: 275px;
     height: 300px;
     margin: 0 auto 30px;
+  }
+  img.thumb {
+    opacity: 0.6;
+    max-width: 80px;
   }
 }
 @media screen and (max-width: 199px) {

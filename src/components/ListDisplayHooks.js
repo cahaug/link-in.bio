@@ -49,10 +49,10 @@ function ListDisplayHooks(match) {
         slides[i].style.display = "none";
         }
         for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
+        dots[i].className = dots[i].className.replace(" active2", "");
         }
         slides[slideIndex-1].style.display = "block";
-        dots[slideIndex-1].className += " active";}
+        dots[slideIndex-1].className += " active2";}
         captionText.innerHTML = dots[slideIndex-1].alt;
     }
 
@@ -314,8 +314,8 @@ function ListDisplayHooks(match) {
             const theThumbs = imagesArray.map((daimage) => {
                 const idx = imagesArray.indexOf(daimage)
                 return (
-                    <div className="imgcolumn" onClick={()=>{showSlides(idx);}}>
-                        <img src={daimage.imgurl} alt={daimage.tit} className="thumb" onClick={()=>{showSlides(idx);}}/>
+                    <div className="imgcolumn" onClick={()=>{console.log('clickeddiv',idx);showSlides(idx);}}>
+                        <img src={daimage.imgurl} alt={daimage.tit} className="thumb" onClick={()=>{console.log('clickedimg',idx);showSlides(idx);}}/>
                     </div>
                 )
             })
