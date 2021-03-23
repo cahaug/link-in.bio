@@ -1080,6 +1080,13 @@ img.hover-shadow {
   padding: 2px 16px;
   color: white;
 }
+.numbertxt {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
 @media screen and (max-height: 490px) {
   header {
     overflow: scroll;

@@ -304,18 +304,18 @@ function ListDisplayHooks(match) {
                 })
             }
             // for each imgURL string in the array map out a corresponding lightbox component 
-            const thePics = imagesArray.map((daimage) => {
+            const thePics = imagesArray.map((daimage, index) => {
                 return (
                     <div className="imageSlide">
+                        <div className="numbertxt">{parseInt(index,10)+1} / {imagesArray.length}</div>
                         <img src={daimage.imgurl} alt={daimage.tit} style={{width:"100%"}}/>
                     </div>
                 )
             })
-            const theThumbs = imagesArray.map((daimage) => {
-                const idx = imagesArray.indexOf(daimage)
+            const theThumbs = imagesArray.map((daimage, index) => {
                 return (
-                    <div className="imgcolumn" onClick={()=>{console.log('clickeddiv',idx);showSlides(idx);}}>
-                        <img src={daimage.imgurl} alt={daimage.tit} className="thumb" onClick={()=>{console.log('clickedimg',idx);showSlides(idx);}}/>
+                    <div className="imgcolumn" onClick={()=>{currentSlide(index);}}>
+                        <img src={daimage.imgurl} alt={daimage.tit} className="thumb" onClick={()=>{currentSlide(index);}}/>
                     </div>
                 )
             })
