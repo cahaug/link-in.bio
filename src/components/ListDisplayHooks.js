@@ -323,11 +323,12 @@ function ListDisplayHooks(match) {
             setThumbs(theThumbs)
             const allImageThumbs = document.getElementsByClassName('thumb')
             for(i=0;i<allImageThumbs.length;i++){
+                const indexplusone = i+1
                 allImageThumbs[i].addEventListener('click', function (){
-                    const indexplusone = i+1
-                    // currentSlide(indexplusone)
-                    showSlides(slideIndex = indexplusone)
-                }, false)
+                    console.log('fired', indexplusone)
+                    currentSlide(indexplusone)
+                    // showSlides(slideIndex = indexplusone)
+                })
             }
             // ban right click
             const allTrackedLinks = document.getElementsByClassName('linkTitle')
