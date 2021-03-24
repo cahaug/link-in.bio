@@ -316,12 +316,21 @@ function ListDisplayHooks(match) {
                 const indexplusone = index + 1
                 return (
                     <div className="imgcolumn">
-                        <img src={daimage.imgurl} alt={daimage.tit} className="thumb" onClick={()=>{showSlides(indexplusone)}}/>
+                        <img src={daimage.imgurl} alt={daimage.tit} className="thumb" />
                     </div>
                 )
             })
             setLightbox(thePics)
             setThumbs(theThumbs)
+            const allImageThumbs = document.getElementsByClassName('thumb')
+            for(i=0;i<allImageThumbs.length;i++){
+                allImageThumbs[i].addEventListener('click', function (e){
+                    e.preventDefault()
+                    const indexplusone = i+1
+                    slideIndex = indexplusone
+                    showSlides(indexplusone)
+                })
+            }
             // ban right click
             const allTrackedLinks = document.getElementsByClassName('linkTitle')
             for(i=0; i < allTrackedLinks.length; i++){
