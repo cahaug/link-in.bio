@@ -326,7 +326,7 @@ function ListDisplayHooks(match) {
                 const indexplusone = i+1
                 allImageThumbs[i].addEventListener('click', function (){
                     console.log('fired', indexplusone)
-                    currentSlide(indexplusone)
+                    currentSlide(n = indexplusone)
                     // showSlides(slideIndex = indexplusone)
                 })
             }
