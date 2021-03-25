@@ -4,6 +4,7 @@ import loadingGif from '../files/loading.gif'
 import '../App.css'
 import toast from "react-hot-toast"
 import {Helmet} from 'react-helmet'
+import DOMPurify from 'dompurify'
 
 
 function ListDisplayHooks(match) {
@@ -246,10 +247,10 @@ function ListDisplayHooks(match) {
                                 }}>
                                 {link.imgURL?<img className='image' src={link.imgURL} alt={link.linkTitle} /> : null }
                                 {/* <img className='image' src={link.imgURL} alt={link.linkTitle} />  */}
-                                <h3>{link.linkTitle}</h3>
+                                <h3>{DOMPurify.sanitize(link.linkTitle)}</h3>
                             </a>}
                             {link.description !== ' '?<span><p className="linkDescriptionTag">▼</p>
-                            <p className='linkDescription'>{link.description}</p></span> :null}
+                            <p className='linkDescription'>{DOMPurify.sanitize(link.description)}</p></span> :null}
                         </div>
 
                 )
@@ -422,7 +423,7 @@ function ListDisplayHooks(match) {
                                 {drawerPulled ? <span onClick={drawerToggle}>💭</span>:<span onClick={drawerToggle}>💬</span>}
                             </div>
                             <br />
-                            <h1 id="headerName">{displayName===null?userFirstNameLastName:displayName}</h1>
+                            <h1 id="headerName">{displayName===null?DOMPurify.sanitize(userFirstNameLastName):DOMPurify.sanitize(displayName)}</h1>
                             <br /> 
                             <img src={profilePictureURL} className="hover-shadow" alt={profilePictureURL} onClick={()=>{document.getElementById("theBox").style.display = "block";currentSlide(1)}} />
                         </div>
@@ -440,7 +441,7 @@ function ListDisplayHooks(match) {
                     <h4>{darkMode ? <span onClick={applyDarkMode}>💡</span>:<span onClick={applyDarkMode}>🏮</span>} ©{new Date().getFullYear()} <a href="http://yhy.fi/"><span className="footerLink">YHY Oy:</span></a> <a href="http://link-in.bio/"><span className="footerLink">Link-in.Bio/</span></a></h4>
                 </footer> */}
                 <Helmet>
-                    <meta name="description" content={`${window.location.host}${ourURL} - ${displayName===null?userFirstNameLastName:displayName}'s Link-In Bio Account`} />
+                    <meta name="description" content={`${window.location.host}${ourURL} - ${displayName===null?DOMPurify.sanitize(userFirstNameLastName):DOMPurify.sanitize(displayName)}'s Link-In Bio Account`} />
                 </Helmet>
                 <div id="theBox" className="modal">
                     <span className="close cursor" onClick={()=>{document.getElementById("theBox").style.display = "none";}}>&times;</span>
