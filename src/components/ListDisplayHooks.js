@@ -174,6 +174,7 @@ function ListDisplayHooks(match) {
         //     app_id: "ya321a09"
         //   });
         console.log('document reefer', document.referrer)
+        console.log('injectedReefer', sessionStorage.getItem('injectedReefer'))
         const useThisURL = `https://link-in-bio.limited${ourURL}`
         axios.get(useThisURL)
         .then(async res => {
