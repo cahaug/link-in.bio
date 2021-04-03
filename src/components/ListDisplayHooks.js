@@ -180,11 +180,11 @@ function ListDisplayHooks(match) {
             // console.log('backend res', res.data)
             let userFirstLastName; let displayName; let profilePictureURL; let displayingUserInfo;
             if(res.data.length !== 0){
-                userFirstLastName = `${res.data[0].firstName} ${res.data[0].lastName}`
-                displayName = res.data[0].displayName
-                profilePictureURL = `${res.data[0].profilePictureURL}`
-                displayingUserInfo = `${res.data[0].displayUserInfo}`
-                imagesArray.push({imgurl:profilePictureURL,tit:'Profile Picture'})
+                userFirstLastName = `${DOMPurify.sanitize(res.data[0].firstName)} ${DOMPurify.sanitize(res.data[0].lastName)}`
+                displayName = DOMPurify.sanitize(res.data[0].displayName)
+                profilePictureURL = `${DOMPurify.sanitize(res.data[0].profilePictureURL)}`
+                displayingUserInfo = `${DOMPurify.sanitize(res.data[0].displayUserInfo)}`
+                imagesArray.push({imgurl:DOMPurify.sanitize(profilePictureURL),tit:'Profile Picture'})
                 setDisplayName(displayName)
                 setProfilePictureURL(profilePictureURL)
                 setUserFirstNameLastName(userFirstLastName)
@@ -201,10 +201,10 @@ function ListDisplayHooks(match) {
                 setDisplayingUserInfo(displayingUserInfo)
             }
             if(res.data.length>0&&res.data[0].listBackgroundURL !== null){
-                const backgroundImageURL = `${res.data[0].listBackgroundURL}`
+                const backgroundImageURL = `${DOMPurify.sanitize(res.data[0].listBackgroundURL)}`
                 setBackgroundURL(backgroundImageURL)
             }
-            if(res.data.length>0&&res.data[0].listBackgroundURL !== null){imagesArray.push({imgurl:res.data[0].listBackgroundURL, tit:'Background Image'})}
+            if(res.data.length>0&&res.data[0].listBackgroundURL !== null){imagesArray.push({imgurl:DOMPurify.sanitize(res.data[0].listBackgroundURL), tit:'Background Image'})}
             const mt = navigator.maxTouchPoints
             let incrementedListViews
             if(res.data.length>0){incrementedListViews = axios.get(`https://link-in-bio.limited/s/ili/${res.data[0].listId}?mt=${mt}`)}
@@ -220,7 +220,7 @@ function ListDisplayHooks(match) {
             // element0[0].classList.toggle("darkMode")
            
             if(res.data.length>0){const thelinks = (res.data.map((link) => {
-                if(link.imgURL){imagesArray.push({imgurl:link.imgURL, tit:link.linkTitle})}
+                if(link.imgURL){imagesArray.push({imgurl:DOMPurify.sanitize(link.imgURL), tit:DOMPurify.sanitize(link.linkTitle)})}
                 return (
 
                         <div className='linkSquare' key={link.entryId}>
@@ -232,21 +232,21 @@ function ListDisplayHooks(match) {
                                     // const trashRequest = await axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                     // console.log('trashRequest', trashRequest)
                                 }}>
-                                {link.imgURL?<img className='image' src={link.imgURL} alt={link.linkTitle} /> : null }
+                                {link.imgURL?<img className='image' src={DOMPurify.sanitize(link.imgURL)} alt={DOMPurify.sanitize(link.linkTitle)} /> : null }
                                 {/* <img className='image' src={link.imgURL} alt={link.linkTitle} />  */}
-                                <h3>{link.linkTitle}</h3>
-                                </a>:<a className='linkTitle' href={link.referencingURL} onClick={async (e)=>{
+                                <h3>{DOMPurify.sanitize(link.linkTitle)}</h3>
+                                </a>:<a className='linkTitle' href={DOMPurify.sanitize(link.referencingURL)} onClick={async (e)=>{
                                 e.preventDefault()
                                 setIsLoading(true) 
                                 // console.log('fired', link.referencingURL, link.entryId, mt)
-                                const trashRequest = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
+                                const trashRequest = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${DOMPurify.sanitize(link.referencingURL)}&mt=${mt}&red=f`)
                                 // const trashRequest = await axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${link.referencingURL}&mt=${mt}&red=f`)
                                 // console.log('trashRequest', trashRequest)
                                 setIsLoading(false)
-                                toast((t)=>(<span>Directing You To:<br /><b>{link.referencingURL}</b><br /><button onClick={() => {clearTimeout(urlShower); toast.dismiss(t.id)}}>Cancel/Stay Here</button></span>))
-                                urlShower = setTimeout(function(){clearTimeout(urlShower);window.location.href = link.referencingURL}, 3000)
+                                toast((t)=>(<span>Directing You To:<br /><b>{DOMPurify.sanitize(link.referencingURL)}</b><br /><button onClick={() => {clearTimeout(urlShower); toast.dismiss(t.id)}}>Cancel/Stay Here</button></span>))
+                                urlShower = setTimeout(function(){clearTimeout(urlShower);window.location.href = DOMPurify.sanitize(link.referencingURL)}, 3000)
                                 }}>
-                                {link.imgURL?<img className='image' src={link.imgURL} alt={link.linkTitle} /> : null }
+                                {link.imgURL?<img className='image' src={DOMPurify.sanitize(link.imgURL)} alt={DOMPurify.sanitize(link.linkTitle)} /> : null }
                                 {/* <img className='image' src={link.imgURL} alt={link.linkTitle} />  */}
                                 <h3>{DOMPurify.sanitize(link.linkTitle)}</h3>
                             </a>}
