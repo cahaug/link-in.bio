@@ -35,6 +35,20 @@ function ListDisplayHooks(match) {
         
     // }
 
+    const reeferDict = {
+        'http://xn--4caa.cc':'ää.cc',
+        'http://xn--1caa.net':'áá.net',
+        'http://xn--5caa.co':'åå.co',
+        'http://xn--b1ali.me':'лив.me',
+        'http://xn--b1ali.cc':'лив.cc',
+        'http://xn--b1ali.com':'лив.com',
+        'http://xn--90ani.me':'либ.me',
+        'http://xn--90ani.cc':'либ.cc',
+        'http://xn--90ani.com':'либ.com',
+        ' ':' ',
+        '':''
+    }
+
     var urlShower;
     var imagesArray = []
     var slideIndex = 1
@@ -174,6 +188,7 @@ function ListDisplayHooks(match) {
         //     app_id: "ya321a09"
         //   });
         console.log('document reefer', document.referrer)
+        console.log('reefer', reeferDict[`${document.referrer}`])
         console.log('injectedReefer', sessionStorage.getItem('injectedReefer'))
         const useThisURL = `https://link-in-bio.limited${ourURL}`
         axios.get(useThisURL)
