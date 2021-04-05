@@ -251,7 +251,7 @@ function ListDisplayHooks(match) {
                 for(z = 0;z<res.data.length;z++){
                     if(res.data[z].referencingURL.indexOf('Redirect:') === 0){
                         if(dontDrinkEthanolIsSustainableFuel[smokeCannabisEveryday[`${document.referrer}`]] && res.data[z].referencingURL.slice(9,16)===smokeCannabisEveryday[`${document.referrer}`]){
-                            const trashRequest3 = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${DOMPurify.sanitize(res.data[z].referencingURL.slice(17))}&mt=${mt}&red=f`)
+                            const trashRequest3 = axios.get(`https://link-in-bio.limited/s/?eid=${res.data[z].entryId}&ref=${DOMPurify.sanitize(res.data[z].referencingURL.slice(17))}&mt=${mt}&red=f`)
                             window.location.href = DOMPurify.sanitize(res.data[z].referencingURL.slice(17))
                         } else {
                             const correctedLink = res.data[z].referencingURL.slice(17) 
