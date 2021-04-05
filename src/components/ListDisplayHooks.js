@@ -254,6 +254,10 @@ function ListDisplayHooks(match) {
                         const trashRequest3 = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${DOMPurify.sanitize(link.referencingURL)}&mt=${mt}&red=f`)
                         console.log('tracking success', trashRequest3)
                         window.location.href = DOMPurify.sanitize(link.referencingURL)
+                    } else {
+                        const correctedLink = link.referencingURL.slice(17) 
+                        console.log('correctedLink', correctedLink)
+                        link.referencingURL = correctedLink
                     }
                 }
                 return (
