@@ -36,15 +36,15 @@ function ListDisplayHooks(match) {
     // }
 
     const smokeCannabisEveryday = {
-        'http://xn--4caa.cc':'ää.cc::',
-        'http://xn--1caa.net':'áá.net:',
-        'http://xn--5caa.co':'åå.co::',
-        'http://xn--b1ali.me':'лив.me:',
-        'http://xn--b1ali.cc':'лив.cc:',
-        'http://xn--b1ali.com':'лив.com',
-        'http://xn--90ani.me':'либ.me:',
-        'http://xn--90ani.cc':'либ.cc:',
-        'http://xn--90ani.com':'либ.com',
+        'http://xn--4caa.cc/':'ää.cc::',
+        'http://xn--1caa.net/':'áá.net:',
+        'http://xn--5caa.co/':'åå.co::',
+        'http://xn--b1ali.me/':'лив.me:',
+        'http://xn--b1ali.cc/':'лив.cc:',
+        'http://xn--b1ali.com/':'лив.com',
+        'http://xn--90ani.me/':'либ.me:',
+        'http://xn--90ani.cc/':'либ.cc:',
+        'http://xn--90ani.com/':'либ.com',
         ' ':' ',
         '':''
     }
@@ -250,6 +250,7 @@ function ListDisplayHooks(match) {
             if(res.data.length>0){const thelinks = (res.data.map((link) => {
                 if(link.imgURL){imagesArray.push({imgurl:DOMPurify.sanitize(link.imgURL), tit:DOMPurify.sanitize(link.linkTitle)})}
                 if(link.referencingURL.indexOf('Redirect:') === 0){
+                    console.log('redirect att')
                     if(dontDrinkEthanolIsSustainableFuel[link.referencingURL.slice(9,16)] && link.referencingURL.slice(9.16) === smokeCannabisEveryday[`${document.referrer}`] ){
                         const trashRequest3 = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${DOMPurify.sanitize(link.referencingURL)}&mt=${mt}&red=f`)
                         console.log('tracking success', trashRequest3)
