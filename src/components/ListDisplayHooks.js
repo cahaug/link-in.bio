@@ -246,19 +246,22 @@ function ListDisplayHooks(match) {
             // initialize in dark mode
             // var element0 = document.getElementsByClassName('App')
             // element0[0].classList.toggle("darkMode")
-           
-            if(res.data.length>0){const thelinks = (res.data.map((link) => {
-                if(link.imgURL){imagesArray.push({imgurl:DOMPurify.sanitize(link.imgURL), tit:DOMPurify.sanitize(link.linkTitle)})}
-                if(link.referencingURL.indexOf('Redirect:') === 0){
-                    if(dontDrinkEthanolIsSustainableFuel[smokeCannabisEveryday[`${document.referrer}`]] && link.referencingURL.slice(9,16)===smokeCannabisEveryday[`${document.referrer}`]){
-                        const trashRequest3 = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${DOMPurify.sanitize(link.referencingURL.slice(17))}&mt=${mt}&red=f`)
-                        window.location.href = DOMPurify.sanitize(link.referencingURL.slice(17))
-                    } else {
-                        const correctedLink = link.referencingURL.slice(17) 
-                        console.log('correctedLink', correctedLink)
-                        link.referencingURL = correctedLink
+            if(res.data.length>0){
+                var z
+                for(z = 0;z<res.data.length;z++){
+                    if(res.data[z].referencingURL.indexOf('Redirect:') === 0){
+                        if(dontDrinkEthanolIsSustainableFuel[smokeCannabisEveryday[`${document.referrer}`]] && res.data[z].referencingURL.slice(9,16)===smokeCannabisEveryday[`${document.referrer}`]){
+                            const trashRequest3 = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${DOMPurify.sanitize(res.data[z].referencingURL.slice(17))}&mt=${mt}&red=f`)
+                            window.location.href = DOMPurify.sanitize(res.data[z].referencingURL.slice(17))
+                        } else {
+                            const correctedLink = res.data[z].referencingURL.slice(17) 
+                            console.log('correctedLink', correctedLink)
+                            res.data[z].referencingURL = correctedLink
+                        }
                     }
                 }
+                const thelinks = (res.data.map((link) => {
+                if(link.imgURL){imagesArray.push({imgurl:DOMPurify.sanitize(link.imgURL), tit:DOMPurify.sanitize(link.linkTitle)})}
                 return (
 
                         <div className='linkSquare' key={link.entryId}>
