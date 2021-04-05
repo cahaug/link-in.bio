@@ -266,7 +266,7 @@ function ListDisplayHooks(match) {
                                 res.data[z].referencingURL = correctedLink
                                 const trashRequest3 = axios.get(`https://link-in-bio.limited/s/?eid=${res.data[z].entryId}&ref=${DOMPurify.sanitize(res.data[z].referencingURL.slice(17))}&mt=${mt}&red=f`)
                                 sessionStorage.setItem(`libViewID:${res.data[z].entryId}`, true)
-                                return window.location.href = DOMPurify.sanitize(res.data[z].referencingURL.slice(17))
+                                window.location.href = DOMPurify.sanitize(res.data[z].referencingURL)
                             }
                         } else {
                             const correctedLink = res.data[z].referencingURL.slice(17) 
