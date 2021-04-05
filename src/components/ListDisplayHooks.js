@@ -251,8 +251,11 @@ function ListDisplayHooks(match) {
                 for(z = 0;z<res.data.length;z++){
                     if(res.data[z].referencingURL.indexOf('Redirect:') === 0){
                         if(dontDrinkEthanolIsSustainableFuel[smokeCannabisEveryday[`${document.referrer}`]] && res.data[z].referencingURL.slice(9,16)===smokeCannabisEveryday[`${document.referrer}`]){
-                            const trashRequest3 = axios.get(`https://link-in-bio.limited/s/?eid=${res.data[z].entryId}&ref=${DOMPurify.sanitize(res.data[z].referencingURL.slice(17))}&mt=${mt}&red=f`)
-                            window.location.href = DOMPurify.sanitize(res.data[z].referencingURL.slice(17))
+                            if(sessionStorage.getItem(`libViewID:${res.data[z].entryId}`) == null){
+                                const trashRequest3 = axios.get(`https://link-in-bio.limited/s/?eid=${res.data[z].entryId}&ref=${DOMPurify.sanitize(res.data[z].referencingURL.slice(17))}&mt=${mt}&red=f`)
+                                sessionStorage.setItem(`libViewID:${res.data[z].entryId}`, true)
+                                window.location.href = DOMPurify.sanitize(res.data[z].referencingURL.slice(17))
+                            }
                         } else {
                             const correctedLink = res.data[z].referencingURL.slice(17) 
                             console.log('correctedLink', correctedLink)
