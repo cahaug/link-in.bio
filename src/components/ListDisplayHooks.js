@@ -252,8 +252,7 @@ function ListDisplayHooks(match) {
                 if(link.referencingURL.indexOf('Redirect:') === 0){
                     if(dontDrinkEthanolIsSustainableFuel[smokeCannabisEveryday[`${document.referrer}`]] && link.referencingURL.slice(9,16)===smokeCannabisEveryday[`${document.referrer}`]){
                         const trashRequest3 = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${DOMPurify.sanitize(link.referencingURL.slice(17))}&mt=${mt}&red=f`)
-                        console.log(trashRequest3.data.message)
-                        return window.location.href = DOMPurify.sanitize(link.referencingURL.slice(17))
+                        window.location.href = DOMPurify.sanitize(link.referencingURL.slice(17))
                     } else {
                         const correctedLink = link.referencingURL.slice(17) 
                         console.log('correctedLink', correctedLink)
