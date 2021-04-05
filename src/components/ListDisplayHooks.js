@@ -35,18 +35,30 @@ function ListDisplayHooks(match) {
         
     // }
 
-    const reeferDict = {
-        'http://xn--4caa.cc':'ää.cc',
-        'http://xn--1caa.net':'áá.net',
-        'http://xn--5caa.co':'åå.co',
-        'http://xn--b1ali.me':'лив.me',
-        'http://xn--b1ali.cc':'лив.cc',
+    const smokeCannabisEveryday = {
+        'http://xn--4caa.cc':'ää.cc::',
+        'http://xn--1caa.net':'áá.net:',
+        'http://xn--5caa.co':'åå.co::',
+        'http://xn--b1ali.me':'лив.me:',
+        'http://xn--b1ali.cc':'лив.cc:',
         'http://xn--b1ali.com':'лив.com',
-        'http://xn--90ani.me':'либ.me',
-        'http://xn--90ani.cc':'либ.cc',
+        'http://xn--90ani.me':'либ.me:',
+        'http://xn--90ani.cc':'либ.cc:',
         'http://xn--90ani.com':'либ.com',
         ' ':' ',
         '':''
+    }
+
+    const dontDrinkEthanolIsSustainableFuel = {
+        'ää.cc::':true,
+        'áá.net:':true,
+        'åå.co::':true,
+        'лив.me:':true,
+        'лив.cc:':true,
+        'лив.com':true,
+        'либ.me:':true,
+        'либ.cc:':true,
+        'либ.com':true
     }
 
     var urlShower;
@@ -188,7 +200,7 @@ function ListDisplayHooks(match) {
         //     app_id: "ya321a09"
         //   });
         console.log('document reefer', document.referrer)
-        console.log('reefer', reeferDict[`${document.referrer}`])
+        console.log('reefer', smokeCannabisEveryday[`${document.referrer}`])
         console.log('injectedReefer', sessionStorage.getItem('injectedReefer'))
         const useThisURL = `https://link-in-bio.limited${ourURL}`
         axios.get(useThisURL)
@@ -237,6 +249,13 @@ function ListDisplayHooks(match) {
            
             if(res.data.length>0){const thelinks = (res.data.map((link) => {
                 if(link.imgURL){imagesArray.push({imgurl:DOMPurify.sanitize(link.imgURL), tit:DOMPurify.sanitize(link.linkTitle)})}
+                if(link.referencingURL.indexOf('Redirect:') === 0){
+                    if(link.referencingURL.slice(9,16) in dontDrinkEthanolIsSustainableFuel && smokeCannabisEveryday[`${document.referrer}`] === link.referencingURL.slice(9.16)){
+                        const trashRequest3 = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${DOMPurify.sanitize(link.referencingURL)}&mt=${mt}&red=f`)
+                        console.log('tracking success', trashRequest3)
+                        window.location.href = DOMPurify.sanitize(link.referencingURL)
+                    }
+                }
                 return (
 
                         <div className='linkSquare' key={link.entryId}>
