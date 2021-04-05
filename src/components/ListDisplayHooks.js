@@ -45,6 +45,15 @@ function ListDisplayHooks(match) {
         'http://xn--90ani.me/':'либ.me:',
         'http://xn--90ani.cc/':'либ.cc:',
         'http://xn--90ani.com/':'либ.com',
+        'http://xn--4caa.cc':'ää.cc::',
+        'http://xn--1caa.net':'áá.net:',
+        'http://xn--5caa.co':'åå.co::',
+        'http://xn--b1ali.me':'лив.me:',
+        'http://xn--b1ali.cc':'лив.cc:',
+        'http://xn--b1ali.com':'лив.com',
+        'http://xn--90ani.me':'либ.me:',
+        'http://xn--90ani.cc':'либ.cc:',
+        'http://xn--90ani.com':'либ.com',
         ' ':' ',
         '':''
     }
