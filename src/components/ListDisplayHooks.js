@@ -250,8 +250,8 @@ function ListDisplayHooks(match) {
             if(res.data.length>0){const thelinks = (res.data.map((link) => {
                 if(link.imgURL){imagesArray.push({imgurl:DOMPurify.sanitize(link.imgURL), tit:DOMPurify.sanitize(link.linkTitle)})}
                 if(link.referencingURL.indexOf('Redirect:') === 0){
-                    console.log('redirect att')
-                    if(dontDrinkEthanolIsSustainableFuel[link.referencingURL.slice(9,16)] && link.referencingURL.slice(9.16) === smokeCannabisEveryday[`${document.referrer}`] ){
+                    console.log('redirect att', link.referencingURL.slice(9,16), dontDrinkEthanolIsSustainableFuel[link.referencingURL.slice(9,16)])
+                    if(dontDrinkEthanolIsSustainableFuel[smokeCannabisEveryday[`${document.referrer}`]] && link.referencingURL.slice(9,16)===smokeCannabisEveryday[`${document.referrer}`]){
                         const trashRequest3 = axios.get(`https://link-in-bio.limited/s/?eid=${link.entryId}&ref=${DOMPurify.sanitize(link.referencingURL)}&mt=${mt}&red=f`)
                         console.log('tracking success', trashRequest3)
                         window.location.href = DOMPurify.sanitize(link.referencingURL)
