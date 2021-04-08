@@ -14,6 +14,7 @@ class AddEntry extends React.Component {
         this.handleChangeImg = this.handleChangeImg.bind(this);
         this.handleChangeURL = this.handleChangeURL.bind(this);
         this.handleChangeNoImg = this.handleChangeNoImg.bind(this);
+        this.handleChangeShortie = this.handleChangeShortie.bind(this);
 
         this.state = {
             userId: sessionStorage.getItem('userId'),
@@ -24,7 +25,15 @@ class AddEntry extends React.Component {
             imgURL:'',
             isLoading: false,
             noImg:true,
+            shortie:'no'
         }
+    }
+
+    handleChangeShortie = (evt) => {
+        evt.preventDefault()
+        this.setState({
+            shortie: evt.target.value
+        })
     }
 
     handleChangeURL = (evt) => {
@@ -73,11 +82,16 @@ class AddEntry extends React.Component {
     handleSubmit = async (evt) => {
         evt.preventDefault()
         const shackImageId = null
-        const { userId, listId, referencingURL, description, linkTitle, noImg } = this.state
+        const { userId, listId, description, linkTitle, noImg, shortie } = this.state
+        let { referencingURL } = this.state
         var { imgURL } = this.state
         const token = sessionStorage.getItem('token')
         // console.log(userId, listId, referencingURL, description, linkTitle, imgURL, noImg)
         try {
+            if(shortie !== 'no'){
+                referencingURL = 'Redirect:'+ shortie + ':' + referencingURL
+                console.log('postref', referencingURL)
+            }
             if(noImg === true){
                 imgURL = null
                 // console.log('imgurl set to null succ', imgURL)
@@ -123,7 +137,22 @@ class AddEntry extends React.Component {
                         <p className="addEntryText">(starting with http or https)</p>
                         <p className="addEntryText">(and ending in the file extension of the linked image)</p>
                         <p className="addEntryText">Put a single space in for no description, title or link</p>
+                        <br /><p className="addEntryText">If you want to load your Link-in.Bio then automatically redirect</p>
+                        <p className="addEntryText">Your viewer to this entry, select a short url to redirect from</p>
                         <input type="text" name="referencingURL" maxLength="498" value={referencingURL} placeholder="Link URL" onChange={this.handleChangeURL} required /><br />
+                        <select onChange={this.handleChangeShortie}>
+                            <option value="no">No Redirect</option>
+                            <option value="ää.cc::">ää.cc</option>
+                            <option value="åå.co::">åå.co</option>
+                            <option value="жж.cc::">жж.cc</option>
+                            <option value="áá.net:">áá.net</option>
+                            <option value="либ.cc:">либ.cc</option>
+                            <option value="лив.cc:">лив.cc</option>
+                            <option value="либ.me:">либ.me</option>
+                            <option value="лив.me:">лив.me</option>
+                            <option value="либ.com">либ.com</option>
+                            <option value="лив.com">лив.com</option>
+                        </select><br />
                         <input type="text" name="linkTitle" maxLength="498" value={linkTitle} placeholder="Link Title" onChange={this.handleChangeTitle} required /><br />
                         <input type="text" className="editLinkDescription" maxLength="498" name="description" value={description} placeholder="Link Description" onChange={this.handleChangeDescription} required /><br />
                         <input type="text" name="imgURL" value={imgURL} maxLength="498" placeholder="Image URL" onChange={this.handleChangeImg} /><br />
