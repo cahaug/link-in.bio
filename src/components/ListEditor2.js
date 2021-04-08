@@ -112,12 +112,12 @@ function ListEditor2(){
         setDarkMode(!darkMode) 
     }
 
-    const copyLinkText = () => {
-        var copyTxt = document.getElementsByClassName('redTxtForCopy')[0]
-        console.log('copytext', copyTxt)
-        navigator.clipboard.writeText(copyTxt.textContent)
-        toast.success(`Copied Link: ${copyTxt.textContent}`)
-    }
+    // const copyLinkText = () => {
+    //     var copyTxt = document.getElementsByClassName('redTxtForCopy')[0]
+    //     console.log('copytext', copyTxt)
+    //     navigator.clipboard.writeText(copyTxt.textContent)
+    //     toast.success(`Copied Link: ${copyTxt.textContent}`)
+    // }
 
     const drawerToggle = () => {
         const drawer = document.getElementsByClassName('drawer')
@@ -231,7 +231,7 @@ function ListEditor2(){
                                     <button className="sqaureButton" onClick={() => {deleteEntry(link.entryId)}}>Delete Entry</button>
                                 </div>
                                 <p className="linkDescriptionTag">▼</p>
-                                <p className='linkDescription'>{link.description} <br />{link.referencingURL.indexOf('Redirect:') === 0?<div><p className="redTxtForCopy">{'https://' + dontDrinkEthanolIsSustainableFuel[link.referencingURL.slice(9,16)] + '/' + sessionStorage.getItem('listId')}</p><br /><button onClick={copyLinkText}>Copy Link</button></div>:<p>No Redirect</p>}<br />Added: {monthsDict[`${link.creationDate.slice(5,7)}`]} {link.creationDate.slice(8,10)}, at {link.creationDate.slice(11,16)} UTC</p>
+                                <p className='linkDescription'>{link.description} <br />{link.referencingURL.indexOf('Redirect:') === 0?<div><p className="redTxtForCopy">{'https://' + dontDrinkEthanolIsSustainableFuel[link.referencingURL.slice(9,16)] + '/' + sessionStorage.getItem('listId')}</p><br /><button onClick={() => {navigator.clipboard.writeText('https://' + dontDrinkEthanolIsSustainableFuel[link.referencingURL.slice(9,16)] + '/' + sessionStorage.getItem('listId')); toast.success(`Copied Link: ${'https://' + dontDrinkEthanolIsSustainableFuel[link.referencingURL.slice(9,16)] + '/' + sessionStorage.getItem('listId')} to Clipboard`)}}>Copy Link</button></div>:<p>No Redirect</p>}<br />Added: {monthsDict[`${link.creationDate.slice(5,7)}`]} {link.creationDate.slice(8,10)}, at {link.creationDate.slice(11,16)} UTC</p>
                             </div>
     
                     )
