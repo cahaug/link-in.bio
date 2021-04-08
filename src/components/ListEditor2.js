@@ -115,10 +115,11 @@ function ListEditor2(){
     const copyLinkText = () => {
         var copyTxt = document.getElementsByClassName('redTxtForCopy')
         console.log('copytext', copyTxt)
-        copyTxt.select()
-        copyTxt.setSelectionRange(0, 99999)
+        var texttoCopy = copyTxt[0].innerText
+        texttoCopy.select()
+        texttoCopy.setSelectionRange(0, 99999)
         document.execCommand('copy')
-        toast.success(`Copied Link: ${copyTxt[0].value}`)
+        toast.success(`Copied Link: ${texttoCopy}`)
     }
 
     const drawerToggle = () => {
@@ -233,7 +234,7 @@ function ListEditor2(){
                                     <button className="sqaureButton" onClick={() => {deleteEntry(link.entryId)}}>Delete Entry</button>
                                 </div>
                                 <p className="linkDescriptionTag">▼</p>
-                                <p className='linkDescription'>{link.description} <br />{link.referencingURL.indexOf('Redirect:') === 0?<p className="redTxtForCopy">{'https://' + dontDrinkEthanolIsSustainableFuel[link.referencingURL.slice(9,16)] + '/' + sessionStorage.getItem('listId')}<br /><button onClick={copyLinkText}>Copy Link</button></p>:<p>No Redirect</p>}<br />Added: {monthsDict[`${link.creationDate.slice(5,7)}`]} {link.creationDate.slice(8,10)}, at {link.creationDate.slice(11,16)} UTC</p>
+                                <p className='linkDescription'>{link.description} <br />{link.referencingURL.indexOf('Redirect:') === 0?<div><p className="redTxtForCopy">{'https://' + dontDrinkEthanolIsSustainableFuel[link.referencingURL.slice(9,16)] + '/' + sessionStorage.getItem('listId')}<br /></p><button onClick={copyLinkText}>Copy Link</button></div>:<p>No Redirect</p>}<br />Added: {monthsDict[`${link.creationDate.slice(5,7)}`]} {link.creationDate.slice(8,10)}, at {link.creationDate.slice(11,16)} UTC</p>
                             </div>
     
                     )
