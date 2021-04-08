@@ -114,8 +114,9 @@ function ListEditor2(){
 
     const copyLinkText = () => {
         var copyTxt = document.getElementsByClassName('redTxtForCopy')
-        copyTxt[0].select()
-        copyTxt[0].setSelectionRange(0, 99999)
+        console.log('copytext', copyTxt)
+        copyTxt.select()
+        copyTxt.setSelectionRange(0, 99999)
         document.execCommand('copy')
         toast.success(`Copied Link: ${copyTxt[0].value}`)
     }
