@@ -40,6 +40,19 @@ function ListEditor2(){
         return rgb;
     }
 
+    const dontDrinkEthanolIsSustainableFuel = {
+        'ää.cc::':'ää.cc',
+        'áá.net:':'áá.net',
+        'åå.co::':'åå.co',
+        'жж.cc::':'жж.cc',
+        'лив.me:':'лив.me',
+        'лив.cc:':'лив.cc',
+        'лив.com':'лив.com',
+        'либ.me:':'либ.me',
+        'либ.cc:':'либ.cc',
+        'либ.com':'либ.com'
+    }
+
     const applyDarkMode = () => {
         // var element = document.body;
         // console.log('backcolor', backgroundColor, 'chosenFont', chosenFont, 'textColor', textColor)
@@ -97,6 +110,14 @@ function ListEditor2(){
                 mainBackgroundElement[0].style.backgroundImage = 'linear-gradient(70deg, #151515, black)'
             }        }
         setDarkMode(!darkMode) 
+    }
+
+    const copyLinkText = () => {
+        var copyTxt = document.getElementsByClassName('redTxtForCopy')
+        copyTxt[0].select()
+        copyTxt[0].setSelectionRange(0, 99999)
+        document.execCommand('copy')
+        toast.success(`Copied Link: ${copyTxt[0].value}`)
     }
 
     const drawerToggle = () => {
@@ -211,7 +232,7 @@ function ListEditor2(){
                                     <button className="sqaureButton" onClick={() => {deleteEntry(link.entryId)}}>Delete Entry</button>
                                 </div>
                                 <p className="linkDescriptionTag">▼</p>
-                                <p className='linkDescription'>{link.description} <br /> <br />Added: {monthsDict[`${link.creationDate.slice(5,7)}`]} {link.creationDate.slice(8,10)}, at {link.creationDate.slice(11,16)} UTC</p>
+                                <p className='linkDescription'>{link.description} <br />{link.referencingURL.indexOf('Redirect:') === 0?<p className="redTxtForCopy">{'https://' + dontDrinkEthanolIsSustainableFuel[link.referencingURL.slice(9,16)] + '/' + sessionStorage.getItem('listId')}<br /><button onClick={copyLinkText}>Copy Link</button></p>:<p>No Redirect</p>}<br />Added: {monthsDict[`${link.creationDate.slice(5,7)}`]} {link.creationDate.slice(8,10)}, at {link.creationDate.slice(11,16)} UTC</p>
                             </div>
     
                     )
