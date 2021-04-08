@@ -115,10 +115,8 @@ function ListEditor2(){
     const copyLinkText = () => {
         var copyTxt = document.getElementsByClassName('redTxtForCopy')[0]
         console.log('copytext', copyTxt)
-        copyTxt.select()
-        copyTxt.setSelectionRange(0, 99999)
-        document.execCommand('copy')
-        toast.success(`Copied Link: ${copyTxt.innerText}`)
+        navigator.clipboard.writeText(copyTxt.textContent)
+        toast.success(`Copied Link: ${copyTxt.textContent}`)
     }
 
     const drawerToggle = () => {
