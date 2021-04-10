@@ -142,6 +142,7 @@ class AddEntry extends React.Component {
                         <input type="text" name="referencingURL" maxLength="498" value={referencingURL} placeholder="Link URL" onChange={this.handleChangeURL} required /><br />
                         <select onChange={this.handleChangeShortie}>
                             <option value="no">No Redirect</option>
+                            <option value="lib.ltd">lib.ltd</option>
                             <option value="ää.cc::">ää.cc</option>
                             <option value="åå.co::">åå.co</option>
                             <option value="жж.cc::">жж.cc</option>

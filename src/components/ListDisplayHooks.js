@@ -76,6 +76,10 @@ function ListDisplayHooks(match) {
         'https://xn--90ani.me':'либ.me:',
         'https://xn--90ani.cc':'либ.cc:',
         'https://xn--90ani.com':'либ.com',
+        'http://lib.ltd':'lib.ltd',
+        'https://lib.ltd':'lib.ltd',
+        'http://lib.ltd/':'lib.ltd',
+        'https://lib.ltd/':'lib.ltd',
         ' ':' ',
         '':''
     }
@@ -90,7 +94,8 @@ function ListDisplayHooks(match) {
         'лив.com':true,
         'либ.me:':true,
         'либ.cc:':true,
-        'либ.com':true
+        'либ.com':true,
+        'lib.ltd':true
     }
 
     var urlShower;

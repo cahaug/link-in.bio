@@ -50,7 +50,8 @@ function ListEditor2(){
         'лив.com':'лив.com',
         'либ.me:':'либ.me',
         'либ.cc:':'либ.cc',
-        'либ.com':'либ.com'
+        'либ.com':'либ.com',
+        'lib.ltd':'lib.ltd'
     }
 
     const applyDarkMode = () => {
