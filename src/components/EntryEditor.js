@@ -138,17 +138,22 @@ class EntryEditor extends React.Component {
         if(imgURL2===""){
             const imgURL = null
             // console.log(imgURL)
-            if(isRedirect !== 'no' && referencingURL.indexOf('http') === 0){
-                referencingURL = `Redirect:${isRedirect}:${referencingURL}`
+            if(isRedirect === 'no'){
                 this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL, token, listId)
             } else {
+                referencingURL = `Redirect:${isRedirect}:${referencingURL}`
                 this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL, token, listId)
             }
             this.setState({ referencingURL:'', description: '', linkTitle: '', imgURL2:''})
         } else {
             const imgURL = imgURL2
             // console.log(imgURL)
-            this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL, token, listId)
+            if(isRedirect === 'no'){
+                this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL, token, listId)
+            } else {
+                referencingURL = `Redirect:${isRedirect}:${referencingURL}`
+                this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL, token, listId)
+            }
             this.setState({ referencingURL:'', description: '', linkTitle: '', imgURL2:''})
         }
     }
