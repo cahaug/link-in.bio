@@ -9,7 +9,6 @@ import toast from 'react-hot-toast'
 class EntryEditor extends React.Component {
     constructor(props) {
         super(props)
-        this.handleChangeShortie = this.handleChangeShortie.bind(this);
         this.state = {
             isLoading: false,
             entryId: '',
@@ -100,7 +99,7 @@ class EntryEditor extends React.Component {
     handleChangeShortie = (evt) => {
         evt.preventDefault()
         this.setState({
-            shortie: evt.target.value
+            isRedirect: evt.target.value
         })
     }
 
@@ -167,7 +166,7 @@ class EntryEditor extends React.Component {
                 this.setState({protectedInput:true})
             }
             if(response.data[0].referencingURL.indexOf('Redirect:') === 0){
-                this.setState({isRedirect:response.data[0].slice(9,16)})
+                this.setState({isRedirect:response.data[0].referencingURL.slice(9,16)})
                 response.data[0].referencingURL = response.data[0].referencingURL.slice(17)
             } else {
                 this.setState({isRedirect:'no'})
