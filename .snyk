@@ -6,4 +6,170 @@ ignore:
     - react-scripts > @typescript-eslint/eslint-plugin > @typescript-eslint/experimental-utils > @typescript-eslint/typescript-estree > globby > fast-glob > glob-parent:
         reason: None given
         expires: '2021-03-26T02:31:34.844Z'
+  SNYK-JS-POSTCSS-1090595:
+    - react-scripts > css-loader > postcss-modules-values > postcss:
+        reason: ''
+        expires: '2021-05-23T02:49:53.091Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.091Z'
+    - react-scripts > postcss-normalize > postcss-browser-comments > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.091Z'
+    - react-scripts > postcss-preset-env > autoprefixer > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.091Z'
+    - react-scripts > postcss-preset-env > css-blank-pseudo > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.091Z'
+    - react-scripts > postcss-preset-env > css-has-pseudo > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.091Z'
+    - react-scripts > postcss-preset-env > css-prefers-color-scheme > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.091Z'
+    - react-scripts > postcss-preset-env > postcss-attribute-case-insensitive > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.091Z'
+    - react-scripts > postcss-preset-env > postcss-color-functional-notation > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.091Z'
+    - react-scripts > postcss-preset-env > postcss-color-gray > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > postcss-preset-env > postcss-color-hex-alpha > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > postcss-preset-env > postcss-color-mod-function > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > postcss-preset-env > postcss-color-rebeccapurple > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > postcss-preset-env > postcss-custom-media > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > postcss-preset-env > postcss-custom-properties > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > postcss-preset-env > postcss-custom-selectors > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > postcss-preset-env > postcss-dir-pseudo-class > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > postcss-preset-env > postcss-double-position-gradients > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > postcss-preset-env > postcss-env-function > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > postcss-preset-env > postcss-focus-visible > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > postcss-preset-env > postcss-focus-within > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > postcss-preset-env > postcss-font-variant > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > postcss-preset-env > postcss-selector-not > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > css-declaration-sorter > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > cssnano-util-raw-cache > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-calc > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-colormin > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-convert-values > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-discard-comments > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-discard-duplicates > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-discard-empty > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-discard-overridden > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.092Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-merge-longhand > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-merge-rules > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-minify-font-values > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-minify-gradients > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-minify-params > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-minify-selectors > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-normalize-charset > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-normalize-display-values > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-normalize-positions > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-normalize-repeat-style > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-normalize-string > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-normalize-timing-functions > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-normalize-unicode > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-normalize-url > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-normalize-whitespace > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-ordered-values > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-reduce-initial > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-reduce-transforms > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-svgo > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-unique-selectors > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-merge-longhand > stylehacks > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
+    - react-scripts > resolve-url-loader > postcss:
+        reason: None given
+        expires: '2021-05-23T02:49:53.093Z'
 patch: {}
