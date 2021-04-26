@@ -20,7 +20,7 @@
     "react-helmet": "^6.1.0",
     "react-hot-toast": "^1.0.2",
     "react-recaptcha": "^2.3.10",
-    "react-redux": "^7.2.2",
+    "react-redux": "^7.2.3",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
     "react-simple-maps": "^2.3.0",
