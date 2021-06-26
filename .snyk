@@ -6,6 +6,9 @@ ignore:
     - react-scripts > @typescript-eslint/eslint-plugin > @typescript-eslint/experimental-utils > @typescript-eslint/typescript-estree > globby > fast-glob > glob-parent:
         reason: None given
         expires: '2021-03-26T02:31:34.844Z'
+      react-scripts > webpack > watchpack > watchpack-chokidar2 > chokidar > glob-parent:
+        reason: None given
+        expires: '2021-07-26T00:35:40.601Z'
   SNYK-JS-POSTCSS-1090595:
     - react-scripts > css-loader > postcss-modules-values > postcss:
         reason: ''
@@ -172,4 +175,31 @@ ignore:
     - react-scripts > resolve-url-loader > postcss:
         reason: None given
         expires: '2021-05-23T02:49:53.093Z'
+  SNYK-JS-BROWSERSLIST-1090194:
+    - react-scripts > react-dev-utils > browserslist:
+        reason: None given
+        expires: '2021-07-26T00:35:40.601Z'
+  SNYK-JS-CSSWHAT-1298035:
+    - react-scripts > @svgr/webpack > @svgr/plugin-svgo > svgo > css-select > css-what:
+        reason: None given
+        expires: '2021-07-26T00:35:40.601Z'
+  SNYK-JS-EJS-1049328:
+    - react-scripts > workbox-webpack-plugin > workbox-build > @surma/rollup-plugin-off-main-thread > ejs:
+        reason: None given
+        expires: '2021-07-26T00:35:40.601Z'
+  SNYK-JS-LODASHTEMPLATE-1088054:
+    - react-scripts > workbox-webpack-plugin > workbox-build > lodash.template:
+        reason: None given
+        expires: '2021-07-26T00:35:40.601Z'
+  SNYK-JS-NORMALIZEURL-1296539:
+    - react-scripts > mini-css-extract-plugin > normalize-url:
+        reason: None given
+        expires: '2021-07-26T00:35:40.601Z'
+    - react-scripts > optimize-css-assets-webpack-plugin > cssnano > cssnano-preset-default > postcss-normalize-url > normalize-url:
+        reason: None given
+        expires: '2021-07-26T00:35:40.601Z'
+  SNYK-JS-PATHPARSE-1077067:
+    - react-scripts > eslint-plugin-react > resolve > path-parse:
+        reason: None given
+        expires: '2021-07-26T00:35:40.601Z'
 patch: {}

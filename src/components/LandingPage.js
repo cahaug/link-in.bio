@@ -70,16 +70,16 @@ const LandingPage = () => {
             .then(res => {
                 console.log(res.data.message)
                 setLoggedViewNoIP(true)
-                window.Intercom("boot", {
-                    app_id: "ya321a09"
-                });
+                // window.Intercom("boot", {
+                //     app_id: "ya321a09"
+                // });
             })
             .catch(err => {
                 console.log('error', err)
                 setLoggedViewNoIP(true)
             })
         } else{
-            window.Intercom("update");
+            // window.Intercom("update");
             return
         }
     })
