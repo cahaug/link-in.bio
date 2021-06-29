@@ -140,7 +140,7 @@ const GraphForEntry = () => {
                 <br />
                 <div className="discreteViewers">
                     <div style={{ width: "98%", height: "98%", margin:"0 auto" }}>
-                        <h2>{discreteViewers} different people have seen your page.</h2>
+                        <h2>{discreteViewers} different people have seen your link-in.bio!</h2>
                     </div>
                 </div>
                 <br />
