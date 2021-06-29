@@ -14,7 +14,7 @@ const Information = () => {
             </div>
             <br />
             <p>Your Link-In Bio is versatile, and can be used for anything from linking up your socials with your gamertags,<br/> to launching an online business from nothing.</p><br />
-            <p>$5 a Month, 5 Minutes to Set Up</p><br />
+            <p>$3.98 a Month, 3.98 Minutes to Set Up</p><br />
             <p>Easily add 60+ commonly used social networks and online services with our EasyAdd Link Feature</p><br />
             <p>Add Links and Images already on the Internet with our Manual Entry Feature.</p><br />
             <p>Upload Your Own Photos with our Add Link with Photo Feature.</p><br />
