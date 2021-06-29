@@ -1036,6 +1036,9 @@ footer span {
 .imageSlide {
   display: none;
 }
+.imageSlide img {
+  max-height: 85vh;
+}
 .prev,
 .next {
   cursor: pointer;
