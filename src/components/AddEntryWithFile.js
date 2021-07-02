@@ -133,7 +133,7 @@ function AddEntryWithFile(){
                 <br />
                 <br />
                 <label>
-                    Website to Link: <input type="url" onChange={handleChangeText} name="referencingURL" maxLength="498" placeholder="Site to Link" required />
+                    Website to Link: <input type="text" onChange={handleChangeText} name="referencingURL" maxLength="498" placeholder="Site to Link" required />
                 </label>
                 <br />
                 <br />

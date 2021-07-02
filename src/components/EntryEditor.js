@@ -17,7 +17,8 @@ class EntryEditor extends React.Component {
             linkTitle: '',
             imgURL2: '',
             shackImageId:'',
-            protectedInput:false
+            protectedInput:false,
+            isRedirect:'no',
             // successMessage: null,
         }
     }
@@ -95,6 +96,13 @@ class EntryEditor extends React.Component {
         })
     }
 
+    handleChangeShortie = (evt) => {
+        evt.preventDefault()
+        this.setState({
+            isRedirect: evt.target.value
+        })
+    }
+
     deleteHostedImage = async (evt) => {
         evt.preventDefault()
         const {shackImageId, entryId} = this.state
@@ -121,7 +129,8 @@ class EntryEditor extends React.Component {
     handleSubmit = (evt) => {
         evt.preventDefault()
 
-        const { entryId, referencingURL, description, linkTitle } = this.state
+        const { entryId, description, linkTitle , isRedirect} = this.state
+        let { referencingURL } = this.state
         const { imgURL2 } = this.state
         const token = sessionStorage.getItem('token')
         const listId = sessionStorage.getItem('listId')
@@ -129,12 +138,22 @@ class EntryEditor extends React.Component {
         if(imgURL2===""){
             const imgURL = null
             // console.log(imgURL)
-            this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL, token, listId)
+            if(isRedirect === 'no'){
+                this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL, token, listId)
+            } else {
+                referencingURL = `Redirect:${isRedirect}:${referencingURL}`
+                this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL, token, listId)
+            }
             this.setState({ referencingURL:'', description: '', linkTitle: '', imgURL2:''})
         } else {
             const imgURL = imgURL2
             // console.log(imgURL)
-            this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL, token, listId)
+            if(isRedirect === 'no'){
+                this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL, token, listId)
+            } else {
+                referencingURL = `Redirect:${isRedirect}:${referencingURL}`
+                this.props.editEntry( entryId, referencingURL, description, linkTitle, imgURL, token, listId)
+            }
             this.setState({ referencingURL:'', description: '', linkTitle: '', imgURL2:''})
         }
     }
@@ -150,6 +169,12 @@ class EntryEditor extends React.Component {
         .then(response => {
             if(Object.values(this.choicesDict).indexOf(response.data[0].imgURL) > -1){
                 this.setState({protectedInput:true})
+            }
+            if(response.data[0].referencingURL.indexOf('Redirect:') === 0){
+                this.setState({isRedirect:response.data[0].referencingURL.slice(9,16)})
+                response.data[0].referencingURL = response.data[0].referencingURL.slice(17)
+            } else {
+                this.setState({isRedirect:'no'})
             }
             // console.log('response', response)
             this.setState({userId:response.data[0].userId})
@@ -174,6 +199,20 @@ class EntryEditor extends React.Component {
                     {/* <input type="text" name="userId" value={userId} placeholder="Your User Id" onChange={this.handleChange} required /><br /> */}
                     {/* <input type="text" name="entryId" value={entryId} placeholder="Your Entry Id" onChange={this.handleChange} required /><br /> */}
                     {protectedInput === false ? <div><p>Link URL:</p><input type="url" name="referencingURL" value={referencingURL} placeholder="Link URL"  maxLength="498" onChange={this.handleChange} required /><br /></div>:<div><br /><p>Linked URL:</p><p>{referencingURL}</p><br /></div>}
+                    <select onChange={this.handleChangeShortie} value={this.state.isRedirect}>
+                            <option value="no">No Redirect</option>
+                            <option value="lib.ltd">lib.ltd</option>
+                            <option value="ää.cc::">ää.cc</option>
+                            <option value="åå.co::">åå.co</option>
+                            <option value="жж.cc::">жж.cc</option>
+                            <option value="áá.net:">áá.net</option>
+                            <option value="либ.cc:">либ.cc</option>
+                            <option value="лив.cc:">лив.cc</option>
+                            <option value="либ.me:">либ.me</option>
+                            <option value="лив.me:">лив.me</option>
+                            <option value="либ.com">либ.com</option>
+                            <option value="лив.com">лив.com</option>
+                        </select><br />
                     <p>Link Title:</p>
                     <input type="text" name="linkTitle" value={linkTitle} placeholder="Link Title"  maxLength="498" onChange={this.handleChange} required /><br />
                     <p>Link Description (put a single space for no description):</p>

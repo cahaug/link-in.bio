@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import axios from 'axios'
 import ReCAPTCHA from 'react-google-recaptcha'
 import loadingGif from '../files/loading.gif'
@@ -12,6 +12,7 @@ function Maksaa(){
     const [lastName, setLastName] = useState('')
     const [referredBy, setReferredBy] = useState('organic')
     const [agreed, setAgreed] = useState(false)
+    const [checkedURL, setCheckedURL] = useState(false)
     const recapRef = useRef()
     const rpk = '6LcdDdoZAAAAAH8I2TC1gEREIep33Me2lEzwijhv'
     const hasNoIllegalChars = (value) => {
@@ -103,6 +104,16 @@ function Maksaa(){
         evt.preventDefault()
         setLastName(evt.target.value)
     }
+
+    useEffect(() => {
+        if(checkedURL === false){
+            if(window.location.href.indexOf('https://link-in.bio/maksaa') !== 0 ){
+                window.location.href = 'https://link-in.bio/maksaa'
+            }
+        } else {
+            setCheckedURL(true)
+        }
+    })
     
     return (<div>
         <br /><label>

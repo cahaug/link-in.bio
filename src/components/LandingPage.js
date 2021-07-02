@@ -70,16 +70,16 @@ const LandingPage = () => {
             .then(res => {
                 console.log(res.data.message)
                 setLoggedViewNoIP(true)
-                window.Intercom("boot", {
-                    app_id: "ya321a09"
-                });
+                // window.Intercom("boot", {
+                //     app_id: "ya321a09"
+                // });
             })
             .catch(err => {
                 console.log('error', err)
                 setLoggedViewNoIP(true)
             })
         } else{
-            window.Intercom("update");
+            // window.Intercom("update");
             return
         }
     })
@@ -137,10 +137,10 @@ const LandingPage = () => {
                 </Link>
                 </div>
             </div>
-            <a alt="Help Center" href="https://intercom.help/link-in-bio-ltd/en/collections/2685643-quick-questions">Frequently Asked Questions - FAQ</a>
+            {/* <a alt="Help Center" href="https://intercom.help/link-in-bio-ltd/en/collections/2685643-quick-questions">Frequently Asked Questions - FAQ</a> */}
             <br /><br />
-            <img src={unionLabel} alt="Union Bug" className="unionBug"/>
-            <br />
+            {/* <img src={unionLabel} alt="Union Bug" className="unionBug"/> */}
+            {/* <br /> */}
             <div><h4> ©{new Date().getFullYear()}  Link-In.Bio Ltd</h4></div>
             <br />
             <Helmet>
