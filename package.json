@@ -13,7 +13,7 @@
     "axios": "^0.21.1",
     "dompurify": "^2.2.7",
     "qrcode.react": "^1.0.1",
-    "query-string": "^6.14.0",
+    "query-string": "^6.14.1",
     "react": "^16.14.0",
     "react-color": "^2.19.3",
     "react-dom": "^16.14.0",
